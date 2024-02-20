@@ -1,0 +1,78 @@
+// B1 : sử dụng DOMcontentLoaded : đảm bảo sự load toàn vẹn của js
+document.addEventListener("DOMContentLoaded", function () {
+  // khi có thay đổi thì thực thi như sau
+  // B2 : Lắng nghe toàn bộ button-down
+  var downButtons = this.documentElement.querySelectorAll(".Qsearch_icon_dow");
+  // sau khi đã lấy được Buttons này thì việc kế tiếp là xác định cái nào được nhấn vào
+  // lập qua 1 thể các buttons
+  downButtons.forEach(function (iconDown, indexIcon) {
+    // nếu object này được click
+    iconDown.addEventListener("click", function () {
+      // thực thi hàm kèm theo index của button đó.
+      toggleOptionsContainer(indexIcon);
+    });
+  });
+
+
+
+
+
+
+
+
+  function toggleOptionsContainer(indexIcon) {
+    // lấy ra tất cả các thẻ options để check xem cái nào đang hiển thị hay còn đc hiểu là phù hợp với indexIcon -> toggle nó.
+    var optionContainers = document.querySelectorAll(
+      ".Qsearch_Data_List .optionsContainer"
+    );
+    // duyệt qua các phần tử trong cái options mới lấy về
+    // mỗi button-down sẽ tương ứng index với mỗi optionsList , nên nếu bằng nhau thì ẩn/hiện options
+    optionContainers.forEach(function (object, index) {
+      if (indexIcon === index) {
+        // nếu bằng thì toggle
+        object.classList.toggle("hidden");
+      } else {
+        // nếu không bằng vẫn hidden thẻ đó
+        object.classList.add("hidden");
+      }
+    });
+  }
+
+
+
+  // lấy ra được tất cả container chứa options
+  // list các container chứa options
+  var getAllContainers = document.querySelectorAll(
+    ".Quick-Search .optionsContainer"
+  );
+
+  // cho forearch truyền qua container được chọn
+  getAllContainers.forEach(function (container) {
+    // từng container sẽ được kiểm tra xem cái nào được click vào.
+    container.addEventListener("click", function (event) {
+      // nếu sự kiện được bắt tồn tại class option trong đó thì tiếp tục
+      if (event.target.classList.contains("option")) {
+        // lấy ra được ô cần nhập data , từng ô sẽ là từng ID 1,2,3,4
+        // sử dụng container.closest : tìm phần tử cha , sau đó chọc ngược lại vào phần tử con của thg đó.
+
+        var optionNumber = container
+          .closest(".QuickSearch-item")
+          .querySelector(".Qsearch-icon span").textContent;
+
+        // lấy dữ liệu trong phần options của ô đó.
+        var optionValue = event.target.textContent;
+
+        // Lưu tên bộ phim vào localStorage
+        localStorage.setItem("selectedMovie", optionValue);
+
+        // Ẩn container sau khi đã chọn !!!
+        console.log(optionNumber + " : " + optionValue);
+        container.classList.add("hidden");
+
+        // Hiển thị tên bộ phim đã chọn
+        var movieNameDisplay = container.closest(".QuickSearch-item").querySelector(".QuickSearch-item .Qsearch-title")
+        movieNameDisplay.textContent = optionValue;
+      }
+    });
+  });
+});
