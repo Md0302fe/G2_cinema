@@ -13,10 +13,13 @@
     <title>Movie Details</title>
     <link href="Assets/Styles/DetailMovies.css" rel="stylesheet" type="text/css"/>
     <link href="Assets/Styles/gridTien.css" rel="stylesheet" type="text/css"/>
+    <link href="Assets/Styles/header.css" rel="stylesheet" type="text/css"/>
+    <link href="Assets/Styles/footer.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./Assets/Styles/themify-icons-font/themify-icons/themify-icons.css"
   </head>
   <body>
+      <%@include file='./Components/Header.jsp' %>
     <div class="main">
       <div class="book_ticket_wrapper">
         <div class="relative bg-black flex justify-center w-full h-full">
@@ -232,5 +235,4 @@
       </div>
     </div>
     <script src="Assets/JS/detailMovie.js" type="text/javascript"></script>
-  </body>
-</html>
+ <%@include file='./Components/Footer.jsp' %>

@@ -12,7 +12,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="Assets/Styles/booking.css" rel="stylesheet" type="text/css"/>
- 
+    <link href="Assets/Styles/header.css" rel="stylesheet" type="text/css"/>
+    <link href="Assets/Styles/footer.css" rel="stylesheet" type="text/css"/>
     <title>Galaxy Cinema</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -22,17 +23,15 @@
 
 <body>
 
-    <header>
-        <h1>Galaxy Cinema</h1>
-    </header>
+    <%@include file='./Components/Header.jsp' %>
 
-    <nav>
+<!--    <nav>
         <a href="#">Chọn phim / Rạp / Suất</a>
         <a href="#">Chọn ghế</a>
         <a href="#">Chọn thức ăn</a>
         <a href="#">Thanh toán </a>
         <a href="#">Xác nhận</a>
-    </nav>
+    </nav>-->
 
     <section>
         <!-- Phần "Chọn vị trí", "Chọn phim", và "Chọn suất" -->
@@ -170,8 +169,4 @@
     </section>
 
 
-
-
-</body>
-
-</html>
+<%@include file='./Components/Footer.jsp' %>
