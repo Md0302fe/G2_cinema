@@ -1,0 +1,360 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Feb 22, 2024, 8:13:24 AM
+    Author     : kenga
+*/
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #000;
+    color: #fff;
+    padding: 2em;
+    text-align: center;
+    margin-bottom: 7px;
+}
+
+
+.flex-c {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav {
+    background-color: #333;
+    color: #fff;
+    padding: 2em;
+    text-align: center;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1em;
+}
+
+nav a:hover {
+    color: rgb(86, 97, 250);
+    /* Màu xanh khi hover */
+    text-decoration: underline;
+}
+
+section {
+    padding: 4em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.movie {
+    background-color: #fff;
+    padding: 1em;
+    margin-bottom: 1em;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.movie img {
+    width: 100px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.movie-details {
+    margin-left: 1em;
+}
+
+/* Phần chọn vị trí, chọn phim, chọn suất */
+
+.selection-container {
+    margin-bottom: 15px;
+    width: 75%;
+}
+
+.location-selection,
+.movie-selection,
+.showtime-selection {
+    border: 1px solid #d2cdcd;
+    padding: 39px;
+    margin-bottom: 15px;
+
+}
+
+
+
+
+
+
+.selection-container label,
+.selection-container select {
+    margin-bottom: 8px;
+}
+
+
+/* Phần chi tiết phim */
+
+.movie-details-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.movie-details-content {
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.movie-details h2 {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.movie-details-content img {
+    width: 80%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.movie-details-content h2 {
+    margin-top: 10px;
+}
+
+.movie-price {
+    margin-top: auto;
+}
+
+/* Đường gạch chân dưới */
+
+.separator {
+    margin: 10px 0;
+    border: none;
+    border-top: 1px solid #ccc;
+}
+
+/* Add your CSS styles here */
+
+
+.locationlist {
+    display: none;
+    /* Hide location list by default */
+}
+
+.location-item {
+    cursor: pointer;
+    /* Change cursor to pointer when hovering over location items */
+}
+
+
+/* Nút điều hướng */
+
+.navigation-buttons {
+    padding: 10px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.back-button,
+.continue-button {
+    padding: 8px 46px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.back-button {
+    background-color: rgb(245, 244, 244);
+    color: orange;
+}
+
+.continue-button {
+    background-color: #ea9901;
+    color: white;
+}
+
+
+.movie-selection img {
+    max-width: 20%;
+    /* Giữ cho chiều rộng ảnh không vượt quá kích thước của phần tử cha */
+    height: auto;
+    /* Duy trì tỷ lệ khung hình khi thay đổi chiều rộng */
+}
+
+body {
+    font-family: sans-serif !important;
+}
+
+
+
+.movie-list {
+    display: none;
+
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    /* Chiều dài bằng 100% để xếp ngang với khung chọn phim */
+
+    /* Canh giữa các phần tử con trong dòng */
+}
+
+.movie-info {
+
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    /* Khoảng cách dưới mỗi phần tử */
+    padding: 10px;
+
+    text-align: center;
+}
+
+.movie-info img {
+    max-width: 100%;
+    height: 230px;
+    margin-bottom: 5px;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Hiển thị block khi được kích hoạt */
+#movieList.active {
+    display: flex;
+    justify-content: space-around;
+    BACKGROUND-COLOR: #edebeb;
+}
+
+#movieList {
+    display: none;
+}
+
+
+#movieContainer {
+    position: relative;
+    display: inline-block;
+    /* Để có kích thước phù hợp với nội dung bên trong */
+}
+
+
+.rounded {
+    height: 6px;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+    background-color: rgb(245 128 32)
+}
+
+
+
+
+
+.movie-item {
+    width: 22%;
+    margin-top: 30px;
+}
+
+.movie-item img {
+    max-width: 100%;
+    width: 90%;
+}
+
+
+.movielist {
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+
+}
+
+.movielist span {
+    display: flex;
+    justify-content: space-evenly;
+    float: left;
+
+}
+
+
+.locationlist {
+    display: flex;
+    justify-content: flex-start;
+
+
+}
+
+.locationlist span {
+    padding: 8px;
+    margin-top: -17px;
+    margin-left: -19px;
+    display: flex;
+    justify-content: space-evenly;
+    float: left;
+
+
+}
+
+
+
+
+
+
+.showtime-item {
+
+    margin-top: 30px;
+    padding-bottom: 28px;
+}
+
+
+.showtimeList {
+
+    display: flex;
+    justify-content: flex-start;
+
+}
+
+.showtimeList {
+    padding-left: 20px;
+}
+
+.showtimeList span {
+    display: flex;
+    justify-content: space-evenly;
+    float: left;
+    margin-left: 20px;
+    border: 1px solid;
+    padding: 10px;
+
+}
+
+.locaiton-info p {
+    border: 1px solid;
+    display: inline;
+}
+
+
+.location-item {
+    padding-left: 21px;
+}
+
+#locationText span {
+    border: none;
+    /* Ban đầu, không có đường viền */
+}
