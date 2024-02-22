@@ -13,11 +13,14 @@
         <link href="Assets/Styles/base.css" rel="stylesheet" type="text/css"/>
         <link href="Assets/Styles/grid.css" rel="stylesheet" type="text/css"/>
         <link href="Assets/Styles/homePage.css" rel="stylesheet" type="text/css"/>
+        <link href="Assets/Styles/header.css" rel="stylesheet" type="text/css"/>
+        <link href="Assets/Styles/footer.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
         <title>G2_Cinema</title>
     </head>
     <body>
+         <%@include file='./Components/Header.jsp' %>
         <div class="Home_Main">
             <!-- BANNER - SLIDER -->
             <div id="slider">
@@ -488,23 +491,4 @@
             </div>
         </div>
 
-        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-        <script src="./Assets/JS/homePage.js"></script>
-
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $(".image-slider").slick({
-                    autoplay: true,
-                    autoplaySpeed: 2000,
-                    centerPadding: '200px',
-                    arraws: true,
-                    dots: true,
-                    centerMode: true,
-                    slidesToShow: 1,
-                });
-            });
-        </script>
-    </body>
-</html>
+ <%@include file='./Components/Footer.jsp' %>

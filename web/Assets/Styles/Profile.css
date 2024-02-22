@@ -10,7 +10,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .container {
     display: flex; 
     justify-content: space-between; 
-    margin-top: 100px;
+    margin: 140px auto 120px auto;
     
     
 }
