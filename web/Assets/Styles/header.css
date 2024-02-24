@@ -1,0 +1,564 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    color: #000;
+    font-size: 16px;
+    line-height: 32px;
+    font-family: "neue-haas-unica", "kozuka-gothic-pro", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+}
+
+input {
+    outline-color: #97baf5;
+}
+/* Fast css */
+.flex {
+    display: flex;
+}
+
+.rel {
+    position: relative;
+}
+
+.abs {
+    position: absolute;
+}
+
+.jcc {
+    justify-content: center;
+}
+
+.jca {
+    justify-content: space-around;
+}
+
+.jcb {
+    justify-content: space-between;
+}
+
+.alc {
+    align-items: center;
+}
+
+.tc {
+    text-align: center;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.b-shadow {
+    box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08),
+        0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+}
+/* end */
+
+#topnav {
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 121px;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 16px;
+    z-index: 990;
+}
+
+#topnav ul {
+    padding-left: 0;
+}
+
+#topnav a {
+    color: #000;
+    transition: 0.5s ease;
+    text-decoration: none;
+}
+
+#topnav h5 {
+    font-size: 14px;
+    line-height: normal;
+    margin-top: 4px;
+}
+
+#topnav a:hover {
+    color: #fd841f;
+}
+
+#topnav li:hover > a {
+    color: #fd841f;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 1000;
+}
+
+.nav__navigation > ul li {
+    padding: 0.5rem 1rem;
+    margin: auto;
+}
+
+.nav__user,
+.rel {
+    display: flex;
+    justify-content: center;
+}
+
+.nav__movie:hover .nav__movie--bgc {
+    display: block;
+    top: 120%;
+    left: -100%;
+}
+
+.nav__movie--bgc {
+    background-color: #fff;
+    padding: 1rem 1.5rem;
+    display: none;
+}
+.nav__logo img {
+    width: 110px;
+}
+
+.movie-demo {
+    width: 700px;
+}
+
+.movie-demo img {
+    width: 140px;
+    height: 210px;
+}
+
+.movie__type:hover .movie__type--menu,
+.movie__event:hover .movie__event--menu,
+.movie__cinema:hover .movie__cinema--menu {
+    display: block;
+}
+
+.movie__type--menu {
+    background-color: #fff;
+    width: 200px;
+    top: 120%;
+    left: -30%;
+    display: none;
+}
+
+.movie__type--menu a,
+.movie__event--menu a,
+.movie__cinema--menu a {
+    transition: margin 0.5s ease;
+}
+
+.movie__type--menu li:hover a,
+.movie__event--menu li:hover a,
+.movie__cinema--menu li:hover a {
+    margin-left: 12px;
+}
+
+.movie__event--menu {
+    background-color: #fff;
+    width: 200px;
+    top: 120%;
+    left: -70%;
+    display: none;
+}
+.movie__cinema--menu {
+    background-color: #fff;
+    width: 200px;
+    top: 120%;
+    left: -90%;
+    display: none;
+}
+
+.movie__type--menu li:hover,
+.movie__event--menu li:hover,
+.movie__cinema--menu li:hover {
+    background-color: #e9e8e8;
+}
+
+.movie__type--menu a {
+    padding: 2rem 0;
+    font-size: 16px;
+}
+
+.cinema {
+    height: 320px;
+    overflow-y: auto;
+}
+
+/* chỉnh thanh cuộn */
+.cinema::-webkit-scrollbar {
+    width: 4px;
+}
+.cinema::-webkit-scrollbar-thumb {
+    background: #858585;
+    border-radius: 100rem;
+}
+
+/* Thanh timf kiếm */
+
+.search-icon {
+    position: relative;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.search-box {
+    display: none;
+    position: absolute;
+    top: 80%;
+    right: 15%;
+    padding: 12px;
+    width: 150px;
+    transition: width 0.3s ease-in-out;
+    border: none;
+}
+
+.nav__auth div {
+    padding: 0 10px;
+}
+
+.nav__login--btn {
+    padding: 8px;
+}
+.nav__login--btn:hover {
+    color: #f6a484;
+}
+
+.buy-logo {
+    display: none;
+}
+
+.nav__mobile {
+    display: none;
+    cursor: pointer;
+    margin: auto;
+}
+.mobile__nav {
+    display: none;
+}
+
+.modal {
+    display: none;
+    z-index: 990 !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.login-modal,
+.forgot-modal,
+.opt-enter-modal {
+    display: none;
+    z-index: 990;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Login modal */
+.login-container {
+    margin-top: 10rem;
+}
+
+/* otp container */
+.opt-enter{
+    margin-top: 16rem !important;
+}
+
+.account-page {
+    padding: 50px 0;
+    background: url(../assets/images/banner.jpg);
+    background-size: cover;
+    margin-top: 90px;
+}
+.form-container {
+    background: #fff;
+    width: 334px;
+    height: 620px;
+    position: relative;
+    text-align: center;
+    padding: 40px 24px;
+    margin: auto;
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+.form-container span {
+    font-weight: bold;
+    padding: 0 10px;
+    color: #555;
+    cursor: pointer;
+    width: 100px;
+    display: inline-block;
+}
+.form-btn {
+    display: inline-block;
+}
+.form-container form {
+    max-width: 334px;
+    padding: 0 20px;
+    position: absolute;
+}
+.form-close-btn,
+.forgot-close-btn {
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 4px;
+    line-height: 12px;
+    cursor: pointer;
+    background-color: #dbdada;
+    border-radius: 100%;
+    margin: 10px;
+}
+.form-container .form-close-btn i {
+    margin-left: 1px;
+}
+
+.input-form {
+    width: 100%;
+    height: 42px;
+    margin: 10px 0;
+    padding: 12px 10px;
+    border: 1px solid #ccc;
+}
+form .btn {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    margin: 20px 0;
+    padding: 10px 20px;
+    background-color: #ff953fe3;
+    border-radius: 5px;
+    color: #fff;
+}
+form .btn:focus {
+    outline: none;
+}
+form .btn:hover {
+    color: #fff;
+    background-color: #ff953f;
+}
+#LoginForm {
+    left: 0;
+    transition: left 0.5s ease-in-out;
+}
+
+#RegForm {
+    right: -334px;
+    transition: right 0.5s ease-in-out;
+}
+form a {
+    font-size: 12px;
+}
+#Indicator {
+    width: 100px;
+    border: none;
+    background: #ff523b;
+    height: 3px;
+    margin-top: 8px;
+    transform: translateX(0);
+    transition: transform 1s;
+}
+.password_show_hide {
+    width: 294px;
+    position: relative;
+}
+.password_show_hide i {
+    opacity: 0.6;
+    position: absolute;
+    right: 12px;
+    top: 35%;
+    cursor: pointer;
+}
+/* Forgot password ui */
+
+.forgot__login--btn{
+    cursor: pointer;
+}
+
+/* enter otp ui */
+
+.otp-field {
+    flex-direction: row;
+    column-gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.otp-field input {
+    height: 45px;
+    width: 42px;
+    border-radius: 6px;
+    outline: none;
+    font-size: 1.125rem;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+.otp-field input:focus {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+.otp-field input::-webkit-inner-spin-button,
+.otp-field input::-webkit-outer-spin-button {
+    display: none;
+}
+
+.resend {
+    font-size: 12px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: black;
+    font-size: 12px;
+    text-align: right;
+    font-family: monospace;
+}
+
+@media only screen and (max-width: 1200px) {
+    .nav-container {
+        margin: 0 24px;
+        justify-content: space-between;
+    }
+
+    .nav__navigation,
+    .search-container {
+        display: none;
+    }
+
+    .buy-logo {
+        display: block;
+    }
+
+    .nav__logo {
+        display: flex;
+        align-items: center;
+    }
+    .nav__logo a {
+        padding: 0 10px;
+    }
+
+    .nav__mobile {
+        display: block;
+        font-size: 28px;
+    }
+    .mobile__nav {
+        display: block;
+        font-size: 14px;
+        max-width: 346px;
+        height: 100vh;
+        padding: 24px 44px 0;
+        position: fixed;
+        top: 0;
+        right: -346px;
+        bottom: 0;
+        z-index: 1020;
+        background-color: #fff;
+        transition: right 0.3s ease; /* Thêm transition cho hiệu ứng mở/đóng */
+    }
+
+    .close-btn {
+        display: inline-block;
+        font-size: 20px;
+        margin: 0 0 5px 0;
+        cursor: pointer;
+    }
+
+    .mobile-search {
+        position: relative;
+    }
+    .mobile-search input {
+        width: 199px;
+        padding: 8px 40px;
+    }
+    .mobile-search i {
+        position: absolute;
+        font-size: 16px;
+        top: 30%;
+        left: 5%;
+    }
+
+    .mobile__navigation {
+        margin-top: 1.25rem;
+    }
+    .mobile__navigation li {
+        font-size: 16px;
+        padding: 0.35rem 0;
+    }
+
+    .mobile__navigation a{
+        text-decoration: none;
+        color: #000;
+    }
+
+    .mobile__navigation a:hover {
+        color: #fd841f;
+    }
+
+    .mobile__navigation i {
+        font-size: 12px;
+    }
+
+    .mobile__movie--container {
+        display: none;
+    }
+
+    .hightlight {
+        color: #fd841f;
+    }
+
+    .mobile__navigation .mobile__movie--container,
+    .mobile__navigation .mobile__news--container {
+        padding-left: 20px !important;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    .nav-container {
+        justify-content: space-between;
+    }
+
+    .nav__logo img {
+        width: 80px;
+    }
+
+    .nav__login--btn {
+        font-size: 14px;
+    }
+
+    .nav__mobile {
+        display: block;
+        font-size: 20px;
+    }
+
+    .buy-logo {
+        display: none;
+    }
+    .nav__logo a {
+        padding: 0;
+    }
+
+    .mobile__nav {
+        width: 287px;
+    }
+}

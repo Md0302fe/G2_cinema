@@ -13,11 +13,14 @@
         <link href="Assets/Styles/base.css" rel="stylesheet" type="text/css"/>
         <link href="Assets/Styles/grid.css" rel="stylesheet" type="text/css"/>
         <link href="Assets/Styles/homePage.css" rel="stylesheet" type="text/css"/>
+        <link href="Assets/Styles/header.css" rel="stylesheet" type="text/css"/>
+        <link href="Assets/Styles/footer.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
         <title>G2_Cinema</title>
     </head>
     <body>
+         <%@include file='./Components/Header.jsp' %>
         <div class="Home_Main">
             <!-- BANNER - SLIDER -->
             <div id="slider">
@@ -410,7 +413,7 @@
                         <div class="Blog_content-items row col">
                             <div class="Blog_left col c-6">
                                 <div class="blog_main_img">
-                                    <img src="./Assets/Image/duck.webp" alt="ERROR">
+                                    <img src="./Assets/Image/Blog_Image/duck.webp" alt="ERROR">
                                 </div>
                                 <div class="blog_main_des">
                                     [Review] Migration: Nhà Vịt Có Đủ Sức Thành Hiện Tượng Như Minions?
@@ -428,7 +431,7 @@
                                 <div class="blog_orther">
                                     <div class="blog_item">
                                         <div class="container_blog-other">
-                                            <img src="./Assets/Image/blog_orther1.webp" alt="">
+                                            <img src="./Assets/Image/Blog_Image/blog_orther1.webp" alt="">
                                         </div>
                                         <div>
                                             <div class="blog_1_des">
@@ -446,7 +449,7 @@
                                     </div>
                                     <div class="blog_item">
                                         <div class="container_blog-other">
-                                            <img src="./Assets/Image/blog_orther2.webp" alt="">
+                                            <img src="./Assets/Image/Blog_Image/blog_orther2.webp" alt="">
                                         </div>
                                         <div>
                                             <div class="blog_1_des">
@@ -464,7 +467,7 @@
                                     </div>
                                     <div class="blog_item">
                                         <div class="container_blog-other">
-                                            <img src="./Assets/Image/blog_orther3.webp" alt="">
+                                            <img src="./Assets/Image/Blog_Image/blog_orther3.webp" alt="">
                                         </div>
                                         <div>
                                             <div class="blog_1_des">
@@ -488,23 +491,4 @@
             </div>
         </div>
 
-        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-        <script src="./Assets/JS/homePage.js"></script>
-
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $(".image-slider").slick({
-                    autoplay: true,
-                    autoplaySpeed: 2000,
-                    centerPadding: '200px',
-                    arraws: true,
-                    dots: true,
-                    centerMode: true,
-                    slidesToShow: 1,
-                });
-            });
-        </script>
-    </body>
-</html>
+ <%@include file='./Components/Footer.jsp' %>

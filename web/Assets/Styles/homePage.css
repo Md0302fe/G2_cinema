@@ -1,3 +1,9 @@
+
+.Home_Main{
+    margin-top: 121px;
+    margin-bottom: 900px;
+}
+
 /* BANNER SLIDER */
 .slider {
     position: absolute;
@@ -134,7 +140,7 @@
     align-items: center;
     border-radius: 3px;
     box-shadow: 0 15px 16px -12px rgba(0, 0, 0, 0.2);
-    z-index: 999;
+    z-index: 900;
 }
 
 /* QuickSearch Items */
