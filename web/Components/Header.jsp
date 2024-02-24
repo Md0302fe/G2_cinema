@@ -133,7 +133,7 @@
                            onfocus="expandInput()" onblur="shrinkInput()">
                 </div>
                 <div class="nav__user">
-                    <a class="nav__login--btn" href="#"> <i class="fa-regular fa-user"></i> Đăng nhập</a>
+                    <a class="nav__login--btn" href="Login.jsp"> <i class="fa-regular fa-user"></i> Đăng nhập</a>
                 </div>
                 <div class="nav__mobile">
                     <i onclick="toggleNav()" class="fa-solid fa-bars"></i>
@@ -180,7 +180,7 @@
 </header>
 
 <div class="modal"></div>
-<div class="login-modal">
+<!--<div class="login-modal">
     <div class="login-container">
         <div class="form-container">
             <div class="form-close-btn">
@@ -230,5 +230,5 @@
     <div class="login-otp">
 
     </div>
-</div>
+</div>-->
 <script src="Assets/JS/header.js" type="text/javascript"></script>

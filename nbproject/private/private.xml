@@ -5,7 +5,10 @@
         <group>
             <file>file:/D:/Workspace/SWP/G2_cinema/web/Components/Header.jsp</file>
             <file>file:/D:/Workspace/SWP/G2_cinema/web/Components/Footer.jsp</file>
+            <file>file:/D:/Workspace/SWP/G2_cinema/web/Profile.jsp</file>
+            <file>file:/D:/Workspace/SWP/G2_cinema/web/Assets/Styles/Profile.css</file>
             <file>file:/D:/Workspace/SWP/G2_cinema/web/HomePage.jsp</file>
+            <file>file:/D:/Workspace/SWP/G2_cinema/web/DetailMovies.jsp</file>
             <file>file:/D:/Workspace/SWP/G2_cinema/web/Assets/Styles/header.css</file>
         </group>
     </open-files>

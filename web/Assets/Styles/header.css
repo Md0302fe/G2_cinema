@@ -222,7 +222,7 @@ input {
 .search-box {
     display: none;
     position: absolute;
-    top: 10%;
+    top: 80%;
     right: 15%;
     padding: 12px;
     width: 150px;
