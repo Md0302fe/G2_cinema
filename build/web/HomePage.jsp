@@ -413,7 +413,7 @@
                         <div class="Blog_content-items row col">
                             <div class="Blog_left col c-6">
                                 <div class="blog_main_img">
-                                    <img src="./Assets/Image/duck.webp" alt="ERROR">
+                                    <img src="./Assets/Image/Blog_Image/duck.webp" alt="ERROR">
                                 </div>
                                 <div class="blog_main_des">
                                     [Review] Migration: Nhà Vịt Có Đủ Sức Thành Hiện Tượng Như Minions?
@@ -431,7 +431,7 @@
                                 <div class="blog_orther">
                                     <div class="blog_item">
                                         <div class="container_blog-other">
-                                            <img src="./Assets/Image/blog_orther1.webp" alt="">
+                                            <img src="./Assets/Image/Blog_Image/blog_orther1.webp" alt="">
                                         </div>
                                         <div>
                                             <div class="blog_1_des">
@@ -449,7 +449,7 @@
                                     </div>
                                     <div class="blog_item">
                                         <div class="container_blog-other">
-                                            <img src="./Assets/Image/blog_orther2.webp" alt="">
+                                            <img src="./Assets/Image/Blog_Image/blog_orther2.webp" alt="">
                                         </div>
                                         <div>
                                             <div class="blog_1_des">
@@ -467,7 +467,7 @@
                                     </div>
                                     <div class="blog_item">
                                         <div class="container_blog-other">
-                                            <img src="./Assets/Image/blog_orther3.webp" alt="">
+                                            <img src="./Assets/Image/Blog_Image/blog_orther3.webp" alt="">
                                         </div>
                                         <div>
                                             <div class="blog_1_des">
