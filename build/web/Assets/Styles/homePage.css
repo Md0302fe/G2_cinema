@@ -148,7 +148,7 @@
     flex: 2;
     display: block;
     height: 100%;
-    line-height: 4;
+    line-height: 3.5;
 }
 
 .QuickSearch-item:nth-child(2),
@@ -267,6 +267,9 @@
 .navigation-body_items div {
     cursor: pointer;
 }
+.navigation-body_items h2 {
+    margin-top:10px
+}
 
 .navigation-body_items > div:nth-child(1),
 .navigation-body_items > div:nth-child(2),
@@ -374,7 +377,7 @@
     color: var(--netFlix-color);
     font-size: 1.4rem;
     position: relative;
-    left: 18%;
+    left: 13%;
     top: 15%;
 
 }
