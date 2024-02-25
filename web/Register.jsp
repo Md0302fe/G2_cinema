@@ -31,6 +31,9 @@
                             <h3 class="mb-4 text-center">Create an account</h3>
                             <form action="#" class="signin-form">
                                 <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Full name" required>
+                                </div>
+                                <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Email" required>
                                 </div>
                                 <div class="form-group">

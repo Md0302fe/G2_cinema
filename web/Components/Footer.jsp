@@ -61,6 +61,12 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="./Assets/JS/homePage.js"></script>
+<script src="./Assets/JS/payment.js"></script>
+
+<script
+    src="https://kit.fontawesome.com/26eb80e241.js"
+    crossorigin="anonymous"
+></script>
 
 <script type="text/javascript">
     $(document).ready(function () {

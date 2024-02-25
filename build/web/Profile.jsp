@@ -124,7 +124,7 @@
 
                             Số Điện Thoại<br>
                             <input style="border-radius: 5px;  width: 270px; height: 30px; background-color: whitesmoke; "
-                                   type="number" name="phonenumber" placeholder="Số Điện Thoại"><br>
+                                   type="tel" name="phonenumber" placeholder="Số Điện Thoại"><br>
                         </div>
                         <div class="input-with-icon">
 
