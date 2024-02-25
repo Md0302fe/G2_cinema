@@ -132,12 +132,21 @@
                     <input id="searchInput" class="search-box abs b-shadow" type="text" placeholder="Search.."
                            onfocus="expandInput()" onblur="shrinkInput()">
                 </div>
+            <c:if test="${sessionScope.account==null}">
                 <div class="nav__user">
-                    <a class="nav__login--btn" href="Login.jsp"> <i class="fa-regular fa-user"></i> Đăng nhập</a>
+                    <a class="nav__login--btn" href="login"> <i class="fa-regular fa-user"></i> Đăng nhập</a>
                 </div>
-                <div class="nav__mobile">
-                    <i onclick="toggleNav()" class="fa-solid fa-bars"></i>
+            </c:if>
+            <c:if test="${sessionScope.account!=null}">
+                <div class="nav__user">
+                    <a class="nav__login--btn" style="text-decoration: none" href="#"><i style="font-size: 18px" class="fa-regular fa-user"></i> ${sessionScope.account.fullName}</a>
                 </div>
+            </c:if>
+
+
+            <div class="nav__mobile">
+                <i onclick="toggleNav()" class="fa-solid fa-bars"></i>
+            </div>
             </li>
         </ul>
 

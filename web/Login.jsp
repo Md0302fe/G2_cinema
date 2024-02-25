@@ -29,12 +29,12 @@
                     <div class="col-md-6 col-lg-4">
                         <div class="login-wrap p-0">
                             <h3 class="mb-4 text-center">Have an account?</h3>
-                            <form action="#" class="signin-form">
+                            <form action="login" method="post" class="signin-form">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Email or Phone number" required>
+                                    <input type="text" class="form-control" name="emailOrPhone" placeholder="Email or Phone number" required>
                                 </div>
                                 <div class="form-group">
-                                    <input id="password-field" type="password" class="form-control" placeholder="Password" required>
+                                    <input id="password-field" type="password" class="form-control" name="password" placeholder="Password" required>
                                     <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                 </div>
                                 <div class="form-group">
@@ -43,7 +43,7 @@
                                 <div class="form-group d-md-flex">
                                     <div class="w-50">
                                         <label class="checkbox-wrap checkbox-primary">Remember Me
-                                            <input type="checkbox">
+                                            <input type="checkbox" name="remember">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
@@ -54,7 +54,7 @@
                             </form>
                             <p class="w-100 text-center">&mdash; Don't have an account? &mdash;</p>
                             <div class="social d-flex text-center">
-                                <a href="./Register.jsp" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Register</a>
+                                <a href="register" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Register</a>
                             </div>
                         </div>
                     </div>
