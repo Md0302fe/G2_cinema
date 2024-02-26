@@ -10,6 +10,7 @@ package model;
  */
 public class Account {
 
+    private int id;
     private String fullName;
     private String email;
     private String phone;
@@ -27,6 +28,14 @@ public class Account {
         this.password = password;
         this.picture = picture;
         this.role = role;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFullName() {
