@@ -21,6 +21,15 @@
             <file>file:/C:/Users/pts03/Cenimal/G2_cinema/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/pts03/Cenimal/G2_cinema/src/java/controller/AccountController/RegisterController.java</file>
             <file>file:/C:/Users/pts03/Cenimal/G2_cinema/src/java/dal/DBContextProfile.java</file>
+
+            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/Final_Cinema/G2_cinema/web/Admin_AddMovie.jsp</file>
+            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/Final_Cinema/G2_cinema/web/Assets/JS/Admin_AddMovie.js</file>
+            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/Final_Cinema/G2_cinema/src/java/controller/Controller/Admin/AddMovieServlet.java</file>
+
+            <file>file:/D:/Workspace/SWP/G2_cinema/web/Verify.jsp</file>
+            <file>file:/D:/Workspace/SWP/G2_cinema/web/Register.jsp</file>
+            <file>file:/D:/Workspace/SWP/G2_cinema/src/java/controller/AccountController/RegisterController.java</file>
+            <file>file:/D:/Workspace/SWP/G2_cinema/src/java/controller/AccountController/LoginServlet.java</file>
         </group>
     </open-files>
 </project-private>

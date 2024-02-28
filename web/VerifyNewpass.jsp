@@ -23,7 +23,7 @@
                         <h4>Verify</h4>
                         <p>Your code was sent to you via email</p>
 
-                        <form id="verificationForm" action="userverify" method="post">
+                        <form id="verificationForm" action="verifyNewpass" method="post">
                             <div class="otp-field mb-4">
                                 <input type="number" name="digit1" id="digit1" />
                                 <input type="number" name="digit2" id="digit2" disabled />
