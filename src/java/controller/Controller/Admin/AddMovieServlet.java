@@ -91,8 +91,6 @@ public class AddMovieServlet extends HttpServlet {
         String stars = request.getParameter("Stars");
         String language = request.getParameter("Language");
         String describel = request.getParameter("Describel");
-        String movie_img = request.getParameter("movie_image");
-        String movie_trailer = request.getParameter("movie_trailer");
 
         // XỬ LÝ FILE HÌNH ẢNH
         Part filePart = request.getPart("movie_image");
@@ -100,8 +98,8 @@ public class AddMovieServlet extends HttpServlet {
         String uploadPath = getServletContext().getRealPath("Assets/Image/Movies_Image/") + File.separator + fileName;
         // XỬ LÝ FILE TRAILER
         Part filePart2 = request.getPart("movie_trailer");
-        String fileName2 = filePart.getSubmittedFileName();
-        String uploadPath2 = getServletContext().getRealPath("Assets/Image/Movies_Image/") + File.separator + fileName;
+        String fileName2 = filePart2.getSubmittedFileName();
+        String uploadPath2 = getServletContext().getRealPath("Assets/Image/Movies_Image/") + File.separator + fileName2;
         try {
             FileOutputStream fos = new FileOutputStream(uploadPath);
             InputStream is = filePart.getInputStream();
