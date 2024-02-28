@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -18,10 +17,10 @@ import model.Account;
 
 /**
  *
- * @author LENOVO
+ * @author ADMIN
  */
-@WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "RegisterServlet", urlPatterns = {"/register"})
+public class RegisterServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +39,10 @@ public class LoginServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");
+            out.println("<title>Servlet RegisterController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet RegisterController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,7 +60,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("Login.jsp").forward(request, response);
+        request.getRequestDispatcher("Register.jsp").forward(request, response);
     }
 
     /**
@@ -75,47 +74,44 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String emailOrPhone = request.getParameter("emailOrPhone");
-        String password = request.getParameter("password");
-        String remember = request.getParameter("remember");
+        String fullName = request.getParameter("fullName");
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+        String pass = request.getParameter("password");
+        String rePass = request.getParameter("rePassword");
 
-        Cookie cu = new Cookie("cuser", emailOrPhone);
-        Cookie cp = new Cookie("cpass", password);
-        Cookie cr = new Cookie("crem", remember);
+        AccountDAO ad = new AccountDAO();
+        boolean isUsedEmail = ad.checkEmail(email);
+        boolean isUsedPhone = ad.checkPhone(phone);
 
-        if (remember != null) {
-            cu.setMaxAge(60 * 60 * 24 * 7);
-            cp.setMaxAge(60 * 60 * 24 * 7);
-            cr.setMaxAge(60 * 60 * 24 * 7);
-        } else {
-            cu.setMaxAge(0);
-            cp.setMaxAge(0);
-            cr.setMaxAge(0);
-        }
+        if (pass.equals(rePass)) {
+            String passMD5 = ad.generateMD5Hash(pass);
+            Account acc = new Account(fullName, email, phone, passMD5, "default.jpg", 2);
 
-        response.addCookie(cp);
-        response.addCookie(cu);
-        response.addCookie(cr);
+            String verifyCode = ad.getRandom();
 
-        AccountDAO dao = new AccountDAO();
-        String hashPass = dao.generateMD5Hash(password);
-        
-        Account account = dao.login(emailOrPhone, hashPass);
+            boolean test = ad.sendEmail(acc, verifyCode);
+            if (test) {
+                HttpSession session = request.getSession();
+                session.setAttribute("account", acc);
+                session.setAttribute("verifyCode", verifyCode);
 
-        HttpSession session = request.getSession();
-
-        if (account == null) {
-            request.setAttribute("error", "Password or uswername is error");
-            request.getRequestDispatcher("Login.jsp").forward(request, response);
-        } else {
-            session.setAttribute("account", account);
-            if (account.getRole() == 1) {
-                response.sendRedirect("home");
-            } else {
-                response.sendRedirect("home");
+                response.sendRedirect("Verify.jsp");
             }
-
+        } else if (isUsedEmail) {
+            request.setAttribute("error", "Email is already exist!");
+            request.getRequestDispatcher("Register.jsp").forward(request, response);
+        } else if (isUsedPhone) {
+            request.setAttribute("error", "Phone is already exist!");
+            request.getRequestDispatcher("Register.jsp").forward(request, response);
+        } else if (isUsedPhone && isUsedEmail) {
+            request.setAttribute("error", "Email and phone is already exist!");
+            request.getRequestDispatcher("Register.jsp").forward(request, response);
+        } else {
+            request.setAttribute("error", "Password confirmation does not match!!!");
+            request.getRequestDispatcher("Register.jsp").forward(request, response);
         }
+
     }
 
     /**
