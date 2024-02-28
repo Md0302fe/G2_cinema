@@ -81,7 +81,7 @@ public class ForgotPasswordServlet extends HttpServlet {
         if (isExist) {
             String verifyCode = ad.getRandom();
             Account acc = ad.getAccountByEmail(email);
-            boolean test = ad.sendEmail(acc, verifyCode);
+            boolean test = ad.sendEmailReset(acc, verifyCode);
             if (test) {
                 HttpSession session = request.getSession();
                 session.setAttribute("account", acc);

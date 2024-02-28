@@ -145,8 +145,51 @@ public class AccountDAO extends DBContext {
             mess.setFrom(new InternetAddress(fromEmail));
             mess.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
 
-            mess.setSubject("User Email Verification");
+            mess.setSubject("Email Verification");
             mess.setText("Registration is almost ready. Please verify your account by using this code: " + code);
+
+            //send
+            Transport.send(mess);
+            test = true;
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+
+        return test;
+    }
+
+    public boolean sendEmailReset(Account user, String code) {
+        boolean test = false;
+
+        String fromEmail = "kietzenin2023@gmail.com";
+        String pass = "dlegcqrrydegcvem";
+
+        String toEmail = user.getEmail();
+
+        try {
+            Properties pr = new Properties();
+            pr.setProperty("mail.smtp.host", "smtp.gmail.com");
+            pr.setProperty("mail.smtp.port", "587");
+            pr.setProperty("mail.smtp.auth", "true");
+            pr.setProperty("mail.smtp.starttls.enable", "true");
+
+            pr.put("mail.smtp.socketFactory.port", "587");
+            pr.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+
+            //get session
+            Session session = Session.getInstance(pr, new Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(fromEmail, pass);
+                }
+            });
+
+            Message mess = new MimeMessage(session);
+            mess.setFrom(new InternetAddress(fromEmail));
+            mess.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
+
+            mess.setSubject("Email Verification");
+            mess.setText("Please verify your account by using this code: " + code);
 
             //send
             Transport.send(mess);
@@ -290,10 +333,9 @@ public class AccountDAO extends DBContext {
     }
 
     public static void main(String[] args) {
-
-        AccountDAO da = new  AccountDAO();
-        Account a = da.login("0333090091", "123");
-        System.out.println(a);
-
+        AccountDAO da = new AccountDAO();
+        Account acc = da.getAccountByEmail("kietzenin2005@gmail.com");
+        String newP = da.generateNewPass();
+        da.changePassword(acc, "123");
     }
 }
