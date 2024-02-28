@@ -100,8 +100,8 @@ public class AddMovieServlet extends HttpServlet {
         String uploadPath = getServletContext().getRealPath("Assets/Image/Movies_Image/") + File.separator + fileName;
         // XỬ LÝ FILE TRAILER
         Part filePart2 = request.getPart("movie_trailer");
-        String fileName2 = filePart.getSubmittedFileName();
-        String uploadPath2 = getServletContext().getRealPath("Assets/Image/Movies_Image/") + File.separator + fileName;
+        String fileName2 = filePart2.getSubmittedFileName();
+        String uploadPath2 = getServletContext().getRealPath("Assets/Image/Movies_Image/") + File.separator + fileName2;
         try {
             FileOutputStream fos = new FileOutputStream(uploadPath);
             InputStream is = filePart.getInputStream();
