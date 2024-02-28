@@ -8,7 +8,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Login</title>
+        <title>Forgot password</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -28,28 +28,13 @@
                 <div class="row justify-content-center">
                     <div class="col-md-6 col-lg-4">
                         <div class="login-wrap p-0">
-                            <h3 class="mb-4 text-center">Have an account?</h3>
-                            <form action="login" method="post" class="signin-form">
+                            <h3 class="mb-4 text-center">Forgot your account?</h3>
+                            <form action="forgotPassword" method="post" class="signin-form">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="emailOrPhone" placeholder="Email or Phone number" required>
+                                    <input type="text" class="form-control" name="email" placeholder="Enter your email" required>
                                 </div>
                                 <div class="form-group">
-                                    <input id="password-field" type="password" class="form-control" name="password" placeholder="Password" required>
-                                    <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
-                                </div>
-                                <div class="form-group d-md-flex">
-                                    <div class="w-50">
-                                        <label class="checkbox-wrap checkbox-primary">Remember Me
-                                            <input type="checkbox" name="remember">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                    <div class="w-50 text-md-right">
-                                        <a href="forgotPassword" style="color: #fff">Forgot Password</a>
-                                    </div>
+                                    <button type="submit" class="form-control btn btn-primary submit px-3">Reset password</button>
                                 </div>
                             </form>
                             <p class="w-100 text-center">&mdash; Don't have an account? &mdash;</p>
