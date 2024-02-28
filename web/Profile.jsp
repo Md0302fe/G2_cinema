@@ -17,12 +17,18 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <link rel="stylesheet" href="./Assets/Styles/Profile.css">
         <title>Profile</title>
+        <script type="text/javascript">
+            function showMessage(message) {
+                alert(message);
+            }
+        </script>
     </head>
 
     <body id="body">
 
         <%@include file='./Components/Header.jsp' %>
         <div class="container">
+            
 
             <div class="profile">
                 <div class="text-center">
@@ -30,7 +36,11 @@
                          class="img-fluid rounded-circle mb-3"
                          style="height: 100px; width: 100px; margin-left: 120px; margin-top: 20px;">
                     <div class="in4">
-                        <h4>Sang</h4>
+
+                        <% String account = (String) session.getAttribute("account");
+
+                        %>
+                        <h4><%=account %></h4>
                         <p>Start</p>
                     </div>
                 </div>
@@ -78,6 +88,7 @@
                 </div>
                 <div class="profile2">
                     <div class="form1">
+                        <input type="hidden" name="userId" value="<%= request.getParameter("userId") %>">
                         <div class="input-with-icon">
 
                             Họ và tên<br>
@@ -107,7 +118,8 @@
                                 Nữ
                             </label>
                         </div>
-                    </div>
+                        <form action="Logout" method="GET"><div style=" padding-top: 30px "  ><button type="submit" style=" border-radius: 5px; background-color: red">Logout</button></div>
+                    </div></form>
 
 
                     <div class="form2">
@@ -132,8 +144,8 @@
                             <input style="border-radius: 5px;  width: 270px; height: 30px; background-color: whitesmoke;"
                                    type="password" name="password" placeholder="Mật Khẩu"><br>
                         </div>
-                        <button id="submit"> Cập Nhật
-                        </button>
+                        <form action="EditProfile" method="GET"><button id="submit" type="submit"> Cập Nhật
+                            </button></form>
                     </div>
                 </div>
             </div>
