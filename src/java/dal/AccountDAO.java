@@ -290,9 +290,10 @@ public class AccountDAO extends DBContext {
     }
 
     public static void main(String[] args) {
-        AccountDAO da = new AccountDAO();
-        Account acc = da.getAccountByEmail("kietzenin2005@gmail.com");
-        String newP = da.generateNewPass();
-        da.changePassword(acc, "123");
+
+        AccountDAO da = new  AccountDAO();
+        Account a = da.login("0333090091", "123");
+        System.out.println(a);
+
     }
 }
