@@ -1,0 +1,179 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Feb 27, 2024, 11:47:53 AM
+    Author     : MinhDuc
+*/
+.AddMovies-button {
+    color:black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(1, 105, 250);
+    display: inline-block;
+    padding: 2px 22px;
+    border-radius: 10px;
+    margin-left: 32%;
+    box-shadow: -4px 8px 12px rgba(49, 149, 192, 0.295); /* Điều chỉnh các giá trị tùy thích */
+    z-index: 999;
+    margin-bottom: 24px;
+}
+.AddMovies-button:hover {
+    opacity: 0.9;
+    color: white;
+    cursor: pointer;
+    z-index: 999;
+}
+.container-fluid {
+    color: black;
+}
+.movie_detail {
+    display: flex ;
+}
+.main-left {
+    flex : 0.3;
+    padding-left: 60px;
+}
+.main-left img {
+    border : 2px solid black;
+    border-radius: 3px;
+    max-width: 300px;
+    margin-top: 12px;
+}
+.main-right {
+    flex : 0.7;
+}
+.select-Image {
+    display: flex ;
+    align-items: center;
+}
+.select-Image .icon {
+    padding: 0 8px;
+    font-size: 20px;
+    position: relative;
+    top: -2.6px;
+}
+.form {
+    margin-bottom: 40px;
+}
+.form-Name {
+    display: flex;
+}
+.form-Name span{
+    font-size: 18px;
+    position: relative;
+    top: 3.5px;
+}
+
+.form-Name label {
+    flex: 1;
+}
+
+.form-Name input {
+    flex : 5;
+    border-radius: 3px;
+    padding-left: 12px;
+}
+.movie_time {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.movie_time{
+    font-size: 17px;
+}
+.movie_minute i {
+    margin-right: 10px;
+}
+.releaseDate {
+    position: relative;
+    flex: 0.5;
+    text-align: center;
+}
+.releaseDate::before {
+    content: "";
+    height: 20px;
+    width: 2px;
+    position: absolute;
+    top: 0;
+    background-color: rgb(151, 151, 151);
+    margin-left: -180px;
+    transform: translateY(25%);
+}
+.duration {
+    flex: 0.3;
+}
+.rate {
+    flex :0.2;
+    position: relative;
+}
+.rate:before {
+    content: "";
+    height: 20px;
+    width: 2px;
+    position: absolute;
+    top: 0;
+    background-color: rgb(151, 151, 151);
+    margin-left: -30px;
+    transform: translateY(25%);
+}
+.movie_point i {
+    color:red;
+}
+.pointer {
+    cursor: pointer;
+}
+.flex-0_2 {
+    flex : 0.3;
+}
+.duration .flex-0_7 {
+    flex: 0.7;
+}
+.duration table select {
+    position: relative;
+    left: -30px;
+}
+.movie_minute .v2::before {
+    display: none;
+}
+.releaseDates {
+    width: 100%;
+}
+.releaseDates::before {
+    content: "";
+    height: 20px;
+    width: 1.5px;
+    position: absolute;
+    top: 0;
+    background-color: rgb(151, 151, 151);
+    margin-left: -15px; /* Điều chỉnh giá trị margin-left cho phù hợp với vị trí mong muốn */
+    transform: translateY(25%);
+}
+
+.boxDerector {
+    width: 100%;
+    display: flex;
+}
+
+.boxDerector {
+    margin-bottom: 30px;
+}
+.boxDerector label {
+    position: relative;
+    top: 7px;
+    margin-right: 12px;
+}
+.boxDerectors .V2 {
+    flex-direction: row;
+}
+
+.select-Image {
+    display: flex;
+    flex-direction: column;
+}
+
+.select-Image .select-img{
+    margin-bottom: 20px;
+}
+
+
