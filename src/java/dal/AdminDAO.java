@@ -5,9 +5,9 @@
 package dal;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+
 import java.sql.SQLException;
-import model.Account;
+import model.Date;
 import model.Movie;
 
 /**
@@ -47,6 +47,21 @@ public class AdminDAO extends DBContext {
             st.setString(10, movie.getDescription());
             st.setString(11, movie.getMovie_img());
             st.setString(12, movie.getMovie_trailer());
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public void add_Date_Admin(Date date) {
+
+        String sql = "INSERT INTO [dbo].[Release_date]\n"
+                + "           ([show_date])\n"
+                + "     VALUES\n"
+                + "           (?)";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, date.getShow_date());
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);

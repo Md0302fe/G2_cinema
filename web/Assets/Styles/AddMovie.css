@@ -18,12 +18,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     z-index: 999;
     margin-bottom: 24px;
 }
+
+.H3_button:hover,
 .AddMovies-button:hover {
     opacity: 0.9;
     color: white;
     cursor: pointer;
     z-index: 999;
 }
+
 .container-fluid {
     color: black;
 }
@@ -138,16 +141,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 .releaseDates {
     width: 100%;
-}
-.releaseDates::before {
-    content: "";
-    height: 20px;
-    width: 1.5px;
-    position: absolute;
-    top: 0;
-    background-color: rgb(151, 151, 151);
-    margin-left: -15px; /* Điều chỉnh giá trị margin-left cho phù hợp với vị trí mong muốn */
-    transform: translateY(25%);
 }
 
 .boxDerector {
