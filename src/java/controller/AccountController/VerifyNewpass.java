@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -18,10 +17,10 @@ import model.Account;
 
 /**
  *
- * @author LENOVO
+ * @author ADMIN
  */
-@WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "VerifyNewpass", urlPatterns = {"/verifyNewpass"})
+public class VerifyNewpass extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +39,10 @@ public class LoginServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");
+            out.println("<title>Servlet VerifyNewpass</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet VerifyNewpass at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,7 +60,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("Login.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -75,46 +74,46 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String emailOrPhone = request.getParameter("emailOrPhone");
-        String password = request.getParameter("password");
-        String remember = request.getParameter("remember");
+        String digit1 = request.getParameter("digit1");
+        String digit2 = request.getParameter("digit2");
+        String digit3 = request.getParameter("digit3");
+        String digit4 = request.getParameter("digit4");
+        String digit5 = request.getParameter("digit5");
+        String digit6 = request.getParameter("digit6");
 
-        Cookie cu = new Cookie("cuser", emailOrPhone);
-        Cookie cp = new Cookie("cpass", password);
-        Cookie cr = new Cookie("crem", remember);
+        String verificationCode = digit1 + digit2 + digit3 + digit4 + digit5 + digit6;
 
-        if (remember != null) {
-            cu.setMaxAge(60 * 60 * 24 * 7);
-            cp.setMaxAge(60 * 60 * 24 * 7);
-            cr.setMaxAge(60 * 60 * 24 * 7);
+        HttpSession sesson = request.getSession();
+        String aucode = (String) sesson.getAttribute("verifyCode");
+
+        if (verificationCode.equals(aucode)) {
+            AccountDAO ad = new AccountDAO();
+            Account acc = (Account) sesson.getAttribute("account");
+            
+            ad.resetPassword(acc);
+
+            sesson.removeAttribute("account");
+            sesson.removeAttribute("verifyCode");
+
+            PrintWriter out = response.getWriter();
+            out.println("<html><head>"
+                    + "<title>Reset password Successful</title>"
+                    + "<style>"
+                    + "body { font-family: 'Arial', sans-serif; background-color: #f4f4f4; }"
+                    + ".success-message { background-color: #4CAF50; color: white; padding: 20px; text-align: center; margin: 50px auto; }"
+                    + "</style>"
+                    + "<script type='text/javascript'>"
+                    + "setTimeout(function(){ window.location.href = 'login'; }, 5000);"
+                    + "</script></head>"
+                    + "<body>"
+                    + "<div class='success-message'>"
+                    + "<h1>Registration Successful!</h1>"
+                    + "<p>You will be redirected to the login page in 5 seconds.</p>"
+                    + "</div>"
+                    + "</body></html>");
         } else {
-            cu.setMaxAge(0);
-            cp.setMaxAge(0);
-            cr.setMaxAge(0);
-        }
-
-        response.addCookie(cp);
-        response.addCookie(cu);
-        response.addCookie(cr);
-
-        AccountDAO dao = new AccountDAO();
-        String hashPass = dao.generateMD5Hash(password);
-        
-        Account account = dao.login(emailOrPhone, hashPass);
-
-        HttpSession session = request.getSession();
-
-        if (account == null) {
-            request.setAttribute("error", "Password or uswername is error");
-            request.getRequestDispatcher("Login.jsp").forward(request, response);
-        } else {
-            session.setAttribute("account", account);
-            if (account.getRole() == 1) {
-                response.sendRedirect("home");
-            } else {
-                response.sendRedirect("home");
-            }
-
+            request.setAttribute("error", "Verify code is incorrect!");
+            request.getRequestDispatcher("Verify.jsp").forward(request, response);
         }
     }
 
