@@ -2,26 +2,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller.AccountController;
+package controller.Controller.Admin;
 
-import dal.AccountDAO;
+import dal.AdminDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import model.Account;
+import model.Date;
 
 /**
  *
- * @author LENOVO
+ * @author MinhDuc
  */
-@WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "SetUp_Schedules_Movie", urlPatterns = {"/setupschedules"})
+public class SetUp_Schedules_Movie extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +38,10 @@ public class LoginServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");
+            out.println("<title>Servlet SetUp_Schedules_Movie</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet SetUp_Schedules_Movie at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,7 +59,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("Login.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -75,47 +73,15 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String emailOrPhone = request.getParameter("emailOrPhone");
-        String password = request.getParameter("password");
-        String remember = request.getParameter("remember");
-
-        Cookie cu = new Cookie("cuser", emailOrPhone);
-        Cookie cp = new Cookie("cpass", password);
-        Cookie cr = new Cookie("crem", remember);
-
-        if (remember != null) {
-            cu.setMaxAge(60 * 60 * 24 * 7);
-            cp.setMaxAge(60 * 60 * 24 * 7);
-            cr.setMaxAge(60 * 60 * 24 * 7);
-        } else {
-            cu.setMaxAge(0);
-            cp.setMaxAge(0);
-            cr.setMaxAge(0);
-        }
-
-        response.addCookie(cp);
-        response.addCookie(cu);
-        response.addCookie(cr);
-
-        AccountDAO dao = new AccountDAO();
-        String hashPass = dao.generateMD5Hash(password);
-        
-        Account account = dao.login(emailOrPhone, hashPass);
-
-        HttpSession session = request.getSession();
-
-        if (account == null) {
-            request.setAttribute("error", "Password or uswername is error");
-            request.getRequestDispatcher("Login.jsp").forward(request, response);
-        } else {
-            session.setAttribute("account", account);
-            if (account.getRole() == 1) {
-                response.sendRedirect("home");
-            } else {
-                response.sendRedirect("home");
-            }
-
-        }
+        // Thực Hiện Chức Năng Thêm Date : Lên Lịch Cho Phim Trong Ngày 
+        // Lấy dữ liệu từ thẻ input có tên là "setupDate"
+        String setupDate = request.getParameter("setupDate");
+        AdminDAO dal = new AdminDAO();
+        // khởi tạo đối tượng Date và Tới bước truy vấn sql.
+        Date newDate = new Date(setupDate);
+        // Gọi chức năng trong dal sử lý dữ liệu đầu vào.
+        dal.add_Date_Admin(newDate);
+        request.getRequestDispatcher("Admin_Setup_Schedules_Movie.jsp").forward(request, response);
     }
 
     /**

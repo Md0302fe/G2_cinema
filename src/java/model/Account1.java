@@ -8,9 +8,8 @@ package model;
  *
  * @author Kiet
  */
-public class Account {
-
-    private int id;
+public class Account1 {
+    private String user_id;
     private String fullName;
     private String email;
     private String phone;
@@ -18,24 +17,16 @@ public class Account {
     private String picture;
     private int role;
 
-    public Account() {
+    public Account1() {
     }
 
-    public Account(String fullName, String email, String phone, String password, String picture, int role) {
+    public Account1(String fullName, String email, String phone, String password, String picture, int role) {
         this.fullName = fullName;
         this.email = email;
         this.phone = phone;
         this.password = password;
         this.picture = picture;
         this.role = role;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getFullName() {
@@ -85,5 +76,14 @@ public class Account {
     public void setRole(int role) {
         this.role = role;
     }
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
+    
 
 }

@@ -2,26 +2,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller.AccountController;
+package controller.ProfileController;
 
 import dal.AccountDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import model.Account;
 
 /**
  *
- * @author LENOVO
+ * @author pts03
  */
-@WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "ShowName", urlPatterns = {"/ShowName"})
+public class ShowName extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,19 +33,17 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+       String emailOrPhone = request.getParameter("emailOrPhone");
+        String password = request.getParameter("password");
+        AccountDAO dao = new AccountDAO();
+        Account account = dao.login(emailOrPhone, password);
+        request.setAttribute("account", account.getFullName());
+        request.getRequestDispatcher("Profile.jsp").forward(request, response);
     }
+
+
+
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -61,7 +57,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("Login.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -75,47 +71,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String emailOrPhone = request.getParameter("emailOrPhone");
-        String password = request.getParameter("password");
-        String remember = request.getParameter("remember");
-
-        Cookie cu = new Cookie("cuser", emailOrPhone);
-        Cookie cp = new Cookie("cpass", password);
-        Cookie cr = new Cookie("crem", remember);
-
-        if (remember != null) {
-            cu.setMaxAge(60 * 60 * 24 * 7);
-            cp.setMaxAge(60 * 60 * 24 * 7);
-            cr.setMaxAge(60 * 60 * 24 * 7);
-        } else {
-            cu.setMaxAge(0);
-            cp.setMaxAge(0);
-            cr.setMaxAge(0);
-        }
-
-        response.addCookie(cp);
-        response.addCookie(cu);
-        response.addCookie(cr);
-
-        AccountDAO dao = new AccountDAO();
-        String hashPass = dao.generateMD5Hash(password);
-        
-        Account account = dao.login(emailOrPhone, hashPass);
-
-        HttpSession session = request.getSession();
-
-        if (account == null) {
-            request.setAttribute("error", "Password or uswername is error");
-            request.getRequestDispatcher("Login.jsp").forward(request, response);
-        } else {
-            session.setAttribute("account", account);
-            if (account.getRole() == 1) {
-                response.sendRedirect("home");
-            } else {
-                response.sendRedirect("home");
-            }
-
-        }
+        processRequest(request, response);
     }
 
     /**
