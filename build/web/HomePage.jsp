@@ -21,7 +21,7 @@
         <title>G2_Cinema</title>
     </head>
     <body>
-         <%@include file='./Components/Header.jsp' %>
+        <%@include file='./Components/Header.jsp' %>
         <div class="Home_Main">
             <!-- BANNER - SLIDER -->
             <div id="slider">
@@ -159,7 +159,7 @@
                     </div>
                     <div class="main_content-movies">
                         <div class="MOVIES row">
-                            <div class="content-movie l-3">
+                            <div class="content-movie l-3 m-6">
                                 <div class="overlayout">
                                     <img src="./Assets/Image/Movies_Image/movie_05.webp" alt="ERROR">
                                     <div class="overlay">
@@ -172,7 +172,7 @@
                                 <a href="" id="movie_id">Gia Đình X Điệp Viên Mã: Trắng</a>
                             </div>
 
-                            <div class="content-movie l-3">
+                            <div class="content-movie l-3 m-6">
                                 <div class="overlayout">
                                     <img src="./Assets/Image/Movies_Image/movie_02.webp" alt="ERROR">
                                     <div class="overlay">
@@ -186,7 +186,7 @@
                                 <a href="" id="movie_id">Gấu Đỏ Biến Hình</a>
                             </div>
 
-                            <div class="content-movie l-3">
+                            <div class="content-movie l-3 m-6">
                                 <div class="overlayout">
                                     <img src="./Assets/Image/Movies_Image/movie_03.webp"
                                          alt="ERROR">
@@ -197,9 +197,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="" id="movie_id">Mai</a>
+                                <a href="" id="movie_id ">Mai</a>
                             </div>
-                            <div class="content-movie l-3">
+                            <div class="content-movie l-3 m-6">
                                 <div class="overlayout">
                                     <img src="./Assets/Image/Movies_Image/movie_04.webp" alt="ERROR">
                                     <div class="overlay">
@@ -212,7 +212,7 @@
                                 </div>
                                 <a href="" id="movie_id">Gặp Lại Chị Bầu</a>
                             </div>
-                            <div class="content-movie l-3">
+                            <div class="content-movie l-3 m-6">
                                 <div class="overlayout">
                                     <img src="./Assets/Image/Movies_Image/movie_01.webp" alt="ERROR">
                                     <div class="overlay">
@@ -224,7 +224,7 @@
                                 </div>
                                 <a href="" id="movie_id">Madame Web</a>
                             </div>
-                            <div class="content-movie l-3">
+                            <div class="content-movie l-3 m-6">
                                 <div class="overlayout">
                                     <img src="./Assets/Image/Movies_Image/movie_06.webp" alt="ERROR">
                                     <div class="overlay">
@@ -236,7 +236,7 @@
                                 </div>
                                 <a href="" id="movie_id">Dune: Hành Tinh Cát</a>
                             </div>
-                            <div class="content-movie l-3">
+                            <div class="content-movie l-3 m-6">
                                 <div class="overlayout">
                                     <img src="./Assets/Image/Movies_Image/movie_08.webp" alt="ERROR">
                                     <div class="overlay">
@@ -248,7 +248,7 @@
                                 </div>
                                 <a href="" id="movie_id">Nàng Thơ Của Miller</a>
                             </div>
-                            <div class="content-movie l-3">
+                            <div class="content-movie l-3 m-6">
                                 <div class="overlayout">
                                     <img src="./Assets/Image/Movies_Image/movie_09.webp" alt="ERROR">
                                     <div class="overlay">
@@ -264,7 +264,7 @@
                     </div>
                     <div class="main_content-movies-more hidden">
                         <div class="MOVIES row">
-                            <div class="content-movie l-3">
+                            <div class="content-movie l-3 m-6">
                                 <div class="overlayout">
                                     <img src="./Assets/Image/Movies_Image/movie_05.webp" alt="ERROR">
                                     <div class="overlay">
@@ -277,7 +277,7 @@
                                 <a href="" id="movie_id">Gia Đình X Điệp Viên Mã: Trắng</a>
                             </div>
 
-                            <div class="content-movie l-3">
+                            <div class="content-movie l-3 m-6">
                                 <div class="overlayout">
                                     <img src="./Assets/Image/Movies_Image/movie_02.webp" alt="ERROR">
                                     <div class="overlay">
@@ -291,7 +291,7 @@
                                 <a href="" id="movie_id">Gấu Đỏ Biến Hình</a>
                             </div>
 
-                            <div class="content-movie l-3">
+                            <div class="content-movie l-3 m-6">
                                 <div class="overlayout">
                                     <img src="./Assets/Image/Movies_Image/movie_03.webp"
                                          alt="ERROR">
@@ -304,7 +304,7 @@
                                 </div>
                                 <a href="" id="movie_id">Mai</a>
                             </div>
-                            <div class="content-movie l-3">
+                            <div class="content-movie l-3 m-6">
                                 <div class="overlayout">
                                     <img src="./Assets/Image/Movies_Image/movie_04.webp" alt="ERROR">
                                     <div class="overlay">
@@ -317,7 +317,7 @@
                                 </div>
                                 <a href="" id="movie_id">Gặp Lại Chị Bầu</a>
                             </div>
-                            <div class="content-movie l-3">
+                            <div class="content-movie l-3 m-6">
                                 <div class="overlayout">
                                     <img src="./Assets/Image/Movies_Image/movie_01.webp" alt="ERROR">
                                     <div class="overlay">
@@ -329,7 +329,7 @@
                                 </div>
                                 <a href="" id="movie_id">Madame Web</a>
                             </div>
-                            <div class="content-movie l-3">
+                            <div class="content-movie l-3 m-6">
                                 <div class="overlayout">
                                     <img src="./Assets/Image/Movies_Image/movie_06.webp" alt="ERROR">
                                     <div class="overlay">
@@ -341,7 +341,7 @@
                                 </div>
                                 <a href="" id="movie_id">Dune: Hành Tinh Cát</a>
                             </div>
-                            <div class="content-movie l-3">
+                            <div class="content-movie l-3 m-6">
                                 <div class="overlayout">
                                     <img src="./Assets/Image/Movies_Image/movie_08.webp" alt="ERROR">
                                     <div class="overlay">
@@ -353,7 +353,7 @@
                                 </div>
                                 <a href="" id="movie_id">Nàng Thơ Của Miller</a>
                             </div>
-                            <div class="content-movie l-3">
+                            <div class="content-movie l-3 m-6">
                                 <div class="overlayout">
                                     <img src="./Assets/Image/Movies_Image/movie_09.webp" alt="ERROR">
                                     <div class="overlay">
@@ -412,7 +412,7 @@
                             <h1 class="navi-body_title-V">GÓC ĐIỆN ẢNH</h1>
                         </div>
                         <div class="Blog_content-items row col">
-                            <div class="Blog_left col c-6">
+                            <div class="Blog_left col c-12 m-6 ">
                                 <div class="blog_main_img">
                                     <img src="./Assets/Image/Blog_Image/duck.webp" alt="ERROR">
                                 </div>
@@ -428,7 +428,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="Blog_left col c-6">
+                            <div class="Blog_right col c-12 m-6">
                                 <div class="blog_orther">
                                     <div class="blog_item">
                                         <div class="container_blog-other">
@@ -492,4 +492,4 @@
             </div>
         </div>
 
- <%@include file='./Components/Footer.jsp' %>
+        <%@include file='./Components/Footer.jsp' %>
