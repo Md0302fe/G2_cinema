@@ -18,6 +18,8 @@
         <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+
         <title>Edit Movie</title>
     </head>
     <body>
@@ -56,7 +58,7 @@
                                                 selectedImage.src = URL.createObjectURL(event.target.files[0]);
                                             });
                                         </script>
-                                        <button type="submit" class="AddMovies-button">ADD</button>
+
                                     </div>                          
                                     <div class="main-right">
                                         <div class="movie_name">    
@@ -135,8 +137,8 @@
                                             <input value="${m.languages}" type="text" placeholder="Ngôn ngữ : Tiếng anh - Phụ đề Tiếng việt ... "
                                                    size="65" style="margin-left: 12px;" required="" name="Language">
                                         </div>
-                                                   <div class="boxDerectors V2" style="display: flex; align-items: center;">
-                                                       <label style="margin-right: 1.7rem; ">Mô Tả Nội Dung</label>
+                                        <div class="boxDerectors V2" style="display: flex; align-items: center;">
+                                            <label style="margin-right: 1.7rem; ">Mô Tả Nội Dung</label>
                                             <textarea type="text" placeholder="" size="95" name="Describel" rows="4" cols="60" style="resize: none">${m.description}</textarea>
                                         </div>
                                     </div>
@@ -144,21 +146,45 @@
                             </div>
                             <!-- Content Row -->
                         </div>
+                        <div class="w-75 mx-auto d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary mt-3 py-3 px-4 submit-button">Update</button>
+                        </div>
                     </form>
                     <!-- /.container-fluid -->
                 </div>
                 <!-- End of Main Content -->
-                <!-- Footer -->
-                <footer class="sticky-footer bg-white">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2020</span>
-                        </div>
-                    </div>
-                </footer>
-                <!-- End of Footer -->
             </div>
             <!-- End of Content Wrapper -->
         </div>  
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Add an event listener to the form submit button
+                document.querySelector('.submit-button').addEventListener('click', function (event) {
+                    console.log('Submit button clicked!'); // Check if this log appears
+                    var imageInput = document.getElementById('imageInput');
+                    var trailerInput = document.querySelector('.select-trailer');
+
+                    // Check if file inputs have values
+                    if (imageInput.files.length === 0 || trailerInput.files.length === 0) {
+                        // If files are not selected, prevent form submission and show an error
+                        event.preventDefault();
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'Please select both an image and a trailer',
+                            icon: 'error'
+                        });
+                    } else {
+                        document.forms[0].submit();
+                    }
+                });
+            });
+
+
+
+        </script>
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </body>
 </html>
