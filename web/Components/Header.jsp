@@ -139,7 +139,7 @@
             </c:if>
             <c:if test="${sessionScope.account!=null}">
                 <div class="nav__user">
-                    <a class="nav__login--btn" style="text-decoration: none" href="#"><i style="font-size: 18px" class="fa-regular fa-user"></i> ${sessionScope.account.fullName}</a>
+                    <a class="nav__login--btn" style="text-decoration: none" href="ProfileServlet"><i style="font-size: 18px" class="fa-regular fa-user"></i> ${sessionScope.account.fullName}</a>
                 </div>
             </c:if>
 
@@ -189,55 +189,4 @@
 </header>
 
 <div class="modal"></div>
-<!--<div class="login-modal">
-    <div class="login-container">
-        <div class="form-container">
-            <div class="form-close-btn">
-                <i class="fa-solid fa-xmark"></i>
-            </div>
-            <img src="./Assets/Image/Header_Image/login.svg" alt="">
-            <div class="form-btn">
-                <span onclick="login()">Login</span>
-                <span onclick="register()">Register</span>
-                <hr id="Indicator">
-            </div>
-            <form id="LoginForm" action="login" method="post">
-                <input class="input-form" type="email" required placeholder="Email" name="username">
-                <div class="password_show_hide">
-                    <input class="input-form" type="password" required placeholder="Password" name="password" id="password">
-                    <i class="fa-solid fa-eye-slash password_hide" onclick="togglePassword('password', this)"></i>
-                </div>
-
-                <div class="rememberme">
-                    <div class="remenberme-divcon">
-                        <input id="checkremenber" class="rememberme-input" type="checkbox" name="remember" value="ON" />
-                        <label class="remember-label" style="margin-left: 15px; cursor: pointer" for="checkremenber">Remember
-                            me</label>
-                    </div>
-                </div>
-                <button type="submit" class="btn">Login</button>
-                <a class="forget__btn" href="#">Forget Password?</a>
-            </form>
-
-            <form id="RegForm" action="register" method="post">
-                <input class="input-form" required type="text" placeholder="Full name" name="fullName">
-                <input class="input-form" required type="number" placeholder="Phone number" name="phone">
-                <input class="input-form" required type="email" placeholder="Email" name="userName">
-                <div class="password_show_hide">
-                    <input class="input-form" required type="password" placeholder="Password" name="password" id="regPassword">
-                    <i class="fa-solid fa-eye-slash password_hide" onclick="togglePassword('regPassword', this)"></i>
-                </div>
-                <div class="password_show_hide">
-                    <input class="input-form" required type="password" placeholder="Re-enter your Password" name="rePassword"
-                           id="rePassword">
-                    <i class="fa-solid fa-eye-slash password_hide" onclick="togglePassword('rePassword', this)"></i>
-                </div>
-                <button type="submit" class="btn">Register</button>
-            </form>
-        </div>
-    </div>
-    <div class="login-otp">
-
-    </div>
-</div>-->
 <script src="Assets/JS/header.js" type="text/javascript"></script>
