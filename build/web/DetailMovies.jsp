@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="./Assets/Styles/themify-icons-font/themify-icons/themify-icons.css"
     </head>
     <body>
+        <%@include file='./Components/Header.jsp' %>
         <div class="main">
             <div class="book_ticket_wrapper">
                 <div class="relative bg-black flex justify-center w-full h-full">
