@@ -70,6 +70,9 @@ public class UpdateMovie extends HttpServlet {
 
         int id = Integer.parseInt(Rawid);
 
+        if(Rawid == null){
+            id = 1;
+        }
         AdminDAO dao = new AdminDAO();
         Movie movie = dao.getMovieById(id);
 
@@ -100,7 +103,24 @@ public class UpdateMovie extends HttpServlet {
         String director = request.getParameter("Director");
         String stars = request.getParameter("Stars");
         String language = request.getParameter("Language");
-        String describel = request.getParameter("Describel");      
+        String describel = request.getParameter("Describel");
+        int id = Integer.parseInt(rawId);
+        
+        // Delete old file start
+        AdminDAO dao = new AdminDAO();
+        Movie old = dao.getMovieById(id);
+        String delImgPath = getServletContext().getRealPath("Assets/Image/Movies_Image/") + File.separator + old.getMovie_img();
+        String delTrailerPath = getServletContext().getRealPath("Assets/Image/Movies_Trailer/") + File.separator + old.getMovie_trailer();
+        File imgDelete = new File(delImgPath);
+        File trailerDelete = new File(delTrailerPath);
+        if (imgDelete.delete() && trailerDelete.delete()) {
+            System.out.println("File deleted successfully");
+        } else if (imgDelete.delete() || trailerDelete.delete()) {
+            System.out.println("Some file can't be delete!");
+        } else {
+            System.out.println("Failed to delete the file");
+        }
+//          Delete old file end
 
         // XỬ LÝ FILE HÌNH ẢNH
         Part filePart = request.getPart("movie_image");
@@ -109,7 +129,9 @@ public class UpdateMovie extends HttpServlet {
         // XỬ LÝ FILE TRAILER
         Part filePart2 = request.getPart("movie_trailer");
         String fileName2 = filePart2.getSubmittedFileName();
-        String uploadPath2 = getServletContext().getRealPath("Assets/Image/Movies_Image/") + File.separator + fileName2;
+        String uploadPath2 = getServletContext().getRealPath("Assets/Image/Movies_Trailer/") + File.separator + fileName2;
+        System.out.println(uploadPath);
+        System.out.println(uploadPath2);
         try {
             FileOutputStream fos = new FileOutputStream(uploadPath);
             InputStream is = filePart.getInputStream();
@@ -117,8 +139,7 @@ public class UpdateMovie extends HttpServlet {
             is.read(data);
             fos.write(data);
             fos.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
         }
         try {
             FileOutputStream fos = new FileOutputStream(uploadPath2);
@@ -127,24 +148,20 @@ public class UpdateMovie extends HttpServlet {
             is.read(data);
             fos.write(data);
             fos.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
         }
         try {
             int duration = Integer.parseInt(duration_str);
             float rate = Float.parseFloat(rate_str);
-            int id = Integer.parseInt(rawId);
-            AdminDAO dao = new AdminDAO();
-            Movie movie = new Movie(nameOfMovie,duration,dateRelease, rate,national,categorys,director,stars,language,
+
+            Movie movie = new Movie(nameOfMovie, duration, dateRelease, rate, national, categorys, director, stars, language,
                     describel,
                     fileName,
                     fileName2);
             //  SQL QUERY
             dao.updateMovie(id, movie);
-            List<Movie> list = dao.getListMovie();
-            request.setAttribute("list", list);
-            request.getRequestDispatcher("Admin_Movie_Management.jsp").forward(request, response);
-        } catch (Exception e) {
+            response.sendRedirect("ListMovie");
+        } catch (IOException | NumberFormatException e) {
             System.out.println("ERROR IN : UpdateMovieServlet.java ");
         }
     }

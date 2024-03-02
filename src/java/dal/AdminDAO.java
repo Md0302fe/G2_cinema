@@ -19,7 +19,7 @@ import model.Movie;
  * @author MinhDuc
  */
 public class AdminDAO extends DBContext {
-
+    
     public void add_Movie_Admin(Movie movie) {
         String sql = "INSERT INTO [dbo].[Movie]\n"
                 + "           ([movie_name]\n"
@@ -55,9 +55,9 @@ public class AdminDAO extends DBContext {
             System.out.println(e);
         }
     }
-
+    
     public void add_Date_Admin(Date date) {
-
+        
         String sql = "INSERT INTO [dbo].[Release_date]\n"
                 + "           ([show_date])\n"
                 + "     VALUES\n"
@@ -70,10 +70,10 @@ public class AdminDAO extends DBContext {
             System.out.println(e);
         }
     }
-
+    
     public List<Movie> getListMovie() {
         List<Movie> list = new ArrayList<>();
-
+        
         String sql = "SELECT [movie_id]\n"
                 + "      ,[movie_name]\n"
                 + "      ,[duration]\n"
@@ -88,12 +88,12 @@ public class AdminDAO extends DBContext {
                 + "      ,[image]\n"
                 + "      ,[trailer]\n"
                 + "  FROM [dbo].[Movie]";
-
+        
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-
+                
                 Movie movie = new Movie(rs.getString(2), rs.getInt(3), rs.getString(4), rs.getFloat(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13));
                 movie.setId(rs.getInt(1));
                 list.add(movie);
@@ -101,13 +101,13 @@ public class AdminDAO extends DBContext {
         } catch (SQLException e) {
             System.out.println(e);
         }
-
+        
         return list;
     }
-
+    
     public Movie getMovieById(int id) {
         Movie movie = null;
-
+        
         String sql = "SELECT [movie_id]\n"
                 + "      ,[movie_name]\n"
                 + "      ,[duration]\n"
@@ -124,23 +124,23 @@ public class AdminDAO extends DBContext {
                 + "  FROM [dbo].[Movie]"
                 + "Where [movie_id] = ?";
         try {
-
+            
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-
+                
                 movie = new Movie(rs.getString(2), rs.getInt(3), rs.getString(4), rs.getFloat(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13));
                 movie.setId(rs.getInt(1));
             }
         } catch (SQLException e) {
             System.out.println(e);
         }
-
+        
         return movie;
     }
-
-    public void updateMovie(int id ,Movie m) {
+    
+    public void updateMovie(int id, Movie m) {
         String sql = "UPDATE [dbo].[Movie]\n"
                 + "   SET [movie_name] = ?\n"
                 + "      ,[duration] = ?\n"
@@ -156,7 +156,7 @@ public class AdminDAO extends DBContext {
                 + "      ,[trailer] = ?\n"
                 + " WHERE [movie_id] = ?";
         try {
-
+            
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, m.getName());
             st.setInt(2, m.getDuration());
@@ -176,10 +176,21 @@ public class AdminDAO extends DBContext {
             System.out.println(e);
         }
     }
-
 //    public static void main(String[] args) {
 //        AdminDAO dao = new AdminDAO();
 //        Movie m = dao.getMovieById(1);
 //        System.out.println(m);
 //    }
+    
+    public void deleteMovie(int id) {
+        String sql = "DELETE FROM [dbo].[Movie]\n"
+                + " WHERE [movie_id] = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            st.executeQuery();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
 }

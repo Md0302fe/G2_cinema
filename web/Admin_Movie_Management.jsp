@@ -19,6 +19,7 @@
         <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
         <title>Moive Management</title>
     </head>
     <body>
@@ -72,7 +73,7 @@
                                                     <td><p>${m.description}</p></td>
                                                     <td>
                                                         <button type="button" class="w-100 mb-3 btn btn-primary" onclick="editItem(${m.id})">Edit</button>
-                                                        <button type="button" class="w-100 btn btn-danger">Delete</button>
+                                                        <button type="button" class="w-100 btn btn-danger" onclick="confirmDelete(${m.id})">Delete</button>
                                                     </td>
                                                 </tr>
                                             </c:forEach>
@@ -90,10 +91,28 @@
             <!-- End of Content Wrapper -->
         </div>   
 
+
         <script>
+            function confirmDelete(id) {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'This action cannot be undone!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'Cancel',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Nếu người dùng xác nhận muốn xóa, chuyển đến servlet
+                        window.location.href = "DeleteMovie?delItem=" + id;
+                    }
+                });
+            }
+
             function editItem(id) {
                 window.location.href = "UpdateMovie?editItem=" + id;
             }
         </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </body>
 </html>
