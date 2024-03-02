@@ -177,7 +177,9 @@ public class AdminDAO extends DBContext {
         }
     }
 
-    public static void main(String[] args) {
-
-    }
+//    public static void main(String[] args) {
+//        AdminDAO dao = new AdminDAO();
+//        Movie m = dao.getMovieById(1);
+//        System.out.println(m);
+//    }
 }

@@ -4,6 +4,7 @@
     Author     : ADMIN
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <header>
     <nav id="topnav">
@@ -22,59 +23,27 @@
                                 <li>
                                     <div><a href="#">PHIM ĐANG CHIẾU</a></div>
                                     <ul class="flex movie-demo jca">
-                                        <li class="tc">
-                                            <a href="#">
-                                                <img src="./Assets/Image/Header_Image/movie-1.jpg" alt="movie 1" />
-                                                <h5>Movie Name</h5>
-                                            </a>
-                                        </li>
-                                        <li class="tc">
-                                            <a href="#">
-                                                <img src="./Assets/Image/Header_Image/movie-1.jpg" alt="movie 1" />
-                                                <h5>Movie Name</h5>
-                                            </a>
-                                        </li>
-                                        <li class="tc">
-                                            <a href="#">
-                                                <img src="./Assets/Image/Header_Image/movie-1.jpg" alt="movie 1" />
-                                                <h5>Movie Name</h5>
-                                            </a>
-                                        </li>
-                                        <li class="tc">
-                                            <a href="#">
-                                                <img src="./Assets/Image/Header_Image/movie-1.jpg" alt="movie 1" />
-                                                <h5>Movie Name</h5>
-                                            </a>
-                                        </li>
+                                        <c:forEach items="${listMovie}" var="m" begin="1" end="4">
+                                            <li class="tc">
+                                                <a href="MovieDetailServlet?id=${m.id}">
+                                                    <img class="movie-showing" src="./Assets/Image/Header_Image/${m.movie_img}" alt="movie 1" />
+                                                    <h5>${m.name}</h5>
+                                                </a>
+                                            </li>
+                                        </c:forEach>                                                  
                                     </ul>
                                 </li>
                                 <li>
                                     <div><a href="#">PHIM SẮP CHIẾU</a></div>
                                     <ul class="flex movie-demo jca">
-                                        <li class="tc">
-                                            <a href="#">
-                                                <img src="./Assets/Image/Header_Image/movie-1.jpg" alt="movie 1" />
-                                                <h5>Movie Name</h5>
-                                            </a>
-                                        </li>
-                                        <li class="tc">
-                                            <a href="#">
-                                                <img src="./Assets/Image/Header_Image/movie-1.jpg" alt="movie 1" />
-                                                <h5>Movie Name</h5>
-                                            </a>
-                                        </li>
-                                        <li class="tc">
-                                            <a href="#">
-                                                <img src="./Assets/Image/Header_Image/movie-1.jpg" alt="movie 1" />
-                                                <h5>Movie Name</h5>
-                                            </a>
-                                        </li>
-                                        <li class="tc">
-                                            <a href="#">
-                                                <img src="./Assets/Image/Header_Image/movie-1.jpg" alt="movie 1" />
-                                                <h5>Movie Name</h5>
-                                            </a>
-                                        </li>
+                                        <c:forEach items="${listMovie}" var="m" begin="1" end="4">
+                                            <li class="tc">
+                                                <a href="MovieDetailServlet?id=${m.id}">
+                                                    <img class="movie-showing" src="./Assets/Image/Header_Image/${m.movie_img}" alt="movie 1" />
+                                                    <h5>${m.name}</h5>
+                                                </a>
+                                            </li>
+                                        </c:forEach>                                                  
                                     </ul>
                                 </li>
                             </ul>
@@ -132,21 +101,21 @@
                     <input id="searchInput" class="search-box abs b-shadow" type="text" placeholder="Search.."
                            onfocus="expandInput()" onblur="shrinkInput()">
                 </div>
-            <c:if test="${sessionScope.account==null}">
-                <div class="nav__user">
-                    <a class="nav__login--btn" href="login"> <i class="fa-regular fa-user"></i> Đăng nhập</a>
-                </div>
-            </c:if>
-            <c:if test="${sessionScope.account!=null}">
-                <div class="nav__user">
-                    <a class="nav__login--btn" style="text-decoration: none" href="ProfileServlet"><i style="font-size: 18px" class="fa-regular fa-user"></i> ${sessionScope.account.fullName}</a>
-                </div>
-            </c:if>
+                <c:if test="${sessionScope.account==null}">
+                    <div class="nav__user">
+                        <a class="nav__login--btn" href="login"> <i class="fa-regular fa-user"></i> Đăng nhập</a>
+                    </div>
+                </c:if>
+                <c:if test="${sessionScope.account!=null}">
+                    <div class="nav__user">
+                        <a class="nav__login--btn" style="text-decoration: none" href="ProfileServlet"><i style="font-size: 18px" class="fa-regular fa-user"></i> ${sessionScope.account.fullName}</a>
+                    </div>
+                </c:if>
 
 
-            <div class="nav__mobile">
-                <i onclick="toggleNav()" class="fa-solid fa-bars"></i>
-            </div>
+                <div class="nav__mobile">
+                    <i onclick="toggleNav()" class="fa-solid fa-bars"></i>
+                </div>
             </li>
         </ul>
 

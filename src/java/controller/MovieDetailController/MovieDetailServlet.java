@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package controller.PublicController;
+package controller.MovieDetailController;
 
 import dal.AdminDAO;
 import java.io.IOException;
@@ -13,15 +13,15 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 import model.Movie;
 
 /**
  *
- * @author ADMIN
+ * @author GIA TIEN
  */
-@WebServlet(name="home", urlPatterns={""})
-public class home extends HttpServlet {
+public class MovieDetailServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -38,10 +38,10 @@ public class home extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet home</title>");  
+            out.println("<title>Servlet MovieDetailServlet</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet home at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet MovieDetailServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -56,13 +56,15 @@ public class home extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        AdminDAO dao = new AdminDAO();
-        List<Movie> m = dao.getListMovie();
-        request.setAttribute("listMovie", m);
-        request.getRequestDispatcher("HomePage.jsp").forward(request, response);
-    } 
+     protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+         AdminDAO dao = new AdminDAO();
+         String id = request.getParameter("id");
+         int movieId = Integer.parseInt(id);
+         Movie m = dao.getMovieById(movieId);
+         request.setAttribute("movie", m);
+         request.getRequestDispatcher("DetailMovies.jsp").forward(request, response);
+     }
 
     /** 
      * Handles the HTTP <code>POST</code> method.
@@ -87,3 +89,4 @@ public class home extends HttpServlet {
     }// </editor-fold>
 
 }
+

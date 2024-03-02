@@ -169,7 +169,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="" id="movie_id">Gia Đình X Điệp Viên Mã: Trắng</a>
+                                <a href="#" id="movie_id">Gia Đình X Điệp Viên Mã: Trắng</a>
                             </div>
 
                             <div class="content-movie l-3 m-6">
