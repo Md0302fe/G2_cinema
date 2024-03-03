@@ -176,6 +176,11 @@ public class AdminDAO extends DBContext {
             System.out.println(e);
         }
     }
+//    public static void main(String[] args) {
+//        AdminDAO dao = new AdminDAO();
+//        Movie m = dao.getMovieById(1);
+//        System.out.println(m);
+//    }
     
     public void deleteMovie(int id) {
         String sql = "DELETE FROM [dbo].[Movie]\n"
@@ -187,9 +192,5 @@ public class AdminDAO extends DBContext {
         } catch (SQLException e) {
             System.out.println(e);
         }
-    }
-    
-    public static void main(String[] args) {
-        
     }
 }
