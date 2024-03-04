@@ -20,9 +20,8 @@ import model.Movie;
  *
  * @author ADMIN
  */
-@WebServlet(name="home", urlPatterns={"/"})
+@WebServlet(name="home", urlPatterns={"/a"})
 public class home extends HttpServlet {
-   
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
@@ -60,6 +59,7 @@ public class home extends HttpServlet {
     throws ServletException, IOException {
         AdminDAO dao = new AdminDAO();
         List<Movie> m = dao.getListMovie();
+        System.out.println(m);
         request.setAttribute("listMovie", m);
         request.getRequestDispatcher("HomePage.jsp").forward(request, response);
     } 
