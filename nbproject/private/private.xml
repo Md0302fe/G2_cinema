@@ -16,6 +16,13 @@
             <file>file:/D:/Spring2024_5/Cinema/G2_cinema/web/DetailMovies.jsp</file>
             <file>file:/D:/Spring2024_5/Cinema/G2_cinema/web/Components/Header.jsp</file>
 
+
+            <file>file:/F:/SWP301/finals/G2_cinema/web/HomePage.jsp</file>
+            <file>file:/F:/SWP301/finals/G2_cinema/web/WEB-INF/web.xml</file>
+            <file>file:/F:/SWP301/finals/G2_cinema/src/java/controller/PublicController/HomePageServlet.java</file>
+            <file>file:/F:/SWP301/finals/G2_cinema/web/booking.jsp</file>
+            <file>file:/F:/SWP301/finals/G2_cinema/web/Assets/Styles/homePage.css</file>
+
         </group>
     </open-files>
 </project-private>

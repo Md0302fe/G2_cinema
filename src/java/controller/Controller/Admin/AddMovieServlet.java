@@ -141,8 +141,8 @@ public class AddMovieServlet extends HttpServlet {
                     fileName2);
             //  SQL QUERY
             dao.add_Movie_Admin(movie);
-            List<Movie> list = dao.getListMovie();
-            request.setAttribute("list", list);
+//            List<Movie> list = dao.getListMovie();
+//            request.setAttribute("list", list);
             request.getRequestDispatcher("Admin_AddMovie.jsp").forward(request, response);
         } catch (Exception e) {
             System.out.println("ERROR IN : AddMovieServlet.java ");
