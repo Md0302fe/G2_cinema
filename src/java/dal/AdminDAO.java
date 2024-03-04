@@ -10,6 +10,17 @@ import java.util.Arrays;
 import java.util.Random;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+
+
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Date;
@@ -29,6 +40,7 @@ public class AdminDAO extends DBContext {
 
     public ArrayList<Room> list_Room = new ArrayList<>();
 
+    
     public void add_Movie_Admin(Movie movie) {
         String sql = "INSERT INTO [dbo].[Movie]\n"
                 + "           ([movie_name]\n"
@@ -99,7 +111,35 @@ public class AdminDAO extends DBContext {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
+                Movie movie = new Movie(rs.getString("movie_name"),
+                        rs.getInt("duration"),
+                        rs.getString("release_date"),
+                        rs.getFloat("rate"),
+                        rs.getString("national"),
+                        rs.getString("list_category"),
+                        rs.getString("director"),
+                        rs.getString("actors"),
+                        rs.getString("language"),
+                        rs.getString("movie_description"),
+                        rs.getString("image"),
+                        rs.getString("trailer"));
+                movie.setId(rs.getInt("movie_id"));
+                listMovie.add(movie);
+            }
+        } catch (SQLException e) {
+            System.out.println("getAllMovie Dal Error");
+        }
+        return listMovie;
+    }
 
+
+    public ArrayList<Movie> getAllMovie() {
+        String sql = "select *from movie";
+        ArrayList<Movie> listMovie = new ArrayList<>();
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
                 Movie movie = new Movie(rs.getString("movie_name"),
                         rs.getInt("duration"),
                         rs.getString("release_date"),
@@ -360,8 +400,10 @@ public class AdminDAO extends DBContext {
         return 0;
     }
 
+
     public Movie getMovieById(int id) {
         Movie movie = null;
+
         String sql = "SELECT [movie_id]\n"
                 + "      ,[movie_name]\n"
                 + "      ,[duration]\n"
@@ -388,10 +430,10 @@ public class AdminDAO extends DBContext {
         } catch (SQLException e) {
             System.out.println(e);
         }
-
+        
         return movie;
     }
-
+    
     public void updateMovie(int id, Movie m) {
         String sql = "UPDATE [dbo].[Movie]\n"
                 + "   SET [movie_name] = ?\n"
@@ -427,7 +469,12 @@ public class AdminDAO extends DBContext {
             System.out.println(e);
         }
     }
-
+//    public static void main(String[] args) {
+//        AdminDAO dao = new AdminDAO();
+//        Movie m = dao.getMovieById(1);
+//        System.out.println(m);
+//    }
+    
     public void deleteMovie(int id) {
         String sql = "DELETE FROM [dbo].[Movie]\n"
                 + " WHERE [movie_id] = ?";
@@ -438,6 +485,5 @@ public class AdminDAO extends DBContext {
         } catch (SQLException e) {
             System.out.println(e);
         }
-
     }
 }
