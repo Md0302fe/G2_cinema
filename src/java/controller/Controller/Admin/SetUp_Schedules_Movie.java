@@ -74,13 +74,15 @@ public class SetUp_Schedules_Movie extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Thực Hiện Chức Năng Thêm Date : Lên Lịch Cho Phim Trong Ngày 
-        // Lấy dữ liệu từ thẻ input có tên là "setupDate"
+        // Lấy dữ liệu từ thẻ input có tên là "setupDate"        
         String setupDate = request.getParameter("setupDate");
         AdminDAO dal = new AdminDAO();
         // khởi tạo đối tượng Date và Tới bước truy vấn sql.
-        Date newDate = new Date(setupDate);
+        Date Date = new Date(setupDate);
         // Gọi chức năng trong dal sử lý dữ liệu đầu vào.
-        dal.add_Date_Admin(newDate);
+        dal.add_Date_Admin(Date);
+        // Tiến Hành Thực Thi Lên Schedules.
+        dal.setUp_Handle_Schedules(Date);
         request.getRequestDispatcher("Admin_Setup_Schedules_Movie.jsp").forward(request, response);
     }
 

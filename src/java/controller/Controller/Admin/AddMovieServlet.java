@@ -91,7 +91,8 @@ public class AddMovieServlet extends HttpServlet {
         String stars = request.getParameter("Stars");
         String language = request.getParameter("Language");
         String describel = request.getParameter("Describel");
-
+        
+        
         // XỬ LÝ FILE HÌNH ẢNH
         Part filePart = request.getPart("movie_image");
         String fileName = filePart.getSubmittedFileName();
