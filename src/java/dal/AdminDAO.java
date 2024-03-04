@@ -112,6 +112,7 @@ public class AdminDAO extends DBContext {
                         rs.getString("movie_description"),
                         rs.getString("image"),
                         rs.getString("trailer"));
+                movie.setId(rs.getInt("movie_id"));
                 listMovie.add(movie);
             }
         } catch (SQLException e) {
@@ -206,8 +207,8 @@ public class AdminDAO extends DBContext {
             // sử lý key id cho date_hande -> handle_id 
             String date_handle = handle + ":" + thisDate.getShow_date();
             // sử lý từng handle
-            setUp_Schedules(thisDate, date_handle);
             Save_Handle_Schedules(thisDate, date_handle);
+            setUp_Schedules(thisDate, date_handle);
         }
     }
 
@@ -249,7 +250,6 @@ public class AdminDAO extends DBContext {
             schedules_id = handle_id + "@" + i;
             setUp_Movie(thisDate, handle_id, schedules_id, coppy_List_movie_id, coppy_List_room);
         }
-
     }
 
     /**
@@ -274,20 +274,16 @@ public class AdminDAO extends DBContext {
         if (checkRoom_Available(room)) {
             // lúc này phòng ok thì sẽ trả về 1 Object chứa full tt nãy giờ làm.
             // Map<String,Object> result = new HashMap<>();
-            System.out.println("handle_id: " + handle_id + " Schedules_id: " + schedules_id + " selected Movie : " + random_movie + " selected Room " + room);
+            System.out.println("handle_id: " + handle_id + " Schedules_id: " + schedules_id);
             // Nếu Room hợp lý thì save đống này vào dataBase
             /* Cần lưu vào : 
                            + Handle_Schedules
                            + Schedules
              */
-            Save_Data(thisDate, handle_id, schedules_id, random_movie, room);
+            Save_Data(handle_id, schedules_id, random_movie, room);
         }
         // Nếu room đó không hợp lệ thì next để sang khung chiếu khác.
         coppy_List_room.remove(room);
-    }
-
-    public void Save_Data(Date thisDate, String handle_id, String schedules_id, int random_movie, Room room) {
-        Save_Schedules(handle_id, schedules_id, random_movie, room);
     }
 
     public void Save_Handle_Schedules(Date thisDate, String handle_id) {
@@ -306,18 +302,23 @@ public class AdminDAO extends DBContext {
         }
     }
 
+    public void Save_Data(String handle_id, String schedules_id, int random_movie, Room room) {
+        Save_Schedules(handle_id, schedules_id, random_movie, room);
+    }
+
     public void Save_Schedules(String handle_id, String schedules_id, int random_movie, Room room) {
+        System.out.println("Handle_Id: " + handle_id);
         String sql = "INSERT INTO [dbo].[Schedules]\n"
-                + "           ([schedules_id]\n"
-                + "           ,[handle_schedules_id]\n"
+                + "           ([handle_schedules_id]\n"
+                + "           ,[schedules_id]\n"
                 + "           ,[movie_id]\n"
                 + "           ,[room_id])\n"
                 + "     VALUES\n"
                 + "           (?,?,?,?)";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setString(1, schedules_id);
-            st.setString(2, handle_id);
+            st.setString(1, handle_id);
+            st.setString(2, schedules_id);
             st.setInt(3, random_movie);
             st.setInt(4, room.getId());
             st.executeUpdate();
@@ -361,7 +362,6 @@ public class AdminDAO extends DBContext {
 
     public Movie getMovieById(int id) {
         Movie movie = null;
-
         String sql = "SELECT [movie_id]\n"
                 + "      ,[movie_name]\n"
                 + "      ,[duration]\n"
@@ -378,12 +378,10 @@ public class AdminDAO extends DBContext {
                 + "  FROM [dbo].[Movie]"
                 + "Where [movie_id] = ?";
         try {
-
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-
                 movie = new Movie(rs.getString(2), rs.getInt(3), rs.getString(4), rs.getFloat(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13));
                 movie.setId(rs.getInt(1));
             }
