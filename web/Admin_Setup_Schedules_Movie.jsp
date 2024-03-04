@@ -43,22 +43,21 @@
                                     </div>                          
                                     <div class="main-right" style="padding:30px 30px 30px 90px ">
                                         <h2> 
-                                            <label for="date" style="margin-right:30px">Lên Lịch</label>
-                                            <input type="date" id="date" name="setupDate" style="padding : 12px ; border-radius: 5px" required>
+                                            <label for="date" style="margin-right:30px">Lên Lịch</label> 
+                                            <input type="date" id="date" name="setupDate" style="padding : 12px ; border-radius: 5px ;" required>
                                         </h2>
-                                        <i style="color: green;
-                                           font-size: 30px;
-                                           left: 36px;
-                                           top: 30px;
-                                           display: none;
-                                           position: relative;" class="fa-solid fa-circle-check showSuccess"></i>
-                                        <h5 style="margin-top: 32px ; display :inline-block ;border-radius: 5px;
-                                            padding: 4px;" class="prepareDoing">                                    
-                                        </h5>                                                                                                                                                                                                      
-                                        <button type="submit" class="AddMovies-button" style="pointer-events:none;opacity: 0.5;color:black; background-color: #169b6b ; border: none;
-                                                margin: 88px 0 0 222px ;width: 150px; height: 40px;">
-                                            Lên Lịch
-                                        </button>
+                                        <h3 class="checkk">Kiểm Tra</button>
+                                            <i style="color: green;
+                                               font-size: 30px;
+                                               left: -352%;
+                                               top: 272%;
+                                               display: none;
+                                               position: absolute;" class="fa-solid fa-circle-check showSuccess"></i>
+                                            <h5 style="margin-top: 32px ; display :inline-block ;border-radius: 5px;padding: 4px;" class="prepareDoing">                                    
+                                            </h5>                                                                                                                                                                                                      
+                                            <button type="submit" class="AddMovies-button" style="pointer-events:none;opacity: 0.5;color:black; background-color: #169b6b ; border: none;margin: 88px 0 0 222px ;width: 150px; height: 40px; margin: 0;left: 63%;top: 65%;position: absolute;">
+                                                Lên Lịch
+                                            </button>
                                     </div>
                                     <hr><!-- comment -->
                                 </div>
@@ -82,25 +81,61 @@
             <!-- End of Content Wrapper -->
         </div>
         <script>
-            const dateInput = document.getElementById("date");
+            var dateInput = document.getElementById("date");
             var text = document.querySelector('.prepareDoing');
-            dateInput.addEventListener("change", () => {
-                const selectedDate = new Date(dateInput.value); // khởi tạo đối tượng date = dateInput.value
-                const currentDate = new Date(); // lấy giá trị ngày hôm nay                                                    
-                // Kiểm tra nếu ngày được chọn là ngày trong quá khứ
-                if (selectedDate < currentDate) {
-                    text.innerText = "Warning : Vui lòng chỉ chọn ngày trong tương lai để lên lịch !!!";
-                    text.style.color = "black";
-                    text.style.backgroundColor = "yellow";
+            var selectedDates = new Set(); // Sử dụng Set thay vì mảng
+            var button = document.querySelector('.AddMovies-button');
+            var check = document.querySelector('.showSuccess');
+            var lastInput;
+            var buttonCheck = document.querySelector('.checkk');
+            console.log(buttonCheck);
+
+            function showWarning(message) {
+                button.style.opacity = 0.5;
+                button.style.pointerEvents = "none";
+                check.style.display = "none";
+                text.style.display = "inline-block";
+                text.innerText = "Warning : " + message;
+                text.style.color = "black";
+                text.style.backgroundColor = "yellow";
+            }
+
+            function showSuccess() {
+                check.style.display = "block";
+                text.style.display = "none";
+                button.style.opacity = 1;
+                button.style.pointerEvents = "auto";
+            }
+
+            function isFutureDate(date) {
+                var currentDate = new Date();
+                return date > currentDate;
+            }
+
+            function isDuplicateDate(date) {
+                return selectedDates.has(date.toDateString());
+            }
+
+            buttonCheck.addEventListener("click", () => {
+                var selectedDate = new Date(dateInput.value);
+                selectedDates.clear();
+                console.log("Selected Date: " + selectedDate);
+                console.log("List Date : " + selectedDates);
+
+                if (selectedDate.toDateString() === lastInput) {
+                    showWarning("Ngày này đã được lên lịch chiếu trước đó, vui lòng chọn ngày khác !!!");
+                } else if (!isFutureDate(selectedDate)) {
+                    showWarning("Vui lòng chỉ chọn ngày trong tương lai để lên lịch !!!");
+                } else if (isDuplicateDate(selectedDate)) {
+                    showWarning("Ngày này đã được lên lịch chiếu trước đó, vui lòng chọn ngày khác !!!");
                 } else {
-                    const button = document.querySelector('.AddMovies-button');
-                    const check = document.querySelector('.showSuccess');
-                    check.style.display = "block";
-                    text.innerText = "";
-                    button.style.opacity = 1;
-                    button.style.pointerEvents = "auto";
+                    lastInput = selectedDate.toDateString();
+                    showSuccess();
+                    selectedDates.add(selectedDate.toDateString());
                 }
             });
-        </script>     
+
+        </script>
+
     </body>
 </html>

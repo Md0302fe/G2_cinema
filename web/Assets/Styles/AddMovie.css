@@ -169,4 +169,28 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     margin-bottom: 20px;
 }
 
+.checkk {
+    position :absolute;
+    top: 40.3%;
+    right: 16%;
+    background-color: #4CAF50; /* Màu nền xanh lá cây */
+    border: none;
+    color: white;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 8px;
+}
 
+.checkk:hover {
+    background-color: #45a049; /* Màu nền xanh lá cây sáng hơn khi hover */
+}
+
+.checkk:active {
+    background-color: #36723e; /* Màu nền xanh lá cây tối hơn khi click */
+}
