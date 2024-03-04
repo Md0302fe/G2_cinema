@@ -5,6 +5,7 @@
 
 package controller.PublicController;
 
+import dal.AdminDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,12 +13,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
+import model.Movie;
 
 /**
  *
  * @author ADMIN
  */
-@WebServlet(name="home", urlPatterns={"/home"})
+@WebServlet(name="home", urlPatterns={""})
 public class home extends HttpServlet {
    
     /** 
@@ -55,6 +58,9 @@ public class home extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        AdminDAO dao = new AdminDAO();
+        List<Movie> m = dao.getListMovie();
+        request.setAttribute("listMovie", m);
         request.getRequestDispatcher("HomePage.jsp").forward(request, response);
     } 
 

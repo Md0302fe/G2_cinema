@@ -6,13 +6,13 @@ package dal;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import model.Account1;
+import model.Account;
 /**
  *
  * @author pts03
  */
 public class EditProfileDAO extends DBContext{
-    public boolean updateUserProfile(Account1 user) {
+    public boolean updateUserProfile(Account user) {
          String sql = "UPDATE users SET fullname=?, email=?, phone=?, password=? WHERE user_id=?";
           try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -20,7 +20,7 @@ public class EditProfileDAO extends DBContext{
             st.setString(2, user.getEmail());
             st.setString(3, user.getPhone());
             st.setString(4, user.getPassword());
-            st.setString(5, user.getUser_id());
+            st.setInt(5, user.getId());
 
             int rowsUpdated = st.executeUpdate();
 

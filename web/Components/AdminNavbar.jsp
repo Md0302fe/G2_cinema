@@ -96,7 +96,12 @@
             <li class="nav-item active">
                 <a class="nav-link" href="Admin_AddMovie.jsp">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>AddMovie</span></a>
+                    <span>Add Movie</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="ListMovie">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Management Movies</span></a>
             </li>
             <!-- Nav Item - Tables -->
             <li class="nav-item">

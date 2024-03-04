@@ -27,9 +27,7 @@
     <body id="body">
 
         <%@include file='./Components/Header.jsp' %>
-        <div class="container">
-            
-
+        <div class="container">          
             <div class="profile">
                 <div class="text-center">
                     <img src="./Assets/Image/User/z5093594224219_87654397e30fec7c89275c9bb7e54bb1.jpg" alt="Customer Avatar"
@@ -37,9 +35,7 @@
                          style="height: 100px; width: 100px; margin-left: 120px; margin-top: 20px;">
                     <div class="in4">
 
-                        <% String account = (String) session.getAttribute("account");
-
-                        %>
+                        <% String account = (String) session.getAttribute("account"); %>
                         <h4><%=account %></h4>
                         <p>Start</p>
                     </div>
@@ -53,14 +49,9 @@
                         <strong>HOTLINE hỗ trợ:</strong>
                         <strong id="info">23456789 </strong>
 
-
                     </div>
                     <div class="email">
                         <strong>Email :</strong><strong id="info">galaxy@.com</strong>
-
-
-
-
 
                     </div>
                     <div class="question">

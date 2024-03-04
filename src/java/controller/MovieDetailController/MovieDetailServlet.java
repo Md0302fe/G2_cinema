@@ -2,21 +2,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller.ProfileController;
+package controller.MovieDetailController;
 
-import dal.EditProfileDAO;
+import dal.AdminDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Account;
+import java.util.ArrayList;
+import java.util.List;
+import model.Movie;
 
 /**
  *
- * @author pts03
+ * @author GIA TIEN
  */
-public class EditProfile extends HttpServlet {
+public class MovieDetailServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,31 +34,18 @@ public class EditProfile extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String rawId = request.getParameter("userId");
-        String name = request.getParameter("name");
-        String email = request.getParameter("email");
-        String phonenumber = request.getParameter("phonenumber");
-        String password = request.getParameter("password");
-        
-        int userId = Integer.parseInt(rawId);
-        
-        Account account = new Account();
-        account.setId(userId);
-        account.setFullName(name);
-        account.setEmail(email);
-        account.setPhone(phonenumber);
-        account.setPassword(password);
-        
-        EditProfileDAO ed = new EditProfileDAO();
-        boolean s = ed.updateUserProfile(account);
-        if (s) {
-            request.setAttribute("success", "EditProfile í succesfully");
-            request.getRequestDispatcher("Profile.jsp").forward(request, response);
-        } else {
-            request.setAttribute("error", "Error");
-            request.getRequestDispatcher("Profile.jsp").forward(request, response);
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet MovieDetailServlet</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet MovieDetailServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
-                
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -69,7 +60,14 @@ public class EditProfile extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        AdminDAO dao = new AdminDAO();
+        String id = request.getParameter("id");
+        int movieId = Integer.parseInt(id);
+        Movie mv = dao.getMovieById(movieId);
+        List<Movie> m = dao.getListMovie();
+        request.setAttribute("listMovie", m);
+        request.setAttribute("movie", mv);
+        request.getRequestDispatcher("DetailMovies.jsp").forward(request, response);
     }
 
     /**

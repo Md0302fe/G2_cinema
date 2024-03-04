@@ -5,7 +5,6 @@
 package controller.Controller.Admin;
 
 import dal.AdminDAO;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -23,11 +22,11 @@ import model.Movie;
 
 /**
  *
- * @author MinhDuc
+ * @author ADMIN
  */
-@WebServlet(name = "AddMovieServlet", urlPatterns = {"/AddMovie"})
+@WebServlet(name = "UpdateMovie", urlPatterns = {"/UpdateMovie"})
 @MultipartConfig
-public class AddMovieServlet extends HttpServlet {
+public class UpdateMovie extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -46,10 +45,10 @@ public class AddMovieServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddMovieServlet</title>");
+            out.println("<title>Servlet UpdateMovie</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AddMovieServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UpdateMovie at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -67,7 +66,19 @@ public class AddMovieServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String Rawid = request.getParameter("editItem");
+
+        int id = Integer.parseInt(Rawid);
+
+        if(Rawid == null){
+            id = 1;
+        }
+        AdminDAO dao = new AdminDAO();
+        Movie movie = dao.getMovieById(id);
+
+        request.setAttribute("item", movie);
+        request.setAttribute("id", id);
+        request.getRequestDispatcher("Admin_Movie_Update.jsp").forward(request, response);
     }
 
     /**
@@ -82,6 +93,7 @@ public class AddMovieServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+        String rawId = request.getParameter("id");
         String nameOfMovie = request.getParameter("Movie_Name");
         String duration_str = request.getParameter("Duration");
         String dateRelease = request.getParameter("releaseDate");
@@ -92,8 +104,24 @@ public class AddMovieServlet extends HttpServlet {
         String stars = request.getParameter("Stars");
         String language = request.getParameter("Language");
         String describel = request.getParameter("Describel");
+        int id = Integer.parseInt(rawId);
         
-        
+        // Delete old file start
+        AdminDAO dao = new AdminDAO();
+        Movie old = dao.getMovieById(id);
+        String delImgPath = getServletContext().getRealPath("Assets/Image/Movies_Image/") + File.separator + old.getMovie_img();
+        String delTrailerPath = getServletContext().getRealPath("Assets/Image/Movies_Trailer/") + File.separator + old.getMovie_trailer();
+        File imgDelete = new File(delImgPath);
+        File trailerDelete = new File(delTrailerPath);
+        if (imgDelete.delete() && trailerDelete.delete()) {
+            System.out.println("File deleted successfully");
+        } else if (imgDelete.delete() || trailerDelete.delete()) {
+            System.out.println("Some file can't be delete!");
+        } else {
+            System.out.println("Failed to delete the file");
+        }
+//          Delete old file end
+
         // XỬ LÝ FILE HÌNH ẢNH
         Part filePart = request.getPart("movie_image");
         String fileName = filePart.getSubmittedFileName();
@@ -102,6 +130,8 @@ public class AddMovieServlet extends HttpServlet {
         Part filePart2 = request.getPart("movie_trailer");
         String fileName2 = filePart2.getSubmittedFileName();
         String uploadPath2 = getServletContext().getRealPath("Assets/Image/Movies_Trailer/") + File.separator + fileName2;
+        System.out.println(uploadPath);
+        System.out.println(uploadPath2);
         try {
             FileOutputStream fos = new FileOutputStream(uploadPath);
             InputStream is = filePart.getInputStream();
@@ -109,8 +139,7 @@ public class AddMovieServlet extends HttpServlet {
             is.read(data);
             fos.write(data);
             fos.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
         }
         try {
             FileOutputStream fos = new FileOutputStream(uploadPath2);
@@ -119,33 +148,21 @@ public class AddMovieServlet extends HttpServlet {
             is.read(data);
             fos.write(data);
             fos.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
         }
         try {
             int duration = Integer.parseInt(duration_str);
             float rate = Float.parseFloat(rate_str);
-            AdminDAO dao = new AdminDAO();
-            Movie movie = new Movie(
-                    nameOfMovie,
-                    duration,
-                    dateRelease,
-                    rate,
-                    national,
-                    categorys,
-                    director,
-                    stars,
-                    language,
+
+            Movie movie = new Movie(nameOfMovie, duration, dateRelease, rate, national, categorys, director, stars, language,
                     describel,
                     fileName,
                     fileName2);
             //  SQL QUERY
-            dao.add_Movie_Admin(movie);
-            List<Movie> list = dao.getListMovie();
-            request.setAttribute("list", list);
-            request.getRequestDispatcher("Admin_AddMovie.jsp").forward(request, response);
-        } catch (Exception e) {
-            System.out.println("ERROR IN : AddMovieServlet.java ");
+            dao.updateMovie(id, movie);
+            response.sendRedirect("ListMovie");
+        } catch (IOException | NumberFormatException e) {
+            System.out.println("ERROR IN : UpdateMovieServlet.java ");
         }
     }
 
