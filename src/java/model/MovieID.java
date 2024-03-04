@@ -8,27 +8,30 @@ package model;
  *
  * @author MinhDuc
  */
-public class Date {
+public class MovieID {
 
-    private String show_date;
+    private int id;
 
-    public Date(String show_date) {
-        this.show_date = show_date;
+    public MovieID(int id) {
+        this.id = id;
     }
 
-    public String getShow_date() {
-        return show_date;
+    public MovieID() {
     }
 
-    public void setShow_date(String show_date) {
-        this.show_date = show_date;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Date{");
-        sb.append(", show_date=").append(show_date);
+        sb.append("MovieID{");
+        sb.append("id=").append(id);
         sb.append('}');
         return sb.toString();
     }
