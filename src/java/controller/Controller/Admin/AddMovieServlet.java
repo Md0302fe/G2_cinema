@@ -92,16 +92,19 @@ public class AddMovieServlet extends HttpServlet {
         String stars = request.getParameter("Stars");
         String language = request.getParameter("Language");
         String describel = request.getParameter("Describel");
-        
-        
+               
         // XỬ LÝ FILE HÌNH ẢNH
         Part filePart = request.getPart("movie_image");
         String fileName = filePart.getSubmittedFileName();
         String uploadPath = getServletContext().getRealPath("Assets/Image/Movies_Image/") + File.separator + fileName;
-        // XỬ LÝ FILE TRAILER
+        System.out.println("PATH IMAGE: "+fileName);
+               
+        // XỬ LÝ FILE TRAILER        
         Part filePart2 = request.getPart("movie_trailer");
         String fileName2 = filePart2.getSubmittedFileName();
         String uploadPath2 = getServletContext().getRealPath("Assets/Image/Movies_Trailer/") + File.separator + fileName2;
+        System.out.println("PATH IMAGE: "+fileName2);
+        
         try {
             FileOutputStream fos = new FileOutputStream(uploadPath);
             InputStream is = filePart.getInputStream();
@@ -121,13 +124,13 @@ public class AddMovieServlet extends HttpServlet {
             fos.close();
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }      
+        
         try {
             int duration = Integer.parseInt(duration_str);
             float rate = Float.parseFloat(rate_str);
             AdminDAO dao = new AdminDAO();
-            Movie movie = new Movie(
-                    nameOfMovie,
+            Movie movie = new Movie(nameOfMovie,
                     duration,
                     dateRelease,
                     rate,
@@ -138,8 +141,9 @@ public class AddMovieServlet extends HttpServlet {
                     language,
                     describel,
                     fileName,
-                    fileName2);
+                    fileName2);           
             //  SQL QUERY
+            System.out.println("MODEL MOVIE: "+movie);
             dao.add_Movie_Admin(movie);
 //            List<Movie> list = dao.getListMovie();
 //            request.setAttribute("list", list);

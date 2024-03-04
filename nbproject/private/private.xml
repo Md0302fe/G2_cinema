@@ -7,8 +7,11 @@
             <file>file:/D:/Workspace/SWP/G2_cinema/web/HomePage.jsp</file>
             <file>file:/D:/Workspace/SWP/G2_cinema/src/java/dal/DBContext.java</file>
             <file>file:/D:/Workspace/SWP/G2_cinema/web/Admin_Movie_Management.jsp</file>
+            <file>file:/D:/Workspace/SWP/G2_cinema/src/java/controller/PublicController/BookingServlet.java</file>
+            <file>file:/D:/Workspace/SWP/G2_cinema/web/WEB-INF/web.xml</file>
             <file>file:/D:/Workspace/SWP/G2_cinema/src/java/dal/AdminDAO.java</file>
             <file>file:/D:/Workspace/SWP/G2_cinema/src/java/model/Movie.java</file>
+            <file>file:/D:/Workspace/SWP/G2_cinema/src/java/controller/PublicController/home.java</file>
         </group>
     </open-files>
 </project-private>
