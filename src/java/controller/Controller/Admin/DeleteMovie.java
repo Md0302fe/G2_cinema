@@ -37,7 +37,7 @@ public class DeleteMovie extends HttpServlet {
             throws ServletException, IOException {
         String rawId = request.getParameter("delItem");
         int id = Integer.parseInt(rawId);
-
+        System.out.println("IDDDD"+id);
         AdminDAO dao = new AdminDAO();
         Movie m = dao.getMovieById(id);
         String uploadPath = getServletContext().getRealPath("Assets/Image/Movies_Image/") + File.separator + m.getMovie_img();
