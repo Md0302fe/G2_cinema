@@ -60,10 +60,16 @@ public class ListMovie extends HttpServlet {
     throws ServletException, IOException {
         AdminDAO dao = new AdminDAO();
         List<Movie> list = dao.getListMovie();
-        
+        System.out.println(list);
         request.setAttribute("list", list);
         request.getRequestDispatcher("Admin_Movie_Management.jsp").forward(request, response);
     } 
+    
+    public static void main(String[] args) {
+        AdminDAO dao = new AdminDAO();
+        List<Movie> list = dao.getListMovie();
+        System.out.println(list);
+    }
 
     /** 
      * Handles the HTTP <code>POST</code> method.
