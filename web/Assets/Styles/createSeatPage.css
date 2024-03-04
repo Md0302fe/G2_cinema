@@ -1,0 +1,317 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Feb 28, 2024, 11:17:32 PM
+    Author     : GIA TIEN
+*/
+body {
+    font-family: Nunito Sans, sans-serif !important;
+    color: #4a4a4a;
+}
+
+.flex {
+    display: flex;
+}
+
+.bold {
+    font-weight: bolder;
+}
+
+.all_seat {
+    display: flex;
+    width: 100%;
+}
+
+.content_left {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.content_right {
+    width: 30%;
+}
+
+.change_time_movie {
+    width: 30%;
+    margin-bottom: 26px;
+    margin-left: 30px;
+}
+
+.show_time_movie {
+    margin-bottom: 40px;
+}
+
+.time_movie {
+    width: 145%;
+}
+
+/* .time_slot{
+    padding-top: 26px;
+} */
+
+.time_slot {
+    margin-bottom: 6px;
+    margin-top: 6px;
+    margin-right: 10px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: .875rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-width: 1px;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.time_slot:hover {
+    background-color: #034ea2;
+    color: #fff;
+}
+
+.seat_items {
+    display: flex;
+    margin-right: 1px;
+    margin-top: 10px;
+}
+
+.border_seats {
+    width: 2rem;
+    height: 1.8rem;
+    margin-right: 3px;
+    margin-left: 3px;
+    font-size: 13px;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.border_seats:hover {
+    background-color: rgb(242, 107, 56);
+    color: #fff;
+}
+
+.text1 {
+    width: 8px;
+    line-height: 1.7rem;
+    margin-right: 92px;
+    font-size: .875rem;
+
+}
+
+.text2 {
+    line-height: 1.7rem;
+    margin-left: 92px;
+    font-size: .875rem;
+}
+
+.man_hinh {
+    text-align: center;
+    --tw-text-opacity: 1;
+    color: rgb(204 204 204/var(--tw-text-opacity));
+    font-size: .75rem;
+    margin-left: -70px;
+}
+
+.border_orange {
+    width: 91%;
+    height: 4px;
+    background-color: rgb(242, 107, 56);
+    margin: 1rem 0;
+    word-wrap: break-word;
+    padding: 0 60px 0 0;
+}
+
+.all_status {
+    display: flex;
+}
+
+.status_left {
+    display: flex;
+    width: 70%;
+    padding-top: 8px;
+}
+
+.GDB {
+    display: flex;
+    margin-right: 18px;
+    font-size: .875rem;
+}
+
+.GDB_border_color1 {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 0.25rem;
+    background-color: grey;
+    margin-right: 6px;
+}
+
+.GDC {
+    display: flex;
+    font-size: .875rem;
+}
+
+.GDC_border_color2 {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 0.25rem;
+    background-color: rgb(242, 107, 56);
+    margin-right: 6px;
+}
+
+.status_right {
+    display: flex;
+    padding-top: 8px;
+}
+
+.VIP_seat {
+    display: flex;
+    margin-right: 18px;
+    font-size: .875rem;
+}
+
+.VIP {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 0.25rem;
+    margin-right: 6px;
+}
+
+.single_seat {
+    display: flex;
+    font-size: .875rem;
+}
+
+.single {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 0.25rem;
+    margin-right: 6px;
+}
+
+.line_booking {
+    width: 100%;
+    height: 6px;
+    background-color: rgb(242, 107, 56);
+    margin: 1rem 0;
+    word-wrap: break-word;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+.movie_rated {
+    width: 40px;
+    margin-top: 10px !important;
+    border-radius: 0.25rem;
+    margin: 14px 10px;
+    padding: 6px 8px;
+    font-size: .875rem;
+    background-color: rgb(242, 111, 64);
+    color: #fff;
+    font-weight: 700;
+}
+
+.booking_top {
+    display: flex;
+}
+
+.movie_name {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.booking_info {
+    display: flex;
+}
+
+.content_booking {
+    margin-left: 10px;
+}
+
+.subtitle {
+    margin-top: 16px;
+}
+
+.total_booking {
+    margin-top: 20px;
+}
+
+.theater_name {
+    font-size: 1rem;
+    margin-bottom: -6px;
+}
+
+.movie_time {
+    margin-left: 6px;
+}
+
+.date_movie {
+    margin-left: 6px;
+}
+
+.line_totalbooking {
+    margin-bottom: 20px;
+    margin-top: 5px;
+    border-style: dashed;
+    border-top-width: 0px;
+    border-color: gray;
+    border-width: 1px;
+}
+
+.price_seat_black {
+    margin-left: 198px;
+}
+
+.price_seat_orange {
+    margin-left: 198px;
+    color: rgb(242, 111, 64);
+}
+
+.text_back {
+    width: 50%;
+    height: 48px;
+    color: rgb(242, 111, 64);
+    margin-right: 38px;
+}
+
+.text_continute {
+    width: 50%;
+    height: 48px;
+    background-color: rgb(242, 111, 64);
+    color: #fff;
+    margin-left: 38px;
+    transition: background-color 0.2s;
+}
+
+.text_continute:hover {
+    background-color: rgb(255, 149, 63)
+}
+
+.pd-t-10px {
+    padding-top: 10px;
+}
+
+.mg-t-10px {
+    margin-left: 10px
+}
+
+.time_slot.selected {
+    background-color: #034ea2;
+    color: #fff;
+}
+
+.active_duration {
+    background-color: #034ea2;
+    color: #fff;
+}
+
+.active_duration_seat {
+    background-color: rgb(242, 111, 64);
+    color: #fff;
+}
+
+.bill_booking {
+    display: none;
+}

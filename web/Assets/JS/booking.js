@@ -4,7 +4,6 @@
  */
 
 
-//// Chọn Vị trí
 document.addEventListener('DOMContentLoaded', function () {
     var locationArrow = document.getElementById('locationArrow');
     var locationText = document.getElementById('locationText');
@@ -20,9 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Loại bỏ đường viền khi vị trí được chọn
             locationSelected = false;
         } else {
-
             locationText.style.border = 'none';
-
             locationSelected = true;
         }
     });
@@ -35,11 +32,25 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             locationList.style.display = 'block';
             locationText.style.border = 'none';
-
             locationSelected = true;
         }
     });
+
+    // Thêm console.log để kiểm tra khi người dùng chọn vị trí
+    var locationItems = document.querySelectorAll('.location-item');
+
+    locationItems.forEach(function (item) {
+        item.addEventListener('click', function () {
+            var selectedLocation = item.querySelector('span').innerText;
+            console.log("Selected location: ", selectedLocation); // Thêm console.log để hiển thị thông tin vị trí đã chọn
+            // Update Galaxy section with selected location
+            var galaxyLocation = document.getElementById('galaxyLocation');
+            galaxyLocation.textContent = selectedLocation;
+        });
+    });
 });
+
+
 
 
 
@@ -50,51 +61,42 @@ document.addEventListener('DOMContentLoaded', function () {
     var showtimeInfo = document.getElementById('showtimeInfo');
     var selectedShowtimeInfo = document.getElementById('selectedShowtimeInfo');
     var showtimeItems = document.querySelectorAll('.showtime-item');
-
-    // Biến để lưu trạng thái chọn suất
     var showtimeSelected = false;
 
-    // Thêm sự kiện click cho mũi tên chọn suất
+    showtimeInfo.style.display = 'none';
+
     showtimeArrow.addEventListener('click', function () {
         if (showtimeSelected) {
-            // Ẩn selectedShowtimeInfo và hiển thị lại showtimeInfo
             showtimeInfo.style.display = 'block';
             selectedShowtimeInfo.style.display = 'none';
-            // Đặt lại trạng thái chọn suất
             showtimeSelected = false;
         } else {
-            // Hiển thị lại danh sách thời gian và ẩn selectedShowtimeInfo
             showtimeInfo.style.display = 'none';
             selectedShowtimeInfo.style.display = 'block';
-
-
-            // Đặt trạng thái chọn suất
             showtimeSelected = true;
         }
-        // Hiển thị lại tất cả các mục thời gian
         showtimeItems.forEach(function (showtimeItem) {
             showtimeItem.style.display = 'block';
         });
     });
 
-    // Thêm sự kiện click cho từng mục thời gian
     showtimeItems.forEach(function (item) {
         item.addEventListener('click', function () {
             var selectedShowtime = item.textContent;
             selectedShowtimeInfo.textContent = selectedShowtime;
-            // Ẩn tất cả các mục thời gian khi chọn một mục
             showtimeItems.forEach(function (showtimeItem) {
                 showtimeItem.style.display = 'none';
             });
-            // Hiển thị selectedShowtimeInfo
             selectedShowtimeInfo.style.display = 'block';
-
-
-            // Đặt lại trạng thái chọn suất
             showtimeSelected = false;
+
+            // Update Galaxy section with selected showtime
+            var galaxyShowtime = document.getElementById('galaxyShowtime');
+            galaxyShowtime.textContent = selectedShowtime;
         });
     });
 });
+
 
 
 
@@ -131,18 +133,26 @@ document.addEventListener("DOMContentLoaded", function () {
     var movieItems = document.querySelectorAll('.movielist .movie-item');
     movieItems.forEach(function (item) {
         item.addEventListener('click', function () {
-            // Hide movie-info and show selected movie info
             movieInfo.style.display = 'none';
             selectedMovieInfo.style.display = 'block';
 
-            // Update selected movie name and image
             var movieName = item.querySelector('span').innerText;
             var movieImageSrc = item.querySelector('img').src;
 
             selectedMovieNameInfo.innerText = movieName;
             selectedMovieImage.src = movieImageSrc;
+
+            // Update Galaxy section with selected movie title and image
+            var galaxyMovieTitle = document.getElementById('galaxyMovieTitle');
+            galaxyMovieTitle.textContent = movieName;
+
+            var galaxyMovieImage = document.getElementById('galaxyMovieImage');
+            galaxyMovieImage.src = movieImageSrc;
         });
     });
+
+
+
 
     // Add click event listener to the back button
     var backButton = document.querySelector('.back-button');
@@ -158,6 +168,14 @@ document.addEventListener("DOMContentLoaded", function () {
         // Add your continue button functionality here
     });
 });
+
+
+
+
+
+
+
+
 
 
 

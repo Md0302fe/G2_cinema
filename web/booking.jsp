@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +34,7 @@
         <a href="#">Xác nhận</a>
     </nav>-->
 
-    <section>
+     <section>
         <!-- Phần "Chọn vị trí", "Chọn phim", và "Chọn suất" -->
         <div class="selection-container">
             <div class="location-selection">
@@ -64,23 +65,15 @@
                     <div class="movie-info" id="movieInfo" style="display: none;">
 
                         <p>
+                            
                         <div class="movielist">
+                             <c:forEach items="${requestScope.list}" var="m">
                             <div class="movie-item">
-                                <img src="Assets/Image/Movies_Image/movie-2.jpg" alt=""/>
-                                <span>Quỷ cẩu </span>
+                                <img src="./Assets/Image/Movies_Image/${m.movie_img}" alt="Quỷ Cẩu">
+                                <span>${m.name} </span>
                             </div>
-                            <div class="movie-item">
-                                <img src="Assets/Image/Movies_Image/movie-2.jpg" alt=""/>
-                                <span>Quỷ cẩu </span>
-                            </div>
-                            <div class="movie-item">
-                                <img src="Assets/Image/Movies_Image/movie-2.jpg" alt=""/>
-                                <span>Quỷ cẩu </span>
-                            </div>
-                            <div class="movie-item">
-                                <img src="Assets/Image/Movies_Image/movie-2.jpg" alt=""/>
-                                <span>Quỷ cẩu </span>
-                            </div>
+                            </c:forEach>
+
                         </div>
                         </p>
 
@@ -138,16 +131,16 @@
             <div class="movie-details-container">
 
                 <div class="movie-details-content">
-                    <img src="https://via.placeholder.com/300" alt="Movie Poster">
+                    <img id="galaxyMovieImage" src="" alt="">
                 </div>
                 <div>
-                    <h2>Movie Title</h2>
+                    <h2 id="galaxyMovieTitle">Movie Title</h2>
                 </div>
                 <div>
-                    <p>Galaxy Cần Thơ - Rạp 1</p>
+                    <p>Galaxy: <span id="galaxyLocation"></span></p>
                 </div>
                 <div>
-                    <p>Suất: 19:15 - Thứ Sáu, 19/01/2024</p>
+                    <p>Suất: <span id="galaxyShowtime"></span></p>
                     <!-- Thêm đường gạch đứt sau phần suất -->
                     <hr class="separator-line">
                 </div>

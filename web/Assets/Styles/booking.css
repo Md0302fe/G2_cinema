@@ -29,13 +29,12 @@ header {
     justify-content: space-between;
 }
 
-/*nav {
+nav {
     background-color: #333;
     color: #fff;
     padding: 2em;
     text-align: center;
-    margin-top: 121px; 
-}*/
+}
 
 nav a {
     color: #fff;
@@ -80,7 +79,7 @@ section {
 
 .selection-container {
     margin-bottom: 15px;
-    width: 75%;
+    width: 73%;
 }
 
 .location-selection,
@@ -125,8 +124,7 @@ section {
 }
 
 .movie-details-content img {
-    width: 80%;
-    height: auto;
+    width: 300px;
     border-radius: 5px;
 }
 
@@ -243,6 +241,7 @@ body {
     display: flex;
     justify-content: space-around;
     BACKGROUND-COLOR: #edebeb;
+    width: 50%;
 }
 
 #movieList {
@@ -271,20 +270,18 @@ body {
 .movie-item {
     width: 22%;
     margin-top: 30px;
-    flex-direction: column;
-    display: flex;
 }
 
 .movie-item img {
+    max-width: 100%;
     width: 90%;
-    margin: 0 auto;
 }
 
 
 .movielist {
     display: inline-block;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 
 }
 
@@ -304,19 +301,15 @@ body {
 }
 
 .locationlist span {
-    padding: 8px;
-    margin-top: -17px;
-    margin-left: -19px;
+    padding: 3px;
+    margin-top: -10px;
+    margin-left: -22px;
     display: flex;
     justify-content: space-evenly;
     float: left;
 
 
 }
-
-
-
-
 
 
 .showtime-item {

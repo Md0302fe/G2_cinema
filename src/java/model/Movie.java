@@ -4,8 +4,6 @@
  */
 package model;
 
-import java.util.Date;
-
 /**
  *
  * @author MinhDuc
@@ -39,6 +37,11 @@ public class Movie {
         this.description = description;
         this.movie_img = movie_img;
         this.movie_trailer = movie_trailer;
+    
+    }
+
+    public Movie(int i, String movie_1, int i0, String string, float f, String usa, String action_Drama, String director_1, String actor_1_Actor_2, String english, String description_1, String movie1jpg, String trailer1mp4) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public int getId() {
@@ -164,5 +167,6 @@ public class Movie {
         sb.append(", movie_trailer=").append(movie_trailer);
         sb.append('}');
         return sb.toString();
+//        return name + "\t" + duration + "\t" + movie_img;
     }
 }
