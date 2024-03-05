@@ -87,6 +87,27 @@
                     </div>
                 </div>
             </li>
+<<<<<<< HEAD
+            <!-- Nav Item - Charts -->
+            <li class="nav-item active">
+                <a class="nav-link" href="Admin_AddMovie.jsp">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Add Movie</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="ListMovie">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Management Movies</span></a>
+            </li>
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Tables</span></a>
+            </li>
+            <!-- Divider -->
+=======
+>>>>>>> bb5548bdc6404d373b7491950a0ab56d65ecae4f
             <hr class="sidebar-divider d-none d-md-block">
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">

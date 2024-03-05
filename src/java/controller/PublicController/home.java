@@ -13,7 +13,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
+import model.Account;
 import model.Movie;
 
 /**
@@ -58,8 +60,13 @@ public class home extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         AdminDAO dao = new AdminDAO();
+        
+        //set account to session
+        HttpSession session = request.getSession();
+        Account acc = (Account) session.getAttribute("account");
+        
         List<Movie> m = dao.getListMovie();
-        System.out.println(m);
+        request.setAttribute("account", acc);
         request.setAttribute("listMovie", m);
         request.getRequestDispatcher("HomePage.jsp").forward(request, response);
     } 

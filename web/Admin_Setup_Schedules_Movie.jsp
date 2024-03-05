@@ -116,24 +116,80 @@
                 return selectedDates.has(date.toDateString());
             }
 
-            buttonCheck.addEventListener("click", () => {
-                var selectedDate = new Date(dateInput.value);
-                selectedDates.clear();
-                console.log("Selected Date: " + selectedDate);
-                console.log("List Date : " + selectedDates);
+//            buttonCheck.addEventListener("click", () => {
+//                var selectedDate = new Date(dateInput.value);
+//                selectedDates.clear();
+//                console.log("Selected Date: " + selectedDate);
+//                console.log("List Date : " + selectedDates);
+//
+//                if (selectedDate.toDateString() === lastInput) {
+//                    showWarning("Ngày này đã được lên lịch chiếu trước đó, vui lòng chọn ngày khác !!!");
+//                } else if (!isFutureDate(selectedDate)) {
+//                    showWarning("Vui lòng chỉ chọn ngày trong tương lai để lên lịch !!!");
+//                } else if (isDuplicateDate(selectedDate)) {
+//                    showWarning("Ngày này đã được lên lịch chiếu trước đó, vui lòng chọn ngày khác !!!");
+//                } else {
+//                    lastInput = selectedDate.toDateString();
+//                    showSuccess();
+//                    selectedDates.add(selectedDate.toDateString());
+//                }
+//            });
 
-                if (selectedDate.toDateString() === lastInput) {
-                    showWarning("Ngày này đã được lên lịch chiếu trước đó, vui lòng chọn ngày khác !!!");
+// Lưu ngày vào cookie
+            function setCookie(name, value, days) {
+                var expires = "";
+                if (days) {
+                    var date = new Date();
+                    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+                    expires = "; expires=" + date.toUTCString();
+                }
+                document.cookie = name + "=" + value + expires + "; path=/";
+            }
+
+// Đọc giá trị cookie
+            function getCookie(name) {
+                var nameEQ = name + "=";
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i];
+                    while (cookie.charAt(0) == ' ') {
+                        cookie = cookie.substring(1, cookie.length);
+                    }
+                    if (cookie.indexOf(nameEQ) == 0) {
+                        return cookie.substring(nameEQ.length, cookie.length);
+                    }
+                }
+                return null;
+            }
+
+// Kiểm tra và hiển thị cảnh báo
+            function checkAndShowWarning() {
+                var selectedDate = new Date(dateInput.value);
+
+                // Lấy giá trị cookie trước đó
+                var selectedDatesCookie = getCookie("selectedDates");
+
+                // Chuyển giá trị cookie thành mảng
+                var selectedDatesArray = selectedDatesCookie ? selectedDatesCookie.split(",") : [];
+
+                if (selectedDatesArray.includes(selectedDate.toDateString())) {
+                    showWarning("Ngày này đã được chọn trước đó, vui lòng chọn ngày khác !!!");
                 } else if (!isFutureDate(selectedDate)) {
                     showWarning("Vui lòng chỉ chọn ngày trong tương lai để lên lịch !!!");
-                } else if (isDuplicateDate(selectedDate)) {
-                    showWarning("Ngày này đã được lên lịch chiếu trước đó, vui lòng chọn ngày khác !!!");
                 } else {
+                    // Nếu ngày hợp lệ, thêm vào mảng và cập nhật cookie
+                    selectedDatesArray.push(selectedDate.toDateString());
+                    setCookie("selectedDates", selectedDatesArray.join(","), 30); // Cookie hợp lệ trong 30 ngày
+
+                    // Hiển thị thông báo thành công
                     lastInput = selectedDate.toDateString();
                     showSuccess();
-                    selectedDates.add(selectedDate.toDateString());
+                    selectedDates.add(lastInput);
                 }
-            });
+            }
+
+// Sự kiện nhấn nút kiểm tra
+            buttonCheck.addEventListener("click", checkAndShowWarning);
 
         </script>
 
