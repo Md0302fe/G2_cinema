@@ -58,6 +58,7 @@ public class AccountDAO extends DBContext {
                         rs.getString("password"),
                         rs.getString("user_image"),
                         rs.getInt("role"));
+                a.setId(rs.getInt("user_id"));
                 return a;
             }
         } catch (SQLException e) {

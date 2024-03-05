@@ -134,14 +134,17 @@
                 </div>
             <c:if test="${sessionScope.account==null}">
                 <div class="nav__user">
-                    <a class="nav__login--btn" href="login"> <i class="fa-regular fa-user"></i> Đăng nhập</a>
+                    <a class="nav__login--btn" href="login" > <i class="fa-regular fa-user"></i> Đăng nhập</a>
                 </div>
             </c:if>
+                
             <c:if test="${sessionScope.account!=null}">
                 <div class="nav__user">
-                    <a class="nav__login--btn" style="text-decoration: none" href="#"><i style="font-size: 18px" class="fa-regular fa-user"></i> ${sessionScope.account.fullName}</a>
+                    <a class="nav__login--btn" style="text-decoration: none" href="ProfileSevelet"><i style="font-size: 18px" class="fa-regular fa-user"></i> ${sessionScope.account.fullName}</a>
                 </div>
             </c:if>
+        
+                
 
 
             <div class="nav__mobile">

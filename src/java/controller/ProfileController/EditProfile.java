@@ -13,8 +13,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import model.Account;
-import model.Account1;
+
 
 /**
  *
@@ -34,28 +36,8 @@ public class EditProfile extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String userId = request.getParameter("userId");
-        String name = request.getParameter("name");
-        String email = request.getParameter("email");
-        String phonenumber = request.getParameter("phonenumber");
-        String password = request.getParameter("password");
+        //String userId = request.getParameter("userId");
         
-        Account1 account = new Account1();
-        account.setUser_id(userId);
-        account.setFullName(name);
-        account.setEmail(email);
-        account.setPhone(phonenumber);
-        account.setPassword(password);
-        
-        EditProfileDAO ed = new EditProfileDAO();
-        boolean s = ed.updateUserProfile(account);
-        if (s) {
-            request.setAttribute("success", "EditProfile í succesfully");
-            request.getRequestDispatcher("Profile.jsp").forward(request, response);
-        } else {
-            request.setAttribute("error", "Error");
-            request.getRequestDispatcher("Profile.jsp").forward(request, response);
-        }
                 
     }
 
@@ -71,7 +53,30 @@ public class EditProfile extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+       AccountDAO dao = new AccountDAO();
+        //Account acc = dao.login(LEGACY_DO_HEAD, LEGACY_DO_HEAD)
+        String id = request.getParameter("id");
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String phonenumber = request.getParameter("phonenumber");
+        String password = request.getParameter("password");
+        
+        String hashPass = dao.generateMD5Hash(password);
+        //String hashPass = dao.generateMD5Hash(password);
+         //int id1 = Integer.parseInt(id);
+         //int id2 = request.getIntHeader("id");
+        
+        EditProfileDAO ed = new EditProfileDAO();
+        boolean s = ed.updateUserProfile(name, hashPass, phonenumber, email, id);
+        if (s) {
+            request.setAttribute("success", "EditProfile is succesfully");
+            response.sendRedirect("HomePage.jsp");
+        } else {
+            request.setAttribute("error", "Error");
+            request.getRequestDispatcher("Profile.jsp").forward(request, response);
+        }
+       
+        //processRequest(request, response);
     }
 
     /**
