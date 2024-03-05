@@ -70,7 +70,7 @@ public class UpdateMovie extends HttpServlet {
 
         int id = Integer.parseInt(Rawid);
 
-        if(Rawid == null){
+        if (Rawid == null) {
             id = 1;
         }
         AdminDAO dao = new AdminDAO();
@@ -104,8 +104,10 @@ public class UpdateMovie extends HttpServlet {
         String stars = request.getParameter("Stars");
         String language = request.getParameter("Language");
         String describel = request.getParameter("Describel");
+        String trailer_link = request.getParameter("trailer_link");
+
         int id = Integer.parseInt(rawId);
-        
+
         // Delete old file start
         AdminDAO dao = new AdminDAO();
         Movie old = dao.getMovieById(id);
@@ -157,7 +159,9 @@ public class UpdateMovie extends HttpServlet {
             Movie movie = new Movie(nameOfMovie, duration, dateRelease, rate, national, categorys, director, stars, language,
                     describel,
                     fileName,
-                    fileName2);
+                    fileName2,
+                    trailer_link
+            );
             //  SQL QUERY
             dao.updateMovie(id, movie);
             response.sendRedirect("ListMovie");

@@ -32,23 +32,28 @@
             <hr class="sidebar-divider">
             <!-- Heading -->
             <div class="sidebar-heading">
+            </div>
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="Admin_AddMovie.jsp">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Add Movie</span></a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="ListMovie">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Management Movies</span></a>
+            </li>            
+            <li class="nav-item ">
+                <a class="nav-link" href="Admin_Setup_Schedules_Movie.jsp">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Set Up Schedules</span></a>
+            </li>           
+            <!-- Divider -->
+            <div class="sidebar-heading">
                 Interface
             </div>
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                   aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
-                    </div>
-                </div>
-            </li>
+            <hr class="sidebar-divider">
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -67,38 +72,29 @@
                     </div>
                 </div>
             </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-            <!-- Heading -->
-            <div class="sidebar-heading">
-            </div>
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                   aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                   aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Components</span>
                 </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
+                        <h6 class="collapse-header">Custom Components:</h6>
+                        <a class="collapse-item" href="buttons.html">Buttons</a>
+                        <a class="collapse-item" href="cards.html">Cards</a>
                     </div>
                 </div>
             </li>
+<<<<<<< HEAD
             <!-- Nav Item - Charts -->
             <li class="nav-item active">
                 <a class="nav-link" href="Admin_AddMovie.jsp">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Add Movie</span></a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="ListMovie">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Management Movies</span></a>
@@ -110,6 +106,8 @@
                     <span>Tables</span></a>
             </li>
             <!-- Divider -->
+=======
+>>>>>>> bb5548bdc6404d373b7491950a0ab56d65ecae4f
             <hr class="sidebar-divider d-none d-md-block">
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
