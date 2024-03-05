@@ -74,18 +74,7 @@
                         <div class="rel">
                             <a href="#">Rạp <i class="fa-solid fa-angle-down"></i></a>
                             <ul class="movie__cinema--menu cinema b-shadow tc abs">
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
+                                <li><a href="#">Tên rạp</a></li>                              
                             </ul>
                         </div>
                     </li>
