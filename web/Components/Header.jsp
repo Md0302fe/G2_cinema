@@ -26,7 +26,7 @@
                                         <c:forEach items="${listMovie}" var="m" begin="1" end="4">
                                             <li class="tc">
                                                 <a href="MovieDetailServlet?id=${m.id}">
-                                                    <img class="movie-showing" src="./Assets/Image/Header_Image/${m.movie_img}" alt="movie 1" />
+                                                    <img class="movie-showing" src="./Assets/Image/Movies_Image/${m.movie_img}" alt="movie 1" />
                                                     <h5>${m.name}</h5>
                                                 </a>
                                             </li>
@@ -39,7 +39,7 @@
                                         <c:forEach items="${listMovie}" var="m" begin="1" end="4">
                                             <li class="tc">
                                                 <a href="MovieDetailServlet?id=${m.id}">
-                                                    <img class="movie-showing" src="./Assets/Image/Header_Image/${m.movie_img}" alt="movie 1" />
+                                                    <img class="movie-showing" src="./Assets/Image/Movies_Image/${m.movie_img}" alt="movie 1" />
                                                     <h5>${m.name}</h5>
                                                 </a>
                                             </li>
@@ -74,18 +74,7 @@
                         <div class="rel">
                             <a href="#">Rạp <i class="fa-solid fa-angle-down"></i></a>
                             <ul class="movie__cinema--menu cinema b-shadow tc abs">
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
+                                <li><a href="#">Tên rạp</a></li>                              
                             </ul>
                         </div>
                     </li>
