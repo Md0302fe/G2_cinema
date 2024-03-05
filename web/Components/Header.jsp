@@ -23,10 +23,10 @@
                                 <li>
                                     <div><a href="#">PHIM ĐANG CHIẾU</a></div>
                                     <ul class="flex movie-demo jca">
-                                        <c:forEach items="${listMovie}" var="m" begin="1" end="4">
+                                        <c:forEach items="${listMovie}" var="m" begin="0" end="3">
                                             <li class="tc">
                                                 <a href="MovieDetailServlet?id=${m.id}">
-                                                    <img class="movie-showing" src="./Assets/Image/Movies_Image/${m.movie_img}" alt="movie 1" />
+                                                    <img class="movie-showing" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="movie 1" />
                                                     <h5>${m.name}</h5>
                                                 </a>
                                             </li>
@@ -39,7 +39,7 @@
                                         <c:forEach items="${listMovie}" var="m" begin="1" end="4">
                                             <li class="tc">
                                                 <a href="MovieDetailServlet?id=${m.id}">
-                                                    <img class="movie-showing" src="./Assets/Image/Movies_Image/${m.movie_img}" alt="movie 1" />
+                                                    <img class="movie-showing" src="./Assets/Image/Movies_Image_Vip/${m.movie_img}" alt="movie 1" />
                                                     <h5>${m.name}</h5>
                                                 </a>
                                             </li>
