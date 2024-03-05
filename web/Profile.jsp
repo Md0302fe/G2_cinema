@@ -35,9 +35,7 @@
                          style="height: 100px; width: 100px; margin-left: 120px; margin-top: 20px;">
                     <div class="in4">
 
-                        <% String account = (String) session.getAttribute("account"); %>
-                        <h4><%=account %></h4>
-                        <p>Start</p>
+                        <h4>${sessionScope.account.fullName}</h4>
                     </div>
                 </div>
                 <div id="content">
