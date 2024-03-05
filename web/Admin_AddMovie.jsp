@@ -39,14 +39,18 @@
                                         <div class="select-Image">
                                             <label style="font-weight:800" >Chọn ảnh</label>
                                             <input id="imageInput" class="select-img" type="file" accept="image/*" name="movie_image" required>
-
-                                            <label style="font-weight: 800" >Chọn trailer</label>
-                                            <input class="select-trailer" type="file" accept="image/*" name="movie_trailer" required>
                                             <!-- <i class="fa-solid fa-hand-pointer icon"></i> -->
                                         </div>
                                         <img id="selected-image" src="./Assets/Image/Movies_Image/movie_015.jpg"
                                              alt="CHUA CO HINH ANH">
-                                        <hr>                            
+                                        <hr>      
+                                        <div class="select-Image">
+                                            <label style="font-weight: 800" >Chọn trailer</label>
+                                            <input id="imageInput" class="select-img" type="file" accept="image/*" name="movie_trailer" required>
+                                            <label style="font-weight: 800" >Thêm đường dẫn</label>
+                                            <input class="select-trailer" type="text" name="trailer_link" required>
+                                            <!-- <i class="fa-solid fa-hand-pointer icon"></i> -->
+                                        </div>
                                         <script>
                                             document.getElementById('imageInput').addEventListener('change', function (event) {
                                                 var selectedImage = document.getElementById('selected-image');
@@ -71,7 +75,7 @@
                                                     </i>
                                                     <label for="">Thời lượng</label>
                                                     <input type="text" size="3" placeholder="........"
-                                                           style="padding-left: 20px; margin-left: 4px;" required="" name="Duration">
+                                                           style="padding: 0 20px; margin-left: 4px;" required="" name="Duration">
                                                     <span style="margin-left: 4px;">Phút</span>
                                                 </p>
                                             </div>
