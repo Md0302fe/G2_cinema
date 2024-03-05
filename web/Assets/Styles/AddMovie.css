@@ -7,7 +7,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Author     : MinhDuc
 */
 .AddMovies-button {
-    color:black;
+    position: relative;
+    top: -12%;
+    left:108%;
+    color:white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: rgb(1, 105, 250);
     display: inline-block;
@@ -21,8 +24,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 .H3_button:hover,
 .AddMovies-button:hover {
-    opacity: 0.9;
-    color: white;
+    opacity: 0.8;
+    background-color: rgb(1, 105, 250);
     cursor: pointer;
     z-index: 999;
 }
@@ -48,7 +51,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 .select-Image {
     display: flex ;
-    align-items: center;
 }
 .select-Image .icon {
     padding: 0 8px;
@@ -193,4 +195,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 .checkk:active {
     background-color: #36723e; /* Màu nền xanh lá cây tối hơn khi click */
+}
+
+
+.select-trailer {
+    margin-left: 5px;
+    
 }
