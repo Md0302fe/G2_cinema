@@ -12,15 +12,16 @@ import model.Account;
  * @author pts03
  */
 public class EditProfileDAO extends DBContext{
-    public boolean updateUserProfile(String fullname, String password, String phone, String email , String id) {
-         String sql = "UPDATE Users SET fullname=?, password=?, phone=?, email=? WHERE user_id=?";
+
+    public boolean updateUserProfile(Account user) {
+         String sql = "UPDATE users SET fullname=?, email=?, phone=?, password=? WHERE user_id=?";
           try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setString(1,fullname);
-            st.setString(2, password);
-            st.setString(3, phone);
-            st.setString(4, email);
-            st.setString(5, id);
+            st.setString(1,user.getFullName());
+            st.setString(2, user.getEmail());
+            st.setString(3, user.getPhone());
+            st.setString(4, user.getPassword());
+            st.setInt(5, user.getId());
 
             int rowsUpdated = st.executeUpdate();
               System.out.println(rowsUpdated);

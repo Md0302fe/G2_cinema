@@ -35,7 +35,9 @@
                          style="height: 100px; width: 100px; margin-left: 120px; margin-top: 20px;">
                     <div class="in4">
 
+
                         <h4>${sessionScope.account.fullName}</h4>
+
                     </div>
                 </div>
                 <div id="content">
@@ -52,6 +54,7 @@
                     <div class="email">
                         <strong>Email :</strong><strong id="info">galaxy@.com</strong>
 
+                      
                     </div>
                     <form action="Logout" method="GET"><button id="logout" type="submit" style=" border-radius: 5px; background-color: red">Logout</button></form>
                     

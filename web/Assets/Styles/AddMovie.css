@@ -18,12 +18,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     z-index: 999;
     margin-bottom: 24px;
 }
+
+.H3_button:hover,
 .AddMovies-button:hover {
     opacity: 0.9;
     color: white;
     cursor: pointer;
     z-index: 999;
 }
+
 .container-fluid {
     color: black;
 }
@@ -139,16 +142,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .releaseDates {
     width: 100%;
 }
-.releaseDates::before {
-    content: "";
-    height: 20px;
-    width: 1.5px;
-    position: absolute;
-    top: 0;
-    background-color: rgb(151, 151, 151);
-    margin-left: -15px; /* Điều chỉnh giá trị margin-left cho phù hợp với vị trí mong muốn */
-    transform: translateY(25%);
-}
 
 .boxDerector {
     width: 100%;
@@ -176,4 +169,28 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     margin-bottom: 20px;
 }
 
+.checkk {
+    position :absolute;
+    top: 40.3%;
+    right: 16%;
+    background-color: #4CAF50; /* Màu nền xanh lá cây */
+    border: none;
+    color: white;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 8px;
+}
 
+.checkk:hover {
+    background-color: #45a049; /* Màu nền xanh lá cây sáng hơn khi hover */
+}
+
+.checkk:active {
+    background-color: #36723e; /* Màu nền xanh lá cây tối hơn khi click */
+}

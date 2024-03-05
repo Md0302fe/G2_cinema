@@ -9,7 +9,6 @@ import dal.AdminDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -18,10 +17,10 @@ import model.Movie;
 
 /**
  *
- * @author ADMIN
+ * @author kenga
  */
-@WebServlet(name="home", urlPatterns={"/a"})
-public class home extends HttpServlet {
+public class BookingServlet extends HttpServlet {
+   
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
@@ -37,10 +36,10 @@ public class home extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet home</title>");  
+            out.println("<title>Servlet BookingServlet</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet home at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet BookingServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -58,10 +57,10 @@ public class home extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         AdminDAO dao = new AdminDAO();
-        List<Movie> m = dao.getListMovie();
-        System.out.println(m);
-        request.setAttribute("listMovie", m);
-        request.getRequestDispatcher("HomePage.jsp").forward(request, response);
+        List<Movie> list = dao.getListMovie();
+        
+        request.setAttribute("list", list);
+        request.getRequestDispatcher("booking.jsp").forward(request, response);
     } 
 
     /** 

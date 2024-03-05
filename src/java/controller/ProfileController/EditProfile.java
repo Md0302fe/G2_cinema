@@ -4,17 +4,19 @@
  */
 package controller.ProfileController;
 
-import dal.AccountDAO;
 import dal.EditProfileDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import jakarta.servlet.http.HttpSession;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import model.Account;
+
+
 import model.Account;
 
 
@@ -36,7 +38,24 @@ public class EditProfile extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
         //String userId = request.getParameter("userId");
+
+        String rawId = request.getParameter("userId");
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String phonenumber = request.getParameter("phonenumber");
+        String password = request.getParameter("password");
+        
+        int userId = Integer.parseInt(rawId);
+        
+        Account account = new Account();
+        account.setId(userId);
+        account.setFullName(name);
+        account.setEmail(email);
+        account.setPhone(phonenumber);
+        account.setPassword(password);
+
         
                 
     }

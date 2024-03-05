@@ -4,8 +4,6 @@
  */
 package model;
 
-import java.util.Date;
-
 /**
  *
  * @author MinhDuc
@@ -25,6 +23,7 @@ public class Movie {
     private String description;
     private String movie_img;
     private String movie_trailer;
+    private String movie_status;
 
     public Movie(String name, int duration, String release_date, float rate, String national, String list_category, String director, String actors, String languages, String description, String movie_img, String movie_trailer) {
         this.name = name;
@@ -39,6 +38,11 @@ public class Movie {
         this.description = description;
         this.movie_img = movie_img;
         this.movie_trailer = movie_trailer;
+        this.movie_status = "1";
+    }
+
+    public Movie(int i, String movie_1, int i0, String string, float f, String usa, String action_Drama, String director_1, String actor_1_Actor_2, String english, String description_1, String movie1jpg, String trailer1mp4) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public int getId() {
@@ -79,6 +83,14 @@ public class Movie {
 
     public void setRate(float rate) {
         this.rate = rate;
+    }
+
+    public String getMovie_status() {
+        return movie_status;
+    }
+
+    public void setMovie_status(String movie_status) {
+        this.movie_status = movie_status;
     }
 
     public String getNational() {
@@ -164,5 +176,6 @@ public class Movie {
         sb.append(", movie_trailer=").append(movie_trailer);
         sb.append('}');
         return sb.toString();
+//        return name + "\t" + duration + "\t" + movie_img;
     }
 }
