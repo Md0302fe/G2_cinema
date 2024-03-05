@@ -18,7 +18,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +39,6 @@ public class AdminDAO extends DBContext {
 
     public ArrayList<Room> list_Room = new ArrayList<>();
 
-    
     public void add_Movie_Admin(Movie movie) {
         String sql = "INSERT INTO [dbo].[Movie]\n"
                 + "           ([movie_name]\n"
@@ -54,9 +52,10 @@ public class AdminDAO extends DBContext {
                 + "           ,[language]\n"
                 + "           ,[movie_description]\n"
                 + "           ,[image]\n"
-                + "           ,[trailer])\n"
+                + "           ,[trailer]\n"
+                + "           ,[movie_status])\n"
                 + "     VALUES\n"
-                + "           (?,?,?,?,?,?,?,?,?,?,?,?)";
+                + "           (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, movie.getName());
@@ -71,6 +70,7 @@ public class AdminDAO extends DBContext {
             st.setString(10, movie.getDescription());
             st.setString(11, movie.getMovie_img());
             st.setString(12, movie.getMovie_trailer());
+            st.setString(13, movie.getMovie_status());
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println("ADD MOVIE ADMIN " + e);
@@ -131,7 +131,6 @@ public class AdminDAO extends DBContext {
         }
         return listMovie;
     }
-
 
     public ArrayList<Movie> getAllMovie() {
         String sql = "select *from movie";
@@ -400,7 +399,6 @@ public class AdminDAO extends DBContext {
         return 0;
     }
 
-
     public Movie getMovieById(int id) {
         Movie movie = null;
 
@@ -430,10 +428,10 @@ public class AdminDAO extends DBContext {
         } catch (SQLException e) {
             System.out.println(e);
         }
-        
+
         return movie;
     }
-    
+
     public void updateMovie(int id, Movie m) {
         String sql = "UPDATE [dbo].[Movie]\n"
                 + "   SET [movie_name] = ?\n"
@@ -474,7 +472,7 @@ public class AdminDAO extends DBContext {
 //        Movie m = dao.getMovieById(1);
 //        System.out.println(m);
 //    }
-    
+
     public void deleteMovie(int id) {
         String sql = "DELETE FROM [dbo].[Movie]\n"
                 + " WHERE [movie_id] = ?";
