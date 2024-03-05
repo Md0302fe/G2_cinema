@@ -105,15 +105,7 @@
 
 
                         <div class="form2">
-                            <div class="input-with-icon">
-
-                                Ngày Sinh<br>
-
-                                <input style=" width: 270px; height: 40px;   background-color: whitesmoke;" type="datetime"
-                                       name="birthday" placeholder="Ngày Sinh">
-
-                                <br>
-                            </div>
+                            
                             <div class="input-with-icon">
 
                                 Số Điện Thoại<br>

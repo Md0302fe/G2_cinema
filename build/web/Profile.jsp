@@ -38,7 +38,6 @@
 
                         <h4>${sessionScope.account.fullName}</h4>
 
-
                     </div>
                 </div>
                 <div id="content">
@@ -54,6 +53,8 @@
                     </div>
                     <div class="email">
                         <strong>Email :</strong><strong id="info">galaxy@.com</strong>
+
+                      
                     </div>
                     <form action="Logout" method="GET"><button id="logout" type="submit" style=" border-radius: 5px; background-color: red">Logout</button></form>
                     
@@ -104,15 +105,7 @@
 
 
                         <div class="form2">
-                            <div class="input-with-icon">
-
-                                Ngày Sinh<br>
-
-                                <input style=" width: 270px; height: 40px;   background-color: whitesmoke;" type="datetime"
-                                       name="birthday" placeholder="Ngày Sinh">
-
-                                <br>
-                            </div>
+                            
                             <div class="input-with-icon">
 
                                 Số Điện Thoại<br>

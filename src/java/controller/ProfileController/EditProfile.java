@@ -4,6 +4,7 @@
  */
 package controller.ProfileController;
 
+import dal.AccountDAO;
 import dal.EditProfileDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -11,14 +12,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import jakarta.servlet.http.HttpSession;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import model.Account;
-
-
-import model.Account;
-
 
 /**
  *
@@ -40,15 +34,14 @@ public class EditProfile extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         //String userId = request.getParameter("userId");
-
         String rawId = request.getParameter("userId");
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String phonenumber = request.getParameter("phonenumber");
         String password = request.getParameter("password");
-        
+
         int userId = Integer.parseInt(rawId);
-        
+
         Account account = new Account();
         account.setId(userId);
         account.setFullName(name);
@@ -56,8 +49,6 @@ public class EditProfile extends HttpServlet {
         account.setPhone(phonenumber);
         account.setPassword(password);
 
-        
-                
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -72,19 +63,19 @@ public class EditProfile extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       AccountDAO dao = new AccountDAO();
+        AccountDAO dao = new AccountDAO();
         //Account acc = dao.login(LEGACY_DO_HEAD, LEGACY_DO_HEAD)
         String id = request.getParameter("id");
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String phonenumber = request.getParameter("phonenumber");
         String password = request.getParameter("password");
-        
+
         String hashPass = dao.generateMD5Hash(password);
         //String hashPass = dao.generateMD5Hash(password);
-         //int id1 = Integer.parseInt(id);
-         //int id2 = request.getIntHeader("id");
-        
+        //int id1 = Integer.parseInt(id);
+        //int id2 = request.getIntHeader("id");
+
         EditProfileDAO ed = new EditProfileDAO();
         boolean s = ed.updateUserProfile(name, hashPass, phonenumber, email, id);
         if (s) {
@@ -94,7 +85,7 @@ public class EditProfile extends HttpServlet {
             request.setAttribute("error", "Error");
             request.getRequestDispatcher("Profile.jsp").forward(request, response);
         }
-       
+
         //processRequest(request, response);
     }
 

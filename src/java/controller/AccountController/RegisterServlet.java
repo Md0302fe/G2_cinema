@@ -86,7 +86,7 @@ public class RegisterServlet extends HttpServlet {
 
         if (pass.equals(rePass)) {
             String passMD5 = ad.generateMD5Hash(pass);
-            Account acc = new Account(fullName, email, phone, passMD5, "default.jpg", 2);
+            Account acc = new Account(fullName, email, phone, passMD5, "default.jpg", "user");
 
             String verifyCode = ad.getRandom();
 
