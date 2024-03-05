@@ -101,6 +101,7 @@
                     <input id="searchInput" class="search-box abs b-shadow" type="text" placeholder="Search.."
                            onfocus="expandInput()" onblur="shrinkInput()">
                 </div>
+
                 <c:if test="${sessionScope.account==null}">
                     <div class="nav__user">
                         <a class="nav__login--btn" href="login"> <i class="fa-regular fa-user"></i> Đăng nhập</a>

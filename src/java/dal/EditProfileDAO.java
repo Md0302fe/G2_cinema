@@ -12,6 +12,7 @@ import model.Account;
  * @author pts03
  */
 public class EditProfileDAO extends DBContext{
+
     public boolean updateUserProfile(Account user) {
          String sql = "UPDATE users SET fullname=?, email=?, phone=?, password=? WHERE user_id=?";
           try {
@@ -23,12 +24,17 @@ public class EditProfileDAO extends DBContext{
             st.setInt(5, user.getId());
 
             int rowsUpdated = st.executeUpdate();
+              System.out.println(rowsUpdated);
 
-            return rowsUpdated > 0;
+            return rowsUpdated >0 ;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
+    }
+    public static void main(String[] args) {
+        EditProfileDAO e = new EditProfileDAO();
+        e.updateUserProfile("sang", "19092005", "12345", "pts039444@gmail.com", "2");
     }
     }
 

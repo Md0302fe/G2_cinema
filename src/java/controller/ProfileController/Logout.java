@@ -68,7 +68,7 @@ public class Logout extends HttpServlet {
         //Account account = dao.login(emailOrPhone, password);
         
         HttpSession session = request.getSession();
-        session.setAttribute("account",password);
+        session.setAttribute("pass", password);
         String url = "";
         if(session != null){
             session.invalidate();
