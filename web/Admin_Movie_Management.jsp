@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
         <title>Moive Management</title>
     </head>
-    <body>
+    <body>  
         <div id="wrapper">
             <!-- Sidebar -->
             <%@include file="./Components/AdminNavbar.jsp" %> 
