@@ -20,7 +20,7 @@ import model.Movie;
  *
  * @author ADMIN
  */
-@WebServlet(name="home", urlPatterns={"/a"})
+@WebServlet(name="home", urlPatterns={"/home"})
 public class home extends HttpServlet {
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
