@@ -25,7 +25,7 @@
             <%@include file="./Components/AdminNavbar.jsp" %> 
             <!-- Content Wrapper -->
             <div id="content-wrapper" class="d-flex flex-column">
-                <!-- Main Content -->
+                <!-- Main Content --> 
                 <div id="content">
                     <%@include file="./Components/AdminHeader.jsp" %>
                     <!----------- ADD MOVIES -------------->
@@ -39,14 +39,18 @@
                                         <div class="select-Image">
                                             <label style="font-weight:800" >Chọn ảnh</label>
                                             <input id="imageInput" class="select-img" type="file" accept="image/*" name="movie_image" required>
-
-                                            <label style="font-weight: 800" >Chọn trailer</label>
-                                            <input class="select-trailer" type="file" accept="image/*" name="movie_trailer" required>
                                             <!-- <i class="fa-solid fa-hand-pointer icon"></i> -->
                                         </div>
                                         <img id="selected-image" src="./Assets/Image/Movies_Image/movie_015.jpg"
                                              alt="CHUA CO HINH ANH">
-                                        <hr>                            
+                                        <hr>      
+                                        <div class="select-Image">
+                                            <label style="font-weight: 800" >Chọn trailer</label>
+                                            <input id="imageInput" class="select-img" type="file" accept="image/*" name="movie_trailer" required>
+                                            <label style="font-weight: 800" >Thêm đường dẫn</label>
+                                            <input class="select-trailer" type="text" name="trailer_link" required>
+                                            <!-- <i class="fa-solid fa-hand-pointer icon"></i> -->
+                                        </div>
                                         <script>
                                             document.getElementById('imageInput').addEventListener('change', function (event) {
                                                 var selectedImage = document.getElementById('selected-image');
@@ -57,8 +61,8 @@
                                     </div>                          
                                     <div class="main-right">
                                         <div class="movie_name">    
-                                            <div class="form-Name form">
-                                                <label for="Movie_Name" style="padding-top: 2px;"><span>Nhập tên
+                                            <div class="form-Name form" style="position: relative;left: -17px;">
+                                                <label for="Movie_Name" style="padding-top: 2px "><span>Nhập tên
                                                         phim</span></label>
                                                 <input class="NameOfMovie" type="text" id="Movie_Name" name="Movie_Name"
                                                        placeholder="Nhập Tên Phim ..." required>
@@ -71,7 +75,7 @@
                                                     </i>
                                                     <label for="">Thời lượng</label>
                                                     <input type="text" size="3" placeholder="........"
-                                                           style="padding-left: 20px; margin-left: 4px;" required="" name="Duration">
+                                                           style="padding: 0 20px; margin-left: 4px;" required="" name="Duration">
                                                     <span style="margin-left: 4px;">Phút</span>
                                                 </p>
                                             </div>
@@ -82,10 +86,10 @@
                                                 </p>
                                             </div>
                                             <div class="rate">
-                                                <p class="movie_point">
+                                                <p class="movie_point" style="margin-left: 5px">
                                                     <i class="fa-solid fa-star"></i>
                                                     <label for="birthday">Rate</label>
-                                                    <input type="text" id="birthday" style="margin-left: 4px; padding-left: 16px;" size="3"
+                                                    <input type="text" id="birthday" style="margin-left: 4px; padding-left: 19px; padding-right: 6px" size="3"
                                                            placeholder="vote" name="Rate" required="">
                                                 </p>
                                             </div>
@@ -110,7 +114,7 @@
                                                 <div class="duration ">
                                                     <p class="movie_minute v2">
                                                         <label for="generalSelected" style="margin-right: 32px">Thể Loại</label>
-                                                        <input type="text" id="generalSelected" size="55"
+                                                        <input type="text" id="generalSelected" size="64.5"
                                                                placeholder=" hành động , kinh dị , giật gân , tình cảm , hài hước ..."
                                                                style="padding : 2px 0 0 12px;" required="" name="Categorys">
                                                     </p>
@@ -118,22 +122,23 @@
                                             </div>
                                         </div>
                                         <div class="boxDerector">
-                                            <label for="" style="margin-right: 32px">Đạo Diễn</label>
-                                            <input type="text" placeholder="Tên đạo diễn ... " required="" name="Director">
+                                            <label for="" style="margin-right: 32px;">Đạo Diễn</label>
+                                            <input type="text" placeholder="Tên đạo diễn ... " required="" name="Director" style="padding : 2px 12px">
                                         </div>
                                         <div class="boxDerector">
                                             <label style="margin-right: 16px" >Diễn Viên</label>
                                             <input type="text" placeholder="Tên Các diễn viên ... " size="65"
-                                                   style="margin-left: 12px;" required="" name="Stars">
+                                                   style="margin-left: 12px;padding:2px 12px;" required="" name="Stars">
                                         </div>
                                         <div class="boxDerector">
                                             <label>Ngôn Ngữ</label>
                                             <input type="text" placeholder="Ngôn ngữ : Tiếng anh - Phụ đề Tiếng việt ... "
-                                                   size="65" style="margin-left: 12px;" required="" name="Language">
+                                                   size="65" style="margin-left: 12px;padding:2px 12px;" required="" name="Language">
                                         </div>
-                                        <div class="boxDerectors V2">
-                                            <label>Mô Tả Nội Dung</label>
-                                            <input type="text" placeholder="" size="95" name="Describel">
+                                        <div class="boxDerectors V2" style="display: flex; align-items: center;">
+                                            <label style="margin-right: 1.7rem;"> Mô Tả Nội Dung</label>
+                                            <textarea type="text" placeholder="" size="95" name="Describel" rows="4" cols="60" style="resize: none">${m.description}</textarea>
+
                                         </div>
                                     </div>
                                 </div>

@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="modal" id="videoModal" onclick="closeModal()">
-                    <iframe class="rounded-3" width="560" height="315" src="${movie.movie_trailer}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <iframe class="rounded-3" width="560" height="315" src="${movie.trailer_link}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
 
                 <div class="all_content grid wide">

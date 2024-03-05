@@ -8,15 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Arrays;
 import java.util.Random;
-import java.sql.SQLException;
-import java.util.ArrayList;
-
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -52,10 +43,11 @@ public class AdminDAO extends DBContext {
                 + "           ,[language]\n"
                 + "           ,[movie_description]\n"
                 + "           ,[image]\n"
-                + "           ,[trailer]\n"
+                + "           ,[trailer_img]\n"
+                + "           ,[trailer_link]\n"
                 + "           ,[movie_status])\n"
                 + "     VALUES\n"
-                + "           (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                + "           (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, movie.getName());
@@ -70,7 +62,8 @@ public class AdminDAO extends DBContext {
             st.setString(10, movie.getDescription());
             st.setString(11, movie.getMovie_img());
             st.setString(12, movie.getMovie_trailer());
-            st.setString(13, movie.getMovie_status());
+            st.setString(13, movie.getTrailer_link());
+            st.setString(14, movie.getMovie_status());
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println("ADD MOVIE ADMIN " + e);
@@ -93,25 +86,14 @@ public class AdminDAO extends DBContext {
 
     public List<Movie> getListMovie() {
         List<Movie> listMovie = new ArrayList<>();
-        String sql = "SELECT [movie_id]\n"
-                + "      ,[movie_name]\n"
-                + "      ,[duration]\n"
-                + "      ,[release_date]\n"
-                + "      ,[rate]\n"
-                + "      ,[national]\n"
-                + "      ,[list_category]\n"
-                + "      ,[director]\n"
-                + "      ,[actors]\n"
-                + "      ,[language]\n"
-                + "      ,[movie_description]\n"
-                + "      ,[image]\n"
-                + "      ,[trailer]\n"
-                + "  FROM [dbo].[Movie]";
+        String sql = "SELECT * FROM [dbo].[Movie]"
+                + "WHERE movie_status = 1";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                Movie movie = new Movie(rs.getString("movie_name"),
+                Movie movie = new Movie(
+                        rs.getString("movie_name"),
                         rs.getInt("duration"),
                         rs.getString("release_date"),
                         rs.getFloat("rate"),
@@ -122,7 +104,8 @@ public class AdminDAO extends DBContext {
                         rs.getString("language"),
                         rs.getString("movie_description"),
                         rs.getString("image"),
-                        rs.getString("trailer"));
+                        rs.getString("trailer_img"),
+                        rs.getString("trailer_link") );
                 movie.setId(rs.getInt("movie_id"));
                 listMovie.add(movie);
             }
@@ -132,14 +115,45 @@ public class AdminDAO extends DBContext {
         return listMovie;
     }
 
+//    public ArrayList<Movie> getAllMovie() {
+//        String sql = "select *from movie";
+//        ArrayList<Movie> listMovie = new ArrayList<>();
+//        try {
+//            PreparedStatement st = connection.prepareStatement(sql);
+//            st.setString(1, "1");
+//            ResultSet rs = st.executeQuery();
+//            while (rs.next()) {
+//                Movie movie = new Movie(rs.getString("movie_name"),
+//                        rs.getInt("duration"),
+//                        rs.getString("release_date"),
+//                        rs.getFloat("rate"),
+//                        rs.getString("national"),
+//                        rs.getString("list_category"),
+//                        rs.getString("director"),
+//                        rs.getString("actors"),
+//                        rs.getString("language"),
+//                        rs.getString("movie_description"),
+//                        rs.getString("image"),
+//                        rs.getString("trailer"));
+//                movie.setId(rs.getInt("movie_id"));
+//                listMovie.add(movie);
+//            }
+//        } catch (SQLException e) {
+//            System.out.println("getAllMovie Dal Error");
+//        }
+//        return listMovie;
+//    }
+
     public ArrayList<Movie> getAllMovie() {
-        String sql = "select *from movie";
+        String sql = "select *from movie WHERE movie_status = ?";
         ArrayList<Movie> listMovie = new ArrayList<>();
         try {
             PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, "1");
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                Movie movie = new Movie(rs.getString("movie_name"),
+                Movie movie = new Movie(
+                        rs.getString("movie_name"),
                         rs.getInt("duration"),
                         rs.getString("release_date"),
                         rs.getFloat("rate"),
@@ -150,7 +164,9 @@ public class AdminDAO extends DBContext {
                         rs.getString("language"),
                         rs.getString("movie_description"),
                         rs.getString("image"),
-                        rs.getString("trailer"));
+                        rs.getString("trailer_img"),
+                        rs.getString("trailer_link")
+                );
                 movie.setId(rs.getInt("movie_id"));
                 listMovie.add(movie);
             }
@@ -402,27 +418,27 @@ public class AdminDAO extends DBContext {
     public Movie getMovieById(int id) {
         Movie movie = null;
 
-        String sql = "SELECT [movie_id]\n"
-                + "      ,[movie_name]\n"
-                + "      ,[duration]\n"
-                + "      ,[release_date]\n"
-                + "      ,[rate]\n"
-                + "      ,[national]\n"
-                + "      ,[list_category]\n"
-                + "      ,[director]\n"
-                + "      ,[actors]\n"
-                + "      ,[language]\n"
-                + "      ,[movie_description]\n"
-                + "      ,[image]\n"
-                + "      ,[trailer]\n"
-                + "  FROM [dbo].[Movie]"
+        String sql = "SELECT * FROM [dbo].[Movie]"
                 + "Where [movie_id] = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                movie = new Movie(rs.getString(2), rs.getInt(3), rs.getString(4), rs.getFloat(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13));
+                movie = new Movie( rs.getString(2), 
+                        rs.getInt(3), 
+                        rs.getString(4), 
+                        rs.getFloat(5), 
+                        rs.getString(6), 
+                        rs.getString(7), 
+                        rs.getString(8), 
+                        rs.getString(9), 
+                        rs.getString(10), 
+                        rs.getString(11), 
+                        rs.getString(12), 
+                        rs.getString(13),
+                        rs.getString(14)
+                );
                 movie.setId(rs.getInt(1));
             }
         } catch (SQLException e) {
@@ -474,11 +490,13 @@ public class AdminDAO extends DBContext {
 //    }
 
     public void deleteMovie(int id) {
-        String sql = "DELETE FROM [dbo].[Movie]\n"
-                + " WHERE [movie_id] = ?";
+        String sql = "UPDATE [dbo].[Movie]\n"
+                + "   SET [movie_status] = ?\n"
+                + " WHERE movie_id = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, id);
+            st.setString(1, "2");
+            st.setInt(2, id);
             st.executeQuery();
         } catch (SQLException e) {
             System.out.println(e);
