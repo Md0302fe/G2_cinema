@@ -5,7 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBContext {
+    
     protected Connection connection;
+    
     public DBContext() {
         try {
             // Edit URL , username, password to authenticate with your MS SQL Server
