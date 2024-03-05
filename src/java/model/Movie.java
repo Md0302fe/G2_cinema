@@ -22,9 +22,11 @@ public class Movie {
     private String languages;
     private String description;
     private String movie_img;
-    private String movie_trailer;
+    private String trailer_img;
+    private String trailer_link;
+    private String movie_status;
 
-    public Movie(String name, int duration, String release_date, float rate, String national, String list_category, String director, String actors, String languages, String description, String movie_img, String movie_trailer) {
+    public Movie(String name, int duration, String release_date, float rate, String national, String list_category, String director, String actors, String languages, String description, String movie_img, String trailer_img, String trailer_link) {
         this.name = name;
         this.duration = duration;
         this.release_date = release_date;
@@ -36,8 +38,9 @@ public class Movie {
         this.languages = languages;
         this.description = description;
         this.movie_img = movie_img;
-        this.movie_trailer = movie_trailer;
-    
+        this.trailer_img = trailer_img;
+        this.trailer_link = trailer_link;
+        this.movie_status = "1";
     }
 
     public Movie(int i, String movie_1, int i0, String string, float f, String usa, String action_Drama, String director_1, String actor_1_Actor_2, String english, String description_1, String movie1jpg, String trailer1mp4) {
@@ -82,6 +85,14 @@ public class Movie {
 
     public void setRate(float rate) {
         this.rate = rate;
+    }
+
+    public String getMovie_status() {
+        return movie_status;
+    }
+
+    public void setMovie_status(String movie_status) {
+        this.movie_status = movie_status;
     }
 
     public String getNational() {
@@ -141,12 +152,21 @@ public class Movie {
     }
 
     public String getMovie_trailer() {
-        return movie_trailer;
+        return trailer_img;
     }
 
     public void setMovie_trailer(String movie_trailer) {
-        this.movie_trailer = movie_trailer;
+        this.trailer_img = movie_trailer;
     }
+
+    public String getTrailer_link() {
+        return trailer_link;
+    }
+
+    public void setTrailer_link(String trailer_link) {
+        this.trailer_link = trailer_link;
+    }
+    
 
     @Override
     public String toString() {
@@ -164,7 +184,8 @@ public class Movie {
         sb.append(", languages=").append(languages);
         sb.append(", description=").append(description);
         sb.append(", movie_img=").append(movie_img);
-        sb.append(", movie_trailer=").append(movie_trailer);
+        sb.append(", movie_trailer=").append(trailer_img);
+        sb.append(", trailer_link=").append(trailer_link);
         sb.append('}');
         return sb.toString();
 //        return name + "\t" + duration + "\t" + movie_img;

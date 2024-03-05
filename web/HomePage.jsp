@@ -160,8 +160,7 @@
                     </div>
                     <div class="main_content-movies">
                         <div class="MOVIES row">
-                            <c:forEach items = "${requestScope.listMovie}" var="m">
-                             
+                            <c:forEach items = "${requestScope.listMovie}" var="m">                           
                                 <div class="content-movie l-3 m-6">
 
                                     <div class="overlayout">

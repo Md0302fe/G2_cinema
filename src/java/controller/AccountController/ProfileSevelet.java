@@ -4,24 +4,22 @@
  */
 package controller.AccountController;
 
-import dal.AccountDAO;
-import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.PrintWriter;
 import model.Account;
 
 /**
  *
- * @author LENOVO
+ * @author pts03
  */
-@WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "ProfileSevelet", urlPatterns = {"/ProfileSevelet"})
+public class ProfileSevelet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +38,10 @@ public class LoginServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");
+            out.println("<title>Servlet ProfileSevelet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ProfileSevelet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,9 +59,22 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("Login.jsp").forward(request, response);
-    }
+        
+        try {
+           HttpSession session = request.getSession();
+        Account acc = (Account) session.getAttribute("account");
+        
+        request.setAttribute("account", acc);
+        request.getRequestDispatcher("Profile.jsp").forward(request, response);
 
+            
+        } catch (Exception e) {
+        }
+        
+    
+        //request.getRequestDispatcher("Profile.jsp").forward(request, response);
+        
+}
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -75,49 +86,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String emailOrPhone = request.getParameter("emailOrPhone");
-        String password = request.getParameter("password");
-        String remember = request.getParameter("remember");
-        System.out.println("Email : " + emailOrPhone);
-        System.out.println("Pass : " + password);
-
-        Cookie cu = new Cookie("cuser", emailOrPhone);
-        Cookie cp = new Cookie("cpass", password);
-        Cookie cr = new Cookie("crem", remember);
-
-        if (remember != null) {
-            cu.setMaxAge(60 * 60 * 24 * 7);
-            cp.setMaxAge(60 * 60 * 24 * 7);
-            cr.setMaxAge(60 * 60 * 24 * 7);
-        } else {
-            cu.setMaxAge(0);
-            cp.setMaxAge(0);
-            cr.setMaxAge(0);
-        }
-
-        response.addCookie(cp);
-        response.addCookie(cu);
-        response.addCookie(cr);
-
-        AccountDAO dao = new AccountDAO();
-        String hashPass = dao.generateMD5Hash(password);
-
-        Account account = dao.login(emailOrPhone, hashPass);
-        System.out.println("Accunt " + account);
-
-        HttpSession session = request.getSession();
-
-        if (account == null) {
-            request.setAttribute("error", "Password or uswername is error!");
-            request.getRequestDispatcher("Login.jsp").forward(request, response);
-        } else {
-            session.setAttribute("account", account);
-            if ("user".equals(account.getRole())) {
-                response.sendRedirect("home");
-            } else {
-                response.sendRedirect("home");
-            }
-        }
+        processRequest(request, response);
     }
 
     /**

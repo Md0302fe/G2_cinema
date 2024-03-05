@@ -88,7 +88,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     color: white;
     font-size: 15px;
     border: 1px solid orange;
+    padding: 0.5rem 2rem;
+    font-weight: 600;
 
+}
+#logout{
+    background-color: orange;
+    border-radius: 4px;
+    color: white;
+    font-size: 15px;
+    border: 1px solid orange; 
+    padding: 0.5rem 2rem;
+    font-weight: 600;
 }
 .header-profile{
     display: flex;
@@ -98,6 +109,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     padding-top: 10px;
     padding-bottom: 30px;
     height: 5px;
+    
     
 }
 .question{
@@ -115,4 +127,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 .input-with-icon{
     padding-top: 10px;
+}
+input{
+   padding:1rem;
+   border: 1px solid #000;
+}
+#submit1{
+    display: flex;
 }

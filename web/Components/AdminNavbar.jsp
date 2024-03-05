@@ -98,7 +98,7 @@
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Add Movie</span></a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="ListMovie">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Management Movies</span></a>

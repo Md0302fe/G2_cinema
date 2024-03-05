@@ -60,11 +60,13 @@ public class home extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         AdminDAO dao = new AdminDAO();
-        List<Movie> m = dao.getListMovie();
-        System.out.println(m);
+        
+        //set account to session
         HttpSession session = request.getSession();
         Account acc = (Account) session.getAttribute("account");
-        request.setAttribute("account", m);
+        
+        List<Movie> m = dao.getListMovie();
+        request.setAttribute("account", acc);
         request.setAttribute("listMovie", m);
         request.getRequestDispatcher("HomePage.jsp").forward(request, response);
     } 

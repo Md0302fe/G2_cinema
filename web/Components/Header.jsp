@@ -10,8 +10,8 @@
     <nav id="topnav">
         <ul class="nav-container">
             <li class="nav__logo">
-                <a href="#">
-                    <img src="./Assets/Image/Header_Image/logo.png" alt="">
+                <a href="home">
+                    <img src="./Assets/Image/Header_Image/logo.png" alt="logo">
                 </a>
             </li>
             <li class="nav__navigation">
@@ -23,10 +23,10 @@
                                 <li>
                                     <div><a href="#">PHIM ĐANG CHIẾU</a></div>
                                     <ul class="flex movie-demo jca">
-                                        <c:forEach items="${listMovie}" var="m" begin="1" end="4">
+                                        <c:forEach items="${listMovie}" var="m" begin="0" end="3">
                                             <li class="tc">
                                                 <a href="MovieDetailServlet?id=${m.id}">
-                                                    <img class="movie-showing" src="./Assets/Image/Header_Image/${m.movie_img}" alt="movie 1" />
+                                                    <img class="movie-showing" src="./Assets/Image/Movies_Image/${m.movie_img}" alt="movie 1" />
                                                     <h5>${m.name}</h5>
                                                 </a>
                                             </li>
@@ -36,10 +36,10 @@
                                 <li>
                                     <div><a href="#">PHIM SẮP CHIẾU</a></div>
                                     <ul class="flex movie-demo jca">
-                                        <c:forEach items="${listMovie}" var="m" begin="1" end="4">
+                                        <c:forEach items="${listMovie}" var="m" begin="0" end="3">
                                             <li class="tc">
                                                 <a href="MovieDetailServlet?id=${m.id}">
-                                                    <img class="movie-showing" src="./Assets/Image/Header_Image/${m.movie_img}" alt="movie 1" />
+                                                    <img class="movie-showing" src="./Assets/Image/Movies_Image/${m.movie_img}" alt="movie 1" />
                                                     <h5>${m.name}</h5>
                                                 </a>
                                             </li>
@@ -101,6 +101,7 @@
                     <input id="searchInput" class="search-box abs b-shadow" type="text" placeholder="Search.."
                            onfocus="expandInput()" onblur="shrinkInput()">
                 </div>
+
                 <c:if test="${sessionScope.account==null}">
                     <div class="nav__user">
                         <a class="nav__login--btn" href="login"> <i class="fa-regular fa-user"></i> Đăng nhập</a>

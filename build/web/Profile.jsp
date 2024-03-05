@@ -30,7 +30,7 @@
         <div class="container">          
             <div class="profile">
                 <div class="text-center">
-                    <img src="./Assets/Image/User/z5093594224219_87654397e30fec7c89275c9bb7e54bb1.jpg" alt="Customer Avatar"
+                    <img src="./Assets/Image/User/default.jpg" alt="Customer Avatar"
                          class="img-fluid rounded-circle mb-3"
                          style="height: 100px; width: 100px; margin-left: 120px; margin-top: 20px;">
                     <div class="in4">
@@ -41,6 +41,7 @@
                 <div id="content">
                     <p>Tổng chi tiêu 2024 <strong id="money">0&#x111</strong> </p>
                 </div>
+                   
 
                 <div class="information">
                     <div class="hotline">
@@ -51,12 +52,10 @@
                     <div class="email">
                         <strong>Email :</strong><strong id="info">galaxy@.com</strong>
 
+                      
                     </div>
-                    <div class="question">
-                        <strong>Các Câu Hỏi Thường Gặp</strong>
-
-
-                    </div>
+                    <form action="Logout" method="GET"><button id="logout" type="submit" style=" border-radius: 5px; background-color: red">Logout</button></form>
+                    
                 </div>
             </div>
 
@@ -75,68 +74,57 @@
                 <div class="hozi">
                     <hr>
                 </div>
-                <div class="profile2">
-                    <div class="form1">
-                        <input type="hidden" name="userId" value="<%= request.getParameter("userId") %>">
-                        <div class="input-with-icon">
+                <form action="EditProfile" method="GET">
+                    <div class="profile2">
+                        <div class="form1">
+                            <input type="hidden" name="id" value="${sessionScope.account.id}">
+                            <div class="input-with-icon">
 
-                            Họ và tên<br>
+                                Họ và tên<br>
 
-                            <input style="border-radius: 5px;
-                                   border-radius: 5px;
-                                   width: 270px;
-                                   height: 30px;
-                                   background-color: whitesmoke;" type="text" name="name" placeholder="Họ và Tên"><br>
+                                <input style="border-radius: 5px;
+                                       border-radius: 5px;
+                                       width: 270px;
+                                       height: 30px;
+                                       background-color: whitesmoke;" type="text" name="name" placeholder="Họ và Tên"><br>
+
+                            </div>
+                            <div class="input-with-icon">
+                                Email :<br>
+
+                                <input style="border-radius: 5px;  width: 270px; height: 40px; background-color: whitesmoke;"
+                                       type="email" name="email" placeholder="Email"><br>
+
+                            </div>
 
                         </div>
-                        <div class="input-with-icon">
-                            Email :<br>
 
-                            <input style="border-radius: 5px;  width: 270px; height: 30px; background-color: whitesmoke;"
-                                   type="email" name="email" placeholder="Email"><br>
+
+
+
+                        <div class="form2">
+                            
+                            <div class="input-with-icon">
+
+                                Số Điện Thoại<br>
+                                <input style="border-radius: 5px;  width: 270px; height: 40px; background-color: whitesmoke; "
+                                       type="tel" name="phonenumber" placeholder="Số Điện Thoại"><br>
+                            </div>
+                            <div class="input-with-icon">
+
+                                Mật Khẩu<br>
+                                <input style="border-radius: 5px;  width: 270px; height: 40px; background-color: whitesmoke;"
+                                       type="password" name="password" placeholder="Mật Khẩu"><br>
+                            </div>
+                            <button id="submit" type="submit"> Cập Nhật</button>
+                            
+                            </form>
+                            
 
                         </div>
-                        <div style="padding-top: 30px;">
-                            <label>
-                                <input type="radio" name="gender" value="male">
-                                Nam
-                            </label>
-
-                            <label>
-                                <input type="radio" name="gender" value="female">
-                                Nữ
-                            </label>
-                        </div>
-                        <form action="Logout" method="GET"><div style=" padding-top: 30px "  ><button type="submit" style=" border-radius: 5px; background-color: red">Logout</button></div>
-                    </div></form>
-
-
-                    <div class="form2">
-                        <div class="input-with-icon">
-
-                            Ngày Sinh<br>
-
-                            <input style=" width: 270px; height: 30px;   background-color: whitesmoke;" type="datetime"
-                                   name="birthday" placeholder="Ngày Sinh">
-
-                            <br>
-                        </div>
-                        <div class="input-with-icon">
-
-                            Số Điện Thoại<br>
-                            <input style="border-radius: 5px;  width: 270px; height: 30px; background-color: whitesmoke; "
-                                   type="tel" name="phonenumber" placeholder="Số Điện Thoại"><br>
-                        </div>
-                        <div class="input-with-icon">
-
-                            Mật Khẩu<br>
-                            <input style="border-radius: 5px;  width: 270px; height: 30px; background-color: whitesmoke;"
-                                   type="password" name="password" placeholder="Mật Khẩu"><br>
-                        </div>
-                        <form action="EditProfile" method="GET"><button id="submit" type="submit"> Cập Nhật
-                            </button></form>
                     </div>
-                </div>
             </div>
-        </div>
-        <%@include file='./Components/Footer.jsp' %>
+        </form>
+        
+    </div>
+    <%@include file='./Components/Footer.jsp' %>
