@@ -17,7 +17,7 @@
     <link href="Assets/Styles/footer.css" rel="stylesheet" type="text/css"/>
     <title>Galaxy Cinema</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito Sans">
 </head>
 <script src="Assets/JS/booking.js" type="text/javascript"></script>
 

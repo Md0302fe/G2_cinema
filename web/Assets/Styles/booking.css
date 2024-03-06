@@ -8,9 +8,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 */
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Nunito Sans, sans-serif !important;
     margin: 0;
     padding: 0;
+    color: #4a4a4a;
     background-color: #f4f4f4;
 }
 
@@ -192,12 +193,6 @@ section {
     height: auto;
     /* Duy trì tỷ lệ khung hình khi thay đổi chiều rộng */
 }
-
-body {
-    font-family: sans-serif !important;
-}
-
-
 
 .movie-list {
     display: none;

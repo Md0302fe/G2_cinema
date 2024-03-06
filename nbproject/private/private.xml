@@ -5,7 +5,11 @@
         <group>
             <file>file:/D:/Spring2024_5/Cinema/G2_cinema/src/java/dal/DBContext.java</file>
             <file>file:/D:/Spring2024_5/Cinema/G2_cinema/web/Assets/JS/detailMovie.js</file>
+
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/web/Assets/Styles/createSeatPage.css</file>
             <file>file:/D:/Spring2024_5/Cinema/G2_cinema/web/DetailMovies.jsp</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/web/Assets/Styles/DetailMovies.css</file>
+
         </group>
     </open-files>
 </project-private>
