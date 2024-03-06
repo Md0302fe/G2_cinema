@@ -2,25 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-
-        <group>
-
-            <file>file:/D:/Workspace/SWP/G2_cinema/web/Components/Header.jsp</file>
-            <file>file:/D:/Workspace/SWP/G2_cinema/web/Admin_Movie_Update.jsp</file>
-            <file>file:/D:/Workspace/SWP/G2_cinema/web/Admin_Movie_Management.jsp</file>
-            <file>file:/D:/Workspace/SWP/G2_cinema/src/java/dal/AdminDAO.java</file>
-            <file>file:/D:/Workspace/SWP/G2_cinema/src/java/controller/PublicController/home.java</file>
-            <file>file:/D:/Workspace/SWP/G2_cinema/web/Components/AdminNavbar.jsp</file>
-            <file>file:/D:/Workspace/SWP/G2_cinema/web/Login.jsp</file>
-            <file>file:/D:/Workspace/SWP/G2_cinema/src/java/controller/AccountController/LoginServlet.java</file>
-
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/Final_Cinema/G2_cinema/web/Admin_Movie_Update.jsp</file>
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/Final_Cinema/G2_cinema/web/Admin_AddMovie.jsp</file>
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/Final_Cinema/G2_cinema/web/Admin_Setup_Schedules_Movie.jsp</file>
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/Final_Cinema/G2_cinema/web/Components/AdminNavbar.jsp</file>
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/Final_Cinema/G2_cinema/web/Components/Header.jsp</file>
-
-        </group>
-
+        <group/>
     </open-files>
 </project-private>

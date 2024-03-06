@@ -166,7 +166,6 @@ public class Movie {
     public void setTrailer_link(String trailer_link) {
         this.trailer_link = trailer_link;
     }
-    
 
     @Override
     public String toString() {
