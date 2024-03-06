@@ -48,7 +48,7 @@
                                             <label style="font-weight: 800" >Chọn trailer</label>
                                             <input id="imageInput" class="select-img" type="file" accept="image/*" name="movie_trailer" required>
                                             <label style="font-weight: 800" >Thêm đường dẫn</label>
-                                            <input class="select-trailer" type="text" name="trailer_link" required>
+                                            <input class="select-trailer" type="text" name="trailer_link" required size="35">
                                             <!-- <i class="fa-solid fa-hand-pointer icon"></i> -->
                                         </div>
                                         <script>
@@ -74,8 +74,8 @@
                                                     <i class="fa-regular fa-clock">
                                                     </i>
                                                     <label for="">Thời lượng</label>
-                                                    <input type="text" size="3" placeholder="........"
-                                                           style="padding: 0 20px; margin-left: 4px;" required="" name="Duration">
+                                                    <input type="text" size="1" placeholder="........"
+                                                           style="padding: 0 12px; margin-left: 4px;" required="" name="Duration">
                                                     <span style="margin-left: 4px;">Phút</span>
                                                 </p>
                                             </div>
