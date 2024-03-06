@@ -8,11 +8,9 @@ import dal.AdminDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 import java.util.List;
 import model.Movie;
 
@@ -67,7 +65,15 @@ public class MovieDetailServlet extends HttpServlet {
         List<Movie> m = dao.getListMovie();
         request.setAttribute("listMovie", m);
         request.setAttribute("movie", mv);
+        request.setAttribute("trailer", mv.getMovie_trailer());
         request.getRequestDispatcher("DetailMovies.jsp").forward(request, response);
+    }
+
+    public static void main(String[] args) {
+        AdminDAO dao = new AdminDAO();
+        int movieId = Integer.parseInt("3");
+        Movie mv = dao.getMovieById(movieId);
+        System.out.println(mv.getMovie_trailer());
     }
 
     /**

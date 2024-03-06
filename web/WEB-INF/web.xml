@@ -5,7 +5,6 @@
         <servlet-class>controller.ProfileController.EditProfile</servlet-class>
     </servlet>
     <servlet>
-
         <servlet-name>Account</servlet-name>
         <servlet-class>controller.ProfileController.Account</servlet-class>
     </servlet>
@@ -16,7 +15,8 @@
     <servlet>
         <servlet-name>History</servlet-name>
         <servlet-class>controller.ProfileController.History</servlet-class>
-
+    </servlet>
+    <servlet>
         <servlet-name>MovieDetailServlet</servlet-name>
         <servlet-class>controller.MovieDetailController.MovieDetailServlet</servlet-class>
     </servlet>
@@ -44,7 +44,8 @@
     <servlet-mapping>
         <servlet-name>History</servlet-name>
         <url-pattern>/History</url-pattern>
-
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>MovieDetailServlet</servlet-name>
         <url-pattern>/MovieDetailServlet</url-pattern>
     </servlet-mapping>
