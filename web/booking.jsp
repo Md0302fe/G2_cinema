@@ -8,41 +8,46 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="Assets/Styles/booking.css" rel="stylesheet" type="text/css"/>
-        <link href="Assets/Styles/header.css" rel="stylesheet" type="text/css"/>
-        <link href="Assets/Styles/footer.css" rel="stylesheet" type="text/css"/>
-        <title>Galaxy Cinema</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    </head>
 
-    <body>
-        <%@include file='./Components/Header.jsp' %>
-        <!--    <nav>
-                <a href="#">Chọn phim / Rạp / Suất</a>
-                <a href="#">Chọn ghế</a>
-                <a href="#">Chọn thức ăn</a>
-                <a href="#">Thanh toán </a>
-                <a href="#">Xác nhận</a>
-            </nav>-->
-        <section>
-            <!-- Phần "Chọn vị trí", "Chọn phim", và "Chọn suất" -->
-            <div class="selection-container">
-                <div class="location-selection">
-                    <div class="flex-c">
-                        <label for="location">Chọn vị trí</label>
-                        <i class="fa-solid fa-chevron-down" id="locationArrow"></i>
-                    </div>
-                    <!-- <a class="location-list" id="locationList"></a> -->
-                    <div class="locationlist">
-                        <div class="location-item">
-                            <p>
-                            <div class="location-info" id="locationInfo">
-                                <span id="locationText">Cần Thơ</span> <!-- Thêm id="locationText" vào đây -->
-                            </div>
-                            </p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="Assets/Styles/booking.css" rel="stylesheet" type="text/css"/>
+    <link href="Assets/Styles/header.css" rel="stylesheet" type="text/css"/>
+    <link href="Assets/Styles/footer.css" rel="stylesheet" type="text/css"/>
+    <title>Galaxy Cinema</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito Sans">
+</head>
+<script src="Assets/JS/booking.js" type="text/javascript"></script>
+
+
+<body>
+
+    <%@include file='./Components/Header.jsp' %>
+
+<!--    <nav>
+        <a href="#">Chọn phim / Rạp / Suất</a>
+        <a href="#">Chọn ghế</a>
+        <a href="#">Chọn thức ăn</a>
+        <a href="#">Thanh toán </a>
+        <a href="#">Xác nhận</a>
+    </nav>-->
+
+     <section>
+        <!-- Phần "Chọn vị trí", "Chọn phim", và "Chọn suất" -->
+        <div class="selection-container">
+            <div class="location-selection">
+                <div class="flex-c">
+                    <label for="location">Chọn vị trí</label>
+                    <i class="fa-solid fa-chevron-down" id="locationArrow"></i>
+                </div>
+                <!-- <a class="location-list" id="locationList"></a> -->
+                <div class="locationlist">
+                    <div class="location-item">
+                        <p>
+                        <div class="location-info" id="locationInfo">
+                            <span id="locationText">Cần Thơ</span> <!-- Thêm id="locationText" vào đây -->
                         </div>
                     </div>
                 </div>

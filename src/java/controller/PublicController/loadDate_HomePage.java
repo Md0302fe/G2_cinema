@@ -12,6 +12,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
@@ -37,8 +39,14 @@ public class loadDate_HomePage extends HttpServlet {
         String movieId = request.getParameter("movieId");
         System.out.println("ID = " + movieId);
         
-        // Get list of dates for booking based on movieId 
-        ArrayList<String> Dates = book.getShowDateForBooking(movieId);
+        
+         // lay ra ngay hien tai
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter data_format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String today_parse = data_format.format(today);
+        
+        // Get list of dates for booking based on movieId and Date > today Date
+        ArrayList<String> Dates = book.getShowDateForBooking(movieId ,today_parse );
         for (String Date : Dates) {
             System.out.println("Date : " + Date);
         }

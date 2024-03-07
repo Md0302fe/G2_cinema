@@ -18,6 +18,7 @@
         <link href="Assets/Styles/homePage.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito Sans">
         <title>G2_Cinema</title>
     </head>
     <body>
@@ -76,7 +77,6 @@
                             <div class="optionsContainer hidden">
                                 <c:forEach items="${listMovie}" var="m">
                                     <div class="option option_movie" onClick="sendSelectedMovieId('${m.id}')">${m.name}
-
                                     </div>
                                 </c:forEach>
                             </div>
@@ -163,7 +163,7 @@
                             <c:forEach items = "${requestScope.listMovie}" var="m">                           
                                 <div class="content-movie l-3 m-6">
                                     <div class="overlayout">
-                                        <img height="400px" src="./Assets/Image/Movies_Image/${m.movie_img}" alt="ERROR">
+                                        <img height="400px" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="ERROR">
                                         <div class="overlay">
                                             <div class="ticket-ticket">
                                                 <i class="fa-solid fa-ticket fa-2xs"></i>
@@ -171,7 +171,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="#" id="movie_id">${m.name}</a>
+                                    <a href="MovieDetailServlet?id=${m.id}" id="movie_id">${m.name}</a>
                                 </div>
                             </c:forEach> 
                         </div>
