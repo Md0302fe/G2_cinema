@@ -18,36 +18,48 @@
             <li class="nav__navigation">
                 <ul class="flex">
                     <li class="nav__movie">
-                        <div class="rel">
-                            <a href="#">Phim <i class="fa-solid fa-angle-down"></i></a>
-                            <ul class="abs b-shadow nav__movie--bgc">
-                                <li>
-                                    <div><a href="#">PHIM ĐANG CHIẾU</a></div>
-                                    <ul class="flex movie-demo jca">
-                                        <c:forEach items="${listMovie}" var="m" begin="0" end="3">
-                                            <li class="tc">
-                                                <a href="MovieDetailServlet?id=${m.id}">
-                                                    <img class="movie-showing" src="./Assets/Image/Movies_Image/${m.movie_img}" alt="movie 1" />
-                                                    <h5>${m.name}</h5>
-                                                </a>
-                                            </li>
-                                        </c:forEach>                                                  
-                                    </ul>
-                                </li>
-                                <li>
-                                    <div><a href="#">PHIM SẮP CHIẾU</a></div>
-                                    <ul class="flex movie-demo jca">
-                                        <c:forEach items="${listMovie}" var="m" begin="0" end="3">
-                                            <li class="tc">
-                                                <a href="MovieDetailServlet?id=${m.id}">
-                                                    <img class="movie-showing" src="./Assets/Image/Movies_Image/${m.movie_img}" alt="movie 1" />
-                                                    <h5>${m.name}</h5>
-                                                </a>
-                                            </li>
-                                        </c:forEach>                                                  
-                                    </ul>
-                                </li>
-                            </ul>
+                      <li class="ticketbuy">
+                        <div class="rel" >
+                            <a href="bookingsvl">
+                                <img src="https://www.galaxycine.vn/_next/static/media/btn-ticket.42d72c96.webp" alt="alt"/>
+                            </a>
+                        </div>
+                      </li>
+                    <li class="rel">
+
+                        <a href="#">Phim <i class="fa-solid fa-angle-down"></i></a>
+                        <ul class="abs b-shadow nav__movie--bgc">
+                            <li>
+                                <div><a href="#">PHIM ĐANG CHIẾU</a></div>
+                                <ul class="flex movie-demo jca">
+                                    <c:forEach items="${listMovie}" var="m" begin="0" end="3">
+                                        <li class="tc">
+                                            <a href="MovieDetailServlet?id=${m.id}">
+
+                                                <img class="movie-showing" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="movie 1" />
+
+                                                <h5>${m.name}</h5>
+                                            </a>
+                                        </li>
+                                    </c:forEach>                                                  
+                                </ul>
+                            </li>
+                            <li>
+                                <div><a href="#">PHIM SẮP CHIẾU</a></div>
+                                <ul class="flex movie-demo jca">
+                                    <c:forEach items="${listMovie}" var="m" begin="0" end="3">
+                                        <li class="tc">
+                                            <a href="MovieDetailServlet?id=${m.id}">
+
+                                                <img class="movie-showing" src="./Assets/Image/Movies_Image_Vip/${m.movie_img}" alt="movie 1" />
+
+                                                <h5>${m.name}</h5>
+                                            </a>
+                                        </li>
+                                    </c:forEach>                                                  
+                                </ul>
+                            </li>
+                        </ul>
                         </div>
                     </li>
                     <li class="movie__type">

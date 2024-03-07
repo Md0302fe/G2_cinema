@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 import java.sql.SQLException;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,6 +66,7 @@ public class AdminDAO extends DBContext {
             st.setString(12, movie.getMovie_trailer());
             st.setString(13, movie.getTrailer_link());
             st.setString(14, movie.getMovie_status());
+
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println("ADD MOVIE ADMIN " + e);
@@ -78,7 +80,7 @@ public class AdminDAO extends DBContext {
                 + "           (?)";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setString(1, date.getShow_date());
+            st.setString(1, date.getDate());
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println("ERROR IN Add_Date_Admin " + e);
@@ -177,7 +179,7 @@ public class AdminDAO extends DBContext {
     }
 
     public ArrayList<Integer> getAllMovieID() {
-        String sql = "select movie_id from Movie";
+        String sql = "select movie_id from Movie where movie_status = 1";
         ArrayList<Integer> list_Movie_Id = new ArrayList<>();
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -257,13 +259,16 @@ public class AdminDAO extends DBContext {
                 "T-17", "T-17-30", "T-18", "T-18-30", "T-19", "T-19-30", "T-20", "T-20-30",
                 "T-21", "T-21-30", "T-22", "T-22-30", "T-23"));
 
+        ArrayList<String> schedules_showtime_list = getListShowTime_Schedules();
+
         // bước tiếp theo : với mỗi handle_id sẽ kèm theo các khung giờ chiếu trong mỗi handle_id
-        for (String handle : handle_time) {
+        for (int i = 0; i < handle_time.size(); i++) {
             // sử lý key id cho date_hande -> handle_id 
-            String date_handle = handle + ":" + thisDate.getShow_date();
+            String schedules_show_time = schedules_showtime_list.get(i);
+            String date_handle = handle_time.get(i) + ":" + thisDate.getDate();
             // sử lý từng handle
             Save_Handle_Schedules(thisDate, date_handle);
-            setUp_Schedules(thisDate, date_handle);
+            setUp_Schedules(thisDate, date_handle, schedules_show_time);
         }
     }
 
@@ -271,7 +276,7 @@ public class AdminDAO extends DBContext {
     /* sau khi đã có được id của bộ quản lý khung chiếu
     b1: tạo ra biến random : random xem có bao nhiêu phim được chiếu tại lúc này.
      */
-    public void setUp_Schedules(Date thisDate, String handle_id) {
+    public void setUp_Schedules(Date thisDate, String handle_id, String schedules_show_time) {
         Random random = new Random();
         String schedules_id;
         // list này sinh ra để lưu khung giờ chiếu : vd T-9 xong thì save object T-9 vào list này
@@ -303,7 +308,7 @@ public class AdminDAO extends DBContext {
         for (int i = 0; i < number_of_schedules; i++) {
             // setUp : 1 phim cho 1 slot chiếu trong 1 khung giờ chiếu.
             schedules_id = handle_id + "@" + i;
-            setUp_Movie(thisDate, handle_id, schedules_id, coppy_List_movie_id, coppy_List_room);
+            setUp_Movie(thisDate, handle_id, schedules_id, coppy_List_movie_id, coppy_List_room, schedules_show_time);
         }
     }
 
@@ -313,7 +318,7 @@ public class AdminDAO extends DBContext {
      * @param coppy_List_movie_id
      * @param coppy_List_room
      */
-    public void setUp_Movie(Date thisDate, String handle_id, String schedules_id, ArrayList coppy_List_movie_id, ArrayList coppy_List_room) {
+    public void setUp_Movie(Date thisDate, String handle_id, String schedules_id, ArrayList coppy_List_movie_id, ArrayList coppy_List_room, String schedules_show_time) {
         // list_movie_id : lấy ra list_id của các phim : lưu ý có thể là không liên tục !
         // SET MOVIE :
         int random_movie = getRandomFromListId(coppy_List_movie_id);
@@ -335,7 +340,7 @@ public class AdminDAO extends DBContext {
                            + Handle_Schedules
                            + Schedules
              */
-            Save_Data(handle_id, schedules_id, random_movie, room);
+            Save_Data(handle_id, schedules_id, random_movie, room, schedules_show_time);
         }
         // Nếu room đó không hợp lệ thì next để sang khung chiếu khác.
         coppy_List_room.remove(room);
@@ -350,32 +355,34 @@ public class AdminDAO extends DBContext {
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, handle_id);
-            st.setString(2, thisDate.getShow_date());
+            st.setString(2, thisDate.getDate());
             st.executeUpdate();
         } catch (Exception e) {
             System.out.println("ERROR IN Save_Handle_Schedules : " + e);
         }
     }
 
-    public void Save_Data(String handle_id, String schedules_id, int random_movie, Room room) {
-        Save_Schedules(handle_id, schedules_id, random_movie, room);
+    public void Save_Data(String handle_id, String schedules_id, int random_movie, Room room, String schedules_show_time) {
+        Save_Schedules(handle_id, schedules_id, random_movie, room, schedules_show_time);
     }
 
-    public void Save_Schedules(String handle_id, String schedules_id, int random_movie, Room room) {
+    public void Save_Schedules(String handle_id, String schedules_id, int random_movie, Room room, String schedules_showtime) {
         System.out.println("Handle_Id: " + handle_id);
         String sql = "INSERT INTO [dbo].[Schedules]\n"
                 + "           ([handle_schedules_id]\n"
                 + "           ,[schedules_id]\n"
                 + "           ,[movie_id]\n"
-                + "           ,[room_id])\n"
+                + "           ,[room_id]\n"
+                + "           ,[schedules_showtime])\n"
                 + "     VALUES\n"
-                + "           (?,?,?,?)";
+                + "           (?,?,?,?,?)";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, handle_id);
             st.setString(2, schedules_id);
             st.setInt(3, random_movie);
             st.setInt(4, room.getId());
+            st.setString(5, schedules_showtime);
             st.executeUpdate();
         } catch (Exception e) {
             System.out.println("ERROR IN Save_Schedules : " + e);
@@ -483,11 +490,6 @@ public class AdminDAO extends DBContext {
             System.out.println(e);
         }
     }
-//    public static void main(String[] args) {
-//        AdminDAO dao = new AdminDAO();
-//        Movie m = dao.getMovieById(1);
-//        System.out.println(m);
-//    }
 
     public void deleteMovie(int id) {
         String sql = "UPDATE [dbo].[Movie]\n"
@@ -520,16 +522,39 @@ public class AdminDAO extends DBContext {
         }
         return null;
     }
-        
-    
+
     public static void main(String[] args) {
         AdminDAO a = new AdminDAO();
-         List<Date> list = (List<Date>) a.getAllDate();
-         for (Date phuc : list) {
-             System.out.println(phuc);
-            
+        List<Date> list = (List<Date>) a.getAllDate();
+        for (Date phuc : list) {
+            System.out.println(phuc);
+
         }
- 
+
     }
- 
+
+    public ArrayList<String> getListShowTime_Schedules() {
+        ArrayList<String> schedules_Showtime = new ArrayList<>();
+        // Thời gian bắt đầu và kết thúc
+        // Thời gian bắt đầu và kết thúc
+        LocalTime startTime = LocalTime.of(8, 30);
+        LocalTime endTime = LocalTime.of(23, 30);
+
+        // Thêm các giờ còn lại vào danh sách
+        LocalTime currentTime = startTime.plusMinutes(30); // Bắt đầu từ 9:30
+        while (currentTime.isBefore(endTime)) {
+            schedules_Showtime.add(currentTime.toString());
+            currentTime = currentTime.plusMinutes(30);
+        }
+
+        return schedules_Showtime;
+    }
+
+//    public static void main(String[] args) {
+//        AdminDAO a = new AdminDAO();
+//        Date d = new Date("2024-03-10");
+//        a.add_Date_Admin(d);
+//        a.setUp_Handle_Schedules(d);
+//    }
+
 }

@@ -51,7 +51,26 @@
         </div>
     </div>
     <div class="footer__address"></div>
+
+    <div class="separator"></div>
+    <div class="infofooter">
+        <div class="imgfooter">
+            <img src="https://png.pngtree.com/png-clipart/20210129/ourmid/pngtree-3d-number-2-purple-luxury-png-image_2781763.jpg" alt="alt"/>
+        </div>
+        <div>
+            <h3>
+                Đại Học FPT Cân Thơ
+            </h3>
+            <p>600 Nguyễn Văn Cừ Nối Dài, An Bình, Ninh Kiều, Cần Thơ 900000</p>
+
+        </div>
+
+
+    </div>  
 </div>
+
+
+
 
 <script
     src="https://kit.fontawesome.com/26eb80e241.js"
@@ -63,8 +82,10 @@
 <script src="./Assets/JS/homePage.js"></script>
 <script src="./Assets/JS/payment.js"></script>
 
+
 <script
     src="https://kit.fontawesome.com/26eb80e241.js"
+    
     crossorigin="anonymous"
 ></script>
 

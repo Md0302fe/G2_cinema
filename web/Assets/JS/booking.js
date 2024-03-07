@@ -4,7 +4,6 @@
  */
 
 
-//Chọn vị trí 
 document.addEventListener('DOMContentLoaded', function () {
     var locationArrow = document.getElementById('locationArrow');
     var locationText = document.getElementById('locationText');
@@ -16,10 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
     locationText.addEventListener('click', function (event) {
         if (locationSelected) {
             locationList.style.display = 'block';
-            locationText.style.border = '1px solid #ccc';
-            locationText.style.backgroundColor = '#003077';
-            locationText.style.color = '#ffffff';
-            locationText.style.padding = '5px';
+            locationText.style.border = '1px solid ';
             // Loại bỏ đường viền khi vị trí được chọn
             locationSelected = false;
         } else {
@@ -56,77 +52,50 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-//Chọn Suất
+
+
+/////Chọn suất 
+
 document.addEventListener('DOMContentLoaded', function () {
-    var selectedDate = null; // Biến để lưu trữ ngày đã chọn
-    var selectedTime = null; // Biến để lưu trữ giờ đã chọn
     var showtimeArrow = document.getElementById('showtimeArrow');
-    var showtimeText = document.getElementById('selectedShowtimeInfo');
-    var showtimeList = document.querySelector('.showtime-info');
+    var showtimeInfo = document.getElementById('showtimeInfo');
+    var selectedShowtimeInfo = document.getElementById('selectedShowtimeInfo');
+    var showtimeItems = document.querySelectorAll('.showtime-item');
     var showtimeSelected = false;
 
-    showtimeList.style.display = 'none';
-
-    showtimeText.addEventListener('click', function (event) {
-        if (showtimeSelected) {
-            showtimeList.style.display = 'block';
-            showtimeText.style.border = 'none'; 
-            showtimeSelected = false;
-        } else {
-            showtimeText.style.border = 'none';
-            showtimeSelected = true;
-        }
-    });
+    showtimeInfo.style.display = 'none';
 
     showtimeArrow.addEventListener('click', function () {
         if (showtimeSelected) {
-            showtimeList.style.display = 'none';
-            showtimeText.style.border = 'none'; 
+            showtimeInfo.style.display = 'block';
+            selectedShowtimeInfo.style.display = 'none';
             showtimeSelected = false;
         } else {
-            showtimeList.style.display = 'block';
-            showtimeText.style.border = 'none';
+            showtimeInfo.style.display = 'none';
+            selectedShowtimeInfo.style.display = 'block';
             showtimeSelected = true;
         }
-    });
-
-    // Thêm sự kiện click để cập nhật ngày hoặc giờ đã chọn sang phần suất
-    var dateSpans = document.querySelectorAll('.date span');
-    var timeSpans = document.querySelectorAll('.time-item span');
-
-    dateSpans.forEach(function (dateSpan) {
-        dateSpan.addEventListener('click', function () {
-            selectedDate = dateSpan.innerText; // Lưu ngày đã chọn
-            updateShowtime(); // Gọi hàm cập nhật phần suất
-            dateSpans.forEach(function(span) {
-                span.classList.remove('selected');
-            });
-            dateSpan.classList.add('selected');
+        showtimeItems.forEach(function (showtimeItem) {
+showtimeItem.style.display = 'block';
         });
     });
 
-    timeSpans.forEach(function (timeSpan) {
-        timeSpan.addEventListener('click', function () {
-            selectedTime = timeSpan.innerText; // Lưu giờ đã chọn
-            updateShowtime(); // Gọi hàm cập nhật phần suất
-            timeSpans.forEach(function(span) {
-                span.classList.remove('selected');
+    showtimeItems.forEach(function (item) {
+        item.addEventListener('click', function () {
+            var selectedShowtime = item.textContent;
+            selectedShowtimeInfo.textContent = selectedShowtime;
+            showtimeItems.forEach(function (showtimeItem) {
+                showtimeItem.style.display = 'none';
             });
-            timeSpan.classList.add('selected');
+            selectedShowtimeInfo.style.display = 'block';
+            showtimeSelected = false;
+
+            // Update Galaxy section with selected showtime
+            var galaxyShowtime = document.getElementById('galaxyShowtime');
+            galaxyShowtime.textContent = selectedShowtime;
         });
     });
-
-    function updateShowtime() {
-        var galaxyShowtime = document.getElementById('galaxyShowtime');
-        if (selectedDate !== null && selectedTime !== null) { // Chỉ cập nhật nếu đã chọn cả ngày và giờ
-            galaxyShowtime.textContent = selectedTime + ' - ' + selectedDate;
-        }
-    }
 });
-
-
-
-
 
 
 
@@ -187,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Add click event listener to the back button
     var backButton = document.querySelector('.back-button');
-    backButton.addEventListener('click', function () {
+backButton.addEventListener('click', function () {
         // Show movie-info and hide selected movie info
         movieInfo.style.display = 'block';
         selectedMovieInfo.style.display = 'none';
@@ -199,18 +168,3 @@ document.addEventListener("DOMContentLoaded", function () {
         // Add your continue button functionality here
     });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
