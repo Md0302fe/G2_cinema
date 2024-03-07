@@ -20,6 +20,7 @@ import model.Movie;
  *
  * @author GIA TIEN
  */
+
 public class MovieDetailServlet extends HttpServlet {
 
     /**

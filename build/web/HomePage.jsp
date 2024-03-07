@@ -18,6 +18,7 @@
         <link href="Assets/Styles/homePage.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito Sans">
         <title>G2_Cinema</title>
     </head>
     <body>
@@ -163,11 +164,11 @@
                             <c:forEach items = "${requestScope.listMovie}" var="m">                           
                                 <div class="content-movie l-3 m-6">
                                     <div class="overlayout">
-                                        <img height="400px" src="./Assets/Image/Movies_Image/${m.movie_img}" alt="ERROR">
+                                        <img height="400px" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="ERROR">
                                         <div class="overlay">
                                             <div class="ticket-ticket">
                                                 <i class="fa-solid fa-ticket fa-2xs"></i>
-                                                <a href="bookingsvl?id=${m.id}" class="button">Mua vé</a>
+                                                <a href="MovieDetailServlet?id=${m.id}" class="button">Mua vé</a>
                                             </div>
                                         </div>
                                     </div>
