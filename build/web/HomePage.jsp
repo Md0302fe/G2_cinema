@@ -137,7 +137,7 @@
 
             <!-- BODY - MAIN -->
             <div class="Main_Body grid">
-                <div class="Main_Content grid wide">
+                <div id="current-movie" class="Main_Content grid wide">
                     <div class="navigation-body">
                         <h1 class="navi-body_title">PHIM </h1>
                         <div class="navigation-body_items">

@@ -87,7 +87,6 @@
                     </div>
                 </div>
             </li>
-<<<<<<< HEAD
             <!-- Nav Item - Charts -->
             <li class="nav-item active">
                 <a class="nav-link" href="Admin_AddMovie.jsp">
@@ -106,8 +105,6 @@
                     <span>Tables</span></a>
             </li>
             <!-- Divider -->
-=======
->>>>>>> bb5548bdc6404d373b7491950a0ab56d65ecae4f
             <hr class="sidebar-divider d-none d-md-block">
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">

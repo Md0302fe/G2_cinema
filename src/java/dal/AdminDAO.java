@@ -4,6 +4,7 @@
  */
 package dal;
 
+import jakarta.enterprise.concurrent.Asynchronous.Result;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Arrays;
@@ -105,7 +106,7 @@ public class AdminDAO extends DBContext {
                         rs.getString("movie_description"),
                         rs.getString("image"),
                         rs.getString("trailer_img"),
-                        rs.getString("trailer_link") );
+                        rs.getString("trailer_link"));
                 movie.setId(rs.getInt("movie_id"));
                 listMovie.add(movie);
             }
@@ -143,7 +144,6 @@ public class AdminDAO extends DBContext {
 //        }
 //        return listMovie;
 //    }
-
     public ArrayList<Movie> getAllMovie() {
         String sql = "select *from movie WHERE movie_status = ?";
         ArrayList<Movie> listMovie = new ArrayList<>();
@@ -425,17 +425,17 @@ public class AdminDAO extends DBContext {
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                movie = new Movie( rs.getString(2), 
-                        rs.getInt(3), 
-                        rs.getString(4), 
-                        rs.getFloat(5), 
-                        rs.getString(6), 
-                        rs.getString(7), 
-                        rs.getString(8), 
-                        rs.getString(9), 
-                        rs.getString(10), 
-                        rs.getString(11), 
-                        rs.getString(12), 
+                movie = new Movie(rs.getString(2),
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getFloat(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getString(11),
+                        rs.getString(12),
                         rs.getString(13),
                         rs.getString(14)
                 );
@@ -502,4 +502,34 @@ public class AdminDAO extends DBContext {
             System.out.println(e);
         }
     }
+
+    public List<Date> getAllDate() {
+        String sql = "select * from [dbo].[Release_date]";
+        List<Date> list = new ArrayList<>();
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Date date = new Date(rs.getString("show_date"));
+                list.add(date);
+            }
+            return list;
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+        
+    
+    public static void main(String[] args) {
+        AdminDAO a = new AdminDAO();
+         List<Date> list = (List<Date>) a.getAllDate();
+         for (Date phuc : list) {
+             System.out.println(phuc);
+            
+        }
+ 
+    }
+ 
 }

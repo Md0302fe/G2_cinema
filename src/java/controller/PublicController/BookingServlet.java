@@ -58,7 +58,6 @@ public class BookingServlet extends HttpServlet {
     throws ServletException, IOException {
         AdminDAO dao = new AdminDAO();
         List<Movie> list = dao.getListMovie();
-        
         request.setAttribute("list", list);
         request.getRequestDispatcher("booking.jsp").forward(request, response);
     } 

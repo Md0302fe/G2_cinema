@@ -1,3 +1,4 @@
+<<<<<<< OURS
 /*
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
@@ -7,7 +8,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Author     : kenga
 */
 
-body {
+showtimeListbody {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
@@ -32,6 +33,7 @@ header {
 nav {
     background-color: #333;
     color: #fff;
+    padding: 2em;
     text-align: center;
 }
 
@@ -51,7 +53,6 @@ section {
     padding: 4em;
     display: flex;
     justify-content: space-between;
-    margin: 5rem 0 4rem 0;
 }
 
 .movie {
@@ -79,15 +80,15 @@ section {
 
 .selection-container {
     margin-bottom: 15px;
-    width: 73%;
+    width: 71%;
 }
 
 .location-selection,
 .movie-selection,
 .showtime-selection {
     border: 1px solid #d2cdcd;
-    padding: 39px;
-    margin-bottom: 15px;
+    padding: 45px;
+    margin-bottom: 18px;
 
 }
 
@@ -107,10 +108,14 @@ section {
 .movie-details-container {
     border: 1px solid #ccc;
     padding: 10px;
-
+    width: 100%;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+}
+
+.fullbody{
+    width: 25%;
 }
 
 .movie-details-content {
@@ -124,7 +129,8 @@ section {
 }
 
 .movie-details-content img {
-    width: 300px;
+    width: 80%;
+    height: auto;
     border-radius: 5px;
 }
 
@@ -222,13 +228,13 @@ body {
     /* Khoảng cách dưới mỗi phần tử */
     padding: 10px;
 
-    text-align: center;
+   
 }
 
 .movie-info img {
     max-width: 100%;
-    height: 230px;
-    margin-bottom: 5px;
+    height: 328px;
+    
 }
 
 .total {
@@ -265,8 +271,6 @@ body {
 
 
 
-
-
 .movie-item {
     width: 22%;
     margin-top: 30px;
@@ -279,7 +283,7 @@ body {
 
 
 .movielist {
-    display: inline-block;
+    
     display: flex;
     justify-content: center;
 
@@ -311,11 +315,13 @@ body {
 
 }
 
-
 .showtime-item {
-
-    margin-top: 30px;
-    padding-bottom: 28px;
+    cursor: pointer;
+    border: 1px solid;
+    margin-top: 20px;
+    padding-bottom: 10px;
+    padding: 10px;
+    margin: 10px;
 }
 
 
@@ -352,5 +358,57 @@ body {
 
 #locationText span {
     border: none;
-    /* Ban đầu, không có đường viền */
+    
 }
+
+
+
+
+.timecinema h3{
+    margin-top: 31px;
+}
+
+
+.date{
+    display: flex;
+    justify-content: space-around;
+    padding: 24px;
+    padding-right: 54%;
+    cursor: pointer;
+}
+
+.date span{
+    border: 1px solid #ccc;
+    padding: 12px;
+}
+
+.timedetails{
+    margin: 22px;
+}
+
+.timedetails h3{
+    width: 20%;
+}
+
+.time-item{
+    display: flex;
+    justify-content: space-evenly;
+    cursor: pointer;
+    padding: 30px;
+    margin-top: -50px;
+    
+}
+
+.time-item span{
+    border: 1px solid #ccc;
+    padding: 10px;
+    
+}
+
+
+
+.selected {
+    background-color: #003077; /* Màu xanh đậm */
+    color: #ffffff; /* Màu trắng cho chữ */
+}
+
