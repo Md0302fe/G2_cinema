@@ -14,11 +14,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.util.List;
+import model.Account;
 import model.Movie;
 
 /**
@@ -67,7 +68,17 @@ public class AddMovieServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("Admin_AddMovie.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        if (session.getAttribute("account") == null) {
+            response.sendRedirect("login");
+        } else {
+            Account ad = (Account) session.getAttribute("account");
+            if ("Admin".equals(ad.getRole())) {
+                request.getRequestDispatcher("AdminHomeServlet").forward(request, response);
+            } else {
+                request.getRequestDispatcher("home").forward(request, response);
+            }
+        }
     }
 
     /**

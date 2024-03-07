@@ -46,7 +46,7 @@
                                             <input id="imageInput" class="select-img" type="file" accept="image/*" name="movie_image" required>
                                             <!-- <i class="fa-solid fa-hand-pointer icon"></i> -->
                                         </div>
-                                        <img id="selected-image" src="./Assets/Image/Movies_Image/${m.movie_img}"
+                                        <img id="selected-image" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}"
                                              alt="CHUA CO HINH ANH">
                                         <hr>                           
                                         <div class="select-Image">

@@ -7,6 +7,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Author     : GIA TIEN
 */
 
+body {
+    font-family: Nunito Sans, sans-serif !important;
+    color: #4a4a4a;
+}
+
 .main {
     /* font-family: Nunito Sans, sans-serif !important; */
     color: #4a4a4a;
@@ -206,7 +211,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 
 .ndp_word{
-    font-size: 14px;
+    font-size: 16px;
     margin-top: 16px;
 }
 

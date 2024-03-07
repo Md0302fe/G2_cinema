@@ -15,7 +15,8 @@
         <link href="Assets/Styles/gridTien.css" rel="stylesheet" type="text/css"/>
         <link href="Assets/Styles/header.css" rel="stylesheet" type="text/css"/>
         <link href="Assets/Styles/footer.css" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito Sans">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" href="./Assets/Styles/themify-icons-font/themify-icons/themify-icons.css"
     </head>
     <body>
@@ -26,7 +27,7 @@
                     <div class="poster-container">
                         <img
                             class="background-image poster"
-                            src="./Assets/Image/Movies_Image/${movie.movie_img}"
+                            src="./Assets/Image/Movie_Trailer_Image/${movie.movie_trailer}"
                             alt="Background Image"/>
                         <button
                             class="play-button"
@@ -47,17 +48,17 @@
                                 <div class="">
                                     <img
                                         class="movie_thumbnail border border-2 rounded"
-                                        src="./Assets/Image/Movies_Image/${movie.movie_img}"
+                                        src="./Assets/Image/Movie_Image_Vip/${movie.movie_img}"
                                         alt=""/>
                                 </div>
 
                                 <div class="movie_detail">
 
                                     <div class="movie_name flex">
-                                        <h2 class="movie_mvo">${movie.name}</h2>
+                                        <h2 class="movie_mvo bold">${movie.name}</h2>
                                         <p class="movie_rated border border-1 rounded">T18</p>
                                     </div>
-                                    
+
                                     <div class="movie_time flex">
                                         <p class="movie_minute"><i class="ti-timer"></i>${movie.duration}</p>
                                         <p class="movie_calendar"><i class="ti-clipboard"></i>${movie.release_date}</p>
@@ -163,62 +164,26 @@
                                     <span class="orange_col"></span>
                                     <h1 class="text uppercase">Phim Đang Chiếu</h1>
                                 </div>
-                                <div class="all-movie-playing1">
-                                    <a href="" style="display: block">
-                                        <img
-                                            class="now-playing-beekeeper rounded"
-                                            src="./Assets/Image/Movies_Image/DetailMovie02.webp"
-                                            alt="the-beekeeper"
-                                            width="300"
-                                            height="200"
-                                            style="color: transparent" />
-                                    </a>
-                                    <p
-                                        href=""
-                                        class="now-playing-beekeeper-name font-semibold"
-                                        style="width: 400px; padding-top: 10px">
-                                        <i class="ti-ticket"></i>
-                                        Mật Vụ Ong
-                                    </p>
-                                </div>
-
-                                <div class="all-movie-playing2">
-                                    <a href="" style="display: block">
-                                        <img
-                                            class="now-playing-quycau rounded"
-                                            src="./Assets/Image/Movies_Image/DetailMovie03.webp"
-                                            alt="the-beekeeper"
-                                            width="300"
-                                            height="200"
-                                            style="color: transparent" />
-                                    </a>
-                                    <p
-                                        href=""
-                                        class="now-playing-quycau-name font-semibold"
-                                        style="width: 400px; padding-top: 10px">
-                                        <i class="ti-ticket"></i>
-                                        Quỷ Cẩu
-                                    </p>
-                                </div>
-
-                                <div class="all-movie-playing3">
-                                    <a href="" style="display: block">
-                                        <img
-                                            class="now-playing-rcn rounded"
-                                            src="./Assets/Image/Movies_Image/DetailMovie04.webp"
-                                            alt="the-beekeeper"
-                                            width="300"
-                                            height="200"
-                                            style="color: transparent" />
-                                    </a>
-                                    <p
-                                        href=""
-                                        class="now-playing-rcn-name font-semibold"
-                                        style="width: 400px; padding-top: 10px">
-                                        <i class="ti-ticket"></i>
-                                        Rượu Cốt Người
-                                    </p>
-                                </div>
+                                <c:forEach items="${requestScope.listMovie}" var="m">
+                                    <div class="all-movie-playing1">
+                                        <a href="MovieDetailServlet?id=${m.id}" style="display: block">
+                                            <img
+                                                class="now-playing-beekeeper rounded"
+                                                src="./Assets/Image/Movie_Trailer_Image/${m.movie_trailer}"
+                                                alt="poster"
+                                                width="300"
+                                                height="200"
+                                                style="color: transparent" />
+                                        </a>
+                                        <p
+                                            href=""
+                                            class="now-playing-beekeeper-name font-semibold"
+                                            style="width: 400px; padding-top: 10px">
+                                            <i class="ti-ticket"></i>
+                                            ${m.name}
+                                        </p>
+                                    </div>
+                                </c:forEach>
                             </div>
 
                             <div class="see_more_button">

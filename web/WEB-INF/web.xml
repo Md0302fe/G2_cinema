@@ -11,7 +11,7 @@
     <filter-mapping>
         <filter-name>RoleFilter</filter-name>
         <url-pattern>/admin</url-pattern>
-        <url-pattern>/AddMovie</url-pattern>
+        <url-pattern>/AdminHomeServlet</url-pattern>
         <url-pattern>/DeleteMovie</url-pattern>
         <url-pattern>/ListMovie</url-pattern>
         <url-pattern>/setupschedules</url-pattern>

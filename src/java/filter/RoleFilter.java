@@ -120,7 +120,7 @@ public class RoleFilter implements Filter {
             Account ad = (Account) session.getAttribute("account");
             System.out.println("acc: " + ad.getRole());
             if ("Admin".equals(ad.getRole())) {
-                req.getRequestDispatcher(url).forward(request, response);
+                chain.doFilter(request, response);
             } else {
                 res.sendRedirect("home");
             }
