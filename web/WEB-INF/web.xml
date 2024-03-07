@@ -36,6 +36,14 @@
         <servlet-name>BookingServlet</servlet-name>
         <servlet-class>controller.PublicController.BookingServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Handle_Booking</servlet-name>
+        <servlet-class>controller.PublicController.Handle_Booking</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Booking_Servlet</servlet-name>
+        <servlet-class>controller.PublicController.Booking_Servlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>EditProfile</servlet-name>
         <url-pattern>/EditProfile</url-pattern>
@@ -56,15 +64,19 @@
         <servlet-name>MovieDetailServlet</servlet-name>
         <url-pattern>/MovieDetailServlet</url-pattern>
     </servlet-mapping>
+    
     <servlet-mapping>
         <servlet-name>MovieDAO</servlet-name>
         <url-pattern>/MovieDAO</url-pattern>
     </servlet-mapping>
+      
     <servlet-mapping>
-        <servlet-name>BookingServlet</servlet-name>
-        <url-pattern>/BookingServlet</url-pattern>
+        <servlet-name>Booking_Servlet</servlet-name>
+        <url-pattern>/bookingsvl</url-pattern>
     </servlet-mapping>
+    
     <welcome-file-list>
-        <welcome-file>home</welcome-file>
+        <welcome-file>home.jsp</welcome-file>
     </welcome-file-list>
+    
 </web-app>

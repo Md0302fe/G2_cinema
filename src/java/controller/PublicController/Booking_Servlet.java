@@ -9,23 +9,22 @@ import dal.BookingDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
+
 import java.util.List;
-import model.Account;
+
+
 import model.Movie;
+
 
 /**
  *
- * @author ADMIN
+ * @author MinhDuc
  */
-@WebServlet(name = "home", urlPatterns = {"/home"})
-public class home extends HttpServlet {
+public class Booking_Servlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,10 +43,10 @@ public class home extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet home</title>");
+            out.println("<title>Servlet Booking_Servlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet home at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Booking_Servlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -66,14 +65,19 @@ public class home extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         AdminDAO dao = new AdminDAO();
-        // Set account to session
-        HttpSession session = request.getSession();
-        Account acc = (Account) session.getAttribute("account");
-        request.setAttribute("account", acc);
-        // Get list of movies
-        List<Movie> m = dao.getListMovie();
-        request.setAttribute("listMovie", m);
-        request.getRequestDispatcher("HomePage.jsp").forward(request, response);
+        BookingDAO book = new BookingDAO();
+
+        List<Movie> list = dao.getListMovie();
+
+        // nhận id movie từ ajax
+        String id_raw = request.getParameter("movie_id");
+        // sau đó lấy danh sách các ngày mà phim đó được chiếu.Date   
+        ArrayList<String> listDate = book.getShowDateForBooking(id_raw);
+     
+        request.setAttribute("listDate", listDate);
+        request.setAttribute("list", list);
+        // Chuyển hướng yêu cầu tới JSP 
+        request.getRequestDispatcher("booking.jsp").forward(request, response);
     }
 
     /**
@@ -87,18 +91,7 @@ public class home extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        BookingDAO book = new BookingDAO();
-        // Get movieId from request parameter
-        String movieId = request.getParameter("movieId");
-        System.out.println("ID = " + movieId);
-
-        // Get list of dates for booking based on movieId 
-        ArrayList<String> Dates = book.getShowDateForBooking(movieId);
-
-        request.setAttribute("Dates", Dates);
-        
-        // Forward hoặc redirect đến JSP
-        request.getRequestDispatcher("HomePage.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
