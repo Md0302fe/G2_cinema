@@ -124,9 +124,9 @@
                         </div>
                         <div class="Qsearch_Data_List">
                             <div class="optionsContainer hidden" id="option_time">
-                                
+
                                 <div class="option option_time" onClick="sendSelectedDateId('${d}')">${o}</div>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -167,7 +167,7 @@
                                         <div class="overlay">
                                             <div class="ticket-ticket">
                                                 <i class="fa-solid fa-ticket fa-2xs"></i>
-                                                <a href="bookingsvl?id=${m.id}" class="button">Mua vé</a>
+                                                <a href="MovieDetailServlet?id=${m.id}" class="button">Mua vé</a>
                                             </div>
                                         </div>
                                     </div>
@@ -346,7 +346,7 @@
                                             url: "/CINEMA/loadtime",
                                             data: {
                                                 dateId: date_id,
-                                                movieId :selectedMovieId
+                                                movieId: selectedMovieId
                                             },
                                             success: function (data) {
                                                 var row = document.getElementById("option_time");

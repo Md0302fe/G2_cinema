@@ -63,11 +63,6 @@
 <script src="./Assets/JS/homePage.js"></script>
 <script src="./Assets/JS/payment.js"></script>
 
-<script
-    src="https://kit.fontawesome.com/26eb80e241.js"
-    crossorigin="anonymous"
-></script>
-
 <script type="text/javascript">
     $(document).ready(function () {
         $(".image-slider").slick({

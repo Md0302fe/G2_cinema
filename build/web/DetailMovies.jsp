@@ -57,7 +57,7 @@
                                         <h2 class="movie_mvo">${movie.name}</h2>
                                         <p class="movie_rated border border-1 rounded">T18</p>
                                     </div>
-                                    
+
                                     <div class="movie_time flex">
                                         <p class="movie_minute"><i class="ti-timer"></i>${movie.duration}</p>
                                         <p class="movie_calendar"><i class="ti-clipboard"></i>${movie.release_date}</p>
@@ -89,12 +89,14 @@
                             <div class="showtimes">
                                 <div class="lc_col flex">
                                     <span class="orange_col"></span>
-                                    <p class="lc bold">Lịch Chiếu - Vincom Xuân Khánh</p>
+                                    <p class="lc bold">Lịch Chiếu - CGV CẦN THƠ </p>
                                 </div>
                                 <p class="line"></p>
 
                                 <div class="showtime_list">
-                                    <p class="list_day font-monospace bold "><i class="ti-calendar"></i>22/01</p>
+                                    <p class="list_day font-monospace bold ">
+                                        <i class="ti-calendar"></i> 22/01
+                                    </p>
                                     <div class="showtime_cinema">
                                         <div class="showtime_bundle">
                                             <p class="Subtitles font-semibold">2D Phụ Đề</p>
