@@ -167,7 +167,9 @@
                                         <div class="overlay">
                                             <div class="ticket-ticket">
                                                 <i class="fa-solid fa-ticket fa-2xs"></i>
+
                                                 <a href="MovieDetailServlet?id=${m.id}" class="button">Mua vé</a>
+
                                             </div>
                                         </div>
                                     </div>
@@ -319,8 +321,6 @@
             </div>
         </div>
 
-        <!-- Thêm mã JavaScript vào cuối thẻ <body> hoặc tệp .js của bạn -->
-        <%@include file='./Components/Footer.jsp' %>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script>
                                     var selectedMovieId;
@@ -355,6 +355,36 @@
                                         });
                                     }
         </script>
-    </body>
-</html>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(".image-slider").slick({
+                    autoplay: true,
+                    autoplaySpeed: 2000,
+                    centerPadding: '200px',
+                    arraws: true,
+                    dots: true,
+                    slidesToShow: 1,
+                    centerMode: true,
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                centerMode: false,
+                                slidesToShow: 1,
+                                infinite: true,
+                                dots: true,
+                            }
+                        },
+                        {
+                            breakpoint: 600,
+                            settings: {
+                                slidesToShow: 1
+                            }
+                        }]
+                });
+            });
+        </script>
+
+        <!-- Thêm mã JavaScript vào cuối thẻ <body> hoặc tệp .js của bạn -->
+        <%@include file='./Components/Footer.jsp' %>
 

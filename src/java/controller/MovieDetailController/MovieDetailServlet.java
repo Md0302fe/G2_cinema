@@ -9,13 +9,11 @@ import dal.BookingDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
 import java.util.List;
 import model.Movie;
 
@@ -73,6 +71,13 @@ public class MovieDetailServlet extends HttpServlet {
         } catch (Exception e) {
             System.out.println("Error In doGet MovieDeTails_Servlet : " + e);
         }
+    }
+
+    public static void main(String[] args) {
+        AdminDAO dao = new AdminDAO();
+        int movieId = Integer.parseInt("3");
+        Movie mv = dao.getMovieById(movieId);
+        System.out.println(mv.getMovie_trailer());
     }
 
     /**
