@@ -14,7 +14,7 @@
     <body>
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="home">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -35,7 +35,7 @@
             </div>
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="Admin_AddMovie.jsp">
+                <a class="nav-link" href="AddMovie">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Add Movie</span></a>
             </li>
@@ -45,7 +45,7 @@
                     <span>Management Movies</span></a>
             </li>            
             <li class="nav-item ">
-                <a class="nav-link" href="Admin_Setup_Schedules_Movie.jsp">
+                <a class="nav-link" href="setupschedules">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Set Up Schedules</span></a>
             </li>           
@@ -86,23 +86,6 @@
                         <a class="collapse-item" href="cards.html">Cards</a>
                     </div>
                 </div>
-            </li>
-            <!-- Nav Item - Charts -->
-            <li class="nav-item active">
-                <a class="nav-link" href="Admin_AddMovie.jsp">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Add Movie</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="ListMovie">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Management Movies</span></a>
-            </li>
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

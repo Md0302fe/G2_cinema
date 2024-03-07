@@ -82,6 +82,15 @@
                             </ul>
                         </div>
                     </li>
+                    <li class="admin_header">
+                        <div class="rel">
+                            <c:if test="${sessionScope.account.role == 'Admin'}">
+                                <div class="nav__user">
+                                    <a class="nav__login--btn" href="admin">Admin</a>
+                                </div>
+                            </c:if>
+                        </div>
+                    </li>
                 </ul>
             </li>
             <li class="nav__auth flex">
@@ -94,7 +103,6 @@
                     <input id="searchInput" class="search-box abs b-shadow" type="text" placeholder="Search.."
                            onfocus="expandInput()" onblur="shrinkInput()">
                 </div>
-
                 <c:if test="${sessionScope.account==null}">
                     <div class="nav__user">
                         <a class="nav__login--btn" href="login"> <i class="fa-regular fa-user"></i> Đăng nhập</a>

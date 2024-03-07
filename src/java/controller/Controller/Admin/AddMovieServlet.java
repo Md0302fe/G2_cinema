@@ -67,7 +67,7 @@ public class AddMovieServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.getRequestDispatcher("Admin_AddMovie.jsp").forward(request, response);
     }
 
     /**
