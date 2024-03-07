@@ -371,4 +371,17 @@ body {
     margin-left: 6px;
 }
 
+.showtime_bundle {
+    display: flex;
+    flex-direction: row;
+}
+
+.time_slot1 {
+    margin-right: 10px; /* Điều chỉnh khoảng cách giữa các giờ chiếu */
+}
+
+.time_slot1.active {
+    background-color:  rgb(242, 107, 56);; /* Màu nền của nút giờ được chọn */
+    color: #fff; /* Màu chữ của nút giờ được chọn */
+}
 
