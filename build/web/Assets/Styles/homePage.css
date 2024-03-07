@@ -57,7 +57,7 @@ body {
     font-size: 1px;
     line-height: 1;
     display: block;
-    width: 10px;
+    width: 13px;
     height: 13px;
     background-color: transparent;
     border: 1px solid white;
@@ -213,7 +213,7 @@ body {
 }
 
 .optionsContainer {
-    max-height: 150px; /* Đặt chiều cao tối đa cho optionsContainer */
+    max-height: 320px; /* Đặt chiều cao tối đa cho optionsContainer */
     overflow-y: auto; /* Kích hoạt thanh cuộn dọc khi nội dung vượt quá chiều cao tối đa */
 }
 .optionsContainer .option {
