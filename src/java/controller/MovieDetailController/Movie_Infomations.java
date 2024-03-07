@@ -2,34 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller.PublicController;
+package controller.MovieDetailController;
 
-import dal.AdminDAO;
-import dal.BookingDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
-
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import model.Account;
-import model.Movie;
-import org.json.JSONArray;
 
 /**
  *
- * @author ADMIN
+ * @author MinhDuc
  */
-@WebServlet(name = "home", urlPatterns = {"/home"})
-public class home extends HttpServlet {
+public class Movie_Infomations extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,10 +34,10 @@ public class home extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet home</title>");
+            out.println("<title>Servlet Movie_Infomations</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet home at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Movie_Infomations at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -69,15 +55,8 @@ public class home extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        AdminDAO dao = new AdminDAO();
-        // Set account to session
-        HttpSession session = request.getSession();
-        Account acc = (Account) session.getAttribute("account");
-        request.setAttribute("account", acc);
-        // Get list of movies
-        List<Movie> m = dao.getListMovie();
-        request.setAttribute("listMovie", m);
-        request.getRequestDispatcher("HomePage.jsp").forward(request, response);
+        String Movie_Id = request.getParameter("id");
+        System.out.println("Movie_Id : " + Movie_Id);
     }
 
     /**
@@ -91,23 +70,7 @@ public class home extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        BookingDAO book = new BookingDAO();
-        // Get movieId from request parameter
-        String movieId = request.getParameter("movieId");
-        System.out.println("ID = " + movieId);
-
-        // lay ra ngay hien tai
-        LocalDate today = LocalDate.now();
-        DateTimeFormatter data_format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String today_parse = data_format.format(today);
-
-        // Get list of dates for booking based on movieId 
-        ArrayList<String> Dates = book.getShowDateForBooking(movieId, today_parse);
-
-        request.setAttribute("Dates", Dates);
-
-        // Forward hoặc redirect đến JSP
-        request.getRequestDispatcher("HomePage.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**

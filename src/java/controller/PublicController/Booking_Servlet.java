@@ -12,13 +12,11 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-
 import java.util.List;
-
-
 import model.Movie;
-
 
 /**
  *
@@ -71,9 +69,13 @@ public class Booking_Servlet extends HttpServlet {
 
         // nhận id movie từ ajax
         String id_raw = request.getParameter("movie_id");
-        // sau đó lấy danh sách các ngày mà phim đó được chiếu.Date   
-        ArrayList<String> listDate = book.getShowDateForBooking(id_raw);
-     
+        // sau đó lấy danh sách các ngày mà phim đó được chiếu.Date
+        // lay ra ngay hien tai
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter data_format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String today_parse = data_format.format(today);
+        ArrayList<String> listDate = book.getShowDateForBooking(id_raw, today_parse);
+
         request.setAttribute("listDate", listDate);
         request.setAttribute("list", list);
         // Chuyển hướng yêu cầu tới JSP 

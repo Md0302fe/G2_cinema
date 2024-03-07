@@ -77,7 +77,6 @@
                             <div class="optionsContainer hidden">
                                 <c:forEach items="${listMovie}" var="m">
                                     <div class="option option_movie" onClick="sendSelectedMovieId('${m.id}')">${m.name}
-
                                     </div>
                                 </c:forEach>
                             </div>
@@ -125,9 +124,9 @@
                         </div>
                         <div class="Qsearch_Data_List">
                             <div class="optionsContainer hidden" id="option_time">
-                                
+
                                 <div class="option option_time" onClick="sendSelectedDateId('${d}')">${o}</div>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -172,7 +171,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="#" id="movie_id">${m.name}</a>
+                                    <a href="MovieDetailServlet?id=${m.id}" id="movie_id">${m.name}</a>
                                 </div>
                             </c:forEach> 
                         </div>
@@ -347,7 +346,7 @@
                                             url: "/CINEMA/loadtime",
                                             data: {
                                                 dateId: date_id,
-                                                movieId :selectedMovieId
+                                                movieId: selectedMovieId
                                             },
                                             success: function (data) {
                                                 var row = document.getElementById("option_time");
