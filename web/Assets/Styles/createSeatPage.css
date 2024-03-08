@@ -110,208 +110,315 @@ body {
 .man_hinh {
     text-align: center;
     --tw-text-opacity: 1;
-    color: rgb(204 204 204/var(--tw-text-opacity));
-    font-size: .75rem;
-    margin-left: -70px;
-}
+    body {
+        font-family: Nunito Sans, sans-serif !important;
+        color: #4a4a4a;
+    }
 
-.border_orange {
-    width: 91%;
-    height: 4px;
-    background-color: rgb(242, 107, 56);
-    margin: 1rem 0;
-    word-wrap: break-word;
-    padding: 0 60px 0 0;
-}
+    .flex {
+        display: flex;
+    }
 
-.all_status {
-    display: flex;
-}
+    .bold {
+        font-weight: bolder;
+    }
 
-.status_left {
-    display: flex;
-    width: 70%;
-    padding-top: 8px;
-}
+    .all_seat {
+        display: flex;
+        width: 100%;
+    }
 
-.GDB {
-    display: flex;
-    margin-right: 18px;
-    font-size: .875rem;
-}
+    .content_left {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+    }
 
-.GDB_border_color1 {
-    width: 1.25rem;
-    height: 1.25rem;
-    border-radius: 0.25rem;
-    background-color: grey;
-    margin-right: 6px;
-}
+    .content_right {
+        width: 30%;
+    }
 
-.GDC {
-    display: flex;
-    font-size: .875rem;
-}
+    .change_time_movie {
+        width: 30%;
+        margin-bottom: 26px;
+        margin-left: 30px;
+    }
 
-.GDC_border_color2 {
-    width: 1.25rem;
-    height: 1.25rem;
-    border-radius: 0.25rem;
-    background-color: rgb(242, 107, 56);
-    margin-right: 6px;
-}
+    .show_time_movie {
+        margin-bottom: 40px;
+    }
 
-.status_right {
-    display: flex;
-    padding-top: 8px;
-}
+    .time_movie {
+        width: 145%;
+    }
 
-.VIP_seat {
-    display: flex;
-    margin-right: 18px;
-    font-size: .875rem;
-}
+    /* .time_slot{
+        padding-top: 26px;
+    } */
 
-.VIP {
-    width: 1.25rem;
-    height: 1.25rem;
-    border-radius: 0.25rem;
-    margin-right: 6px;
-}
+    .time_slot {
+        margin-bottom: 6px;
+        margin-top: 6px;
+        margin-right: 10px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        font-size: .875rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        border-width: 1px;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        background-color: transparent;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
 
-.single_seat {
-    display: flex;
-    font-size: .875rem;
-}
+    .time_slot:hover {
+        background-color: #034ea2;
+        color: #fff;
+    }
 
-.single {
-    width: 1.25rem;
-    height: 1.25rem;
-    border-radius: 0.25rem;
-    margin-right: 6px;
-}
+    .seat_items {
+        display: flex;
+        margin-right: 1px;
+        margin-top: 10px;
+    }
 
-.line_booking {
-    width: 100%;
-    height: 6px;
-    background-color: rgb(242, 107, 56);
-    margin: 1rem 0;
-    word-wrap: break-word;
-    border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
-}
+    .border_seats {
+        width: 2rem;
+        height: 1.8rem;
+        margin-right: 3px;
+        margin-left: 3px;
+        font-size: 13px;
+        transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    }
 
-.movie_rated {
-    width: 40px;
-    margin-top: 10px !important;
-    border-radius: 0.25rem;
-    margin: 14px 10px;
-    padding: 6px 8px;
-    font-size: .875rem;
-    background-color: rgb(242, 111, 64);
-    color: #fff;
-    font-weight: 700;
-}
+    .border_seats:hover {
+        background-color: rgb(242, 107, 56);
+        color: #fff;
+    }
 
-.booking_top {
-    display: flex;
-}
+    .text1 {
+        width: 8px;
+        line-height: 1.7rem;
+        margin-right: 92px;
+        font-size: .875rem;
 
-.movie_name {
-    font-size: 1rem;
-    font-weight: 700;
-}
+    }
 
-.booking_info {
-    display: flex;
-}
+    .text2 {
+        line-height: 1.7rem;
+        margin-left: 92px;
+        font-size: .875rem;
+    }
 
-.content_booking {
-    margin-left: 10px;
-}
+    .man_hinh {
+        text-align: center;
+        --tw-text-opacity: 1;
+        font-size: .75rem;
+        margin-left: -70px;
+    }
 
-.subtitle {
-    margin-top: 16px;
-}
+    .border_orange {
+        width: 91%;
+        height: 4px;
+        background-color: rgb(242, 107, 56);
+        margin: 1rem 0;
+        word-wrap: break-word;
+        padding: 0 60px 0 0;
+    }
 
-.total_booking {
-    margin-top: 20px;
-}
+    .all_status {
+        display: flex;
+    }
 
-.theater_name {
-    font-size: 1rem;
-    margin-bottom: -6px;
-}
+    .status_left {
+        display: flex;
+        width: 70%;
+        padding-top: 8px;
+    }
 
-.movie_time {
-    margin-left: 6px;
-}
+    .GDB {
+        display: flex;
+        margin-right: 18px;
+        font-size: .875rem;
+    }
 
-.date_movie {
-    margin-left: 6px;
-}
+    .GDB_border_color1 {
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 0.25rem;
+        background-color: grey;
+        margin-right: 6px;
+    }
 
-.line_totalbooking {
-    margin-bottom: 20px;
-    margin-top: 5px;
-    border-style: dashed;
-    border-top-width: 0px;
-    border-color: gray;
-    border-width: 1px;
-}
+    .GDC {
+        display: flex;
+        font-size: .875rem;
+    }
 
-.price_seat_black {
-    margin-left: 198px;
-}
+    .GDC_border_color2 {
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 0.25rem;
+        background-color: rgb(242, 107, 56);
+        margin-right: 6px;
+    }
 
-.price_seat_orange {
-    margin-left: 198px;
-    color: rgb(242, 111, 64);
-}
+    .status_right {
+        display: flex;
+        padding-top: 8px;
+    }
 
-.text_back {
-    width: 50%;
-    height: 48px;
-    color: rgb(242, 111, 64);
-    margin-right: 38px;
-}
+    .VIP_seat {
+        display: flex;
+        margin-right: 18px;
+        font-size: .875rem;
+    }
 
-.text_continute {
-    width: 50%;
-    height: 48px;
-    background-color: rgb(242, 111, 64);
-    color: #fff;
-    margin-left: 38px;
-    transition: background-color 0.2s;
-}
+    .VIP {
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 0.25rem;
+        margin-right: 6px;
+    }
 
-.text_continute:hover {
-    background-color: rgb(255, 149, 63)
-}
+    .single_seat {
+        display: flex;
+        font-size: .875rem;
+    }
 
-.pd-t-10px {
-    padding-top: 10px;
-}
+    .single {
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 0.25rem;
+        margin-right: 6px;
+    }
 
-.mg-t-10px {
-    margin-left: 10px
-}
+    .line_booking {
+        width: 100%;
+        height: 6px;
+        background-color: rgb(242, 107, 56);
+        margin: 1rem 0;
+        word-wrap: break-word;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+    }
 
-.time_slot.selected {
-    background-color: #034ea2;
-    color: #fff;
-}
+    .movie_rated {
+        width: 40px;
+        margin-top: 10px !important;
+        border-radius: 0.25rem;
+        margin: 14px 10px;
+        padding: 6px 8px;
+        font-size: .875rem;
+        background-color: rgb(242, 111, 64);
+        color: #fff;
+        font-weight: 700;
+    }
 
-.active_duration {
-    background-color: #034ea2;
-    color: #fff;
-}
+    .booking_top {
+        display: flex;
+    }
 
-.active_duration_seat {
-    background-color: rgb(242, 111, 64);
-    color: #fff;
-}
+    .movie_name {
+        font-size: 1rem;
+        font-weight: 700;
+    }
 
-.bill_booking {
-    display: none;
+    .booking_info {
+        display: flex;
+    }
+
+    .content_booking {
+        margin-left: 10px;
+    }
+
+    .subtitle {
+        margin-top: 16px;
+    }
+
+    .total_booking {
+        margin-top: 20px;
+    }
+
+    .theater_name {
+        font-size: 1rem;
+        margin-bottom: -6px;
+    }
+
+    .movie_time {
+        margin-left: 6px;
+    }
+
+    .date_movie {
+        margin-left: 6px;
+    }
+
+    .line_totalbooking {
+        margin-bottom: 20px;
+        margin-top: 5px;
+        border-style: dashed;
+        border-top-width: 0px;
+        border-color: gray;
+        border-width: 1px;
+    }
+
+    .box_total_price {
+        justify-content: space-between;
+    }
+
+    .total_price {
+        justify-content: space-between;
+    }
+
+    .price_seat_orange {
+        color: rgb(242, 111, 64);
+    }
+
+    .text_back {
+        width: 50%;
+        height: 48px;
+        color: rgb(242, 111, 64);
+        margin-right: 38px;
+    }
+
+    .text_continute {
+        width: 50%;
+        height: 48px;
+        background-color: rgb(242, 111, 64);
+        color: #fff;
+        margin-left: 38px;
+        transition: background-color 0.2s;
+    }
+
+    .text_continute:hover {
+        background-color: rgb(255, 149, 63)
+    }
+
+    .pd-t-10px {
+        padding-top: 10px;
+    }
+
+    .mg-t-10px {
+        margin-left: 10px
+    }
+
+    .time_slot.selected {
+        background-color: #034ea2;
+        color: #fff;
+    }
+
+    .active_duration {
+        background-color: #034ea2;
+        color: #fff;
+    }
+
+    .active_duration_seat {
+        background-color: rgb(242, 111, 64);
+        color: #fff;
+    }
+
+    .bill_booking {
+        display: none;
+    }
 }
