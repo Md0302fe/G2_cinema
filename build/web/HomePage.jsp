@@ -167,9 +167,7 @@
                                         <div class="overlay">
                                             <div class="ticket-ticket">
                                                 <i class="fa-solid fa-ticket fa-2xs"></i>
-
                                                 <a href="MovieDetailServlet?id=${m.id}" class="button">Mua vé</a>
-
                                             </div>
                                         </div>
                                     </div>
