@@ -13,13 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-
-
-
-
-
-
-
   function toggleOptionsContainer(indexIcon) {
     // lấy ra tất cả các thẻ options để check xem cái nào đang hiển thị hay còn đc hiểu là phù hợp với indexIcon -> toggle nó.
     var optionContainers = document.querySelectorAll(

@@ -1,12 +1,15 @@
 
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
-*/
-/* 
-    Created on : Feb 22, 2024, 8:13:24 AM
-    Author     : kenga
-*/
+body {
+    font-family: Nunito Sans, sans-serif !important;
+    margin: 0;
+    padding: 0;
+    color: #4a4a4a;
+    background-color: #f4f4f4;
+}
+
+section{
+    margin: 5rem 0 4rem 0;
+}
 
 showtimeListbody {
     font-family: 'Arial', sans-serif;
@@ -33,7 +36,7 @@ header {
 nav {
     background-color: #333;
     color: #fff;
-    padding: 2em;
+    
     text-align: center;
 }
 
@@ -87,8 +90,8 @@ section {
 .movie-selection,
 .showtime-selection {
     border: 1px solid #d2cdcd;
-    padding: 45px;
-    margin-bottom: 18px;
+    padding: 47px;
+    margin-bottom: 15px;
 
 }
 
@@ -107,7 +110,7 @@ section {
 
 .movie-details-container {
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: 13px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -233,8 +236,8 @@ body {
 
 .movie-info img {
     max-width: 100%;
-    height: 328px;
-    
+    height: 230px;
+    margin-bottom: 5px;
 }
 
 .total {
@@ -272,8 +275,9 @@ body {
 
 
 .movie-item {
-    width: 22%;
+    width: 20%;
     margin-top: 30px;
+     flex-basis: 20%; /* Thiết lập cơ sở linh hoạt ban đầu */
 }
 
 .movie-item img {
@@ -282,11 +286,40 @@ body {
 }
 
 
+/* Thiết lập để đảm bảo chỉ có 5 mục trong một hàng */
+@media screen and (max-width: 1200px) {
+    .movie-item {
+        width: 24%; /* Thiết lập kích thước 24% để có tối đa 4 mục trong một hàng */
+        flex-basis: 24%;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .movie-item {
+        width: 30%; /* Thiết lập kích thước 30% để có tối đa 3 mục trong một hàng */
+        flex-basis: 30%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .movie-item {
+        width: 45%; /* Thiết lập kích thước 45% để có tối đa 2 mục trong một hàng */
+        flex-basis: 45%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .movie-item {
+        width: 100%; /* Thiết lập kích thước 100% để mỗi mục chiếm toàn bộ chiều rộng của container */
+        flex-basis: 100%;
+    }
+}
+
 .movielist {
     
     display: flex;
     justify-content: center;
-
+     flex-wrap: wrap; /* Cho phép các mục được xếp ở nhiều hàng */
 }
 
 .movielist span {
@@ -394,7 +427,7 @@ body {
     display: flex;
     justify-content: space-evenly;
     cursor: pointer;
-    padding: 30px;
+    padding: 17px;
     margin-top: -50px;
     
 }
@@ -410,5 +443,11 @@ body {
 .selected {
     background-color: #003077; /* Màu xanh đậm */
     color: #ffffff; /* Màu trắng cho chữ */
+}
+
+
+
+.selectedMovieNameBorder {
+    border: 1px solid #000; /* Định nghĩa border cho tên phim */
 }
 

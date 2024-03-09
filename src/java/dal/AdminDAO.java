@@ -4,7 +4,6 @@
  */
 package dal;
 
-import jakarta.enterprise.concurrent.Asynchronous.Result;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Arrays;
@@ -283,7 +282,7 @@ public class AdminDAO extends DBContext {
         ArrayList list_schedules = new ArrayList<>();
 
         //  random số slot cần chíu trong khung giờ này : ví dụ trong khung T-9 có 3 slot chiếu.
-        int number_of_schedules = random.nextInt(4) + 2;
+        int number_of_schedules = random.nextInt(3) + 4;
 
         // list chứa các movie_id : Lấy ra tất cả các id của phim có trong database.
         ArrayList list_movie_id = getAllMovieID();

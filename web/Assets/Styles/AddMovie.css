@@ -6,6 +6,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Created on : Feb 27, 2024, 11:47:53 AM
     Author     : MinhDuc
 */
+body {
+    font-family: Nunito Sans, sans-serif !important;
+    color: #4a4a4a;
+}
+
 .AddMovies-button {
     position: relative;
     top: -12%;
@@ -195,10 +200,4 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 .checkk:active {
     background-color: #36723e; /* Màu nền xanh lá cây tối hơn khi click */
-}
-
-
-.select-trailer {
-    margin-left: 5px;
-    
 }

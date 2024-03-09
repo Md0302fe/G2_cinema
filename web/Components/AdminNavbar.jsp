@@ -35,7 +35,7 @@
             </div>
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="Admin_AddMovie.jsp">
+                <a class="nav-link" href="AdminHomeServlet">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Add Movie</span></a>
             </li>
@@ -45,7 +45,7 @@
                     <span>Management Movies</span></a>
             </li>            
             <li class="nav-item ">
-                <a class="nav-link" href="Admin_Setup_Schedules_Movie.jsp">
+                <a class="nav-link" href="setupschedules">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Set Up Schedules</span></a>
             </li>           
@@ -87,10 +87,6 @@
                     </div>
                 </div>
             </li>
-<<<<<<< HEAD
-=======
-
->>>>>>> a7b4edd743812265b04845b9cbd72525a9bf97ee
             <!-- Nav Item - Charts -->
             <li class="nav-item active">
                 <a class="nav-link" href="Admin_AddMovie.jsp">
@@ -109,10 +105,6 @@
                     <span>Tables</span></a>
             </li>
             <!-- Divider -->
-<<<<<<< HEAD
-=======
-
->>>>>>> a7b4edd743812265b04845b9cbd72525a9bf97ee
             <hr class="sidebar-divider d-none d-md-block">
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">

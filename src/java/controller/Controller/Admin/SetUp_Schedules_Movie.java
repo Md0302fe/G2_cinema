@@ -59,7 +59,7 @@ public class SetUp_Schedules_Movie extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.getRequestDispatcher("Admin_Setup_Schedules_Movie.jsp").forward(request, response);
     }
 
     /**

@@ -14,9 +14,7 @@
         <link href="Assets/Styles/AddMovie.css" rel="stylesheet" type="text/css"/>
         <link href="Assets/Styles/sb-admin-2.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        <link
-            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-            rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito Sans">
         <title>JSP Page</title>
     </head>
     <body>
@@ -138,7 +136,6 @@
                                         <div class="boxDerectors V2" style="display: flex; align-items: center;">
                                             <label style="margin-right: 1.7rem;"> Mô Tả Nội Dung</label>
                                             <textarea type="text" placeholder="" size="95" name="Describel" rows="4" cols="60" style="resize: none">${m.description}</textarea>
-
                                         </div>
                                     </div>
                                 </div>

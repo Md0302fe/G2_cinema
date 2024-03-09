@@ -95,57 +95,6 @@ function closeAllDropdowns() {
     });
 }
 
-////Login and reg
-//function login() {
-//    document.getElementById("LoginForm").style.left = "0";
-//    document.getElementById("RegForm").style.right = "-334px";
-//    document.getElementById("Indicator").style.transform = "translate(0)";
-//}
-//
-//
-//function register() {
-//    document.getElementById("LoginForm").style.left = "-334px";
-//    document.getElementById("RegForm").style.right = "0";
-//    document.getElementById("Indicator").style.transform = "translate(100px)";
-//}
-//
-//// Show - Hide password
-//
-//function togglePassword(inputId, icon) {
-//    var passwordInput = document.getElementById(inputId);
-//
-//    if (passwordInput.type === "password") {
-//        passwordInput.type = "text";
-//        icon.classList.remove("fa-eye-slash");
-//        icon.classList.add("fa-eye");
-//    } else {
-//        passwordInput.type = "password";
-//        icon.classList.remove("fa-eye");
-//        icon.classList.add("fa-eye-slash");
-//    }
-//}
-//// Function to toggle the display of the login modal
-//function toggleLoginModal() {
-//    var loginModal = document.querySelector('.login-modal');
-//    loginModal.style.display = (loginModal.style.display === 'block') ? 'none' : 'block';
-//}
-//
-//// Event listener for the login button
-//document.querySelector('.nav__login--btn').addEventListener('click', function () {
-//    toggleLoginModal();
-//});
-//document.querySelector('.form-close-btn').addEventListener('click', function () {
-//    toggleLoginModal();
-//});
-//
-//// Additional functionality (such as closing the modal when clicking outside)
-//document.addEventListener('mouseup', function (event) {
-//    var loginModal = document.querySelector('.login-modal');
-//    if (event.target != loginModal && !loginModal.contains(event.target)) {
-//        loginModal.style.display = 'none';
-//    }
-//});
-//
 
 //Hàm tìm kiếm
 function search() {

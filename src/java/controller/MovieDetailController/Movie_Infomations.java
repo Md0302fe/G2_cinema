@@ -2,27 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller.PublicController;
+package controller.MovieDetailController;
 
-import dal.AdminDAO;
-import dal.BookingDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import model.Movie;
 
 /**
  *
  * @author MinhDuc
  */
-public class Booking_Servlet extends HttpServlet {
+public class Movie_Infomations extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,10 +34,10 @@ public class Booking_Servlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Booking_Servlet</title>");
+            out.println("<title>Servlet Movie_Infomations</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Booking_Servlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Movie_Infomations at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,26 +55,8 @@ public class Booking_Servlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        AdminDAO dao = new AdminDAO();
-
-        List<Movie> list = dao.getListMovie();
-        request.setAttribute("list", list);
-        request.getRequestDispatcher("booking.jsp").forward(request, response);
-
-        BookingDAO book = new BookingDAO();
-        // nhận id movie từ ajax
-        String id_raw = request.getParameter("movie_id");
-        // sau đó lấy danh sách các ngày mà phim đó được chiếu.Date
-        // lay ra ngay hien tai
-        LocalDate today = LocalDate.now();
-        DateTimeFormatter data_format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String today_parse = data_format.format(today);
-        ArrayList<String> listDate = book.getShowDateForBooking(id_raw, today_parse);
-
-        request.setAttribute("listDate", listDate);
-        request.setAttribute("list", list);
-        // Chuyển hướng yêu cầu tới JSP 
-        request.getRequestDispatcher("booking.jsp").forward(request, response);
+        String Movie_Id = request.getParameter("id");
+        System.out.println("Movie_Id : " + Movie_Id);
     }
 
     /**
@@ -103,9 +78,9 @@ public class Booking_Servlet extends HttpServlet {
      *
      * @return a String containing servlet description
      */
-//    @Override
-//    public String getServletInfo() {
-//        return "Short description";
-//    }// </editor-fold>
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
 
 }

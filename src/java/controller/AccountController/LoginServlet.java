@@ -112,10 +112,10 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("Login.jsp").forward(request, response);
         } else {
             session.setAttribute("account", account);
-            if ("user".equals(account.getRole())) {
+            if ("User".equals(account.getRole())) {
                 response.sendRedirect("home");
             } else {
-                response.sendRedirect("home");
+                response.sendRedirect("admin");
             }
         }
     }

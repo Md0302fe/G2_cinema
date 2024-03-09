@@ -10,7 +10,7 @@ body {
     color: #000;
     font-size: 16px;
     line-height: 32px;
-    font-family: "neue-haas-unica", "kozuka-gothic-pro", sans-serif;
+    font-family: Nunito Sans, sans-serif !important;
     font-style: normal;
     font-weight: 500;
     letter-spacing: 0.04em;
@@ -84,6 +84,23 @@ input {
     text-decoration: none;
 }
 
+.ticketbuy {
+   cursor: pointer;
+}
+
+
+.ticketbuy img{
+    padding-top: 10px;
+    width: 12rem;
+}
+
+.movie a{
+    padding: 8px;
+}
+.imgheader{
+    width: 17rem;
+}
+
 #topnav h5 {
     font-size: 14px;
     line-height: normal;
@@ -115,9 +132,6 @@ input {
 }
 
 
-.ticketbuy img{
-    width: 10rem;
-}
 
 .nav__user,
 .rel {

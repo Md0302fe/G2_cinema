@@ -135,7 +135,7 @@
 //                }
 //            });
 
-// Lưu ngày vào cookie
+        // Lưu ngày vào cookie
             function setCookie(name, value, days) {
                 var expires = "";
                 if (days) {
@@ -146,7 +146,7 @@
                 document.cookie = name + "=" + value + expires + "; path=/";
             }
 
-// Đọc giá trị cookie
+        // Đọc giá trị cookie
             function getCookie(name) {
                 var nameEQ = name + "=";
                 var cookies = document.cookie.split(';');
@@ -165,13 +165,10 @@
 // Kiểm tra và hiển thị cảnh báo
             function checkAndShowWarning() {
                 var selectedDate = new Date(dateInput.value);
-
                 // Lấy giá trị cookie trước đó
                 var selectedDatesCookie = getCookie("selectedDates");
-
                 // Chuyển giá trị cookie thành mảng
                 var selectedDatesArray = selectedDatesCookie ? selectedDatesCookie.split(",") : [];
-
                 if (selectedDatesArray.includes(selectedDate.toDateString())) {
                     showWarning("Ngày này đã được chọn trước đó, vui lòng chọn ngày khác !!!");
                 } else if (!isFutureDate(selectedDate)) {
@@ -187,8 +184,7 @@
                     selectedDates.add(lastInput);
                 }
             }
-
-// Sự kiện nhấn nút kiểm tra
+             // Sự kiện nhấn nút kiểm tra
             buttonCheck.addEventListener("click", checkAndShowWarning);
 
         </script>

@@ -13,26 +13,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="Assets/Styles/booking.css" rel="stylesheet" type="text/css"/>
-        <link href="Assets/Styles/header.css" rel="stylesheet" type="text/css"/>
         <link href="Assets/Styles/footer.css" rel="stylesheet" type="text/css"/>
+        <link href="Assets/Styles/header.css" rel="stylesheet" type="text/css"/>
         <title>Galaxy Cinema</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito Sans">
-    </head>
-    <script src="Assets/JS/booking.js" type="text/javascript"></script>
 
+    </head>
 
     <body>
 
         <%@include file='./Components/Header.jsp' %>
 
-        <!--    <nav>
-                <a href="#">Chọn phim / Rạp / Suất</a>
-                <a href="#">Chọn ghế</a>
-                <a href="#">Chọn thức ăn</a>
-                <a href="#">Thanh toán </a>
-                <a href="#">Xác nhận</a>
-            </nav>-->
 
         <section>
             <!-- Phần "Chọn vị trí", "Chọn phim", và "Chọn suất" -->
@@ -49,35 +40,36 @@
                             <div class="location-info" id="locationInfo">
                                 <span id="locationText">Cần Thơ</span> <!-- Thêm id="locationText" vào đây -->
                             </div>
+                            </p>
                         </div>
                     </div>
                 </div>
+
                 <div class="movie-selection-container">
                     <div class="movie-selection">
+
                         <div class="flex-c">
                             <label for="movie">Chọn phim</label>
                             <i class="fa-solid fa-chevron-down" id="movieArrow"></i>
                         </div>
                         <a class="movie-list" id="movieList"></a>
-
                         <div class="movie-info" id="movieInfo" style="display: none;">
-                            <p>                              
+                            <p>
                             <div class="movielist">
                                 <c:forEach items="${requestScope.list}" var="m">
                                     <div class="movie-item">
-                                        <a href="bookingsvl" data-movie-id="${m.id}">
-                                            <img src="./Assets/Image/Movies_Image/${m.movie_img}" alt="Quỷ Cẩu">
+                                        <a   data-movie-id="${m.id}">
+                                            <img src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="Quỷ Cẩu">
                                         </a>
-                                        <span>${m.name} </span>
-                                    </div> 
+                                        <span>${m.name}</span>
+                                    </div>
                                 </c:forEach>
                             </div>
                             </p>
                         </div>
-
                         <div class="info-img" id="full">
                             <div class="selected-movie-info" id="selectedMovieInfo" style="display: none;">
-                                <img id="selectedMovieImage" src="" alt="Selected Movie Poster">
+                                <img id="selectedMovieImage" src="" alt="">
                                 <p id="selectedMovieNameInfo"></p>
                             </div>
                         </div>
@@ -86,33 +78,55 @@
                             <p id="hoverMovieName"></p>
                         </div>
                     </div>
+
                 </div>
+
+
+
                 <div class="showtime-selection">
                     <div class="flex-c">
                         <label for="showtime">Chọn Suất</label>
                         <i class="fa-solid fa-chevron-down" id="showtimeArrow"></i>
                     </div>
                     <!-- <a class="showtime-list" id="showtimeList"></a> -->
-                    <span id="selectedShowtimeInfo"></span>
-                    <div class="showtime-info" id="showtimeInfo" style="display: none">
-                        <p>
-                        <div class="movielist" id="showData_date">                                
-                            <c:forEach items="${listDate}" var="date">
-                                <div class="movie-item">
-                                    <a href="#">
-                                        <span>${date.name} </span>
-                                    </a>
-                                </div> 
-                            </c:forEach>
+                    <span id="selectedShowtimeInfo"> </span>
+                    <div class="showtime-info" id="showtimeInfo" style="display: none;">
+                        <div class="showtimeList">
                         </div>
-                        </p>
+                        <div class="date">
+                            <div>
+                                <span>03/07/2024</span>
+                            </div>
+                        </div>
+                        <div class="timecinema">
+                            <h3>Galaxy Nguyễn Văn Quá</h3>
+                            <div class="timedetails">
+                                <a>2D Phụ Đề</a>
+                                <div class="time-item">
+                                    <div >
+                                        <span>08:00 AM</span>
+                                    </div>
+                                    <div >
+                                        <span>11:00 AM</span>
+                                    </div>
+                                    <div >
+                                        <span>2:00 PM</span>
+                                    </div>
+                                    <div>
+                                        <span>6:00 PM</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="separator-line">
+                        </div>
                     </div>
                 </div>
             </div>
             <!--Khung bên phải -->
-            <div>
+            <div class="fullbody">
                 <div class="rounded"></div>
                 <div class="movie-details-container">
+
                     <div class="movie-details-content">
                         <img id="galaxyMovieImage" src="" alt="">
                     </div>
@@ -137,34 +151,24 @@
                     </div>
                 </div>
                 <div class="navigation-buttons">
-                    <button class="back-button">Quay lại</button>
-                    <button class="continue-button">Tiếp tục</button>
+                    <a href="home">
+                        <button class="back-button">Quay lại</button>
+                    </a>
+                    <a>
+                        <button class="continue-button" onclick="redirectToCreateSeatPage()">Tiếp tục</button>
+                    </a>
                 </div>
             </div>
         </section>
         <script src="Assets/JS/booking.js" type="text/javascript"></script>
-        <!--        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                <script>
-                    $(document).ready(function () {
-                        $(".movie-item a").click(function (event) {
-                            event.preventDefault(); // Ngăn chặn hành vi mặc định khi nhấp vào liên kết
-                            var movieId = $(this).data("movie-id"); // Lấy ID phim từ thuộc tính data-movie-id của thẻ a
-                            // Gửi yêu cầu AJAX
-                            $.ajax({
-                                url: "/CINEMA/bookingsvl",
-                                method: "GET",
-                                data: {movie_id: movieId}, // Truyền ID phim qua yêu cầu
-                                success: function (respone) {
-                                    console.log("Thanh CONG")
-                                },
-                                error: function (xhr, status, error) {
-                                    // Xử lý lỗi nếu có
-                                    console.error("Lỗi trong quá trình gửi yêu cầu AJAX:", error);
-                                }
-                            });
-                        });
-                    });
-                </script>-->
+  
+        
+        <!--Đường dẫn  đến trang CreateSeatPage -->
+        <script>
+            function redirectToCreateSeatPage() {
+                window.location.href = "CreateSeatPage.jsp"; 
+            }
+        </script>
     </body>
     <%@include file='./Components/Footer.jsp' %>
 </html>
