@@ -3,10 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/Final_Cinema/G2_cinema/web/Assets/Image/Movie_Image_Vip/Furiosa.jpg</file>
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/Final_Cinema/G2_cinema/web/Assets/Image/Movie_Image_Vip/Garfield.jpg</file>
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/Final_Cinema/G2_cinema/web/Assets/Image/Movie_Image_Vip/GhostBuster.jpg</file>
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/Final_Cinema/G2_cinema/web/HomePage.jsp</file>
+            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/Final_Cinema/G2_cinema/src/java/controller/MovieDetailController/MovieDetailServlet.java</file>
+            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/Final_Cinema/G2_cinema/web/CreateSeatPage.jsp</file>
+            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/Final_Cinema/G2_cinema/web/DetailMovies.jsp</file>
         </group>
     </open-files>
 </project-private>

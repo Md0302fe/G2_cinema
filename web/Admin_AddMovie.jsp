@@ -102,6 +102,8 @@
                                                         <option value="Trung Quốc">Trung Quốc</option>
                                                         <option value="Hàn Quốc">Hàn Quốc</option>
                                                         <option value="Nhật Bản">Nhật Bản</option>
+                                                        <option value="Nhật Bản">Thái Lan</option>
+                                                        <option value="Nhật Bản">Philippines</option>
                                                         <option value="Vương Quốc Anh">Vương Quốc Anh</option>
                                                         <option value="Pháp">Pháp</option>
                                                         <option value="Đức">Đức</option>

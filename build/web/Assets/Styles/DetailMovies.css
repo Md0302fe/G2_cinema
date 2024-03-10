@@ -91,7 +91,7 @@ body {
 }
 
 .movie_mvo{
-    
+
 }
 
 .movie_rated{
@@ -106,7 +106,7 @@ body {
 }
 
 .movie_time{
-    
+
 }
 
 .movie_minute{
@@ -114,8 +114,8 @@ body {
 }
 
 .ti-timer{
-    color: rgb(242, 107, 56); 
-    margin-right: 4px;  
+    color: rgb(242, 107, 56);
+    margin-right: 4px;
 }
 
 .movie_calendar{
@@ -128,12 +128,12 @@ body {
 
 .ti-star{
     color: rgb(242, 107, 56);
-    font-size: 28px;
+    font-size: 20px;
     margin-right: 6px;
 }
 
 .movie_point{
-    font-size: 25px;
+    font-size: 20px;
     margin-right: 6px;
     cursor: pointer;
 }
@@ -141,7 +141,7 @@ body {
 .movie_votes{
     cursor: pointer;
     font-size: .875rem;
-    margin-top: 4px;
+    margin-top: 0px;
 }
 
 .ti-clipboard{
@@ -323,7 +323,7 @@ body {
     margin-top: 6px;
     margin-right: 10px;
     padding-left: 2rem;
-    padding-right: 2rem;    
+    padding-right: 2rem;
     font-size: .875rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
@@ -378,10 +378,14 @@ body {
 
 .time_slot1 {
     margin-right: 10px; /* Điều chỉnh khoảng cách giữa các giờ chiếu */
+    text-decoration: none;
+    color: black;
+    padding-top: 4%;
 }
 
 .time_slot1.active {
-    background-color:  rgb(242, 107, 56);; /* Màu nền của nút giờ được chọn */
+    background-color:  rgb(242, 107, 56);
+    ; /* Màu nền của nút giờ được chọn */
     color: #fff; /* Màu chữ của nút giờ được chọn */
 }
 

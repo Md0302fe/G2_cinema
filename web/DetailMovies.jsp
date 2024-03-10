@@ -57,19 +57,31 @@
                                     </div>
                                     <div class="movie_time flex">
                                         <p class="movie_minute"><i class="ti-timer"></i>${movie.duration}</p>
+                                        <p style="margin-left: 5px;">Phút</p>
                                         <p class="movie_calendar"><i class="ti-clipboard"></i>${movie.release_date}</p>
                                     </div>
                                     <div class="movie_voting flex">
-                                        <p class="movie_point"><i class="ti-star"></i>${movie.rate}</p>
+                                        <p class="movie_point bold"><i class="ti-star"></i>${movie.rate}</p>
                                         <p class="movie_votes">(111 votes)</p>
                                     </div>
-                                    <p class="country">Quốc gia: ${movie.national}</p>
-                                    <p class="movie_title">Thể loại: ${movie.list_category}</p>
-                                    <p class="movie_director">Đạo diễn: ${movie.director}</p>
-                                    <p class="movie_actors">
-                                        Diễn viên: ${movie.actors}
-                                    </p>
-                                    <p class="movie_language">Ngôn ngữ: ${movie.languages}</p>
+
+                                    <div class="flex">    
+                                        <p class="country bold">Quốc gia:</p><p style="margin-left: 10px;">${movie.national}</p>
+                                    </div>
+                                    <div class="flex"> 
+                                        <p class="movie_title bold">Thể loại:</p><p style="margin-left: 10px;"> ${movie.list_category}</p>
+                                    </div>
+                                    <div class="flex"> 
+                                        <p class="movie_director bold">Đạo diễn:</p><p style="margin-left: 10px;"> ${movie.director}</p>
+                                    </div>
+                                    <div class="flex"> 
+                                        <p class="movie_actors bold">
+                                            Diễn viên: <p style="margin-left: 10px;">${movie.actors}</p>
+                                        </p>
+                                    </div>
+                                    <div class="flex">     
+                                        <p class="movie_language bold">Ngôn ngữ:</p><p style="margin-left: 10px;"> ${movie.languages}</p>
+                                    </div>
                                 </div>
                             </div>
 
@@ -90,14 +102,15 @@
 
                                 <c:forEach items="${requestScope.StringDate}" var="d">
                                     <div class="showtime_list">
-                                        <p class="list_day font-monospace bold ">
-                                            <i class="ti-calendar"></i> 
-                                            <span class="date_span">${d}</span> 
+                                        <p class="list_day font-monospace bold ">                                            
+                                            <i class="ti-calendar"></i>                                             
+                                            <span class="date_span" >${d}</span>                                       
                                         </p>
                                         <div class="showtime_cinema"></div> <!-- Remove id="details_time" -->
                                     </div>
                                     <p class="line"></p>
                                 </c:forEach>
+
                             </div>
                             <!--END SHOW TIME-->
                         </div>
@@ -107,7 +120,7 @@
                                     <span class="orange_col"></span>
                                     <h1 class="text uppercase">Phim Đang Chiếu</h1>
                                 </div>
-                                <c:forEach items="${requestScope.listMovie}" var="m">
+                                <c:forEach items="${requestScope.listMovie}" var="m" begin="0" end="2">
                                     <div class="all-movie-playing1">
                                         <a href="MovieDetailServlet?id=${m.id}" style="display: block">
                                             <img
@@ -135,7 +148,6 @@
                                     <i class="ti-angle-right"></i>
                                 </a>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -144,11 +156,11 @@
         <script src="Assets/JS/detailMovie.js" type="text/javascript"></script>
         <%@include file='./Components/Footer.jsp' %>
         <script>
-
                     // Lấy giá trị của tham số 'id' từ URL
                     var urlParams = new URLSearchParams(window.location.search);
                     var id = urlParams.get("id");
-                    var date_on_date;
+                    var date;
+                    var choice_time;
                     $(document).ready(function () {
                         $('.date_span').each(function () {
                             var date = $(this).text();
@@ -157,7 +169,6 @@
                     });
 
                     function timeByDate(date, container) {
-                        console.log(id);
                         $.ajax({
                             type: "POST",
                             url: "/CINEMA/MovieDetailServlet",
@@ -170,12 +181,17 @@
                             }
                         });
                     }
+
                     // JavaScript để kích hoạt giờ được chọn và vô hiệu hóa các giờ khác
                     $(document).on('click', '.time_slot1', function () {
                         // Xóa lớp active từ tất cả các nút giờ
                         $('.time_slot1').removeClass('active');
                         // Kích hoạt nút giờ được chọn
                         $(this).addClass('active');
+                        choice_time = $(this).text(); // hoặc có thể sử dụng .val() tùy thuộc vào loại thẻ (input, select, ...)          
+                        // chọn ra thẻ có class là time_slit 1 được click , sao đó tìm thẻ cha gần nhất chứa nó
+                        // có class là showtime_list -> tìm thẻ có tên date_span và lấy giá trị ra .
+                        // var date = $(this).closest('.showtime_list').find('.date_span').text();    
                     });
         </script>
     </body>

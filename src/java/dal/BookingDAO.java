@@ -6,10 +6,10 @@ package dal;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+
 import java.util.ArrayList;
-import java.util.List;
+
+import model.Seat;
 
 /**
  *
@@ -80,26 +80,90 @@ public class BookingDAO extends DBContext {
         return list;
     }
 
+    public String getRoomsId(String date, String movie_id, String show_time) {
+        String sql = "select room_id\n"
+                + "from Handle_Schedules H \n"
+                + "join Schedules S on H.handle_schedules_id = S.handle_schedules_id\n"
+                + "join Release_date D on H.show_date = D.show_date\n"
+                + "where D.show_date = ? AND S.movie_id = ? AND S.schedules_showtime = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, date);
+            st.setString(2, movie_id);
+            st.setString(3, show_time);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("room_id");
+                return getNameByRoomsID(id);
+            }
+        } catch (Exception e) {
+            System.out.println("Error in getRomsId " + e);
+        }
+        return null;
+    }
+
+    public String getNameByRoomsID(int id) {
+        String sql = "select room_name from Rooms where room_id = ? ";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                return rs.getString("room_name");
+            }
+        } catch (Exception e) {
+            System.out.println("Error in getRomsId " + e);
+        }
+        return null;
+    }
+
+    public ArrayList<String> isValist_Seats(String date, String showtime, String movie_id) {
+        ArrayList<String> Seats = new ArrayList<>();
+        String sql = "select *from Seats S\n"
+                + "where S.show_date = ? AND S.show_time = ? AND S.movie_id = ? ";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, date);
+            st.setString(2, showtime);
+            st.setString(3, movie_id);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Seats.add(rs.getString("seat_name"));
+            }
+            return Seats;
+        } catch (Exception e) {
+            System.out.println("Error in isValist_Seats " + e);
+        }
+        return Seats;
+    }
+
+    public void AddSeat(Seat seat) {
+        String sql = "INSERT INTO [dbo].[Seats]\n"
+                + "           ([seat_name]\n"
+                + "           ,[show_time]\n"
+                + "           ,[movie_id]\n"
+                + "           ,[room_name]\n"
+                + "           ,[show_date])\n"
+                + "     VALUES\n"
+                + "           (?,?,?,?,?)";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, seat.getSeatName());
+            st.setString(2, seat.getShowTime());
+            st.setString(3, seat.getMovieId());
+            st.setString(4, seat.getRoomName());
+            st.setString(5, seat.getshowDate());
+            st.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error in getRomsId " + e);
+        }
+    }
+
     public static void main(String[] args) {
         BookingDAO b = new BookingDAO();
-        
-        // lay ra ngay hien tai
-        LocalDate today = LocalDate.now();
-        DateTimeFormatter data_format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String today_parse = data_format.format(today);
-
-        // lấy tất cả booking của id_này mà ngày > ngày hiện tại
-        List<String> StringDate = b.getShowDateForBooking("6", today_parse);
-
-        for (String string : StringDate) {
-            System.out.println("DATE SCHEDULES : " + string);
-            
-            List<String> Result = b.getList_Showtimes_Future("6", string);
-            
-            for (String d : Result) {
-                System.out.println("Time : " + d);
-            }
+        ArrayList<String> seats = b.isValist_Seats("2024-03-11", "22:30", "1");
+        for (String seat : seats) {
+            System.out.println("seats : " + seat);
         }
-
     }
 }
