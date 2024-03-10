@@ -128,12 +128,12 @@ body {
 
 .ti-star{
     color: rgb(242, 107, 56);
-    font-size: 28px;
+    font-size: 20px;
     margin-right: 6px;
 }
 
 .movie_point{
-    font-size: 25px;
+    font-size: 20px;
     margin-right: 6px;
     cursor: pointer;
 }
@@ -141,7 +141,7 @@ body {
 .movie_votes{
     cursor: pointer;
     font-size: .875rem;
-    margin-top: 4px;
+    margin-top: 0px;
 }
 
 .ti-clipboard{
@@ -371,4 +371,17 @@ body {
     margin-left: 6px;
 }
 
+.showtime_bundle {
+    display: flex;
+    flex-direction: row;
+}
+
+.time_slot1 {
+    margin-right: 10px; /* Điều chỉnh khoảng cách giữa các giờ chiếu */
+}
+
+.time_slot1.active {
+    background-color:  rgb(242, 107, 56);; /* Màu nền của nút giờ được chọn */
+    color: #fff; /* Màu chữ của nút giờ được chọn */
+}
 

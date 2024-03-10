@@ -102,6 +102,8 @@
                                                         <option value="Trung Quốc">Trung Quốc</option>
                                                         <option value="Hàn Quốc">Hàn Quốc</option>
                                                         <option value="Nhật Bản">Nhật Bản</option>
+                                                        <option value="Nhật Bản">Thái Lan</option>
+                                                        <option value="Nhật Bản">Philippines</option>
                                                         <option value="Vương Quốc Anh">Vương Quốc Anh</option>
                                                         <option value="Pháp">Pháp</option>
                                                         <option value="Đức">Đức</option>
@@ -136,7 +138,6 @@
                                         <div class="boxDerectors V2" style="display: flex; align-items: center;">
                                             <label style="margin-right: 1.7rem;"> Mô Tả Nội Dung</label>
                                             <textarea type="text" placeholder="" size="95" name="Describel" rows="4" cols="60" style="resize: none">${m.description}</textarea>
-
                                         </div>
                                     </div>
                                 </div>

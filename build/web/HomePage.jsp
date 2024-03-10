@@ -77,7 +77,6 @@
                             <div class="optionsContainer hidden">
                                 <c:forEach items="${listMovie}" var="m">
                                     <div class="option option_movie" onClick="sendSelectedMovieId('${m.id}')">${m.name}
-
                                     </div>
                                 </c:forEach>
                             </div>
@@ -168,13 +167,11 @@
                                         <div class="overlay">
                                             <div class="ticket-ticket">
                                                 <i class="fa-solid fa-ticket fa-2xs"></i>
-
                                                 <a href="MovieDetailServlet?id=${m.id}" class="button">Mua vé</a>
-
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="#" id="movie_id">${m.name}</a>
+                                    <a href="MovieDetailServlet?id=${m.id}" id="movie_id">${m.name}</a>
                                 </div>
                             </c:forEach> 
                         </div>

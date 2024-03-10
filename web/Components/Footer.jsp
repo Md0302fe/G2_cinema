@@ -68,6 +68,34 @@
     crossorigin="anonymous"
 ></script>
 
-
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".image-slider").slick({
+            autoplay: true,
+            autoplaySpeed: 2000,
+            centerPadding: '200px',
+            arraws: true,
+            dots: true,
+            slidesToShow: 1,
+            centerMode: true,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        centerMode: false,
+                        slidesToShow: 1,
+                        infinite: true,
+                        dots: true,
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 1
+                    }
+                }]
+        });
+    });
+</script>
 </body>
 </html>
