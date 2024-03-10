@@ -284,13 +284,13 @@
                                                 <p class="bold" id="push_Seat_Here"></p>
                                             </div>
                                         </div>
-                                        <p class="price_seat_black bold">0₫</p>
+                                        <!--<p class="price_seat_black bold total_money">0₫</p>-->
                                     </div>
                                     <div class="line_totalbooking"></div>
                                 </div>
                                 <div class="total_price flex">
                                     <p class="tongcong bold" style="width: 86px;">Tổng cộng</p>
-                                    <p class="price_seat_orange bold">0 ₫</p>
+                                    <p class="price_seat_orange bold price">0₫</p>
                                 </div>
                             </div>
                             <div class="booking_bottom flex">
@@ -305,79 +305,87 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <%@include file='./Components/Footer.jsp' %>
-            <script type="text/javascript" >
 
-                // Lấy giá trị của tham số 'id' từ URL
-                var urlParams = new URLSearchParams(window.location.search);
-                var id = urlParams.get("id");
-                var date = urlParams.get("date");
-                var choiceTime_In = document.getElementById("time_Slot_js").textContent;
-                var room_name = document.getElementById("Room_name_js").textContent;
+        <script type="text/javascript" >
 
-                document.addEventListener('DOMContentLoaded', function ()
-                {
-                    // Lấy danh sách các ghế đã được chọn từ attribute của thẻ
-                    var listSeats = <%= request.getAttribute("listSeats") %>;
-                    checkSeatNames(listSeats);
-                    // Danh sách các ghế được chọn
-                    var selectedSeats = [];
-                    // Lấy tất cả các ghế
-                    var seats = document.querySelectorAll('.border_seats');
-                    // Lặp qua từng ghế và thêm sự kiện click
-                    seats.forEach(function (seat) {
-                        seat.addEventListener('click', function () {
-                            // Toggle class active_seat
-                            this.classList.toggle('active_seat');
-                            // Lấy thông tin về vị trí ghế
-                            var row = this.closest('.seat_items').querySelector('.text1').textContent;
-                            var seatNumber = this.querySelector('.seat_numbers').textContent;
-                            var seatId = row + seatNumber;
-                            // Kiểm tra xem ghế đã được chọn hay không và thêm hoặc xóa khỏi danh sách
-                            if (this.classList.contains('active_seat')) {
-                                selectedSeats.push(seatId);
-                            } else {
-                                var index = selectedSeats.indexOf(seatId);
-                                if (index !== -1) {
-                                    selectedSeats.splice(index, 1);
-                                }
+            // Lấy giá trị của tham số 'id' từ URL
+            var urlParams = new URLSearchParams(window.location.search);
+            var id = urlParams.get("id");
+            var date = urlParams.get("date");
+            var choiceTime_In = document.getElementById("time_Slot_js").textContent;
+            var room_name = document.getElementById("Room_name_js").textContent;
+
+            document.addEventListener('DOMContentLoaded', function ()
+            {
+                // Lấy danh sách các ghế đã được chọn từ attribute của thẻ
+                var listSeats = <%= request.getAttribute("listSeats") %>;
+                checkSeatNames(listSeats);
+                // Danh sách các ghế được chọn
+                var selectedSeats = [];
+                // Lấy tất cả các ghế
+                var seats = document.querySelectorAll('.border_seats');
+                // Lặp qua từng ghế và thêm sự kiện click
+                seats.forEach(function (seat) {
+                    seat.addEventListener('click', function () {
+                        // Toggle class active_seat
+                        this.classList.toggle('active_seat');
+                        // Lấy thông tin về vị trí ghế
+                        var row = this.closest('.seat_items').querySelector('.text1').textContent;
+                        var seatNumber = this.querySelector('.seat_numbers').textContent;
+                        var seatId = row + seatNumber;
+                        // Kiểm tra xem ghế đã được chọn hay không và thêm hoặc xóa khỏi danh sách
+                        if (this.classList.contains('active_seat')) {
+                            selectedSeats.push(seatId);
+                        } else {
+                            var index = selectedSeats.indexOf(seatId);
+                            if (index !== -1) {
+                                selectedSeats.splice(index, 1);
                             }
-                            // In ra danh sách ghế đã chọn
-                            var selectedSeatsID = selectedSeats.join(', ');
-                            document.getElementById('push_Seat_Here').innerHTML = selectedSeatsID;
-                            document.getElementById('lenghOfSeats').innerHTML = selectedSeats.length + "x";
-                            console.log("Ghế đã chọn: " + selectedSeats.join(', '));
-                        });
-                    });
-
-                    function checkSeatNames(listSeats) {
-                        for (var i = 0; i < listSeats.length; i++) {
-                            listSeats[i].classList.add("disable_seat");
+                        }
+                        // In ra danh sách ghế đã chọn
+                        var selectedSeatsID = selectedSeats.join(', ');
+                        document.getElementById('push_Seat_Here').innerHTML = selectedSeatsID;
+                        document.getElementById('lenghOfSeats').innerHTML = selectedSeats.length + "x";
+                        var totalSeats = document.querySelectorAll('.price');
+                        for (var i = 0; i < totalSeats.length; i++) {
+                            if (totalSeats[i]) {
+                                totalSeats[i].innerHTML = (selectedSeats.length * 90000);
+                            }
                         }
                     }
-
-                    // Xử lý sự kiện khi ấn nút "Next"
-                    document.getElementById('nextButton').addEventListener('click', function () {
-                        choiceTime_In = document.getElementById("time_Slot_js").textContent;
-                        var xhr = new XMLHttpRequest();
-                        xhr.open('POST', '/CINEMA/seat', true);
-                        xhr.setRequestHeader('Content-Type', 'application/json');
-                        // Tạo một đối tượng chứa thông tin muốn gửi đi
-                        console.log("choiceTime_In :" + choiceTime_In);
-                        var dataToSend = {
-                            id: id,
-                            date: date,
-                            choice_time: choiceTime_In,
-                            room_name: room_name,
-                            selectedSeats: selectedSeats // selectedSeats là biến chứa danh sách ghế đã chọn
-                        };
-                        // Gửi dữ liệu dưới dạng JSON
-                        xhr.send(JSON.stringify(dataToSend));
                     });
                 });
 
-            </script>
-            <script src="Assets/JS/createSeatPage.js" type="text/javascript"></script>            
-    </body>
-</html>
+                function checkSeatNames(listSeats) {
+                    for (var i = 0; i < listSeats.length; i++) {
+                        listSeats[i].classList.add("disable_seat");
+                    }
+                }
+
+                // Xử lý sự kiện khi ấn nút "Next"
+                document.getElementById('nextButton').addEventListener('click', function () {
+                    choiceTime_In = document.getElementById("time_Slot_js").textContent;
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', '/CINEMA/seat', true);
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                    // Tạo một đối tượng chứa thông tin muốn gửi đi
+                    console.log("choiceTime_In :" + choiceTime_In);
+                    var dataToSend = {
+                        id: id,
+                        date: date,
+                        choice_time: choiceTime_In,
+                        room_name: room_name,
+                        selectedSeats: selectedSeats // selectedSeats là biến chứa danh sách ghế đã chọn
+                    };
+                    // Gửi dữ liệu dưới dạng JSON
+                    xhr.send(JSON.stringify(dataToSend));
+                });
+            });
+
+        </script>
+        <script src="Assets/JS/createSeatPage.js" type="text/javascript"></script>            
+
+
+        <%@include file='./Components/Footer.jsp' %>
