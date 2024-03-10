@@ -95,7 +95,8 @@ public class SetUp_Schedules_Movie extends HttpServlet {
         // Gọi chức năng trong dal sử lý dữ liệu đầu vào.
         dal.add_Date_Admin(Date);
         // Tiến Hành Thực Thi Lên Schedules.
-        dal.setUp_Handle_Schedules(Date);
+
+        dal.setUp_Handle_Schedules(Date);       
 
         request.getRequestDispatcher("Admin_Setup_Schedules_Movie.jsp").forward(request, response);
     }

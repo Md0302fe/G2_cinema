@@ -57,7 +57,8 @@ public class MovieDetailServlet extends HttpServlet {
             int movieId = Integer.parseInt(id_raw);
             Movie mv = dao.getMovieById(movieId);
             List<Movie> m = dao.getListMovie();
-            // lay ra ngay hien tai
+
+            // lay ra ngay hien tai            
             LocalDate today = LocalDate.now();
             DateTimeFormatter data_format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             // lấy tất cả booking của id_này mà ngày > ngày hiện tại
@@ -93,16 +94,17 @@ public class MovieDetailServlet extends HttpServlet {
             throws ServletException, IOException {
         BookingDAO b = new BookingDAO();
         String id = request.getParameter("id");
-
         PrintWriter out = response.getWriter();
-
         String date_time = request.getParameter("timeByDate");
+
         List<String> Result = b.getList_Showtimes_Future(id, date_time);
 
         out.println("<div class=\"showtime_bundle\">"); // Bắt đầu một bundle cho mỗi ngày
         out.println("<p class=\"Subtitles font-semibold\">2D Phụ Đề</p>"); // Chỉ hiển thị một lần thông tin "2D Phụ Đề"
         for (String time : Result) {
-            out.println("<button class=\"time_slot1 border border-1 font-semibold\">" + time + "</button>");
+            // tạo url kèm theo servlet  :
+            String seatServletUrl = "/CINEMA/seat?id=" + id + "&date=" + date_time + "&time=" + time;
+            out.println("<a class=\"time_slot1 border border-1 font-semibold\" href=\"" + seatServletUrl + "\">" + time + "</a>");
         }
         out.println("</div>"); // Kết thúc bundle cho mỗi ngày
     }
