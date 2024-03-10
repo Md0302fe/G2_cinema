@@ -12,6 +12,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import model.Account;
 import model.Date;
 
 /**
@@ -59,7 +61,17 @@ public class SetUp_Schedules_Movie extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("Admin_Setup_Schedules_Movie.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        if (session.getAttribute("account") == null) {
+            response.sendRedirect("login");
+        } else {
+            Account ad = (Account) session.getAttribute("account");
+            if ("Admin".equals(ad.getRole())) {
+                request.getRequestDispatcher("Admin_Setup_Schedules_Movie.jsp").forward(request, response);
+            } else {
+                request.getRequestDispatcher("home").forward(request, response);
+            }
+        }
     }
 
     /**
@@ -79,11 +91,13 @@ public class SetUp_Schedules_Movie extends HttpServlet {
         AdminDAO dal = new AdminDAO();
         // khởi tạo đối tượng Date và Tới bước truy vấn sql.
         Date Date = new Date(setupDate);
-        
+
         // Gọi chức năng trong dal sử lý dữ liệu đầu vào.
         dal.add_Date_Admin(Date);
         // Tiến Hành Thực Thi Lên Schedules.
+
         dal.setUp_Handle_Schedules(Date);       
+
         request.getRequestDispatcher("Admin_Setup_Schedules_Movie.jsp").forward(request, response);
     }
 
