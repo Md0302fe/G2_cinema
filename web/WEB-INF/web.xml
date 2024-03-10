@@ -14,7 +14,6 @@
         <url-pattern>/AdminHomeServlet</url-pattern>
         <url-pattern>/DeleteMovie</url-pattern>
         <url-pattern>/ListMovie</url-pattern>
-        <url-pattern>/setupschedules</url-pattern>
         <url-pattern>/UpdateMovie</url-pattern>
     </filter-mapping>
     <filter-mapping>
