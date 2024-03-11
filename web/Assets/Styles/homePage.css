@@ -1,3 +1,7 @@
+body {
+    font-family: Nunito Sans, sans-serif !important;
+    color: #4a4a4a;
+}
 
 .Home_Main{
     margin-top: 121px;
@@ -53,7 +57,7 @@
     font-size: 1px;
     line-height: 1;
     display: block;
-    width: 10px;
+    width: 13px;
     height: 13px;
     background-color: transparent;
     border: 1px solid white;
@@ -209,7 +213,7 @@
 }
 
 .optionsContainer {
-    max-height: 150px; /* Đặt chiều cao tối đa cho optionsContainer */
+    max-height: 320px; /* Đặt chiều cao tối đa cho optionsContainer */
     overflow-y: auto; /* Kích hoạt thanh cuộn dọc khi nội dung vượt quá chiều cao tối đa */
 }
 .optionsContainer .option {

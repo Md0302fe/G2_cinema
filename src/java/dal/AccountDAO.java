@@ -52,12 +52,14 @@ public class AccountDAO extends DBContext {
             st.setString(3, password);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
-                Account a = new Account(rs.getString("fullName"),
+                Account a = new Account(
+                        rs.getInt("user_id"),
+                        rs.getString("fullName"),
                         rs.getString("email"),
                         rs.getString("phone"),
                         rs.getString("password"),
                         rs.getString("user_image"),
-                        rs.getInt("role"));
+                        rs.getString("role"));
                 return a;
             }
         } catch (SQLException e) {
@@ -86,7 +88,7 @@ public class AccountDAO extends DBContext {
                         rs.getString("phone"),
                         rs.getString("password"),
                         rs.getString("user_image"),
-                        rs.getInt("role"));
+                        rs.getString("role"));
                 a.setId(rs.getInt("user_id"));
                 return a;
             }
@@ -275,7 +277,7 @@ public class AccountDAO extends DBContext {
             st.setString(2, acc.getPassword());
             st.setString(3, acc.getPhone());
             st.setString(4, acc.getEmail());
-            st.setInt(5, acc.getRole());
+            st.setString(5, acc.getRole());
             st.setString(6, acc.getPicture());
             st.executeUpdate();
         } catch (SQLException e) {

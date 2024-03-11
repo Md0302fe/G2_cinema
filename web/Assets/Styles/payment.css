@@ -190,7 +190,7 @@ a {
 }
 
 @media only screen and (max-width: 1200px) {
-  .main-container {
+  .main-container-payment {
     height: auto;
     display: grid;
     grid-template-columns: repeat(1, 1fr); /* 2 cột, mỗi cột chiếm 1 phần đều */
@@ -214,7 +214,7 @@ a {
 }
 
 @media only screen and (max-width: 720px) {
-  .main-container {
+  .main-container-payment {
     margin: 0 0;
     width: auto;
     height: auto;
@@ -235,7 +235,7 @@ a {
 }
 
 @media only screen and (max-width: 400px) {
-  .main-container div{
+  .main-container-payment div{
    
   }
   .method{

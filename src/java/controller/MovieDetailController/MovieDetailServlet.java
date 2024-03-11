@@ -5,14 +5,15 @@
 package controller.MovieDetailController;
 
 import dal.AdminDAO;
+import dal.BookingDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import model.Movie;
 
@@ -33,19 +34,7 @@ public class MovieDetailServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet MovieDetailServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet MovieDetailServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -61,13 +50,35 @@ public class MovieDetailServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         AdminDAO dao = new AdminDAO();
-        String id = request.getParameter("id");
-        int movieId = Integer.parseInt(id);
+        BookingDAO b = new BookingDAO();
+        String id_raw = request.getParameter("id");
+
+        try {
+            int movieId = Integer.parseInt(id_raw);
+            Movie mv = dao.getMovieById(movieId);
+            List<Movie> m = dao.getListMovie();
+
+            // lay ra ngay hien tai            
+            LocalDate today = LocalDate.now();
+            DateTimeFormatter data_format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            // lấy tất cả booking của id_này mà ngày > ngày hiện tại
+            String today_parse = data_format.format(today);
+            List< String> StringDate = b.getShowDateForBooking(id_raw, today_parse);
+
+            request.setAttribute("listMovie", m);
+            request.setAttribute("movie", mv);
+            request.setAttribute("StringDate", StringDate);
+            request.getRequestDispatcher("DetailMovies.jsp").forward(request, response);
+        } catch (Exception e) {
+            System.out.println("Error In doGet MovieDeTails_Servlet : " + e);
+        }
+    }
+
+    public static void main(String[] args) {
+        AdminDAO dao = new AdminDAO();
+        int movieId = Integer.parseInt("3");
         Movie mv = dao.getMovieById(movieId);
-        List<Movie> m = dao.getListMovie();
-        request.setAttribute("listMovie", m);
-        request.setAttribute("movie", mv);
-        request.getRequestDispatcher("DetailMovies.jsp").forward(request, response);
+        System.out.println(mv.getMovie_trailer());
     }
 
     /**
@@ -81,7 +92,21 @@ public class MovieDetailServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        BookingDAO b = new BookingDAO();
+        String id = request.getParameter("id");
+        PrintWriter out = response.getWriter();
+        String date_time = request.getParameter("timeByDate");
+
+        List<String> Result = b.getList_Showtimes_Future(id, date_time);
+
+        out.println("<div class=\"showtime_bundle\">"); // Bắt đầu một bundle cho mỗi ngày
+        out.println("<p class=\"Subtitles font-semibold\">2D Phụ Đề</p>"); // Chỉ hiển thị một lần thông tin "2D Phụ Đề"
+        for (String time : Result) {
+            // tạo url kèm theo servlet  :
+            String seatServletUrl = "/CINEMA/seat?id=" + id + "&date=" + date_time + "&time=" + time;
+            out.println("<a class=\"time_slot1 border border-1 font-semibold\" href=\"" + seatServletUrl + "\">" + time + "</a>");
+        }
+        out.println("</div>"); // Kết thúc bundle cho mỗi ngày
     }
 
     /**

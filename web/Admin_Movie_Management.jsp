@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
         <title>Moive Management</title>
     </head>
-    <body>
+    <body>  
         <div id="wrapper">
             <!-- Sidebar -->
             <%@include file="./Components/AdminNavbar.jsp" %> 
@@ -61,7 +61,7 @@
                                                 <tr>
                                                     <th scope="row">${m.id}</th>
                                                     <td>${m.name}</td>
-                                                    <td><img src="./Assets/Image/Movies_Image/${m.movie_img}" width="150px" alt="alt"/></td>
+                                                    <td><img src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" width="150px" alt="alt"/></td>
                                                     <td>${m.release_date}</td>
                                                     <td>${m.list_category}</td>
                                                     <td>${m.duration}</td>
@@ -108,7 +108,6 @@
                     }
                 });
             }
-
             function editItem(id) {
                 window.location.href = "UpdateMovie?editItem=" + id;
             }

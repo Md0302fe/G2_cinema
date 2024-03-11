@@ -7,11 +7,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <header>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito Sans">
     <nav id="topnav">
         <ul class="nav-container">
             <li class="nav__logo">
-                <a href="#">
-                    <img src="./Assets/Image/Header_Image/logo.png" alt="">
+                <a href="home">
+                    <img src="./Assets/Image/Header_Image/logo.png" alt="logo">
                 </a>
             </li>
             <li class="nav__navigation">
@@ -23,10 +24,10 @@
                                 <li>
                                     <div><a href="#">PHIM ĐANG CHIẾU</a></div>
                                     <ul class="flex movie-demo jca">
-                                        <c:forEach items="${listMovie}" var="m" begin="1" end="4">
+                                        <c:forEach items="${listMovie}" var="m" begin="0" end="3">
                                             <li class="tc">
                                                 <a href="MovieDetailServlet?id=${m.id}">
-                                                    <img class="movie-showing" src="./Assets/Image/Header_Image/${m.movie_img}" alt="movie 1" />
+                                                    <img class="movie-showing" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="movie 1" />
                                                     <h5>${m.name}</h5>
                                                 </a>
                                             </li>
@@ -36,10 +37,10 @@
                                 <li>
                                     <div><a href="#">PHIM SẮP CHIẾU</a></div>
                                     <ul class="flex movie-demo jca">
-                                        <c:forEach items="${listMovie}" var="m" begin="1" end="4">
+                                        <c:forEach items="${listMovie}" var="m" begin="0" end="3">
                                             <li class="tc">
                                                 <a href="MovieDetailServlet?id=${m.id}">
-                                                    <img class="movie-showing" src="./Assets/Image/Header_Image/${m.movie_img}" alt="movie 1" />
+                                                    <img class="movie-showing" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="movie 1" />
                                                     <h5>${m.name}</h5>
                                                 </a>
                                             </li>
@@ -74,19 +75,17 @@
                         <div class="rel">
                             <a href="#">Rạp <i class="fa-solid fa-angle-down"></i></a>
                             <ul class="movie__cinema--menu cinema b-shadow tc abs">
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
-                                <li><a href="#">Tên rạp</a></li>
+                                <li><a href="#">Tên rạp</a></li>                              
                             </ul>
+                        </div>
+                    </li>
+                    <li class="admin_header">
+                        <div class="rel">
+                            <c:if test="${sessionScope.account.role == 'Admin'}">
+                                <div class="nav__user">
+                                    <a class="nav__login--btn" href="admin">Admin</a>
+                                </div>
+                            </c:if>
                         </div>
                     </li>
                 </ul>
@@ -108,7 +107,7 @@
                 </c:if>
                 <c:if test="${sessionScope.account!=null}">
                     <div class="nav__user">
-                        <a class="nav__login--btn" style="text-decoration: none" href="ProfileServlet"><i style="font-size: 18px" class="fa-regular fa-user"></i> ${sessionScope.account.fullName}</a>
+                        <a class="nav__login--btn" style="text-decoration: none" href="test"><i style="font-size: 18px" class="fa-regular fa-user"></i> ${sessionScope.account.fullName}</a>
                     </div>
                 </c:if>
 

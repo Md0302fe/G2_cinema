@@ -6,8 +6,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Created on : Feb 27, 2024, 11:47:53 AM
     Author     : MinhDuc
 */
+body {
+    font-family: Nunito Sans, sans-serif !important;
+    color: #4a4a4a;
+}
+
 .AddMovies-button {
-    color:black;
+    position: relative;
+    top: -12%;
+    left:108%;
+    color:white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: rgb(1, 105, 250);
     display: inline-block;
@@ -21,8 +29,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 .H3_button:hover,
 .AddMovies-button:hover {
-    opacity: 0.9;
-    color: white;
+    opacity: 0.8;
+    background-color: rgb(1, 105, 250);
     cursor: pointer;
     z-index: 999;
 }
@@ -48,7 +56,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 .select-Image {
     display: flex ;
-    align-items: center;
 }
 .select-Image .icon {
     padding: 0 8px;

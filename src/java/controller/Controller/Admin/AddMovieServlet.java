@@ -14,11 +14,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.util.List;
+import model.Account;
 import model.Movie;
 
 /**
@@ -67,7 +68,17 @@ public class AddMovieServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        if (session.getAttribute("account") == null) {
+            response.sendRedirect("login");
+        } else {
+            Account ad = (Account) session.getAttribute("account");
+            if ("Admin".equals(ad.getRole())) {
+                request.getRequestDispatcher("AdminHomeServlet").forward(request, response);
+            } else {
+                request.getRequestDispatcher("home").forward(request, response);
+            }
+        }
     }
 
     /**
@@ -92,19 +103,19 @@ public class AddMovieServlet extends HttpServlet {
         String stars = request.getParameter("Stars");
         String language = request.getParameter("Language");
         String describel = request.getParameter("Describel");
-               
+        String trailer_link = request.getParameter("trailer_link");
         // XỬ LÝ FILE HÌNH ẢNH
         Part filePart = request.getPart("movie_image");
         String fileName = filePart.getSubmittedFileName();
         String uploadPath = getServletContext().getRealPath("Assets/Image/Movies_Image/") + File.separator + fileName;
-        System.out.println("PATH IMAGE: "+fileName);
-               
+        System.out.println("PATH IMAGE: " + fileName);
+
         // XỬ LÝ FILE TRAILER        
         Part filePart2 = request.getPart("movie_trailer");
         String fileName2 = filePart2.getSubmittedFileName();
         String uploadPath2 = getServletContext().getRealPath("Assets/Image/Movies_Trailer/") + File.separator + fileName2;
-        System.out.println("PATH IMAGE: "+fileName2);
-        
+        System.out.println("PATH IMAGE: " + fileName2);
+
         try {
             FileOutputStream fos = new FileOutputStream(uploadPath);
             InputStream is = filePart.getInputStream();
@@ -124,8 +135,8 @@ public class AddMovieServlet extends HttpServlet {
             fos.close();
         } catch (Exception e) {
             e.printStackTrace();
-        }      
-        
+        }
+
         try {
             int duration = Integer.parseInt(duration_str);
             float rate = Float.parseFloat(rate_str);
@@ -141,9 +152,10 @@ public class AddMovieServlet extends HttpServlet {
                     language,
                     describel,
                     fileName,
-                    fileName2);           
+                    fileName2,
+                    trailer_link);
             //  SQL QUERY
-            System.out.println("MODEL MOVIE: "+movie);
+            System.out.println("MODEL MOVIE: " + movie);
             dao.add_Movie_Admin(movie);
 //            List<Movie> list = dao.getListMovie();
 //            request.setAttribute("list", list);

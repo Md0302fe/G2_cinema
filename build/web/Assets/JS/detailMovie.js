@@ -8,22 +8,24 @@ function playVideo() {
   var video = document.getElementById("movie_trailer");
   poster.style.display = "none";
   video.style.display = "block";
-  video.play();
 }
 
 function openModal() {
   var modal = document.getElementById("videoModal");
   modal.style.display = "flex";
-  setTimeout(function () {
-      modal.classList.add("active");
-  }, 1500); // Reduced the delay to 100ms
 }
 
 function closeModal() {
   var modal = document.getElementById("videoModal");
+  var video = modal.querySelector("iframe");
+
+  if (video) {
+    var videoSrc = video.src;
+    video.src = "";
+    video.src = videoSrc;
+  }
+
   modal.classList.remove("active");
-  setTimeout(function () {
-      modal.style.display = "none";
-  }, 500);
+  modal.style.display = "none";
 }
 

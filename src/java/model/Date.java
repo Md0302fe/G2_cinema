@@ -10,25 +10,25 @@ package model;
  */
 public class Date {
 
-    private String show_date;
+    private String date;
 
     public Date(String show_date) {
-        this.show_date = show_date;
+        this.date = show_date;
     }
 
-    public String getShow_date() {
-        return show_date;
+    public String getDate() {
+        return date;
     }
 
-    public void setShow_date(String show_date) {
-        this.show_date = show_date;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Date{");
-        sb.append(", show_date=").append(show_date);
+        sb.append(", show_date=").append(date);
         sb.append('}');
         return sb.toString();
     }

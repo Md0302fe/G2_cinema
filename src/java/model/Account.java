@@ -16,12 +16,12 @@ public class Account {
     private String phone;
     private String password;
     private String picture;
-    private int role;
+    private String role;
 
     public Account() {
     }
 
-    public Account(String fullName, String email, String phone, String password, String picture, int role) {
+    public Account(String fullName, String email, String phone, String password, String picture, String role) {
         this.fullName = fullName;
         this.email = email;
         this.phone = phone;
@@ -29,6 +29,17 @@ public class Account {
         this.picture = picture;
         this.role = role;
     }
+
+    public Account(int id, String fullName, String email, String phone, String password, String picture, String role) {
+        this.id = id;
+        this.fullName = fullName;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
+        this.picture = picture;
+        this.role = role;
+    }
+    
 
     public int getId() {
         return id;
@@ -78,11 +89,11 @@ public class Account {
         this.picture = picture;
     }
 
-    public int getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(int role) {
+    public void setRole(String role) {
         this.role = role;
     }
 

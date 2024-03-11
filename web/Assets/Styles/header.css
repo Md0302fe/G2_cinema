@@ -10,7 +10,7 @@ body {
     color: #000;
     font-size: 16px;
     line-height: 32px;
-    font-family: "neue-haas-unica", "kozuka-gothic-pro", sans-serif;
+    font-family: Nunito Sans, sans-serif !important;
     font-style: normal;
     font-weight: 500;
     letter-spacing: 0.04em;
@@ -435,6 +435,30 @@ form a {
     font-family: monospace;
 }
 
+.flex.movie-demo.jca li {
+    text-align: center;
+}
+
+.flex.movie-demo.jca li a {
+    text-decoration: none;
+    color: #000;
+    display: block;
+}
+
+.flex.movie-demo.jca li img {
+    max-width: 100%;
+    height: auto;
+}
+
+.flex.movie-demo.jca li h5 {
+    margin: 10px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-height: 40px;
+    width: 140px;
+}
+
 @media only screen and (max-width: 1200px) {
     .nav-container {
         margin: 0 24px;
@@ -561,4 +585,5 @@ form a {
     .mobile__nav {
         width: 287px;
     }
+
 }

@@ -78,6 +78,8 @@ public class LoginServlet extends HttpServlet {
         String emailOrPhone = request.getParameter("emailOrPhone");
         String password = request.getParameter("password");
         String remember = request.getParameter("remember");
+        System.out.println("Email : " + emailOrPhone);
+        System.out.println("Pass : " + password);
 
         Cookie cu = new Cookie("cuser", emailOrPhone);
         Cookie cp = new Cookie("cpass", password);
@@ -99,22 +101,22 @@ public class LoginServlet extends HttpServlet {
 
         AccountDAO dao = new AccountDAO();
         String hashPass = dao.generateMD5Hash(password);
-        
+
         Account account = dao.login(emailOrPhone, hashPass);
+        System.out.println("Accunt " + account);
 
         HttpSession session = request.getSession();
 
         if (account == null) {
-            request.setAttribute("error", "Password or uswername is error");
+            request.setAttribute("error", "Password or uswername is error!");
             request.getRequestDispatcher("Login.jsp").forward(request, response);
         } else {
             session.setAttribute("account", account);
-            if (account.getRole() == 1) {
+            if ("User".equals(account.getRole())) {
                 response.sendRedirect("home");
             } else {
-                response.sendRedirect("home");
+                response.sendRedirect("admin");
             }
-
         }
     }
 

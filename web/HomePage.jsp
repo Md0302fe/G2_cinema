@@ -13,12 +13,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="Assets/Styles/base.css" rel="stylesheet" type="text/css"/>
         <link href="Assets/Styles/grid.css" rel="stylesheet" type="text/css"/>
-<!--        <link href="Assets/Styles/homePage.css" rel="stylesheet" type="text/css"/>-->
         <link href="Assets/Styles/header.css" rel="stylesheet" type="text/css"/>
         <link href="Assets/Styles/footer.css" rel="stylesheet" type="text/css"/>
         <link href="Assets/Styles/homePage.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito Sans">
         <title>G2_Cinema</title>
     </head>
     <body>
@@ -75,9 +75,10 @@
                         </div>
                         <div class="Qsearch_Data_List">
                             <div class="optionsContainer hidden">
-                                <div class="option" value="">Quỷ Cẩu</div>
-                                <div class="option" value="">Mật Vụ Ông</div>
-                                <div class="option" value="">Làng Thợ Mộc</div>
+                                <c:forEach items="${listMovie}" var="m">
+                                    <div class="option option_movie" onClick="sendSelectedMovieId('${m.id}')">${m.name}
+                                    </div>
+                                </c:forEach>
                             </div>
                         </div>
                         <div id="selectedOption" data-option=""></div>
@@ -93,10 +94,11 @@
                         </div>
                         <div class="Qsearch_Data_List">
                             <div class="optionsContainer hidden">
-                                <div class="option" value="">Rạp 1</div>
+                                <div class="option option_rap" value="">Galaxy Cần Thơ</div>                              
                             </div>
                         </div>
                     </div>
+
                     <div class="QuickSearch-item">
                         <div class="Qsearch-icon">
                             <span>3</span>
@@ -106,13 +108,12 @@
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
                         <div class="Qsearch_Data_List">
-                            <div class="optionsContainer hidden">
-                                <div class="option" value="">21-1-2024</div>
-                                <div class="option" value="">22-1-2024</div>
-                                <div class="option" value="">23-1-2024</div>
+                            <div class="optionsContainer hidden" id="date_option">   
+                                <div class="option option_date" onClick="sendSelectedDateId('${d}')">${d}</div> 
                             </div>
                         </div>
                     </div>
+
                     <div class="QuickSearch-item">
                         <div class="Qsearch-icon">
                             <span>4</span>
@@ -122,10 +123,10 @@
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
                         <div class="Qsearch_Data_List">
-                            <div class="optionsContainer hidden">
-                                <div class="option" value="">9:00</div>
-                                <div class="option" value="">13:30</div>
-                                <div class="option" value="">16:30</div>
+                            <div class="optionsContainer hidden" id="option_time">
+
+                                <div class="option option_time" onClick="sendSelectedDateId('${d}')">${o}</div>
+
                             </div>
                         </div>
                     </div>
@@ -134,7 +135,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- BODY - MAIN -->
             <div class="Main_Body grid">
                 <div class="Main_Content grid wide">
@@ -160,127 +160,40 @@
                     </div>
                     <div class="main_content-movies">
                         <div class="MOVIES row">
-                            <c:forEach items = "${requestScope.listMovie}" var="m">
-                             
+                            <c:forEach items = "${requestScope.listMovie}" var="m" varStatus="loop">
+                                <c:if test="${loop.index < 8}">
+                                    <div class="content-movie l-3 m-6">
+                                        <div class="overlayout">
+                                            <img height="400px" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="ERROR">
+                                            <div class="overlay">
+                                                <div class="ticket-ticket">
+                                                    <i class="fa-solid fa-ticket fa-2xs"></i>
+                                                    <a href="MovieDetailServlet?id=${m.id}" class="button">Mua vé</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="MovieDetailServlet?id=${m.id}" id="movie_id">${m.name}</a>
+                                    </div>
+                                </c:if>
+                            </c:forEach> 
+                        </div>
+                    </div>
+                    <div class="main_content-movies-more hidden">
+                        <div class="MOVIES row">                            
+                            <c:forEach items = "${requestScope.listMovie}" var="m">                           
                                 <div class="content-movie l-3 m-6">
-
                                     <div class="overlayout">
-                                        <img height="400px" src="./Assets/Image/Movies_Image/${m.movie_img}" alt="ERROR">
+                                        <img height="400px" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="ERROR">
                                         <div class="overlay">
                                             <div class="ticket-ticket">
                                                 <i class="fa-solid fa-ticket fa-2xs"></i>
-                                                <a href="BookingServlet?id=${m.id}" class="button">Mua vé</a>
+                                                <a href="bookingsvl?id=${m.id}" class="button">Mua vé</a>
                                             </div>
                                         </div>
                                     </div>
                                     <a href="#" id="movie_id">${m.name}</a>
                                 </div>
                             </c:forEach> 
-                        </div>
-                    </div>
-                    <div class="main_content-movies-more hidden">
-                        <div class="MOVIES row">
-                            <div class="content-movie l-3 m-6">
-                                <div class="overlayout">
-                                    <img src="./Assets/Image/Movies_Image/movie_05.webp" alt="ERROR">
-                                    <div class="overlay">
-                                        <div class="ticket-ticket">
-                                            <i class="fa-solid fa-ticket fa-2xs"></i>
-                                            <a href="#" class="button">Mua vé</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="" id="movie_id">Gia Đình X Điệp Viên Mã: Trắng</a>
-                            </div>
-
-                            <div class="content-movie l-3 m-6">
-                                <div class="overlayout">
-                                    <img src="./Assets/Image/Movies_Image/movie_02.webp" alt="ERROR">
-                                    <div class="overlay">
-                                        <div class="ticket-ticket">
-                                            <i class="fa-solid fa-ticket fa-2xs"></i>
-                                            <a href="#" class="button">Mua vé</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <a href="" id="movie_id">Gấu Đỏ Biến Hình</a>
-                            </div>
-
-                            <div class="content-movie l-3 m-6">
-                                <div class="overlayout">
-                                    <img src="./Assets/Image/Movies_Image/movie_03.webp"
-                                         alt="ERROR">
-                                    <div class="overlay">
-                                        <div class="ticket-ticket">
-                                            <i class="fa-solid fa-ticket fa-2xs"></i>
-                                            <a href="#" class="button">Mua vé</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="" id="movie_id">Mai</a>
-                            </div>
-                            <div class="content-movie l-3 m-6">
-                                <div class="overlayout">
-                                    <img src="./Assets/Image/Movies_Image/movie_04.webp" alt="ERROR">
-                                    <div class="overlay">
-                                        <div class="ticket-ticket">
-                                            <i class="fa-solid fa-ticket fa-2xs"></i>
-                                            <a href="#" class="button">Mua vé</a>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <a href="" id="movie_id">Gặp Lại Chị Bầu</a>
-                            </div>
-                            <div class="content-movie l-3 m-6">
-                                <div class="overlayout">
-                                    <img src="./Assets/Image/Movies_Image/movie_01.webp" alt="ERROR">
-                                    <div class="overlay">
-                                        <div class="ticket-ticket">
-                                            <i class="fa-solid fa-ticket fa-2xs"></i>
-                                            <a href="#" class="button">Mua vé</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="" id="movie_id">Madame Web</a>
-                            </div>
-                            <div class="content-movie l-3 m-6">
-                                <div class="overlayout">
-                                    <img src="./Assets/Image/Movies_Image/movie_06.webp" alt="ERROR">
-                                    <div class="overlay">
-                                        <div class="ticket-ticket">
-                                            <i class="fa-solid fa-ticket fa-2xs"></i>
-                                            <a href="#" class="button">Mua vé</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="" id="movie_id">Dune: Hành Tinh Cát</a>
-                            </div>
-                            <div class="content-movie l-3 m-6">
-                                <div class="overlayout">
-                                    <img src="./Assets/Image/Movies_Image/movie_08.webp" alt="ERROR">
-                                    <div class="overlay">
-                                        <div class="ticket-ticket">
-                                            <i class="fa-solid fa-ticket fa-2xs"></i>
-                                            <a href="#" class="button">Mua vé</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="" id="movie_id">Nàng Thơ Của Miller</a>
-                            </div>
-                            <div class="content-movie l-3 m-6">
-                                <div class="overlayout">
-                                    <img src="./Assets/Image/Movies_Image/movie_09.webp" alt="ERROR">
-                                    <div class="overlay">
-                                        <div class="ticket-ticket">
-                                            <i class="fa-solid fa-ticket fa-2xs"></i>
-                                            <a href="#" class="button">Mua vé</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="" id="movie_id">Pororo Hành Trình Siêu Sao Âm Nhạc</a>
-                            </div>
                         </div>
                         <div class="info_movie">
                             <div class="handel_title">
@@ -319,7 +232,7 @@
                         </div>
                     </div>
                     <div class="more_movies">
-                        <span>Xem Thêm
+                        <span class="more_movies_span">Xem Thêm
                             <i class="fa-solid fa-arrow-right"></i>
                         </span>
                     </div>
@@ -408,4 +321,70 @@
             </div>
         </div>
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script>
+                                    var selectedMovieId;
+                                    function sendSelectedMovieId(movie_id) {
+                                        selectedMovieId = movie_id; // Lưu giá trị của movie_id vào biến toàn cục
+                                        $.ajax({
+                                            type: "GET",
+                                            url: "/CINEMA/loaddate",
+                                            data: {
+                                                movieId: movie_id,
+                                            },
+                                            success: function (data) {
+                                                var row = document.getElementById("date_option");
+                                                row.innerHTML = data;
+                                            }
+                                        });
+                                    }
+
+                                    function sendSelectedDateId(date_id) {
+                                        // Sử dụng giá trị của biến toàn cục selectedMovieId                                       
+                                        $.ajax({
+                                            type: "GET",
+                                            url: "/CINEMA/loadtime",
+                                            data: {
+                                                dateId: date_id,
+                                                movieId: selectedMovieId
+                                            },
+                                            success: function (data) {
+                                                var row = document.getElementById("option_time");
+                                                row.innerHTML = data;
+                                            }
+                                        });
+                                    }
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(".image-slider").slick({
+                    autoplay: true,
+                    autoplaySpeed: 2000,
+                    centerPadding: '200px',
+                    arraws: true,
+                    dots: true,
+                    slidesToShow: 1,
+                    centerMode: true,
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                centerMode: false,
+                                slidesToShow: 1,
+                                infinite: true,
+                                dots: true,
+                            }
+                        },
+                        {
+                            breakpoint: 600,
+                            settings: {
+                                slidesToShow: 1
+                            }
+                        }]
+                });
+            });
+        </script>
+
+        <!-- Thêm mã JavaScript vào cuối thẻ <body> hoặc tệp .js của bạn -->
         <%@include file='./Components/Footer.jsp' %>
+
