@@ -87,7 +87,7 @@ public class ForgotPasswordServlet extends HttpServlet {
                 session.setAttribute("account", acc);
                 session.setAttribute("verifyCode", verifyCode);
 
-                response.sendRedirect("VerifyNewpass.jsp");
+                request.getRequestDispatcher("VerifyNewpass.jsp").forward(request, response);
             }
         } else {
             request.setAttribute("error", "Email is not exist!");

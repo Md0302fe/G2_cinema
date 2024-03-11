@@ -89,28 +89,15 @@ public class VerifyNewpass extends HttpServlet {
         if (verificationCode.equals(aucode)) {
             AccountDAO ad = new AccountDAO();
             Account acc = (Account) sesson.getAttribute("account");
-            
+
             ad.resetPassword(acc);
 
             sesson.removeAttribute("account");
             sesson.removeAttribute("verifyCode");
-
-            PrintWriter out = response.getWriter();
-            out.println("<html><head>"
-                    + "<title>Reset password Successful</title>"
-                    + "<style>"
-                    + "body { font-family: 'Arial', sans-serif; background-color: #f4f4f4; }"
-                    + ".success-message { background-color: #4CAF50; color: white; padding: 20px; text-align: center; margin: 50px auto; }"
-                    + "</style>"
-                    + "<script type='text/javascript'>"
-                    + "setTimeout(function(){ window.location.href = 'login'; }, 5000);"
-                    + "</script></head>"
-                    + "<body>"
-                    + "<div class='success-message'>"
-                    + "<h1>Registration Successful!</h1>"
-                    + "<p>You will be redirected to the login page in 5 seconds.</p>"
-                    + "</div>"
-                    + "</body></html>");
+            
+            request.setAttribute("redirectDelay", 5000);
+            request.setAttribute("mess", "Verify successfuly!");
+            request.getRequestDispatcher("success.jsp").forward(request, response);
         } else {
             request.setAttribute("error", "Verify code is incorrect!");
             request.getRequestDispatcher("Verify.jsp").forward(request, response);

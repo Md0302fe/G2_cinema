@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import java.util.ArrayList;
+import model.Booking;
 
 import model.Seat;
 
@@ -159,6 +160,32 @@ public class BookingDAO extends DBContext {
         }
     }
 
+    public void addBooking(Booking booking) {
+        String sql = "INSERT INTO [dbo].[Bookings]\n"
+                + "           ([user_id]\n"
+                + "           ,[total_price]\n"
+                + "           ,[choice_date]\n"
+                + "           ,[choice_time]\n"
+                + "           ,[booking_date]\n"
+                + "           ,[seat_list]\n"
+                + "           ,[payment])\n"
+                + "     VALUES\n"
+                + "           (?,?,?,?,?,?,?)";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, String.valueOf(booking.getUser_id()));
+            st.setString(2, booking.getTotal_price());
+            st.setString(3, booking.getChoiceDate());
+            st.setString(4, booking.getChoiceTime());
+            st.setString(5, booking.getBooking_date());
+            st.setString(6, booking.getSeatList());
+            st.setString(7, booking.getPayment());
+            st.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error in addBooking " + e);
+        }
+    }
+
     public static void main(String[] args) {
         BookingDAO b = new BookingDAO();
         ArrayList<String> seats = b.isValist_Seats("2024-03-11", "22:30", "1");
@@ -166,4 +193,5 @@ public class BookingDAO extends DBContext {
             System.out.println("seats : " + seat);
         }
     }
+
 }

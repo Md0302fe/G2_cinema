@@ -92,11 +92,9 @@ public class Details_Seat extends HttpServlet {
             choiceTime_In = choiceTime;
         }
 
-
         String roomName = b.getRoomsId(date, id_raw, choiceTime_In);
         System.out.println("roomName : " + roomName);
 
-        
         try {
             int movieId = Integer.parseInt(id_raw);
             // lấy movie theo id => object movie
@@ -104,10 +102,10 @@ public class Details_Seat extends HttpServlet {
 
             ArrayList<String> listTimes = b.getList_Showtimes(id_raw, date);
             // danh sách ghế đã được chọn .
-            
+
             ArrayList<String> listSeats = b.isValist_Seats(date, choiceTime, id_raw);
             request.setAttribute("listSeats", listSeats);
-           
+
             request.setAttribute("id_raw", id_raw);
             request.setAttribute("roomName", roomName);
             request.setAttribute("dayOfWeek", dayOfWeek);
@@ -135,47 +133,7 @@ public class Details_Seat extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // test chức năng đặt ghế nếu ok sau này làm thêm trang payment
-        // khi người dùng thanh toán mọi thứ xong , qua bên js của trang CreateSeatPage , đổi đường link
-        // của phần ajax truyền dữ liệu thành doPOST của servlet payment successfull , để đặt xong + thanh toán
-        // ghế mới thực sự được đặc và ẩn khỏi list của giờ đó.
-        // hướng dẫn :
-        // coppy đóng code dưới đây quăng qua bên servlet payment_success
-        BufferedReader reader = request.getReader();
-        StringBuilder sb = new StringBuilder();
-        BookingDAO b = new BookingDAO();
-
-        String line;
-
-        try {
-            while ((line = reader.readLine()) != null) {
-                sb.append(line);
-            }
-            reader.close();
-            // Biến sb giờ chứa dữ liệu JSON gửi từ client
-            String jsonData = sb.toString();
-
-            // Sử dụng Gson để chuyển đổi JSON thành đối tượng Java
-            Gson gson = new Gson();
-            SeatData seatData = gson.fromJson(jsonData, SeatData.class);
-
-            // Bây giờ bạn có thể sử dụng các thuộc tính của đối tượng seatData
-            String id = seatData.getId();
-            String date = seatData.getDate();
-            String room_name = seatData.getRoom_name();
-            String choiceTime = seatData.getChoice_time();
-            List<String> selectedSeats = seatData.getSelectedSeats();
-            
-            
-            //save du lieu cua ghe
-//            for (String seat_name : selectedSeats) {
-//                b.AddSeat(new Seat(seat_name, choiceTime, id, room_name, date));
-//            }
-
-        } catch (Exception e) {
-            System.out.println("Error in doPost Details_Seats " + e);
-        }
-        
+       
     }
 
     /**
