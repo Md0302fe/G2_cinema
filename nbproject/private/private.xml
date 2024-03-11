@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/pts03/Cenimal/G2_cinema/src/java/controller/ProfileController/ProfileServlet.java</file>
             <file>file:/C:/Users/pts03/Cenimal/G2_cinema/src/java/dal/EditProfileDAO.java</file>
             <file>file:/C:/Users/pts03/Cenimal/G2_cinema/web/Profile.jsp</file>
@@ -18,6 +19,11 @@
             <file>file:/C:/Users/pts03/Cenimal/G2_cinema/src/java/controller/PublicController/home.java</file>
             <file>file:/C:/Users/pts03/Cenimal/G2_cinema/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/pts03/Cenimal/G2_cinema/web/HistoryBooking.jsp</file>
+=======
+            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/Final_Cinema/G2_cinema/src/java/controller/MovieDetailController/MovieDetailServlet.java</file>
+            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/Final_Cinema/G2_cinema/web/CreateSeatPage.jsp</file>
+            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/Final_Cinema/G2_cinema/web/DetailMovies.jsp</file>
+>>>>>>> ec64ab53f72c0875075d519565b2cf60c69a9fc5
         </group>
     </open-files>
 </project-private>

@@ -2,26 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller.Controller.Admin;
+package controller.MovieDetailController;
 
-import dal.AdminDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import model.Account;
-import model.Date;
 
 /**
  *
  * @author MinhDuc
  */
-@WebServlet(name = "SetUp_Schedules_Movie", urlPatterns = {"/setupschedules"})
-public class SetUp_Schedules_Movie extends HttpServlet {
+public class Movie_Infomations extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +34,10 @@ public class SetUp_Schedules_Movie extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SetUp_Schedules_Movie</title>");
+            out.println("<title>Servlet Movie_Infomations</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SetUp_Schedules_Movie at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Movie_Infomations at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,17 +55,8 @@ public class SetUp_Schedules_Movie extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        if (session.getAttribute("account") == null) {
-            response.sendRedirect("login");
-        } else {
-            Account ad = (Account) session.getAttribute("account");
-            if ("Admin".equals(ad.getRole())) {
-                request.getRequestDispatcher("Admin_Setup_Schedules_Movie.jsp").forward(request, response);
-            } else {
-                request.getRequestDispatcher("home").forward(request, response);
-            }
-        }
+        String Movie_Id = request.getParameter("id");
+        System.out.println("Movie_Id : " + Movie_Id);
     }
 
     /**
@@ -85,20 +70,7 @@ public class SetUp_Schedules_Movie extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Thực Hiện Chức Năng Thêm Date : Lên Lịch Cho Phim Trong Ngày 
-        // Lấy dữ liệu từ thẻ input có tên là "setupDate"        
-        String setupDate = request.getParameter("setupDate");
-        AdminDAO dal = new AdminDAO();
-        // khởi tạo đối tượng Date và Tới bước truy vấn sql.
-        Date Date = new Date(setupDate);
-
-        // Gọi chức năng trong dal sử lý dữ liệu đầu vào.
-        dal.add_Date_Admin(Date);
-        // Tiến Hành Thực Thi Lên Schedules.
-
-        dal.setUp_Handle_Schedules(Date);       
-
-        request.getRequestDispatcher("Admin_Setup_Schedules_Movie.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**

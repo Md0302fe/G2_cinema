@@ -10,17 +10,17 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import model.Account;
 import model.Movie;
-import org.json.JSONArray;
 
 /**
  *
@@ -94,11 +94,16 @@ public class home extends HttpServlet {
         String movieId = request.getParameter("movieId");
         System.out.println("ID = " + movieId);
 
+        // lay ra ngay hien tai
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter data_format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String today_parse = data_format.format(today);
+
         // Get list of dates for booking based on movieId 
-        ArrayList<String> Dates = book.getShowDateForBooking(movieId);
+        ArrayList<String> Dates = book.getShowDateForBooking(movieId, today_parse);
 
         request.setAttribute("Dates", Dates);
-        
+
         // Forward hoặc redirect đến JSP
         request.getRequestDispatcher("HomePage.jsp").forward(request, response);
     }

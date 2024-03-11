@@ -108,7 +108,6 @@
                     }
                 });
             }
-
             function editItem(id) {
                 window.location.href = "UpdateMovie?editItem=" + id;
             }

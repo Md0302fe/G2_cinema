@@ -1,4 +1,4 @@
-<%-- 
+  <%-- 
     Document   : booking
     Created on : Feb 22, 2024, 8:12:46 AM
     Author     : kenga
@@ -9,45 +9,46 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="Assets/Styles/booking.css" rel="stylesheet" type="text/css"/>
-    <link href="Assets/Styles/header.css" rel="stylesheet" type="text/css"/>
-    <link href="Assets/Styles/footer.css" rel="stylesheet" type="text/css"/>
-    <title>Galaxy Cinema</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito Sans">
-</head>
-<script src="Assets/JS/booking.js" type="text/javascript"></script>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="Assets/Styles/booking.css" rel="stylesheet" type="text/css"/>
+        <link href="Assets/Styles/header.css" rel="stylesheet" type="text/css"/>
+        <link href="Assets/Styles/footer.css" rel="stylesheet" type="text/css"/>
+        <title>Galaxy Cinema</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito Sans">
+    </head>
+    <script src="Assets/JS/booking.js" type="text/javascript"></script>
 
 
-<body>
+    <body>
 
-    <%@include file='./Components/Header.jsp' %>
+        <%@include file='./Components/Header.jsp' %>
 
-<!--    <nav>
-        <a href="#">Chọn phim / Rạp / Suất</a>
-        <a href="#">Chọn ghế</a>
-        <a href="#">Chọn thức ăn</a>
-        <a href="#">Thanh toán </a>
-        <a href="#">Xác nhận</a>
-    </nav>-->
+        <!--    <nav>
+                <a href="#">Chọn phim / Rạp / Suất</a>
+                <a href="#">Chọn ghế</a>
+                <a href="#">Chọn thức ăn</a>
+                <a href="#">Thanh toán </a>
+                <a href="#">Xác nhận</a>
+            </nav>-->
 
-     <section>
-        <!-- Phần "Chọn vị trí", "Chọn phim", và "Chọn suất" -->
-        <div class="selection-container">
-            <div class="location-selection">
-                <div class="flex-c">
-                    <label for="location">Chọn vị trí</label>
-                    <i class="fa-solid fa-chevron-down" id="locationArrow"></i>
-                </div>
-                <!-- <a class="location-list" id="locationList"></a> -->
-                <div class="locationlist">
-                    <div class="location-item">
-                        <p>
-                        <div class="location-info" id="locationInfo">
-                            <span id="locationText">Cần Thơ</span> <!-- Thêm id="locationText" vào đây -->
+        <section>
+            <!-- Phần "Chọn vị trí", "Chọn phim", và "Chọn suất" -->
+            <div class="selection-container">
+                <div class="location-selection">
+                    <div class="flex-c">
+                        <label for="location">Chọn vị trí</label>
+                        <i class="fa-solid fa-chevron-down" id="locationArrow"></i>
+                    </div>
+                    <!-- <a class="location-list" id="locationList"></a> -->
+                    <div class="locationlist">
+                        <div class="location-item">
+                            <p>
+                            <div class="location-info" id="locationInfo">
+                                <span id="locationText">Cần Thơ</span> <!-- Thêm id="locationText" vào đây -->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -85,7 +86,6 @@
                             <p id="hoverMovieName"></p>
                         </div>
                     </div>
-
                 </div>
                 <div class="showtime-selection">
                     <div class="flex-c">
@@ -143,28 +143,28 @@
             </div>
         </section>
         <script src="Assets/JS/booking.js" type="text/javascript"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $(".movie-item a").click(function (event) {
-                    event.preventDefault(); // Ngăn chặn hành vi mặc định khi nhấp vào liên kết
-                    var movieId = $(this).data("movie-id"); // Lấy ID phim từ thuộc tính data-movie-id của thẻ a
-                    // Gửi yêu cầu AJAX
-                    $.ajax({
-                        url: "/CINEMA/bookingsvl",
-                        method: "GET",
-                        data: {movie_id: movieId}, // Truyền ID phim qua yêu cầu
-                        success: function (respone) {
-                            console.log("Thanh CONG")
-                        },
-                        error: function (xhr, status, error) {
-                            // Xử lý lỗi nếu có
-                            console.error("Lỗi trong quá trình gửi yêu cầu AJAX:", error);
-                        }
+        <!--        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script>
+                    $(document).ready(function () {
+                        $(".movie-item a").click(function (event) {
+                            event.preventDefault(); // Ngăn chặn hành vi mặc định khi nhấp vào liên kết
+                            var movieId = $(this).data("movie-id"); // Lấy ID phim từ thuộc tính data-movie-id của thẻ a
+                            // Gửi yêu cầu AJAX
+                            $.ajax({
+                                url: "/CINEMA/bookingsvl",
+                                method: "GET",
+                                data: {movie_id: movieId}, // Truyền ID phim qua yêu cầu
+                                success: function (respone) {
+                                    console.log("Thanh CONG")
+                                },
+                                error: function (xhr, status, error) {
+                                    // Xử lý lỗi nếu có
+                                    console.error("Lỗi trong quá trình gửi yêu cầu AJAX:", error);
+                                }
+                            });
+                        });
                     });
-                });
-            });
-        </script>
+                </script>-->
     </body>
     <%@include file='./Components/Footer.jsp' %>
 </html>

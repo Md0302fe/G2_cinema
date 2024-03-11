@@ -77,7 +77,6 @@
                             <div class="optionsContainer hidden">
                                 <c:forEach items="${listMovie}" var="m">
                                     <div class="option option_movie" onClick="sendSelectedMovieId('${m.id}')">${m.name}
-
                                     </div>
                                 </c:forEach>
                             </div>
@@ -125,9 +124,9 @@
                         </div>
                         <div class="Qsearch_Data_List">
                             <div class="optionsContainer hidden" id="option_time">
-                                
+
                                 <div class="option option_time" onClick="sendSelectedDateId('${d}')">${o}</div>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -161,21 +160,21 @@
                     </div>
                     <div class="main_content-movies">
                         <div class="MOVIES row">
-                            <c:forEach items = "${requestScope.listMovie}" var="m">                           
-                                <div class="content-movie l-3 m-6">
-                                    <div class="overlayout">
-                                        <img height="400px" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="ERROR">
-                                        <div class="overlay">
-                                            <div class="ticket-ticket">
-                                                <i class="fa-solid fa-ticket fa-2xs"></i>
-
-                                                <a href="MovieDetailServlet?id=${m.id}" class="button">Mua vé</a>
-
+                            <c:forEach items = "${requestScope.listMovie}" var="m" varStatus="loop">
+                                <c:if test="${loop.index < 8}">
+                                    <div class="content-movie l-3 m-6">
+                                        <div class="overlayout">
+                                            <img height="400px" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="ERROR">
+                                            <div class="overlay">
+                                                <div class="ticket-ticket">
+                                                    <i class="fa-solid fa-ticket fa-2xs"></i>
+                                                    <a href="MovieDetailServlet?id=${m.id}" class="button">Mua vé</a>
+                                                </div>
                                             </div>
                                         </div>
+                                        <a href="MovieDetailServlet?id=${m.id}" id="movie_id">${m.name}</a>
                                     </div>
-                                    <a href="#" id="movie_id">${m.name}</a>
-                                </div>
+                                </c:if>
                             </c:forEach> 
                         </div>
                     </div>
@@ -184,7 +183,7 @@
                             <c:forEach items = "${requestScope.listMovie}" var="m">                           
                                 <div class="content-movie l-3 m-6">
                                     <div class="overlayout">
-                                        <img height="400px" src="./Assets/Image/Movies_Image/${m.movie_img}" alt="ERROR">
+                                        <img height="400px" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="ERROR">
                                         <div class="overlay">
                                             <div class="ticket-ticket">
                                                 <i class="fa-solid fa-ticket fa-2xs"></i>
@@ -322,8 +321,6 @@
             </div>
         </div>
 
-        <!-- Thêm mã JavaScript vào cuối thẻ <body> hoặc tệp .js của bạn -->
-        <%@include file='./Components/Footer.jsp' %>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script>
                                     var selectedMovieId;
@@ -349,7 +346,7 @@
                                             url: "/CINEMA/loadtime",
                                             data: {
                                                 dateId: date_id,
-                                                movieId :selectedMovieId
+                                                movieId: selectedMovieId
                                             },
                                             success: function (data) {
                                                 var row = document.getElementById("option_time");
@@ -358,6 +355,36 @@
                                         });
                                     }
         </script>
-    </body>
-</html>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(".image-slider").slick({
+                    autoplay: true,
+                    autoplaySpeed: 2000,
+                    centerPadding: '200px',
+                    arraws: true,
+                    dots: true,
+                    slidesToShow: 1,
+                    centerMode: true,
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                centerMode: false,
+                                slidesToShow: 1,
+                                infinite: true,
+                                dots: true,
+                            }
+                        },
+                        {
+                            breakpoint: 600,
+                            settings: {
+                                slidesToShow: 1
+                            }
+                        }]
+                });
+            });
+        </script>
+
+        <!-- Thêm mã JavaScript vào cuối thẻ <body> hoặc tệp .js của bạn -->
+        <%@include file='./Components/Footer.jsp' %>
 
