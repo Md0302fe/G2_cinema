@@ -3,9 +3,32 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/src/java/dal/DBContext.java</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/web/Admin_AddMovie.jsp</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/web/Assets/JS/detailMovie.js</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/web/DetailMovies.jsp</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/web/Assets/Styles/DetailMovies.css</file>
+        </group>
+        <group>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/src/java/dal/DBContext.java</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/web/Admin_AddMovie.jsp</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/web/Assets/JS/detailMovie.js</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/web/DetailMovies.jsp</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/web/Assets/Styles/DetailMovies.css</file>
+        </group>
+        <group>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/src/java/dal/DBContext.java</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/web/Admin_AddMovie.jsp</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/web/Assets/JS/detailMovie.js</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/web/DetailMovies.jsp</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/web/Assets/Styles/DetailMovies.css</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/web/Components/Header.jsp</file>
+
             <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/Final_Cinema/G2_cinema/src/java/controller/MovieDetailController/MovieDetailServlet.java</file>
             <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/Final_Cinema/G2_cinema/web/CreateSeatPage.jsp</file>
             <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/Final_Cinema/G2_cinema/web/DetailMovies.jsp</file>
+
         </group>
     </open-files>
 </project-private>
