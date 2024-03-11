@@ -2,6 +2,8 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -289,8 +291,8 @@
                                     <div class="line_totalbooking"></div>
                                 </div>
                                 <div class="total_price flex">
-                                    <p class="tongcong bold" style="width: 86px;">Tổng cộng</p>
-                                    <p class="price_seat_orange bold price">0₫</p>
+                                    <p class="tongcong bold" style="width: 86px;">Tổng cộng:</p>
+                                    <p class="price_seat_orange bold price" id="total_money">0</p><span>đ</span>
                                 </div>
                             </div>
                             <div class="booking_bottom flex">
@@ -307,6 +309,9 @@
             </div>
         </div>
 
+        <%@include file='./Components/Footer.jsp' %>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <script type="text/javascript" >
 
@@ -354,7 +359,6 @@
                                 totalSeats[i].innerHTML = (selectedSeats.length * 90000);
                             }
                         }
-                    }
                     });
                 });
 
@@ -367,25 +371,31 @@
                 // Xử lý sự kiện khi ấn nút "Next"
                 document.getElementById('nextButton').addEventListener('click', function () {
                     choiceTime_In = document.getElementById("time_Slot_js").textContent;
-                    var xhr = new XMLHttpRequest();
-                    xhr.open('POST', '/CINEMA/seat', true);
-                    xhr.setRequestHeader('Content-Type', 'application/json');
-                    // Tạo một đối tượng chứa thông tin muốn gửi đi
-                    console.log("choiceTime_In :" + choiceTime_In);
-                    var dataToSend = {
-                        id: id,
-                        date: date,
-                        choice_time: choiceTime_In,
-                        room_name: room_name,
-                        selectedSeats: selectedSeats // selectedSeats là biến chứa danh sách ghế đã chọn
-                    };
-                    // Gửi dữ liệu dưới dạng JSON
-                    xhr.send(JSON.stringify(dataToSend));
+
+                    // Kiểm tra xem người dùng đã chọn ít nhất 1 ghế chưa
+                    if (selectedSeats.length > 0) {
+                        // Tạo một URL mới với các thông tin được truyền qua query parameters
+                        var url = "/CINEMA/Payment?id=" + encodeURIComponent(id) +
+                                "&date=" + encodeURIComponent(date) +
+                                "&choice_time=" + encodeURIComponent(choiceTime_In) +
+                                "&room_name=" + encodeURIComponent(room_name) +
+                                "&selectedSeats=" + encodeURIComponent(selectedSeats);
+
+                        // Chuyển hướng người dùng đến URL mới
+                        window.location.href = url;
+                    } else {
+                        // Hiển thị alert sử dụng SweetAlert2
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Vui lòng chọn ít nhất 1 ghế trước khi tiếp tục.',
+                        });
+                    }
                 });
             });
 
         </script>
         <script src="Assets/JS/createSeatPage.js" type="text/javascript"></script>            
 
-
-        <%@include file='./Components/Footer.jsp' %>
+    </body>
+</html>
