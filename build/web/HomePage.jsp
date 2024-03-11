@@ -160,19 +160,21 @@
                     </div>
                     <div class="main_content-movies">
                         <div class="MOVIES row">
-                            <c:forEach items = "${requestScope.listMovie}" var="m">                           
-                                <div class="content-movie l-3 m-6">
-                                    <div class="overlayout">
-                                        <img height="400px" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="ERROR">
-                                        <div class="overlay">
-                                            <div class="ticket-ticket">
-                                                <i class="fa-solid fa-ticket fa-2xs"></i>
-                                                <a href="MovieDetailServlet?id=${m.id}" class="button">Mua vé</a>
+                            <c:forEach items = "${requestScope.listMovie}" var="m" varStatus="loop">
+                                <c:if test="${loop.index < 8}">
+                                    <div class="content-movie l-3 m-6">
+                                        <div class="overlayout">
+                                            <img height="400px" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="ERROR">
+                                            <div class="overlay">
+                                                <div class="ticket-ticket">
+                                                    <i class="fa-solid fa-ticket fa-2xs"></i>
+                                                    <a href="MovieDetailServlet?id=${m.id}" class="button">Mua vé</a>
+                                                </div>
                                             </div>
                                         </div>
+                                        <a href="MovieDetailServlet?id=${m.id}" id="movie_id">${m.name}</a>
                                     </div>
-                                    <a href="MovieDetailServlet?id=${m.id}" id="movie_id">${m.name}</a>
-                                </div>
+                                </c:if>
                             </c:forEach> 
                         </div>
                     </div>
@@ -181,7 +183,7 @@
                             <c:forEach items = "${requestScope.listMovie}" var="m">                           
                                 <div class="content-movie l-3 m-6">
                                     <div class="overlayout">
-                                        <img height="400px" src="./Assets/Image/Movies_Image/${m.movie_img}" alt="ERROR">
+                                        <img height="400px" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="ERROR">
                                         <div class="overlay">
                                             <div class="ticket-ticket">
                                                 <i class="fa-solid fa-ticket fa-2xs"></i>

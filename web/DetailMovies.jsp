@@ -64,7 +64,7 @@
                                         <p class="movie_point bold"><i class="ti-star"></i>${movie.rate}</p>
                                         <p class="movie_votes">(111 votes)</p>
                                     </div>
-                                        
+
                                     <div class="flex">    
                                         <p class="country bold">Quốc gia:</p><p style="margin-left: 10px;">${movie.national}</p>
                                     </div>
@@ -102,14 +102,15 @@
 
                                 <c:forEach items="${requestScope.StringDate}" var="d">
                                     <div class="showtime_list">
-                                        <p class="list_day font-monospace bold ">
-                                            <i class="ti-calendar"></i> 
-                                            <span class="date_span">${d}</span> 
+                                        <p class="list_day font-monospace bold ">                                            
+                                            <i class="ti-calendar"></i>                                             
+                                            <span class="date_span" >${d}</span>                                       
                                         </p>
                                         <div class="showtime_cinema"></div> <!-- Remove id="details_time" -->
                                     </div>
                                     <p class="line"></p>
                                 </c:forEach>
+
                             </div>
                             <!--END SHOW TIME-->
                         </div>
@@ -147,7 +148,6 @@
                                     <i class="ti-angle-right"></i>
                                 </a>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -156,11 +156,11 @@
         <script src="Assets/JS/detailMovie.js" type="text/javascript"></script>
         <%@include file='./Components/Footer.jsp' %>
         <script>
-
                     // Lấy giá trị của tham số 'id' từ URL
                     var urlParams = new URLSearchParams(window.location.search);
                     var id = urlParams.get("id");
-                    var date_on_date;
+                    var date;
+                    var choice_time;
                     $(document).ready(function () {
                         $('.date_span').each(function () {
                             var date = $(this).text();
@@ -169,7 +169,6 @@
                     });
 
                     function timeByDate(date, container) {
-                        console.log(id);
                         $.ajax({
                             type: "POST",
                             url: "/CINEMA/MovieDetailServlet",
@@ -182,12 +181,17 @@
                             }
                         });
                     }
+
                     // JavaScript để kích hoạt giờ được chọn và vô hiệu hóa các giờ khác
                     $(document).on('click', '.time_slot1', function () {
                         // Xóa lớp active từ tất cả các nút giờ
                         $('.time_slot1').removeClass('active');
                         // Kích hoạt nút giờ được chọn
                         $(this).addClass('active');
+                        choice_time = $(this).text(); // hoặc có thể sử dụng .val() tùy thuộc vào loại thẻ (input, select, ...)          
+                        // chọn ra thẻ có class là time_slit 1 được click , sao đó tìm thẻ cha gần nhất chứa nó
+                        // có class là showtime_list -> tìm thẻ có tên date_span và lấy giá trị ra .
+                        // var date = $(this).closest('.showtime_list').find('.date_span').text();    
                     });
         </script>
     </body>

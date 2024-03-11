@@ -169,20 +169,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

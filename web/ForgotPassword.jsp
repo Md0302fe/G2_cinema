@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -33,6 +35,7 @@
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="email" placeholder="Enter your email" required>
                                 </div>
+                                <p style="color: red">${requestScope.error}</p>
                                 <div class="form-group">
                                     <button type="submit" class="form-control btn btn-primary submit px-3">Reset password</button>
                                 </div>

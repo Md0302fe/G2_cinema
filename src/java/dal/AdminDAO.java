@@ -145,6 +145,7 @@ public class AdminDAO extends DBContext {
 //        }
 //        return listMovie;
 //    }
+    
     public ArrayList<Movie> getAllMovie() {
         String sql = "select *from movie WHERE movie_status = ?";
         ArrayList<Movie> listMovie = new ArrayList<>();
