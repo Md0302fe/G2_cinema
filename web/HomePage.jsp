@@ -166,9 +166,8 @@
                                         <div class="overlayout">
                                             <img height="400px" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="ERROR">
                                             <div class="overlay">
-                                                <div class="ticket-ticket">
-                                                    <i class="fa-solid fa-ticket fa-2xs"></i>
-                                                    <a href="MovieDetailServlet?id=${m.id}" class="button">Mua vé</a>
+                                                <div class="ticket-ticket">                                       
+                                                    <a href="MovieDetailServlet?id=${m.id}" class="button buy_tickets"><i class="fa-solid fa-ticket fa-2xs"></i>Mua vé</a>
                                                 </div>
                                             </div>
                                         </div>
