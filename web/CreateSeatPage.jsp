@@ -283,7 +283,7 @@
                                             </div>
                                             <div class="flex">
                                                 <p style="margin-right: 6px;">Ghế:</p>
-                                                <p class="bold" id="push_Seat_Here"></p>
+                                                <p class="bold" id="push_Seat_Here"> asdasd</p>
                                             </div>
                                         </div>
                                         <!--<p class="price_seat_black bold total_money">0₫</p>-->
@@ -292,7 +292,7 @@
                                 </div>
                                 <div class="total_price flex">
                                     <p class="tongcong bold" style="width: 86px;">Tổng cộng:</p>
-                                    <p class="price_seat_orange bold price" id="total_money">0</p><span>đ</span>
+                                    <p class="price_seat_orange bold price" id="total_money">0đ</p>
                                 </div>
                             </div>
                             <div class="booking_bottom flex">
@@ -356,7 +356,7 @@
                         var totalSeats = document.querySelectorAll('.price');
                         for (var i = 0; i < totalSeats.length; i++) {
                             if (totalSeats[i]) {
-                                totalSeats[i].innerHTML = (selectedSeats.length * 90000);
+                                totalSeats[i].innerHTML = (selectedSeats.length * 90000) + "đ";
                             }
                         }
                     });
