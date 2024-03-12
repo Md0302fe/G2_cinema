@@ -161,7 +161,7 @@
                             <c:forEach items = "${requestScope.listMovie}" var="m" varStatus="loop">
                                 <c:if test="${loop.index < 8}">
                                     <div class="content-movie l-3 m-6">
-                                        <div class="overlayout">
+                                        <div class="overlayout" onclick="redirectMovie('${m.id}')">
                                             <img height="400px" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="ERROR">
                                             <div class="overlay">
                                                 <div class="ticket-ticket">                                       
@@ -180,12 +180,11 @@
                             <c:forEach items = "${requestScope.listMovie}" var="m" varStatus="loop">                           
                                 <c:if test="${loop.index > 8}">
                                     <div class="content-movie l-3 m-6">
-                                        <div class="overlayout">
+                                        <div class="overlayout" onclick="redirectMovie('${m.id}')">
                                             <img height="400px" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="ERROR">
                                             <div class="overlay">
-                                                <div class="ticket-ticket">
-                                                    <i class="fa-solid fa-ticket fa-2xs"></i>
-                                                    <a href="MovieDetailServlet?id=${m.id}" class="button">Mua vé</a>
+                                                <div class="ticket-ticket">                                       
+                                                    <a href="MovieDetailServlet?id=${m.id}" class="button buy_tickets"><i class="fa-solid fa-ticket fa-2xs"></i>Mua vé</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -364,6 +363,12 @@
                                         row.innerHTML = data;
                                     }
                                 });
+                            }
+
+                            function redirectMovie(movieId) {
+                                var url = "/CINEMA/MovieDetailServlet?id=" + movieId;
+                                // Chuyển hướng đến trang /seat với các thông tin đã chọn
+                                window.location.href = url;
                             }
 
                             function slick(movieid) {
