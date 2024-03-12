@@ -178,6 +178,38 @@ public class AdminDAO extends DBContext {
         return listMovie;
     }
     
+    public ArrayList<Movie> getAllMovieIncoming() {
+        String sql = "select *from movie WHERE [movie_status] = ? AND [release_date] >= '2024-05-01'";
+        ArrayList<Movie> listMovie = new ArrayList<>();
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, "1");
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Movie movie = new Movie(
+                        rs.getString("movie_name"),
+                        rs.getInt("duration"),
+                        rs.getString("release_date"),
+                        rs.getFloat("rate"),
+                        rs.getString("national"),
+                        rs.getString("list_category"),
+                        rs.getString("director"),
+                        rs.getString("actors"),
+                        rs.getString("language"),
+                        rs.getString("movie_description"),
+                        rs.getString("image"),
+                        rs.getString("trailer_img"),
+                        rs.getString("trailer_link")
+                );
+                movie.setId(rs.getInt("movie_id"));
+                listMovie.add(movie);
+            }
+        } catch (SQLException e) {
+            System.out.println("getAllMovie Dal Error");
+        }
+        return listMovie;
+    }
+    
     public ArrayList<Integer> getAllMovieID() {
         String sql = "select movie_id from Movie where movie_status = 1";
         ArrayList<Integer> list_Movie_Id = new ArrayList<>();
@@ -524,8 +556,6 @@ public class AdminDAO extends DBContext {
     
     public static void main(String[] args) {
         AdminDAO a = new AdminDAO();
-        Date d = new Date("2024-03-10");
-        a.add_Date_Admin(d);
-        a.setUp_Handle_Schedules(d);
+        
     }
 }

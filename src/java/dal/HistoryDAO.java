@@ -27,8 +27,8 @@ public class HistoryDAO extends DBContext{
             st.setInt(1, user_id);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
-                Booking a = new Booking(rs.getInt("booking_id"), rs.getDouble("total_price"), rs.getString("booking_date"), rs.getInt("booking_status"));
-                return a;
+//                Booking a = new Booking(rs.getInt("booking_id"), rs.getDouble("total_price"), rs.getString("booking_date"), rs.getInt("booking_status"));
+//                return a;
             }
         } catch (SQLException e) {
             System.out.println(e);

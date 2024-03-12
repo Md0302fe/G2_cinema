@@ -37,7 +37,7 @@
                                 <li>
                                     <div><a href="#">PHIM SẮP CHIẾU</a></div>
                                     <ul class="flex movie-demo jca">
-                                        <c:forEach items="${listMovie}" var="m" begin="0" end="3">
+                                        <c:forEach items="${movieIncoming}" var="m" begin="0" end="3">
                                             <li class="tc">
                                                 <a href="MovieDetailServlet?id=${m.id}">
                                                     <img class="movie-showing" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="movie 1" />
