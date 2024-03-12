@@ -99,13 +99,44 @@ public class MovieDetailServlet extends HttpServlet {
 
         List<String> Result = b.getList_Showtimes_Future(id, date_time);
 
+        out.println("<style>");
+        out.println(".time_slot1 { "
+                + "    height: 42px;\n"
+                + "    margin-bottom: 6px;\n"
+                + "    margin-top: 6px;\n"
+                + "    margin-right: 10px;\n"
+                + "    padding-left: 1rem;\n"
+                + "    padding-right: 1rem;\n"
+                + "    font-size: .875rem;\n"
+                + "    padding-top: 0.5rem;\n"
+                + "    padding-bottom: 0.5rem;\n"
+                + "    border-width: 1px;\n"
+                + "    border-radius: 0.25rem;\n"
+                + "    cursor: pointer;\n"
+                + "    background-color: transparent;\n"
+                + "    text-decoration: inherit;\n"
+                + "    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; }"
+                + ".time_slot1.active {"
+                + "    background-color: #034ea2;\n"
+                + "    color: #fff; }"
+                + ".Subtitles {"
+                + "    height: 0px; }"
+                + "a {"
+                + "    color: #000 }"
+                + ".all_timeslot {"
+                + "    background-color: transparent;\n"
+                + "    margin-top: 34px; }");
+        out.println("</style>");
+
         out.println("<div class=\"showtime_bundle\">"); // Bắt đầu một bundle cho mỗi ngày
         out.println("<p class=\"Subtitles font-semibold\">2D Phụ Đề</p>"); // Chỉ hiển thị một lần thông tin "2D Phụ Đề"
-        for (String time : Result) {
-            // tạo url kèm theo servlet  :
-            String seatServletUrl = "/CINEMA/seat?id=" + id + "&date=" + date_time + "&time=" + time;
-            out.println("<a class=\"time_slot1 border border-1 font-semibold\" href=\"" + seatServletUrl + "\">" + time + "</a>");
-        }
+            out.println("<div class=\"all_timeslot\">");
+            for (String time : Result) {
+                // tạo url kèm theo servlet  :
+                String seatServletUrl = "/CINEMA/seat?id=" + id + "&date=" + date_time + "&time=" + time;
+                out.println("<a class=\"time_slot1 border border-1 font-semibold\" href=\"" + seatServletUrl + "\">" + time + "</a>");
+            }
+            out.println("</div>");
         out.println("</div>"); // Kết thúc bundle cho mỗi ngày
     }
 

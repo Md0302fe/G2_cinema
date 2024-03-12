@@ -54,7 +54,7 @@
                         <div class="choose_time_movie grid wide">
                             <div class="show_time_movie flex">
                                 <div class="change_time_movie">
-                                    <p class="bold" style="margin-top: 14px;">Đổi suất chiếu</p>
+                                    <p class="bold">Đổi suất chiếu</p>
                                 </div>
                                 <div class="time_movie">
                                     <c:forEach items="${requestScope.listTimes}" var="time">
@@ -246,7 +246,7 @@
                                 <img alt="Mai" loading="lazy" width="130" height="180" decoding="async"
                                      data-nimg="1"
                                      class="xl:w-full xl:h-full md:w-[80px] md:h-[120px] w-[90px] h-[110px] rounded object-cover object-cover duration-500 ease-in-out group-hover:opacity-100 scale-100 blur-0 grayscale-0)"
-                                     src="https://cdn.galaxycine.vn/media/2024/2/5/mai-500_1707105158298.jpg"
+                                     src="./Assets/Image/Movie_Image_Vip/${movie.movie_img}"
                                      style="color: transparent" />
                                 <div class="content_booking">
                                     <h3 class="movie_name">${movie.name}</h3>
@@ -283,7 +283,7 @@
                                             </div>
                                             <div class="flex">
                                                 <p style="margin-right: 6px;">Ghế:</p>
-                                                <p class="bold" id="push_Seat_Here"></p>
+                                                <p class="bold" id="push_Seat_Here"> asdasd</p>
                                             </div>
                                         </div>
                                         <!--<p class="price_seat_black bold total_money">0₫</p>-->
@@ -292,7 +292,7 @@
                                 </div>
                                 <div class="total_price flex">
                                     <p class="tongcong bold" style="width: 86px;">Tổng cộng:</p>
-                                    <p class="price_seat_orange bold price" id="total_money">0</p><span>đ</span>
+                                    <p class="price_seat_orange bold price" id="total_money">0đ</p>
                                 </div>
                             </div>
                             <div class="booking_bottom flex">
@@ -300,7 +300,7 @@
                                     <p>Quay lại</p>
                                 </button>
                                 <button class="text_continute border border-white rounded pd-t-10px">
-                                    <button id="nextButton">Tiếp tục</button>
+                                    <button class="border border-light rounded" id="nextButton">Tiếp tục</button>
                                 </button>
                             </div>
                         </div>
@@ -356,7 +356,7 @@
                         var totalSeats = document.querySelectorAll('.price');
                         for (var i = 0; i < totalSeats.length; i++) {
                             if (totalSeats[i]) {
-                                totalSeats[i].innerHTML = (selectedSeats.length * 90000);
+                                totalSeats[i].innerHTML = (selectedSeats.length * 90000) + "đ";
                             }
                         }
                     });
