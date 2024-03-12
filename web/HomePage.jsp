@@ -29,37 +29,37 @@
                 <div class="image-slider">
                     <div class="image-item">
                         <div class="image">
-                            <img src="./Assets/Image/Slick_Slider/slider_image12.webp" alt="">
+                            <img src="./Assets/Image/Slick_Slider/kungfu.jpg" onclick="slick('13')" alt="">
                         </div>
                     </div>
                     <div class="image-item">
                         <div class="image">
-                            <img src="./Assets/Image/Slick_Slider/slider_image13.webp" alt="">
+                            <img src="./Assets/Image/Slick_Slider/Quyco.jpg" onclick="slick('16') alt ="">
                         </div>
                     </div>
                     <div class="image-item">
                         <div class="image">
-                            <img src="./Assets/Image/Slick_Slider/slider_image10.webp" alt="">
+                            <img src="./Assets/Image/Slick_Slider/dune2_Slick.jpg" alt="">
                         </div>
                     </div>
                     <div class="image-item">
                         <div class="image">
-                            <img src="./Assets/Image/Slick_Slider/slider_image9.webp" alt="">
+                            <img src="./Assets/Image/Slick_Slider/Happy.jpg" alt="">
                         </div>
                     </div>
                     <div class="image-item">
                         <div class="image">
-                            <img src="./Assets/Image/Slick_Slider/slider_image11.webp" alt="">
-                        </div>
-                    </div>
-                    <div class="image-item">
-                        <div class="image">
-                            <img src="./Assets/Image/Slick_Slider/slider_image8.webp" alt="">
+                            <img src="./Assets/Image/Slick_Slider/slider_image5.webp" alt="">
                         </div>
                     </div>
                     <div class="image-item">
                         <div class="image">
                             <img src="./Assets/Image/Slick_Slider/slider_image6.webp" alt="">
+                        </div>
+                    </div>
+                    <div class="image-item">
+                        <div class="image">
+                            <img src="./Assets/Image/Slick_Slider/slider_image10.webp" alt="">
                         </div>
                     </div>
                 </div>
@@ -124,14 +124,12 @@
                         </div>
                         <div class="Qsearch_Data_List">
                             <div class="optionsContainer hidden" id="option_time">
-
                                 <div class="option option_time" onClick="sendSelectedDateId('${d}')">${o}</div>
-
                             </div>
                         </div>
                     </div>
-                    <div class="QuickSearch-item" style="text-align: center;">
-                        <span class="Qsearch-title">Mua Vé Nhanh</span>
+                    <div id="button_quickser" class="QuickSearch-item" style="text-align: center; color : white ; cursor: pointer">
+                        <span class="Qsearch-title" onclick="sendQuickBooking()">Mua Vé Nhanh</span>
                     </div>
                 </div>
             </div>
@@ -179,19 +177,21 @@
                     </div>
                     <div class="main_content-movies-more hidden">
                         <div class="MOVIES row">                            
-                            <c:forEach items = "${requestScope.listMovie}" var="m">                           
-                                <div class="content-movie l-3 m-6">
-                                    <div class="overlayout">
-                                        <img height="400px" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="ERROR">
-                                        <div class="overlay">
-                                            <div class="ticket-ticket">
-                                                <i class="fa-solid fa-ticket fa-2xs"></i>
-                                                <a href="bookingsvl?id=${m.id}" class="button">Mua vé</a>
+                            <c:forEach items = "${requestScope.listMovie}" var="m" varStatus="loop">                           
+                                <c:if test="${loop.index > 8}">
+                                    <div class="content-movie l-3 m-6">
+                                        <div class="overlayout">
+                                            <img height="400px" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="ERROR">
+                                            <div class="overlay">
+                                                <div class="ticket-ticket">
+                                                    <i class="fa-solid fa-ticket fa-2xs"></i>
+                                                    <a href="MovieDetailServlet?id=${m.id}" class="button">Mua vé</a>
+                                                </div>
                                             </div>
                                         </div>
+                                        <a href="MovieDetailServlet?id=${m.id}" id="movie_id">${m.name}</a>
                                     </div>
-                                    <a href="#" id="movie_id">${m.name}</a>
-                                </div>
+                                </c:if>
                             </c:forEach> 
                         </div>
                         <div class="info_movie">
@@ -200,42 +200,53 @@
                             </div>
                             <div class="info_movie_des">
                                 <span>
-                                    Mùa đẹp nhất trong năm mang theo cái không khí se se lạnh đã dần đến. Những món quà trao
-                                    nhau là điều không thể thiếu dịp cuối năm và Galaxy cũng không ngoại lệ. Dưới cây thông
-                                    là hàng loạt những ấn phẩm xịn xò để các Stars có thể đón nhận và mang đến cho những
-                                    người yêu thương. Sự ấm áp sẽ được mang đến rạp chiếu phim với ngôi sao ước trong Wish,
-                                    tràn ngập si-cu-la với Wonka và thế giới lung linh sắc màu Atlantis của Aquaman And The
-                                    Lost Kingdom. Chưa kể đến, với những người mặn mòi thích cảm giác kinh dị trong mùa đông
-                                    thì vẫn có phim chiếu rạp tiền truyện của bộ phim Tết Ở Làng Địa Ngục với một đám cưới
-                                    chuột vô cùng bí ẩn. Check nào.
+                                    Kết thúc mùa Tết ăn chơi thỏa thích và khó khăn khi bắt đầu chuỗi ngày công việc buồn chán, vậy thì hãy ra rạp chiếu phim để nạp lại năng lượng với những tác phẩm xịn xò sẽ đổ bộ trong tháng 3 này. Galaxy Cinema mang tới cho các Stars những phút giây giải tỏa áp lực với sự trở lại của bộ phim sử thi hoành tráng Dune, Thần Long Đại Hiệp Po và các Titan khổng lồ trong Godzilla. Chưa hết, trai đẹp Lee Do Huyn còn trở lại trong một tác phẩm li kì hoàn toàn mới. Cùng check nào.
                                 </span>
                                 <div class="des-movie">
                                     <div class="title-des_movie">
-                                        1. Wish / Điều Ước – Hoạt hình – 24.11.2024
+                                        1. Dune: Part Two / Dune: Hành Tinh Cát - Phần 2 – Hành động – 01.03.2024
                                     </div>
                                     <div class="des-movie-des">
-                                        Wish (Điều ước) là bộ phim hoạt hình thứ 62 của Walt Disney Animation Studios. Bộ
-                                        phim hay được ấn định để kỷ niệm 100 năm thành lập 'nhà Chuột' và kỳ vọng hội tụ tất
-                                        cả những tinh hoa của xưởng phim đã trở thành một biểu tượng văn hóa.
-                                        <br>
-                                        Điều Ước lấy bối cảnh tại một vương quốc diệu kỳ tên Rosas. Ở đây, Asha - một cô gái
-                                        thông minh
-                                        và mơ mộng đã ước một điều ước quá sức mạnh mẽ, đến nỗi một thế lực ngoài vũ trụ với
-                                        sức mạnh vô hạn tên Star đã đáp lại cô. Asha và Star cùng nhau đối mặt với người cầm
-                                        quyền của Rosas - quốc vương Magnifico, để cứu lấy mọi người và chứng minh rằng ý
-                                        chí gan dạ của con người kết hợp với phép màu của những vì sao sẽ giúp những điều kỳ
-                                        diệu xảy ra.
+                                        Sau thành công của Dune: Hành Tinh Cát với nhiều lời khen có cánh và 6 tượng vàng Oscar, Dune: Hành Tinh Cát Phần Hai là tác phẩm được mong chờ nhất hiện tại. Bộ phim hay nhận được cơn mưa lời khen từ giới mộ điệu sau buổi công chiếu tại Mỹ. Dune: Hành Tinh Cát Phần Hai còn hay hơn phần 1 và hứa hẹn sẽ là tác phẩm sử thi hay nhất năm 2024. Bộ phim sẽ đặc biệt hay hơn khi trải nghiệm dưới định dạng phim IMAX với những khung cảnh tuyệt vời mà Dune mang lại. Dune: Hành Tinh Cát Phần Hai tiếp tục với câu chuyện về Paul Atreides (Timothée Chalamet) khi anh gia nhập lực lượng với người Fremen để giải cứu thiên hà khỏi đế chế Harkonnen, kẻ đã hủy hoại gia tộc Atreides và gây ra cái chết của công tước Leto Atreides (Oscar Issac). Đối mặt với những lựa chọn giữa tình yêu của cuộc đời mình và số phận của vũ trụ, Paul phải ngăn chặn viễn cảnh tương lai tồi tệ nhất có thể xảy ra. Phim có sự góp mặt của dàn diễn viên chất lượng như Timothée Chalamet, Zandaya, Rebecca Ferguson, ‘Thanos’ Josh Brolin, Austin Butler và Florence Pugh.
+                                    </div>
+                                </div>
+
+                                <div class="des-movie">
+                                    <div class="title-des_movie">
+                                        2. Kung Fu Panda 4 – Hoạt hình – 08.03.2024
+                                    </div>
+                                    <div class="des-movie-des">
+                                        Sau 8 năm kể từ thành công của phần thứ 3, DreamWorks mang đến cho khán giả toàn thế giới phần phim thứ tư về Thần Long Đại Hiệp Po mang tên Kung Fu Panda 4. Phần phim đầu tiên của Kung Fu Panda thu về gần 632 triệu USD, hai phần tiếp theo lần lượt là Kung Fu Panda 2 (2011) và Kung Fu Panda 3 (2016) mang về cho DreamWorks cùng Universal con số doanh thu khủng 1,8 tỉ USD. Tác phẩm mới nhất hứa hẹn sẽ là cơn sốt phòng vé dịp đầu năm nay. Chuyện phim xảy ra sau khi Po được chọn trở thành Thủ lĩnh tinh thần của Thung lũng Bình Yên, Po cần tìm và huấn luyện một Chiến binh Rồng mới. Trong khi đó một mụ phù thủy độc ác lên kế hoạch triệu hồi lại tất cả những kẻ phản diện mà Po đã đánh bại để thâu tóm sức mạnh, phục vụ cho mục đích xấu xa.
+                                    </div>
+                                </div>
+
+                                <div class="des-movie">
+                                    <div class="title-des_movie">
+                                        3. Exhuma / Exhuma: Quật Mộ Trùng Ma – Li kì – 15.02024
+                                    </div>
+                                    <div class="des-movie-des">
+                                        Exhuma: Quật Mộ Trùng Ma là bom tấn màn ảnh Hàn Quốc, liên tục trở thành tâm điểm chú ý của khán giả Châu Á với doanh thu khủng. Bộ phim mới liên tục đứng đầu phòng vé xứ Kim Chi cùng nhiều quốc gia lân cận. Siêu phẩm kinh dị năm 2024 của Hàn Quốc quy tụ dàn ngôi sao hạng A: Hoi Min Sik, Yoo Hai Jin, Kim Go Eun, Lee Do Hyun. Sau khi gánh chịu nhiều sự kiện huyền bí, một gia đình giàu có ở Los Angeles (Mỹ) nhờ tới sự giúp đỡ của bộ đôi pháp sư trẻ Hwa Rim và Bong Gil để giải cứu đứa con mới chào đời. Khi đến nơi, Hwa Rim cảm nhận được âm hồn của tổ tiên đang ám lấy họ, được gọi là “Tiếng Gọi Mộ Phần”. Để khai quật ngôi mộ và giúp người tổ tiên siêu thoát, Hwa Rim tìm kiếm sự giúp đỡ từ thầy phong thủy Sang Duk và người làm nghề mai táng nổi tiếng nhất nước. Bộ tứ tìm thấy ngôi mộ tại một ngôi làng hẻo lánh ở Hàn Quốc. Họ tiến hành quật mộ mà không biết đến hậu quả kinh hoàng khi vô tình giải phóng thế lực đen tối bên dưới.
+                                    </div>
+                                </div>
+
+                                <div class="des-movie">
+                                    <div class="title-des_movie">
+                                        4. Godzilla x Kong: The New Empire / Godzilla x Kong: Đế Chế Mới – Hành động – 29.03.2024
+
+                                    </div>
+                                    <div class="des-movie-des">
+                                        Godzilla x Kong: The New Empire là phần thứ năm trong loạt tác phẩm về các loài quái vật khổng lồ, sau Godzilla (2014), Kong: Skull Island (2017), Godzilla: King of the Monters (2019) và Godzillia vs. Kong (2021). Tác phẩm do Adam Wingard chỉ đạo, có sự tham gia của các diễn viên Rebecca Hall, Brian Tyree Henry và Kaylee Hottle. Được đánh giá có phần kĩ xảo vượt trội hơn qua từng phần, Godzilla x Kong: The New Empire sẽ là tác phẩm không thể bỏ lỡ khi thưởng thức với rạp chiếu phim IMAX. Godzilla x Kong: The New Empire sẽ tiếp nối sau những cuộc đối đầu bùng nổ của Godzillia vs. Kong (2021), một cuộc phiêu lưu hoàn toàn mới, đưa Kong và Godzilla cùng nhau chống lại một mối đe dọa khổng lồ chưa được khám phá, ẩn sâu trong Trái Đất. Bộ phim chiếu rạp sẽ đào sâu hơn vào phần lịch sử của những Titan, nguồn gốc cũng như những bí ẩn tại Đảo Đầu Lâu, đồng thời khám phá trận chiến thần thoại đã tạo nên những sinh vật phi thường và sự gắn kết của chúng với loài người.  
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="more_movies">
-                        <span class="more_movies_span">Xem Thêm
+                        <span class="more_movies_span" onclick="hidden_blog()">Xem Thêm
                             <i class="fa-solid fa-arrow-right"></i>
                         </span>
                     </div>
-                    <div class="Blog_content">
+                    <div class="Blog_content" id="blog">
                         <div class="handel_title">
                             <h1 class="navi-body_title-V">GÓC ĐIỆN ẢNH</h1>
                         </div>
@@ -322,37 +333,65 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script>
-                                    var selectedMovieId;
-                                    function sendSelectedMovieId(movie_id) {
-                                        selectedMovieId = movie_id; // Lưu giá trị của movie_id vào biến toàn cục
-                                        $.ajax({
-                                            type: "GET",
-                                            url: "/CINEMA/loaddate",
-                                            data: {
-                                                movieId: movie_id,
-                                            },
-                                            success: function (data) {
-                                                var row = document.getElementById("date_option");
-                                                row.innerHTML = data;
-                                            }
-                                        });
+                            var selectedMovieId;
+                            var selectedTimeS;
+                            function sendSelectedMovieId(movie_id) {
+                                selectedMovieId = movie_id; // Lưu giá trị của movie_id vào biến toàn cục
+                                $.ajax({
+                                    type: "GET",
+                                    url: "/CINEMA/loaddate",
+                                    data: {
+                                        movieId: movie_id,
+                                    },
+                                    success: function (data) {
+                                        var row = document.getElementById("date_option");
+                                        row.innerHTML = data;
                                     }
+                                });
+                            }
 
-                                    function sendSelectedDateId(date_id) {
-                                        // Sử dụng giá trị của biến toàn cục selectedMovieId                                       
-                                        $.ajax({
-                                            type: "GET",
-                                            url: "/CINEMA/loadtime",
-                                            data: {
-                                                dateId: date_id,
-                                                movieId: selectedMovieId
-                                            },
-                                            success: function (data) {
-                                                var row = document.getElementById("option_time");
-                                                row.innerHTML = data;
-                                            }
-                                        });
+                            function sendSelectedDateId(date_id) {
+                                // Sử dụng giá trị của biến toàn cục selectedMovieId                                       
+                                $.ajax({
+                                    type: "GET",
+                                    url: "/CINEMA/loadtime",
+                                    data: {
+                                        dateId: date_id,
+                                        movieId: selectedMovieId
+                                    },
+                                    success: function (data) {
+                                        var row = document.getElementById("option_time");
+                                        row.innerHTML = data;
                                     }
+                                });
+                            }
+
+                            function slick(movieid) {
+                                var url = "/CINEMA/MovieDetailServlet?id=" + movieid;
+                                // Chuyển hướng đến trang /seat với các thông tin đã chọn
+                                window.location.href = url;
+                            }
+
+                            function hidden_blog() {
+                                document.querySelector(".Blog_content").classList.add("hiddent_blog");
+                            }
+
+                            function sendSelectedTimeId(time) {
+                                selectedTimeS = time;
+                                console.log("selectedTimeS : " + selectedTimeS);
+                            }
+
+                            function sendQuickBooking() {
+                                // Lấy thông tin từ các thẻ HTML
+                                var selectedDate = document.querySelector('.option_date').innerText;
+                                // Xây dựng URL với thông tin đã lấy được
+                                var url = "/CINEMA/seat?id=" + encodeURIComponent(selectedMovieId) +
+                                        "&date=" + encodeURIComponent(selectedDate) +
+                                        "&time=" + selectedTimeS;
+                                // Chuyển hướng đến trang /seat với các thông tin đã chọn
+                                window.location.href = url;
+                            }
+
         </script>
         <script type="text/javascript">
             $(document).ready(function () {

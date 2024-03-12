@@ -152,6 +152,10 @@ body {
     color: rgb(242, 107, 56);
     margin-right: 4px;
 }
+
+.book_ticket_wrapper{
+    margin-bottom: 6rem;
+}
 /* 
 .movie_detail p {
     margin-bottom: 5px;
@@ -398,7 +402,8 @@ body {
 }
 
 .time_slot1.active {
-    background-color: #034ea2;;
+    background-color: #034ea2;
+    ;
     ; /* Màu nền của nút giờ được chọn */
     color: #fff; /* Màu chữ của nút giờ được chọn */
 }

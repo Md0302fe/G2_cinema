@@ -193,6 +193,8 @@
                         // có class là showtime_list -> tìm thẻ có tên date_span và lấy giá trị ra .
                         // var date = $(this).closest('.showtime_list').find('.date_span').text();    
                     });
+                    
+                   
         </script>
     </body>
 </html>

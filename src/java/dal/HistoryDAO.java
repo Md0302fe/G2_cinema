@@ -14,7 +14,8 @@ import model.Booking;
  *
  * @author pts03
  */
-public class HistoryDAO extends DBContext{
+public class HistoryDAO extends DBContext {
+
     public Booking historyBooking(int user_id) {
         String sql = "SELECT [booking_id]\n"
                 + "      ,[total_price]\n"
