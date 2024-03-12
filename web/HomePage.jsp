@@ -29,37 +29,37 @@
                 <div class="image-slider">
                     <div class="image-item">
                         <div class="image">
-                            <img src="./Assets/Image/Slick_Slider/slider_image12.webp" alt="">
+                            <img src="./Assets/Image/Slick_Slider/kungfu.jpg" onclick="slick('13')" alt="">
                         </div>
                     </div>
                     <div class="image-item">
                         <div class="image">
-                            <img src="./Assets/Image/Slick_Slider/slider_image13.webp" alt="">
+                            <img src="./Assets/Image/Slick_Slider/Quyco.jpg" onclick="slick('16') alt ="">
                         </div>
                     </div>
                     <div class="image-item">
                         <div class="image">
-                            <img src="./Assets/Image/Slick_Slider/slider_image10.webp" alt="">
+                            <img src="./Assets/Image/Slick_Slider/dune2_Slick.jpg" alt="">
                         </div>
                     </div>
                     <div class="image-item">
                         <div class="image">
-                            <img src="./Assets/Image/Slick_Slider/slider_image9.webp" alt="">
+                            <img src="./Assets/Image/Slick_Slider/Happy.jpg" alt="">
                         </div>
                     </div>
                     <div class="image-item">
                         <div class="image">
-                            <img src="./Assets/Image/Slick_Slider/slider_image11.webp" alt="">
-                        </div>
-                    </div>
-                    <div class="image-item">
-                        <div class="image">
-                            <img src="./Assets/Image/Slick_Slider/slider_image8.webp" alt="">
+                            <img src="./Assets/Image/Slick_Slider/slider_image5.webp" alt="">
                         </div>
                     </div>
                     <div class="image-item">
                         <div class="image">
                             <img src="./Assets/Image/Slick_Slider/slider_image6.webp" alt="">
+                        </div>
+                    </div>
+                    <div class="image-item">
+                        <div class="image">
+                            <img src="./Assets/Image/Slick_Slider/slider_image10.webp" alt="">
                         </div>
                     </div>
                 </div>
@@ -128,7 +128,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="QuickSearch-item" style="text-align: center;">
+                    <div id="button_quickser" class="QuickSearch-item" style="text-align: center; color : white ; cursor: pointer">
                         <span class="Qsearch-title" onclick="sendQuickBooking()">Mua Vé Nhanh</span>
                     </div>
                 </div>
@@ -178,19 +178,21 @@
                     </div>
                     <div class="main_content-movies-more hidden">
                         <div class="MOVIES row">                            
-                            <c:forEach items = "${requestScope.listMovie}" var="m">                           
-                                <div class="content-movie l-3 m-6">
-                                    <div class="overlayout">
-                                        <img height="400px" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="ERROR">
-                                        <div class="overlay">
-                                            <div class="ticket-ticket">
-                                                <i class="fa-solid fa-ticket fa-2xs"></i>
-                                                <a href="bookingsvl?id=${m.id}" class="button">Mua vé</a>
+                            <c:forEach items = "${requestScope.listMovie}" var="m" varStatus="loop">                           
+                                <c:if test="${loop.index > 8}">
+                                    <div class="content-movie l-3 m-6">
+                                        <div class="overlayout">
+                                            <img height="400px" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="ERROR">
+                                            <div class="overlay">
+                                                <div class="ticket-ticket">
+                                                    <i class="fa-solid fa-ticket fa-2xs"></i>
+                                                    <a href="MovieDetailServlet?id=${m.id}" class="button">Mua vé</a>
+                                                </div>
                                             </div>
                                         </div>
+                                        <a href="MovieDetailServlet?id=${m.id}" id="movie_id">${m.name}</a>
                                     </div>
-                                    <a href="#" id="movie_id">${m.name}</a>
-                                </div>
+                                </c:if>
                             </c:forEach> 
                         </div>
                         <div class="info_movie">
@@ -245,7 +247,7 @@
                             <i class="fa-solid fa-arrow-right"></i>
                         </span>
                     </div>
-                    <div class="Blog_content hiddent_blog" id="blog">
+                    <div class="Blog_content" id="blog">
                         <div class="handel_title">
                             <h1 class="navi-body_title-V">GÓC ĐIỆN ẢNH</h1>
                         </div>
@@ -365,11 +367,16 @@
                                 });
                             }
 
-                            function hidden_blog() {
-                                document.querySelector(".Blog_content").classList.toggle("hiddent_blog");
-                                
+                            function slick(movieid) {
+                                var url = "/CINEMA/MovieDetailServlet?id=" + movieid;
+                                // Chuyển hướng đến trang /seat với các thông tin đã chọn
+                                window.location.href = url;
                             }
-                            
+
+                            function hidden_blog() {
+                                document.querySelector(".Blog_content").classList.add("hiddent_blog");
+                            }
+
                             function sendSelectedTimeId(time) {
                                 selectedTimeS = time;
                                 console.log("selectedTimeS : " + selectedTimeS);

@@ -48,9 +48,9 @@ body {
     width: 145%;
 }
 
-/* .time_slot{
+ .time_slot{
     padding-top: 26px;
-} */
+} 
 
 .time_slot {
     margin-bottom: 6px;
@@ -105,12 +105,12 @@ body {
     line-height: 1.7rem;
     margin-left: 92px;
     font-size: .875rem;
-}
+}/*
 
 .man_hinh {
     text-align: center;
     --tw-text-opacity: 1;
-    body {
+*/    body {
         font-family: Nunito Sans, sans-serif !important;
         color: #4a4a4a;
     }
@@ -126,6 +126,7 @@ body {
     .all_seat {
         display: flex;
         width: 100%;
+        margin-bottom: 6rem;
     }
 
     .content_left {
@@ -152,9 +153,9 @@ body {
         width: 145%;
     }
 
-    /* .time_slot{
+     .time_slot{
         padding-top: 26px;
-    } */
+    } 
 
     .time_slot {
         margin-bottom: 6px;
@@ -170,6 +171,7 @@ body {
         cursor: pointer;
         background-color: transparent;
         transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        text-decoration: none;
     }
 
     .time_slot:hover {
@@ -382,7 +384,7 @@ body {
         margin-right: 38px;
     }
 
-    .text_continute {
+/*    .text_continute {
         width: 50%;
         height: 48px;
         background-color: rgb(242, 111, 64);
@@ -392,6 +394,19 @@ body {
     }
 
     .text_continute:hover {
+        background-color: rgb(255, 149, 63)
+    }*/
+    
+    #nextButton{
+        width: 50%;
+        height: 48px;
+        background-color: rgb(242, 111, 64);
+        color: #fff;
+        margin-left: 38px;
+        transition: background-color 0.2s;
+    }
+    
+     #nextButton:hover {
         background-color: rgb(255, 149, 63)
     }
 
@@ -418,10 +433,11 @@ body {
         color: #fff;
     }
 
-    .bill_booking {
+/*    .bill_booking {
         display: none;
-    }
-}
+    }*/
+/*}*/
+
 .next_stept {
     margin-left: 20%;
     padding: 10% 0 0 0;

@@ -148,6 +148,10 @@ body {
     color: rgb(242, 107, 56);
     margin-right: 4px;
 }
+
+.book_ticket_wrapper{
+    margin-bottom: 6rem;
+}
 /* 
 .movie_detail p {
     margin-bottom: 5px;
@@ -319,11 +323,11 @@ body {
 }
 
 .time_slot1{
-    margin-bottom: -2px;
+    margin-bottom: 6px;
     margin-top: 6px;
     margin-right: 10px;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     font-size: .875rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
@@ -331,6 +335,7 @@ body {
     border-radius: 0.25rem;
     cursor: pointer;
     background-color: transparent;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .time_slot1:hover{
@@ -377,14 +382,24 @@ body {
 }
 
 .time_slot1 {
-    margin-right: 10px; /* Điều chỉnh khoảng cách giữa các giờ chiếu */
-    text-decoration: none;
-    color: black;
-    padding-top: 4%;
+    margin-bottom: 6px;
+    margin-top: 6px;
+    margin-right: 10px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: .875rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-width: 1px;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .time_slot1.active {
-    background-color:  rgb(242, 107, 56);
+    background-color: #034ea2;
+    ;
     ; /* Màu nền của nút giờ được chọn */
     color: #fff; /* Màu chữ của nút giờ được chọn */
 }
