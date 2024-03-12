@@ -27,13 +27,6 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${libs.jakartaee-api-10.0.classpath}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
-                    <file>${&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD}</file>
-                </library>
-                <library dirs="200">
                     <file>${file.reference.gson-1.4-sources.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
@@ -47,6 +40,10 @@
                 </library>
                 <library dirs="200">
                     <file>${file.reference.org.json-chargebee-1.0.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${libs.jakartaee-api-10.0.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">

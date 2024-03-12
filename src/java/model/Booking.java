@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
+import java.util.Date;
 
 /**
  *
@@ -11,11 +12,11 @@ package model;
 public class Booking {
     private int booking_id;
     private int user_id;
-    private double total_price;
-    private String booking_date;
+    private String total_price;
+    private Date booking_date;
     private int booking_status;
 
-    public Booking(int booking_id, double total_price, String booking_date, int booking_status) {
+    public Booking(int booking_id, String total_price, Date booking_date, int booking_status) {
         this.booking_id = booking_id;
         //this.user_id = user_id;
         this.total_price = total_price;
@@ -42,19 +43,19 @@ public class Booking {
         this.user_id = user_id;
     }
 
-    public double getTotal_price() {
+    public String getTotal_price() {
         return total_price;
     }
 
-    public void setTotal_price(double total_price) {
+    public void setTotal_price(String total_price) {
         this.total_price = total_price;
     }
 
-    public String getBooking_date() {
+    public Date getBooking_date() {
         return booking_date;
     }
 
-    public void setBooking_date(String booking_date) {
+    public void setBooking_date(Date booking_date) {
         this.booking_date = booking_date;
     }
 
