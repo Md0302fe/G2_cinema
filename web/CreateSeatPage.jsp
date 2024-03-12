@@ -54,7 +54,7 @@
                         <div class="choose_time_movie grid wide">
                             <div class="show_time_movie flex">
                                 <div class="change_time_movie">
-                                    <p class="bold" style="margin-top: 14px;">Đổi suất chiếu</p>
+                                    <p class="bold">Đổi suất chiếu</p>
                                 </div>
                                 <div class="time_movie">
                                     <c:forEach items="${requestScope.listTimes}" var="time">
@@ -246,7 +246,7 @@
                                 <img alt="Mai" loading="lazy" width="130" height="180" decoding="async"
                                      data-nimg="1"
                                      class="xl:w-full xl:h-full md:w-[80px] md:h-[120px] w-[90px] h-[110px] rounded object-cover object-cover duration-500 ease-in-out group-hover:opacity-100 scale-100 blur-0 grayscale-0)"
-                                     src="https://cdn.galaxycine.vn/media/2024/2/5/mai-500_1707105158298.jpg"
+                                     src="./Assets/Image/Movie_Image_Vip/${movie.movie_img}"
                                      style="color: transparent" />
                                 <div class="content_booking">
                                     <h3 class="movie_name">${movie.name}</h3>
@@ -300,7 +300,7 @@
                                     <p>Quay lại</p>
                                 </button>
                                 <button class="text_continute border border-white rounded pd-t-10px">
-                                    <button id="nextButton">Tiếp tục</button>
+                                    <button class="border border-light rounded" id="nextButton">Tiếp tục</button>
                                 </button>
                             </div>
                         </div>
