@@ -28,4 +28,3 @@ function closeModal() {
   modal.classList.remove("active");
   modal.style.display = "none";
 }
-

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
-
     <filter>
         <filter-name>LoginFilter</filter-name>
         <filter-class>filter.LoginFilter</filter-class>
@@ -23,7 +22,6 @@
         <url-pattern>/MovieDetailServlet</url-pattern>
     </filter-mapping>
     <servlet>
-
         <servlet-name>EditProfile</servlet-name>
         <servlet-class>controller.ProfileController.EditProfile</servlet-class>
     </servlet>
@@ -63,6 +61,10 @@
         <servlet-name>Movie_Infomations</servlet-name>
         <servlet-class>controller.MovieDetailController.Movie_Infomations</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MovieLoadServlet</servlet-name>
+        <servlet-class>controller.MovieDetailController.MovieLoadServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>EditProfile</servlet-name>
         <url-pattern>/EditProfile</url-pattern>
@@ -95,6 +97,7 @@
         <servlet-name>Movie_Infomations</servlet-name>
         <url-pattern>/information</url-pattern>
     </servlet-mapping>
+  
     <welcome-file-list>
         <welcome-file>home</welcome-file>
     </welcome-file-list>

@@ -51,25 +51,37 @@
                                         alt=""/>
                                 </div>
                                 <div class="movie_detail">
-                                    <div class="movie_name flex">
+<div class="movie_name flex">
                                         <h2 class="movie_mvo bold">${movie.name}</h2>
                                         <p class="movie_rated border border-1 rounded">T18</p>
                                     </div>
                                     <div class="movie_time flex">
                                         <p class="movie_minute"><i class="ti-timer"></i>${movie.duration}</p>
+                                        <p style="margin-left: 5px;">Phút</p>
                                         <p class="movie_calendar"><i class="ti-clipboard"></i>${movie.release_date}</p>
                                     </div>
                                     <div class="movie_voting flex">
-                                        <p class="movie_point"><i class="ti-star"></i>${movie.rate}</p>
+                                        <p class="movie_point bold"><i class="ti-star"></i>${movie.rate}</p>
                                         <p class="movie_votes">(111 votes)</p>
                                     </div>
-                                    <p class="country">Quốc gia: ${movie.national}</p>
-                                    <p class="movie_title">Thể loại: ${movie.list_category}</p>
-                                    <p class="movie_director">Đạo diễn: ${movie.director}</p>
-                                    <p class="movie_actors">
-                                        Diễn viên: ${movie.actors}
-                                    </p>
-                                    <p class="movie_language">Ngôn ngữ: ${movie.languages}</p>
+                                        
+                                    <div class="flex">    
+                                        <p class="country bold">Quốc gia:</p><p style="margin-left: 10px;">${movie.national}</p>
+                                    </div>
+                                    <div class="flex"> 
+                                        <p class="movie_title bold">Thể loại:</p><p style="margin-left: 10px;"> ${movie.list_category}</p>
+                                    </div>
+                                    <div class="flex"> 
+                                        <p class="movie_director bold">Đạo diễn:</p><p style="margin-left: 10px;"> ${movie.director}</p>
+                                    </div>
+                                    <div class="flex"> 
+                                        <p class="movie_actors bold">
+                                            Diễn viên: <p style="margin-left: 10px;">${movie.actors}</p>
+                                        </p>
+                                    </div>
+                                    <div class="flex">     
+                                        <p class="movie_language bold">Ngôn ngữ:</p><p style="margin-left: 10px;"> ${movie.languages}</p>
+                                    </div>
                                 </div>
                             </div>
 
@@ -84,7 +96,7 @@
                             <div class="showtimes">
                                 <div class="lc_col flex">
                                     <span class="orange_col"></span>
-                                    <p class="lc bold">Lịch Chiếu - CGV CẦN THƠ </p>
+<p class="lc bold">Lịch Chiếu - CGV CẦN THƠ </p>
                                 </div>
                                 <p class="line"></p>
 
@@ -107,7 +119,7 @@
                                     <span class="orange_col"></span>
                                     <h1 class="text uppercase">Phim Đang Chiếu</h1>
                                 </div>
-                                <c:forEach items="${requestScope.listMovie}" var="m">
+                                <c:forEach items="${requestScope.listMovie}" var="m" begin="0" end="2">
                                     <div class="all-movie-playing1">
                                         <a href="MovieDetailServlet?id=${m.id}" style="display: block">
                                             <img
@@ -131,7 +143,7 @@
 
                             <div class="see_more_button">
                                 <a href="" class="see_more border border-2 rounded" style="border: solid 1px rgb(242, 107, 56)!important;">
-                                    Xem Thêm 
+Xem Thêm 
                                     <i class="ti-angle-right"></i>
                                 </a>
                             </div>

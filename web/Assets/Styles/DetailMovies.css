@@ -128,12 +128,12 @@ body {
 
 .ti-star{
     color: rgb(242, 107, 56);
-    font-size: 28px;
+    font-size: 20px;
     margin-right: 6px;
 }
 
 .movie_point{
-    font-size: 25px;
+    font-size: 20px;
     margin-right: 6px;
     cursor: pointer;
 }
@@ -141,7 +141,7 @@ body {
 .movie_votes{
     cursor: pointer;
     font-size: .875rem;
-    margin-top: 4px;
+    margin-top: 0px;
 }
 
 .ti-clipboard{
@@ -211,7 +211,7 @@ body {
 }
 
 .ndp_word{
-    font-size: 16px;
+font-size: 16px;
     margin-top: 16px;
 }
 
@@ -384,4 +384,3 @@ body {
     background-color:  rgb(242, 107, 56);; /* Màu nền của nút giờ được chọn */
     color: #fff; /* Màu chữ của nút giờ được chọn */
 }
-

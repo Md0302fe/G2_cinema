@@ -154,8 +154,8 @@
                     <a href="home">
                         <button class="back-button">Quay lại</button>
                     </a>
-                    <a>
-                        <button class="continue-button" onclick="redirectToCreateSeatPage()">Tiếp tục</button>
+                    <a >
+                        <button class="continue-button" ">Tiếp tục</button>
                     </a>
                 </div>
             </div>
@@ -164,11 +164,11 @@
   
         
         <!--Đường dẫn  đến trang CreateSeatPage -->
-        <script>
+<!--        <script>
             function redirectToCreateSeatPage() {
                 window.location.href = "CreateSeatPage.jsp"; 
             }
-        </script>
+        </script>-->
     </body>
     <%@include file='./Components/Footer.jsp' %>
 </html>
