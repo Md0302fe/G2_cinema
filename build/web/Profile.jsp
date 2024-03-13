@@ -17,11 +17,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <link rel="stylesheet" href="./Assets/Styles/Profile.css">
         <title>Profile</title>
-        <script type="text/javascript">
-            function showMessage(message) {
-                alert(message);
-            }
-        </script>
+        
     </head>
 
     <body id="body">
@@ -41,7 +37,7 @@
                 <div id="content">
                     <p>Tổng chi tiêu 2024 <strong id="money">0&#x111</strong> </p>
                 </div>
-                   
+
 
                 <div class="information">
                     <div class="hotline">
@@ -52,10 +48,10 @@
                     <div class="email">
                         <strong>Email :</strong><strong id="info">galaxy@.com</strong>
 
-                      
+
                     </div>
                     <form action="Logout" method="GET"><button id="logout" type="submit" style=" border-radius: 5px; background-color: red">Logout</button></form>
-                    
+
                 </div>
             </div>
 
@@ -63,14 +59,18 @@
 
             </div>
             <div class="prolife3">
+                <form action="History" method="GET">
                 <span class="header-profile">
-                    <p>Lịch Sử Giao Dịch</p>
+                    <input type="hidden" name="id" value="${sessionScope.account.id}">
+                    <button type="submit" style="height: 30px; border: 2px solid whitesmoke;">Lịch sử Giao Dịch</button>
                     <p>Thông Tin Cá Nhân</p>
                     <p>Thông Báo</p>
                     <p>Quà Tặng</p>
                     <p>Chính Sách</p>
 
                 </span>
+                    </form>
+
                 <div class="hozi">
                     <hr>
                 </div>
@@ -103,7 +103,7 @@
 
 
                         <div class="form2">
-                            
+
                             <div class="input-with-icon">
 
                                 Số Điện Thoại<br>
@@ -117,14 +117,14 @@
                                        type="password" name="password" placeholder="Mật Khẩu"><br>
                             </div>
                             <button id="submit" type="submit"> Cập Nhật</button>
-                            
+
                             </form>
-                            
+
 
                         </div>
                     </div>
             </div>
         </form>
-        
+
     </div>
     <%@include file='./Components/Footer.jsp' %>

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
+import java.util.Date;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
