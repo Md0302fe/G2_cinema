@@ -19,12 +19,12 @@ public class HistoryDAO extends DBContext{
     public ArrayList<Booking> getAccountModels(String userid) {
         ArrayList<Booking> account = new ArrayList<>();
         try{
-            String sqlQuery = "select booking_id,total_price,booking_date,booking_status from Bookings where [user_id]=?";
+            String sqlQuery = "select * from Bookings where [user_id]=?";
             PreparedStatement stm = connection.prepareStatement(sqlQuery);
             stm.setString(1, userid);
             ResultSet rs = stm.executeQuery();
             while(rs.next()){
-                account.add(new Booking(rs.getInt(1),rs.getString(2), rs.getDate(3), rs.getInt(4)));
+                account.add(new Booking(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
             }
         }catch(SQLException e){
             e.printStackTrace();
