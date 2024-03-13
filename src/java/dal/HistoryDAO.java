@@ -7,7 +7,8 @@ package dal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import model.Account;
+import java.util.ArrayList;
+import java.sql.Date;
 import model.Booking;
 
 /**
@@ -15,28 +16,23 @@ import model.Booking;
  * @author pts03
  */
 public class HistoryDAO extends DBContext{
-    public Booking historyBooking(int user_id) {
-        String sql = "SELECT [booking_id]\n"
-                + "      ,[total_price]\n"
-                + "      ,[booking_date]\n"
-                + "      ,[booking_status]\n"
-                + "      FROM [dbo].[Bookings]"
-                + "  WHERE (user_id=?)\n";
-        try {
-            PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, user_id);
-            ResultSet rs = st.executeQuery();
-            if (rs.next()) {
-//                Booking a = new Booking(rs.getInt("booking_id"), rs.getDouble("total_price"), rs.getString("booking_date"), rs.getInt("booking_status"));
-//                return a;
+    public ArrayList<Booking> getAccountModels(String userid) {
+        ArrayList<Booking> account = new ArrayList<>();
+        try{
+            String sqlQuery = "select * from Bookings where [user_id]=?";
+            PreparedStatement stm = connection.prepareStatement(sqlQuery);
+            stm.setString(1, userid);
+            ResultSet rs = stm.executeQuery();
+            while(rs.next()){
+                account.add(new Booking(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
             }
-        } catch (SQLException e) {
-            System.out.println(e);
+        }catch(SQLException e){
+            e.printStackTrace();
         }
-        return null;
+          return account;      
     }
     public static void main(String[] args) {
         HistoryDAO h = new HistoryDAO();
-        h.historyBooking(1);
+        //h.historyBooking(1);
     }
 }

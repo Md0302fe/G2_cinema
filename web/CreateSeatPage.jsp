@@ -283,7 +283,7 @@
                                             </div>
                                             <div class="flex">
                                                 <p style="margin-right: 6px;">Ghế:</p>
-                                                <p class="bold" id="push_Seat_Here"> asdasd</p>
+                                                <p class="bold" id="push_Seat_Here">0đ</p>
                                             </div>
                                         </div>
                                         <!--<p class="price_seat_black bold total_money">0₫</p>-->

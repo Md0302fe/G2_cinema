@@ -15,6 +15,15 @@
                     <img src="./Assets/Image/Header_Image/logo.png" alt="logo">
                 </a>
             </li>
+            
+              <li class="ticketbuy">
+                        <div class="rel" >
+                            <a href="bookingsvl">
+                            <img src="https://www.galaxycine.vn/_next/static/media/btn-ticket.42d72c96.webp" alt="alt"/>
+                            </a>
+                        </div>
+              </li>
+              
             <li class="nav__navigation">
                 <ul class="flex">
                     <li class="nav__movie">
