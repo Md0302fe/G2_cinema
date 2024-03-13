@@ -11,6 +11,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import model.Account;
 
@@ -79,11 +80,21 @@ public class EditProfile extends HttpServlet {
         EditProfileDAO ed = new EditProfileDAO();
         boolean s = ed.updateUserProfile(name, hashPass, phonenumber, email, id);
         if (s) {
+            HttpSession session = request.getSession();
+            
+            Account acc = (Account) session.getAttribute("account");
+            acc.setEmail(email);
+            acc.setFullName(name);
+            acc.setPassword(hashPass);
+            acc.setPhone(phonenumber);
+            
+            session.setAttribute("account", acc);
+            
             request.setAttribute("success", "EditProfile is succesfully");
-            response.sendRedirect("HomePage.jsp");
+            response.sendRedirect("ProfileServlet");
         } else {
             request.setAttribute("error", "Error");
-            request.getRequestDispatcher("Profile.jsp").forward(request, response);
+            request.getRequestDispatcher("ProfileServlet").forward(request, response);
         }
 
         //processRequest(request, response);
