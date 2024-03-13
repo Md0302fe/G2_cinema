@@ -38,15 +38,11 @@ public class loadTime_HomePage extends HttpServlet {
         String movie_id = request.getParameter("movieId");
         System.out.println("Date Id = " + dateId);
         System.out.println("Movie_id = " + movie_id);
-
         ArrayList<String> times = book.getList_Showtimes(movie_id, dateId);
-
         for (String time : times) {
             System.out.println("time : " + time);
         }
-
         PrintWriter out = response.getWriter();
-
         for (String time : times) {
             out.println("<div class=\"option option_time\" onClick=\"sendSelectedTimeId('" + time + "')\">" + time + "</div>");
         }

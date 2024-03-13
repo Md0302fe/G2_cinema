@@ -16,13 +16,15 @@ public class SeatData {
     private String date;
     private String choice_time;
     private String room_name;
-    private List<String> selectedSeats; // Danh sách các ghế đã chọn
+    private String total_price;
+    private String selectedSeats; // Danh sách các ghế đã chọn
 
-    public SeatData(String id, String date, String choice_time, String room_name, List<String> selectedSeats) {
+    public SeatData(String id, String date, String choice_time, String room_name, String total_price, String selectedSeats) {
         this.id = id;
         this.date = date;
         this.choice_time = choice_time;
         this.room_name = room_name;
+        this.total_price = total_price;
         this.selectedSeats = selectedSeats;
     }
 
@@ -61,24 +63,25 @@ public class SeatData {
         this.room_name = room_name;
     }
 
-    public List<String> getSelectedSeats() {
+    public String getTotal_price() {
+        return total_price;
+    }
+
+    public void setTotal_price(String total_price) {
+        this.total_price = total_price;
+    }
+
+    public String getSelectedSeats() {
         return selectedSeats;
     }
 
-    public void setSelectedSeats(List<String> selectedSeats) {
+    public void setSelectedSeats(String selectedSeats) {
         this.selectedSeats = selectedSeats;
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("SeatData{");
-        sb.append("id=").append(id);
-        sb.append(", date=").append(date);
-        sb.append(", choice_time=").append(choice_time);
-        sb.append(", selectedSeats=").append(selectedSeats);
-        sb.append('}');
-        return sb.toString();
+        return "SeatData{" + "id=" + id + ", date=" + date + ", choice_time=" + choice_time + ", room_name=" + room_name + ", total_price=" + total_price + ", selectedSeats=" + selectedSeats + '}';
     }
 
 }

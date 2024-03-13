@@ -2,6 +2,8 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,7 +54,7 @@
                         <div class="choose_time_movie grid wide">
                             <div class="show_time_movie flex">
                                 <div class="change_time_movie">
-                                    <p class="bold" style="margin-top: 14px;">Đổi suất chiếu</p>
+                                    <p class="bold">Đổi suất chiếu</p>
                                 </div>
                                 <div class="time_movie">
                                     <c:forEach items="${requestScope.listTimes}" var="time">
@@ -244,7 +246,7 @@
                                 <img alt="Mai" loading="lazy" width="130" height="180" decoding="async"
                                      data-nimg="1"
                                      class="xl:w-full xl:h-full md:w-[80px] md:h-[120px] w-[90px] h-[110px] rounded object-cover object-cover duration-500 ease-in-out group-hover:opacity-100 scale-100 blur-0 grayscale-0)"
-                                     src="https://cdn.galaxycine.vn/media/2024/2/5/mai-500_1707105158298.jpg"
+                                     src="./Assets/Image/Movie_Image_Vip/${movie.movie_img}"
                                      style="color: transparent" />
                                 <div class="content_booking">
                                     <h3 class="movie_name">${movie.name}</h3>
@@ -281,16 +283,16 @@
                                             </div>
                                             <div class="flex">
                                                 <p style="margin-right: 6px;">Ghế:</p>
-                                                <p class="bold" id="push_Seat_Here"></p>
+                                                <p class="bold" id="push_Seat_Here">0đ</p>
                                             </div>
                                         </div>
-                                        <p class="price_seat_black bold">0₫</p>
+                                        <!--<p class="price_seat_black bold total_money">0₫</p>-->
                                     </div>
                                     <div class="line_totalbooking"></div>
                                 </div>
                                 <div class="total_price flex">
-                                    <p class="tongcong bold" style="width: 86px;">Tổng cộng</p>
-                                    <p class="price_seat_orange bold">0 ₫</p>
+                                    <p class="tongcong bold" style="width: 86px;">Tổng cộng:</p>
+                                    <p class="price_seat_orange bold price" id="total_money">0đ</p>
                                 </div>
                             </div>
                             <div class="booking_bottom flex">
@@ -298,86 +300,102 @@
                                     <p>Quay lại</p>
                                 </button>
                                 <button class="text_continute border border-white rounded pd-t-10px">
-                                    <button id="nextButton">Tiếp tục</button>
+                                    <button class="border border-light rounded" id="nextButton">Tiếp tục</button>
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <%@include file='./Components/Footer.jsp' %>
-            <script type="text/javascript" >
+        <%@include file='./Components/Footer.jsp' %>
 
-                // Lấy giá trị của tham số 'id' từ URL
-                var urlParams = new URLSearchParams(window.location.search);
-                var id = urlParams.get("id");
-                var date = urlParams.get("date");
-                var choiceTime_In = document.getElementById("time_Slot_js").textContent;
-                var room_name = document.getElementById("Room_name_js").textContent;
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-                document.addEventListener('DOMContentLoaded', function ()
-                {
-                    // Lấy danh sách các ghế đã được chọn từ attribute của thẻ
-                    var listSeats = <%= request.getAttribute("listSeats") %>;
-                    checkSeatNames(listSeats);
-                    // Danh sách các ghế được chọn
-                    var selectedSeats = [];
-                    // Lấy tất cả các ghế
-                    var seats = document.querySelectorAll('.border_seats');
-                    // Lặp qua từng ghế và thêm sự kiện click
-                    seats.forEach(function (seat) {
-                        seat.addEventListener('click', function () {
-                            // Toggle class active_seat
-                            this.classList.toggle('active_seat');
-                            // Lấy thông tin về vị trí ghế
-                            var row = this.closest('.seat_items').querySelector('.text1').textContent;
-                            var seatNumber = this.querySelector('.seat_numbers').textContent;
-                            var seatId = row + seatNumber;
-                            // Kiểm tra xem ghế đã được chọn hay không và thêm hoặc xóa khỏi danh sách
-                            if (this.classList.contains('active_seat')) {
-                                selectedSeats.push(seatId);
-                            } else {
-                                var index = selectedSeats.indexOf(seatId);
-                                if (index !== -1) {
-                                    selectedSeats.splice(index, 1);
-                                }
+        <script type="text/javascript" >
+
+            // Lấy giá trị của tham số 'id' từ URL
+            var urlParams = new URLSearchParams(window.location.search);
+            var id = urlParams.get("id");
+            var date = urlParams.get("date");
+            var choiceTime_In = document.getElementById("time_Slot_js").textContent;
+            var room_name = document.getElementById("Room_name_js").textContent;
+
+            document.addEventListener('DOMContentLoaded', function ()
+            {
+                // Lấy danh sách các ghế đã được chọn từ attribute của thẻ
+                var listSeats = <%= request.getAttribute("listSeats") %>;
+                checkSeatNames(listSeats);
+                // Danh sách các ghế được chọn
+                var selectedSeats = [];
+                // Lấy tất cả các ghế
+                var seats = document.querySelectorAll('.border_seats');
+                // Lặp qua từng ghế và thêm sự kiện click
+                seats.forEach(function (seat) {
+                    seat.addEventListener('click', function () {
+                        // Toggle class active_seat
+                        this.classList.toggle('active_seat');
+                        // Lấy thông tin về vị trí ghế
+                        var row = this.closest('.seat_items').querySelector('.text1').textContent;
+                        var seatNumber = this.querySelector('.seat_numbers').textContent;
+                        var seatId = row + seatNumber;
+                        // Kiểm tra xem ghế đã được chọn hay không và thêm hoặc xóa khỏi danh sách
+                        if (this.classList.contains('active_seat')) {
+                            selectedSeats.push(seatId);
+                        } else {
+                            var index = selectedSeats.indexOf(seatId);
+                            if (index !== -1) {
+                                selectedSeats.splice(index, 1);
                             }
-                            // In ra danh sách ghế đã chọn
-                            var selectedSeatsID = selectedSeats.join(', ');
-                            document.getElementById('push_Seat_Here').innerHTML = selectedSeatsID;
-                            document.getElementById('lenghOfSeats').innerHTML = selectedSeats.length + "x";
-                            console.log("Ghế đã chọn: " + selectedSeats.join(', '));
-                        });
-                    });
-
-                    function checkSeatNames(listSeats) {
-                        for (var i = 0; i < listSeats.length; i++) {
-                            listSeats[i].classList.add("disable_seat");
                         }
-                    }
-
-                    // Xử lý sự kiện khi ấn nút "Next"
-                    document.getElementById('nextButton').addEventListener('click', function () {
-                        choiceTime_In = document.getElementById("time_Slot_js").textContent;
-                        var xhr = new XMLHttpRequest();
-                        xhr.open('POST', '/CINEMA/seat', true);
-                        xhr.setRequestHeader('Content-Type', 'application/json');
-                        // Tạo một đối tượng chứa thông tin muốn gửi đi
-                        console.log("choiceTime_In :" + choiceTime_In);
-                        var dataToSend = {
-                            id: id,
-                            date: date,
-                            choice_time: choiceTime_In,
-                            room_name: room_name,
-                            selectedSeats: selectedSeats // selectedSeats là biến chứa danh sách ghế đã chọn
-                        };
-                        // Gửi dữ liệu dưới dạng JSON
-                        xhr.send(JSON.stringify(dataToSend));
+                        // In ra danh sách ghế đã chọn
+                        var selectedSeatsID = selectedSeats.join(', ');
+                        document.getElementById('push_Seat_Here').innerHTML = selectedSeatsID;
+                        document.getElementById('lenghOfSeats').innerHTML = selectedSeats.length + "x";
+                        var totalSeats = document.querySelectorAll('.price');
+                        for (var i = 0; i < totalSeats.length; i++) {
+                            if (totalSeats[i]) {
+                                totalSeats[i].innerHTML = (selectedSeats.length * 90000) + "đ";
+                            }
+                        }
                     });
                 });
 
-            </script>
-            <script src="Assets/JS/createSeatPage.js" type="text/javascript"></script>            
+                function checkSeatNames(listSeats) {
+                    for (var i = 0; i < listSeats.length; i++) {
+                        listSeats[i].classList.add("disable_seat");
+                    }
+                }
+
+                // Xử lý sự kiện khi ấn nút "Next"
+                document.getElementById('nextButton').addEventListener('click', function () {
+                    choiceTime_In = document.getElementById("time_Slot_js").textContent;
+
+                    // Kiểm tra xem người dùng đã chọn ít nhất 1 ghế chưa
+                    if (selectedSeats.length > 0) {
+                        // Tạo một URL mới với các thông tin được truyền qua query parameters
+                        var url = "/CINEMA/Payment?id=" + encodeURIComponent(id) +
+                                "&date=" + encodeURIComponent(date) +
+                                "&choice_time=" + encodeURIComponent(choiceTime_In) +
+                                "&room_name=" + encodeURIComponent(room_name) +
+                                "&selectedSeats=" + encodeURIComponent(selectedSeats);
+
+                        // Chuyển hướng người dùng đến URL mới
+                        window.location.href = url;
+                    } else {
+                        // Hiển thị alert sử dụng SweetAlert2
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Vui lòng chọn ít nhất 1 ghế trước khi tiếp tục.',
+                        });
+                    }
+                });
+            });
+
+        </script>
+        <script src="Assets/JS/createSeatPage.js" type="text/javascript"></script>            
+
     </body>
 </html>

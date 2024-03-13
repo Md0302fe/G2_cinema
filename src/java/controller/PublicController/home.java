@@ -74,7 +74,9 @@ public class home extends HttpServlet {
         request.setAttribute("account", acc);
         // Get list of movies
         List<Movie> m = dao.getListMovie();
+        List<Movie> movieIncoming = dao.getAllMovieIncoming();
         request.setAttribute("listMovie", m);
+        request.setAttribute("movieIncoming", movieIncoming);
         request.getRequestDispatcher("HomePage.jsp").forward(request, response);
     }
 

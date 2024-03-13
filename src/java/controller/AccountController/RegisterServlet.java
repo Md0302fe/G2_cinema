@@ -96,7 +96,7 @@ public class RegisterServlet extends HttpServlet {
                 session.setAttribute("account", acc);
                 session.setAttribute("verifyCode", verifyCode);
 
-                response.sendRedirect("Verify.jsp");
+                request.getRequestDispatcher("Verify.jsp").forward(request, response);
             }
         } else if (isUsedEmail) {
             request.setAttribute("error", "Email is already exist!");

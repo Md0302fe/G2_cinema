@@ -33,6 +33,13 @@ body {
     width: 100%;
     /*height: auto;*/
 }
+.image-item {
+    cursor: pointer;
+}
+
+.slick-prev slick-arrow {
+    cursor: pointer !important ;
+}
 
 .slick-slide {
     margin: 0 20px;
@@ -366,32 +373,32 @@ body {
 }
 /* TICKET */
 .ticket-ticket {
-    background-color:white;
-    width: 40%;
+    background-color: white;
+    width: 42%;
     height: 10%;
     color: white;
     position: absolute;
     border-radius: 5px;
-    padding-bottom: 4px;
-
 }
+
 .ticket-ticket a {
     text-decoration: none;
     color: var(--netFlix-color);
     font-size: 1.4rem;
+    display: flex;
+    align-items: center;
     position: relative;
     left: 13%;
     top: 15%;
-
+    
 }
+
 .fa-solid.fa-ticket.fa-2xs {
     font-size: 3rem;
+     margin-right: 6px;
     color: var(--netFlix-color);
-    position: relative;
-    top: 50%;
-    left: 25%;
-    transform: translate(-50%,-25%);
 }
+
 .ticket-ticket:hover {
     background-color: rgb(219, 219, 219);
 }
@@ -549,6 +556,18 @@ body {
     position: relative;
 }
 
+.hiddent_blog {
+    display : none;
+}
+
+#button_quickser {
+    transition: background-color ease-in 0.1s;
+}
+
+
+#button_quickser:hover {
+    background-color: #e50914c2;
+}
 
 @media only screen and (max-width: 720px) {
 

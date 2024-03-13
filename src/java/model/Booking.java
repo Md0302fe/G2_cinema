@@ -5,23 +5,32 @@
 package model;
 import java.util.Date;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author pts03
  */
 public class Booking {
+
     private int booking_id;
     private int user_id;
     private String total_price;
-    private Date booking_date;
-    private int booking_status;
+    private String booking_date;
+    private String choiceDate;
+    private String choiceTime;
+    private String seatList;
+    private String payment;
 
-    public Booking(int booking_id, String total_price, Date booking_date, int booking_status) {
-        this.booking_id = booking_id;
-        //this.user_id = user_id;
+    public Booking(int user_id, String total_price, String choiceDate, String choiceTime, String seatList, String payment) {
+        this.user_id = user_id;
         this.total_price = total_price;
-        this.booking_date = booking_date;
-        this.booking_status = booking_status;
+        this.choiceDate = choiceDate;
+        this.choiceTime = choiceTime;
+        this.seatList = seatList;
+        this.booking_date = getCurrentDateTime();
+        this.payment = payment;
     }
 
     public Booking() {
@@ -51,20 +60,51 @@ public class Booking {
         this.total_price = total_price;
     }
 
-    public Date getBooking_date() {
+    public String getBooking_date() {
         return booking_date;
     }
 
-    public void setBooking_date(Date booking_date) {
+    public void setBooking_date(String booking_date) {
         this.booking_date = booking_date;
     }
-
-    public int getBooking_status() {
-        return booking_status;
+    
+    public String getSeatList() {
+        return seatList;
     }
 
-    public void setBooking_status(int booking_status) {
-        this.booking_status = booking_status;
+    public void setSeatList(String seatList) {
+        this.seatList = seatList;
+    }
+
+    public String getPayment() {
+        return payment;
+    }
+
+    public void setPayment(String payment) {
+        this.payment = payment;
+    }
+
+    public String getChoiceDate() {
+        return choiceDate;
+    }
+
+    public void setChoiceDate(String choiceDate) {
+        this.choiceDate = choiceDate;
+    }
+
+    public String getChoiceTime() {
+        return choiceTime;
+    }
+
+    public void setChoiceTime(String choiceTime) {
+        this.choiceTime = choiceTime;
     }
     
+
+    private String getCurrentDateTime() {
+        // Get the current date and time in the desired format
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return currentDateTime.format(formatter);
+    }
 }
