@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="modal" id="videoModal" onclick="closeModal()">
-                    <iframe class="rounded-3" width="560" height="315" src="${movie.trailer_link}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe class="rounded-3" width="560" height="315" src="${movie.trailer_link}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
                 <div class="all_content grid wide">
                     <div class="movie_info">
@@ -154,7 +154,8 @@
             </div>
         </div>
         <script src="Assets/JS/detailMovie.js" type="text/javascript"></script>
-        <%@include file='./Components/Footer.jsp' %>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
         <script>
                     // Lấy giá trị của tham số 'id' từ URL
                     var urlParams = new URLSearchParams(window.location.search);
@@ -194,5 +195,6 @@
                         // var date = $(this).closest('.showtime_list').find('.date_span').text();    
                     });
         </script>
+        <%@include file='./Components/Footer.jsp' %>
     </body>
 </html>
