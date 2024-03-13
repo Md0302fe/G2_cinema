@@ -54,7 +54,7 @@
                             </form>
                             <p class="w-100 text-center">&mdash; Already have an account? &mdash;</p>
                             <div class="social d-flex text-center">
-                                <a href="./Login.jsp" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Sign in</a>
+                                <a href="login" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Sign in</a>
                             </div>
                         </div>
                     </div>

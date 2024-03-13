@@ -18,7 +18,7 @@
     </filter-mapping>
     <filter-mapping>
         <filter-name>LoginFilter</filter-name>
-        <url-pattern>/MovieDetailServlet</url-pattern>
+        <url-pattern>/seat</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>EditProfile</servlet-name>
