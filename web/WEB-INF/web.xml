@@ -15,6 +15,7 @@
         <url-pattern>/DeleteMovie</url-pattern>
         <url-pattern>/ListMovie</url-pattern>
         <url-pattern>/UpdateMovie</url-pattern>
+        <url-pattern>/ProfileSevelet</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>LoginFilter</filter-name>
