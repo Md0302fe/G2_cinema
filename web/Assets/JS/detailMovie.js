@@ -4,11 +4,12 @@
  */
 
 function playVideo() {
-  var poster = document.querySelector(".poster");
-  var video = document.getElementById("movie_trailer");
+  var poster = document.querySelector(".poster-container");
+  var video = document.getElementById("videoModal");
   poster.style.display = "none";
   video.style.display = "block";
 }
+
 
 function openModal() {
   var modal = document.getElementById("videoModal");
@@ -28,4 +29,3 @@ function closeModal() {
   modal.classList.remove("active");
   modal.style.display = "none";
 }
-

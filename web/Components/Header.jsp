@@ -15,6 +15,15 @@
                     <img src="./Assets/Image/Header_Image/logo.png" alt="logo">
                 </a>
             </li>
+            
+              <li class="ticketbuy">
+                        <div class="rel" >
+                            <a href="bookingsvl">
+                            <img src="https://www.galaxycine.vn/_next/static/media/btn-ticket.42d72c96.webp" alt="alt"/>
+                            </a>
+                        </div>
+              </li>
+              
             <li class="nav__navigation">
                 <ul class="flex">
                     <li class="nav__movie">
@@ -37,7 +46,7 @@
                                 <li>
                                     <div><a href="#">PHIM SẮP CHIẾU</a></div>
                                     <ul class="flex movie-demo jca">
-                                        <c:forEach items="${listMovie}" var="m" begin="0" end="3">
+                                        <c:forEach items="${movieIncoming}" var="m" begin="0" end="3">
                                             <li class="tc">
                                                 <a href="MovieDetailServlet?id=${m.id}">
                                                     <img class="movie-showing" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="movie 1" />
@@ -107,7 +116,7 @@
                 </c:if>
                 <c:if test="${sessionScope.account!=null}">
                     <div class="nav__user">
-                        <a class="nav__login--btn" style="text-decoration: none" href="test"><i style="font-size: 18px" class="fa-regular fa-user"></i> ${sessionScope.account.fullName}</a>
+                        <a class="nav__login--btn" style="text-decoration: none" href="ProfileSevelet"><i style="font-size: 18px" class="fa-regular fa-user"></i> ${sessionScope.account.fullName}</a>
                     </div>
                 </c:if>
 

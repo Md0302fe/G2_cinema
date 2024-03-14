@@ -4,12 +4,15 @@
  */
 package controller.ProfileController;
 
+import dal.HistoryDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import model.Booking;
 
 /**
  *
@@ -34,7 +37,7 @@ public class History extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet History</title>");            
+            out.println("<title>Servlet History</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet History at " + request.getContextPath() + "</h1>");
@@ -55,7 +58,17 @@ public class History extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String user = request.getParameter("id");
+        HistoryDAO history = new HistoryDAO();
+        ArrayList<Booking> ListB = history.getAccountModels(user);
+        for (Booking booking : ListB) {
+            
+           // System.out.println();
+        request.setAttribute("ListB", ListB);
+        }
+        System.out.println(ListB.size());
+        //System.out.println(boo.size());
+        request.getRequestDispatcher("viewHistory.jsp").forward(request, response);
     }
 
     /**

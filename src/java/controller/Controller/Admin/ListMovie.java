@@ -64,12 +64,6 @@ public class ListMovie extends HttpServlet {
         request.setAttribute("list", list);
         request.getRequestDispatcher("Admin_Movie_Management.jsp").forward(request, response);
     } 
-    
-    public static void main(String[] args) {
-        AdminDAO dao = new AdminDAO();
-        List<Movie> list = dao.getListMovie();
-        System.out.println(list);
-    }
 
     /** 
      * Handles the HTTP <code>POST</code> method.

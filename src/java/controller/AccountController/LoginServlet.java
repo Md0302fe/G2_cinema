@@ -81,42 +81,63 @@ public class LoginServlet extends HttpServlet {
         System.out.println("Email : " + emailOrPhone);
         System.out.println("Pass : " + password);
 
-        Cookie cu = new Cookie("cuser", emailOrPhone);
-        Cookie cp = new Cookie("cpass", password);
-        Cookie cr = new Cookie("crem", remember);
-
-        if (remember != null) {
-            cu.setMaxAge(60 * 60 * 24 * 7);
-            cp.setMaxAge(60 * 60 * 24 * 7);
-            cr.setMaxAge(60 * 60 * 24 * 7);
-        } else {
-            cu.setMaxAge(0);
-            cp.setMaxAge(0);
-            cr.setMaxAge(0);
-        }
-
-        response.addCookie(cp);
-        response.addCookie(cu);
-        response.addCookie(cr);
-
         AccountDAO dao = new AccountDAO();
         String hashPass = dao.generateMD5Hash(password);
 
         Account account = dao.login(emailOrPhone, hashPass);
         System.out.println("Accunt " + account);
 
-        HttpSession session = request.getSession();
-
         if (account == null) {
             request.setAttribute("error", "Password or uswername is error!");
             request.getRequestDispatcher("Login.jsp").forward(request, response);
         } else {
-            session.setAttribute("account", account);
-            if ("User".equals(account.getRole())) {
-                response.sendRedirect("home");
+
+            Cookie cu = new Cookie("cuser", emailOrPhone);
+            Cookie cp = new Cookie("cpass", password);
+            Cookie cr = new Cookie("crem", remember);
+
+            if (remember != null) {
+                cu.setMaxAge(60 * 60 * 24 * 7);
+                cp.setMaxAge(60 * 60 * 24 * 7);
+                cr.setMaxAge(60 * 60 * 24 * 7);
             } else {
-                response.sendRedirect("admin");
+                cu.setMaxAge(0);
+                cp.setMaxAge(0);
+                cr.setMaxAge(0);
             }
+
+            response.addCookie(cp);
+            response.addCookie(cu);
+            response.addCookie(cr);
+
+            HttpSession session = request.getSession();
+            session.setAttribute("account", account);
+            String redirectUrl = (String) session.getAttribute("redirectUrl");
+
+            if (redirectUrl != null && !redirectUrl.isEmpty()) {
+                // Xoá URL khỏi session
+                session.removeAttribute("redirectUrl");
+                // Lấy các giá trị từ session
+                String id = (String) session.getAttribute("id");
+                String date = (String) session.getAttribute("date");
+                String time = (String) session.getAttribute("time");
+
+                // Xoá các giá trị khỏi session
+                session.removeAttribute("redirectUrl");
+                session.removeAttribute("id");
+                session.removeAttribute("date");
+                session.removeAttribute("time");
+
+                // Chuyển hướng đến trang seat với các giá trị thích hợp
+                response.sendRedirect("seat?id=" + id + "&date=" + date + "&time=" + time);
+            } else {
+                if ("User".equals(account.getRole())) {
+                    response.sendRedirect("home");
+                } else {
+                    response.sendRedirect("admin");
+                }
+            }
+
         }
     }
 

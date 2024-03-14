@@ -11,6 +11,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import model.Account;
 
@@ -71,6 +72,12 @@ public class EditProfile extends HttpServlet {
         String phonenumber = request.getParameter("phonenumber");
         String password = request.getParameter("password");
 
+        HttpSession session = request.getSession();
+
+        if (password == null){
+            Account account = (Account) session.getAttribute("account");
+            password = account.getPassword();
+        }
         String hashPass = dao.generateMD5Hash(password);
         //String hashPass = dao.generateMD5Hash(password);
         //int id1 = Integer.parseInt(id);
@@ -79,11 +86,20 @@ public class EditProfile extends HttpServlet {
         EditProfileDAO ed = new EditProfileDAO();
         boolean s = ed.updateUserProfile(name, hashPass, phonenumber, email, id);
         if (s) {
+
+            Account acc = (Account) session.getAttribute("account");
+            acc.setEmail(email);
+            acc.setFullName(name);
+            acc.setPassword(hashPass);
+            acc.setPhone(phonenumber);
+
+            session.setAttribute("account", acc);
+
             request.setAttribute("success", "EditProfile is succesfully");
-            response.sendRedirect("HomePage.jsp");
+            response.sendRedirect("ProfileServlet");
         } else {
             request.setAttribute("error", "Error");
-            request.getRequestDispatcher("Profile.jsp").forward(request, response);
+            request.getRequestDispatcher("ProfileServlet").forward(request, response);
         }
 
         //processRequest(request, response);

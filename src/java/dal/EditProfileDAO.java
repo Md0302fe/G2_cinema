@@ -15,19 +15,19 @@ import model.Account;
 public class EditProfileDAO extends DBContext {
 
     public boolean updateUserProfile(String fullname, String password, String phone, String email, String id) {
-        String sql = "UPDATE Users SET fullname=?, password=?, phone=?, email=? WHERE user_id=?";
+        String sql = "UPDATE Users SET fullname=?, password=?, phone=?, email=?, role= ?, user_image = ? WHERE user_id=?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, fullname);
             st.setString(2, password);
             st.setString(3, phone);
             st.setString(4, email);
-            st.setString(5, id);
+            st.setString(5, "User");
+            st.setString(6, "default.jpg");
+            st.setString(7, id);
 
-            int rowsUpdated = st.executeUpdate();
-            System.out.println(rowsUpdated);
-
-            return rowsUpdated > 0;
+            st.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;

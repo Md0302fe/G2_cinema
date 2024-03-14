@@ -95,7 +95,9 @@ public class RegisterServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("account", acc);
                 session.setAttribute("verifyCode", verifyCode);
-
+                
+                ad.register(acc);
+                
                 request.getRequestDispatcher("Verify.jsp").forward(request, response);
             }
         } else if (isUsedEmail) {
