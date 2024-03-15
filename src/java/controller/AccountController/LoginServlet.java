@@ -109,14 +109,35 @@ public class LoginServlet extends HttpServlet {
             response.addCookie(cp);
             response.addCookie(cu);
             response.addCookie(cr);
-            
+
             HttpSession session = request.getSession();
             session.setAttribute("account", account);
-            if ("User".equals(account.getRole())) {
-                response.sendRedirect("home");
+            String redirectUrl = (String) session.getAttribute("redirectUrl");
+
+            if (redirectUrl != null && !redirectUrl.isEmpty()) {
+                // Xoá URL khỏi session
+                session.removeAttribute("redirectUrl");
+                // Lấy các giá trị từ session
+                String id = (String) session.getAttribute("id");
+                String date = (String) session.getAttribute("date");
+                String time = (String) session.getAttribute("time");
+
+                // Xoá các giá trị khỏi session
+                session.removeAttribute("redirectUrl");
+                session.removeAttribute("id");
+                session.removeAttribute("date");
+                session.removeAttribute("time");
+
+                // Chuyển hướng đến trang seat với các giá trị thích hợp
+                response.sendRedirect("seat?id=" + id + "&date=" + date + "&time=" + time);
             } else {
-                response.sendRedirect("admin");
+                if ("User".equals(account.getRole())) {
+                    response.sendRedirect("home");
+                } else {
+                    response.sendRedirect("admin");
+                }
             }
+
         }
     }
 

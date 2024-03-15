@@ -554,8 +554,31 @@ public class AdminDAO extends DBContext {
         return schedules_Showtime;
     }
     
+    
+    
+    
+    public List<String> get_All_Dates() {
+        List<String> dateList = new ArrayList<>();
+        String sql = "SELECT * FROM [dbo].[Release_date]";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                // Lấy giá trị từ cột 'show_date' và thêm vào danh sách
+                String dateString = rs.getString("show_date");
+//                Date date = new Date(dateString); // Tạo một đối tượng Date từ chuỗi ngày
+                dateList.add(dateString);
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR IN Get_All_Dates " + e);
+        }
+        return dateList;
+    }
+
     public static void main(String[] args) {
-        AdminDAO a = new AdminDAO();
-        
+        AdminDAO dao = new AdminDAO();
+        List<String> listdate = dao.get_All_Dates();
+        System.out.println(listdate);
+
     }
 }

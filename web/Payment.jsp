@@ -15,7 +15,7 @@
                     <a href="home">
                         <img src="./Assets/Image/Payment_icon/logo.png" alt="logo" />
                     </a>
-                    <a href="#">
+                    <a href="home">
                         <p>Hủy giao dịch <i class="fa-solid fa-xmark"></i></p>
                     </a>
                 </nav>

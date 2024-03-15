@@ -69,13 +69,10 @@ public class Logout extends HttpServlet {
         
         HttpSession session = request.getSession();
         session.setAttribute("pass", password);
-        String url = "";
         if(session != null){
             session.invalidate();
-            url = "/HomePage.jsp";
+            request.getRequestDispatcher("home").forward(request, response);
         }
-        RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
-        rd.forward(request, response);
     }
     
     /**
