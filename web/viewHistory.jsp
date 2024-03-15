@@ -20,7 +20,7 @@
     <body>
         <%@include file='./Components/Header.jsp' %>
         <div style="min-height: 532px;margin-top: 9%">
-        <form action="View" method="GET">
+        
             <input type="hidden" name="id" value="${sessionScope.account.id}">
             
             <input type="hidden" name="booking" value="${sessionScope.booking}">
@@ -42,13 +42,13 @@
                             <td>${b.getBooking_id()}</td>
                             <td>${b.getTotal_price()}</td>
                             <td>${b.getBooking_date()}</td>
-                            <td><button type="submit" style="background-color: black;color: white">View</button></td>
+                            <td><a href="View?id=${sessionScope.account.id}&booking=${b.getBooking_id()}" style="background-color: black;color: white">View</a></td>
                         </tr>
                     </c:forEach>
 
                 </tbody>
             </table>
-        </form>
+        
            </div>  
     </body>
 <%@include file='./Components/Footer.jsp' %>
