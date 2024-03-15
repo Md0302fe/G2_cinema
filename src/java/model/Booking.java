@@ -33,6 +33,29 @@ public class Booking {
         this.payment = payment;
     }
 
+    public Booking(int booking_id, int user_id, String total_price, String booking_date, String choiceDate, String choiceTime, String seatList, String payment) {
+        this.booking_id = booking_id;
+        this.user_id = user_id;
+        this.total_price = total_price;
+        this.booking_date = booking_date;
+        this.choiceDate = choiceDate;
+        this.choiceTime = choiceTime;
+        this.seatList = seatList;
+        this.payment = payment;
+    }
+
+    public Booking(int user_id, String total_price, String booking_date, String choiceDate, String choiceTime, String seatList, String payment) {
+        this.user_id = user_id;
+        this.total_price = total_price;
+        this.booking_date = booking_date;
+        this.choiceDate = choiceDate;
+        this.choiceTime = choiceTime;
+        this.seatList = seatList;
+        this.payment = payment;
+    }
+    
+    
+
     public Booking() {
     }
 

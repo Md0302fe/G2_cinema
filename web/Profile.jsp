@@ -62,6 +62,7 @@
                 <form action="History" method="GET">
                 <span class="header-profile">
                     <input type="hidden" name="id" value="${sessionScope.account.id}">
+                    
                     <button type="submit" style="height: 30px; border: 2px solid whitesmoke;">Lịch sử Giao Dịch</button>
                     <p>Thông Tin Cá Nhân</p>
                     <p>Thông Báo</p>

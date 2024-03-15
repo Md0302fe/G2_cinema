@@ -18,29 +18,39 @@
         <title>BookingHistory</title>
     </head>
     <body>
-        
-        <table class="table table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">BookingId</th>
-                    <th scope="col">Total</th>
-                    <th scope="col">Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${ListB}" var="b">
+        <%@include file='./Components/Header.jsp' %>
+        <div style="min-height: 532px;margin-top: 9%">
+        <form action="View" method="GET">
+            <input type="hidden" name="id" value="${sessionScope.account.id}">
+            
+            <input type="hidden" name="booking" value="${sessionScope.booking}">
+            <table class="table table-dark">
+                <thead>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>${b.getBooking_id()}</td>
-                        <td>${b.getTotal_price()}</td>
-                        <td>${b.getBooking_date()}</td>
+                        <th scope="col">#</th>
+                        <th scope="col">BookingId</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Date</th>
+                        <th scope="col"></th>
                     </tr>
-                </c:forEach>
+                </thead>
+                <tbody>
+                    <c:forEach items="${ListB}" var="b">
 
-            </tbody>
-        </table>
+                        <tr>
+                            <th scope="row">${b.getBooking_id()}</th>
+                            <td>${b.getBooking_id()}</td>
+                            <td>${b.getTotal_price()}</td>
+                            <td>${b.getBooking_date()}</td>
+                            <td><button type="submit" style="background-color: black;color: white">View</button></td>
+                        </tr>
+                    </c:forEach>
+
+                </tbody>
+            </table>
+        </form>
+           </div>  
     </body>
-    
+<%@include file='./Components/Footer.jsp' %>
 </html>
 
