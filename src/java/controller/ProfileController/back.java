@@ -4,22 +4,20 @@
  */
 package controller.ProfileController;
 
-import dal.HistoryDAO;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import model.Booking;
 
 /**
  *
  * @author pts03
  */
-public class History extends HttpServlet {
+@WebServlet(name = "back", urlPatterns = {"/back"})
+public class back extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +36,10 @@ public class History extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet History</title>");
+            out.println("<title>Servlet back</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet History at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet back at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,25 +57,7 @@ public class History extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String user = request.getParameter("id");
-        HistoryDAO history = new HistoryDAO();
-        ArrayList<Booking> ListB = history.getAccountModels(user);
-        for (Booking booking : ListB) {
-
-            // System.out.println();
-            //HttpSession session = request.getSession();
-            //session.setAttribute("name", booking.getBooking_id());
-            HttpSession session = request.getSession();
-            session.setAttribute("booking", booking.getBooking_id());
-            //request.setAttribute("ListB", ListB);
-
-        }
-        request.setAttribute("ListB", ListB);
-
-        System.out.println(ListB.size());
-        //System.out.println(boo.size());
-
-        request.getRequestDispatcher("viewHistory.jsp").forward(request, response);
+        request.getRequestDispatcher("History").forward(request, response);
     }
 
     /**

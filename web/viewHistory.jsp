@@ -3,7 +3,7 @@
     Created on : Mar 11, 2024, 7:57:43 AM
     Author     : pts03
 --%>
-
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link href="Assets/Styles/header.css" rel="stylesheet" type="text/css"/>
@@ -18,29 +18,41 @@
         <title>BookingHistory</title>
     </head>
     <body>
-        
-        <table class="table table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">BookingId</th>
-                    <th scope="col">Total</th>
-                    <th scope="col">Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${ListB}" var="b">
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>${b.getBooking_id()}</td>
-                        <td>${b.getTotal_price()}</td>
-                        <td>${b.getBooking_date()}</td>
-                    </tr>
-                </c:forEach>
+        <%@include file='./Components/Header.jsp' %>
+        <div style="min-height: 532px;margin-top: 9%">
 
-            </tbody>
-        </table>
+            <input type="hidden" name="id" value="${sessionScope.account.id}">
+
+            <input type="hidden" name="booking" value="${sessionScope.booking}">
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        
+                        <th scope="col">Total</th>
+                        <th scope="col">Date</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach items="${ListB}" var="b">
+
+                        <tr>
+                            <th scope="row">${b.getBooking_id()}</th>
+                            
+                            <td>
+                                <p><fmt:formatNumber pattern="#,###" value="${b.getTotal_price()}"/><span> VNĐ</span></p>
+                            </td>
+                            <td>${b.getBooking_date()}</td>
+                            <td><a href="View?id=${sessionScope.account.id}&booking=${b.getBooking_id()}" style="background-color: black;color: white">View</a></td>
+                        </tr>
+                    </c:forEach>
+
+                </tbody>
+            </table>
+
+        </div>  
     </body>
-    
+    <%@include file='./Components/Footer.jsp' %>
 </html>
 
