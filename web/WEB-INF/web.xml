@@ -15,6 +15,7 @@
         <url-pattern>/DeleteMovie</url-pattern>
         <url-pattern>/ListMovie</url-pattern>
         <url-pattern>/UpdateMovie</url-pattern>
+        <url-pattern>/SchedulesManagement</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>LoginFilter</filter-name>
@@ -61,6 +62,14 @@
         <servlet-class>controller.MovieDetailController.Movie_Infomations</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>SchedulesManagement</servlet-name>
+        <servlet-class>controller.Controller.Admin.SchedulesManagement</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Admin_ShowDate</servlet-name>
+        <servlet-class>controller.Controller.Admin.Admin_ShowDate</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>HistorySevelet</servlet-name>
         <servlet-class>controller.ProfileController.HistorySevelet</servlet-class>
     </servlet>
@@ -95,6 +104,14 @@
     <servlet-mapping>
         <servlet-name>Movie_Infomations</servlet-name>
         <url-pattern>/information</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SchedulesManagement</servlet-name>
+        <url-pattern>/SchedulesManagement</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Admin_ShowDate</servlet-name>
+        <url-pattern>/Admin_ShowDate</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>HistorySevelet</servlet-name>

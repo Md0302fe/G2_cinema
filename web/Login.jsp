@@ -21,7 +21,7 @@
     <body class="img js-fullheight" style="background-image: url(Assets/Image/Login/bg.jpg);">
         <section class="ftco-section">
             <div class="text-md-center ml-4">
-                <a class="mr-md-z return-btn" href="HomePage.jsp"> <i class="fa-solid fa-angle-left"></i>Return home</a>
+                <a class="mr-md-z return-btn" href="home"> <i class="fa-solid fa-angle-left"></i>Return home</a>
             </div>
             <div class="container">
                 <div class="row justify-content-center">

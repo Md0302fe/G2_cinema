@@ -231,7 +231,6 @@
                                 <div class="des-movie">
                                     <div class="title-des_movie">
                                         4. Godzilla x Kong: The New Empire / Godzilla x Kong: Đế Chế Mới – Hành động – 29.03.2024
-
                                     </div>
                                     <div class="des-movie-des">
                                         Godzilla x Kong: The New Empire là phần thứ năm trong loạt tác phẩm về các loài quái vật khổng lồ, sau Godzilla (2014), Kong: Skull Island (2017), Godzilla: King of the Monters (2019) và Godzillia vs. Kong (2021). Tác phẩm do Adam Wingard chỉ đạo, có sự tham gia của các diễn viên Rebecca Hall, Brian Tyree Henry và Kaylee Hottle. Được đánh giá có phần kĩ xảo vượt trội hơn qua từng phần, Godzilla x Kong: The New Empire sẽ là tác phẩm không thể bỏ lỡ khi thưởng thức với rạp chiếu phim IMAX. Godzilla x Kong: The New Empire sẽ tiếp nối sau những cuộc đối đầu bùng nổ của Godzillia vs. Kong (2021), một cuộc phiêu lưu hoàn toàn mới, đưa Kong và Godzilla cùng nhau chống lại một mối đe dọa khổng lồ chưa được khám phá, ẩn sâu trong Trái Đất. Bộ phim chiếu rạp sẽ đào sâu hơn vào phần lịch sử của những Titan, nguồn gốc cũng như những bí ẩn tại Đảo Đầu Lâu, đồng thời khám phá trận chiến thần thoại đã tạo nên những sinh vật phi thường và sự gắn kết của chúng với loài người.  
@@ -415,7 +414,7 @@
                                 centerMode: false,
                                 slidesToShow: 1,
                                 infinite: true,
-                                dots: true,
+                                dots: true
                             }
                         },
                         {

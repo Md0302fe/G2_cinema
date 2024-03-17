@@ -17,6 +17,7 @@ import java.util.List;
 import model.Date;
 import model.Movie;
 import model.Room;
+import model.ScheduleDetail;
 
 /**
  * THIS FILE HELP CONNECTION AND REPAIRED SQL .
@@ -24,13 +25,13 @@ import model.Room;
  * @author MinhDuc
  */
 public class AdminDAO extends DBContext {
-    
+
     private static ArrayList<Integer> listMovieId = null;
     private static ArrayList<Integer> current_List_Movie_id = null;
     private static ArrayList<Room> List_Of_Room = null;
-    
+
     public ArrayList<Room> list_Room = new ArrayList<>();
-    
+
     public void add_Movie_Admin(Movie movie) {
         String sql = "INSERT INTO [dbo].[Movie]\n"
                 + "           ([movie_name]\n"
@@ -65,13 +66,13 @@ public class AdminDAO extends DBContext {
             st.setString(12, movie.getMovie_trailer());
             st.setString(13, movie.getTrailer_link());
             st.setString(14, movie.getMovie_status());
-            
+
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println("ADD MOVIE ADMIN " + e);
         }
     }
-    
+
     public void add_Date_Admin(Date date) {
         String sql = "INSERT INTO [dbo].[Release_date]\n"
                 + "           ([show_date])\n"
@@ -85,7 +86,7 @@ public class AdminDAO extends DBContext {
             System.out.println("ERROR IN Add_Date_Admin " + e);
         }
     }
-    
+
     public List<Movie> getListMovie() {
         List<Movie> listMovie = new ArrayList<>();
         String sql = "SELECT * FROM [dbo].[Movie]"
@@ -145,7 +146,6 @@ public class AdminDAO extends DBContext {
 //        }
 //        return listMovie;
 //    }
-    
     public ArrayList<Movie> getAllMovie() {
         String sql = "select *from movie WHERE movie_status = ?";
         ArrayList<Movie> listMovie = new ArrayList<>();
@@ -177,7 +177,7 @@ public class AdminDAO extends DBContext {
         }
         return listMovie;
     }
-    
+
     public ArrayList<Movie> getAllMovieIncoming() {
         String sql = "select *from movie WHERE [movie_status] = ? AND [release_date] >= '2024-05-01'";
         ArrayList<Movie> listMovie = new ArrayList<>();
@@ -209,7 +209,7 @@ public class AdminDAO extends DBContext {
         }
         return listMovie;
     }
-    
+
     public ArrayList<Integer> getAllMovieID() {
         String sql = "select movie_id from Movie where movie_status = 1 AND release_date <= '2024-05-01'";
         ArrayList<Integer> list_Movie_Id = new ArrayList<>();
@@ -224,7 +224,7 @@ public class AdminDAO extends DBContext {
         }
         return list_Movie_Id;
     }
-    
+
     public ArrayList<Integer> getAllRoomID() {
         String sql = "select *from Rooms";
         ArrayList<Integer> List_Id_Room = new ArrayList<>();
@@ -239,7 +239,7 @@ public class AdminDAO extends DBContext {
         }
         return List_Id_Room;
     }
-    
+
     public ArrayList<Room> getAll_DataRoom() {
         String sql = "select *from Rooms";
         ArrayList list_room = new ArrayList<>();
@@ -255,7 +255,7 @@ public class AdminDAO extends DBContext {
         }
         return list_room;
     }
-    
+
     public Room getRandom_FromListRoom(ArrayList list) {
         Random random = new Random();
         int arrLenght = list.size();
@@ -263,7 +263,7 @@ public class AdminDAO extends DBContext {
         Room output = (Room) list.get(randomIndex);
         return output;
     }
-    
+
     public int getRandomFromListId(ArrayList list) {
         Random random = new Random();
         int arrLenght = list.size();
@@ -271,7 +271,7 @@ public class AdminDAO extends DBContext {
         int output = (int) list.get(randomIndex);
         return output;
     }
-    
+
     public ArrayList<Room> getAllRoom() {
         ArrayList list_room = new ArrayList<>();
         // list chứa các movie_id : Lấy ra tất cả các id của phim có trong database.
@@ -290,7 +290,7 @@ public class AdminDAO extends DBContext {
                 "T-13", "T-13-30", "T-14", "T-14-30", "T-15", "T-15-30", "T-16", "T-16-30",
                 "T-17", "T-17-30", "T-18", "T-18-30", "T-19", "T-19-30", "T-20", "T-20-30",
                 "T-21", "T-21-30", "T-22", "T-22-30", "T-23"));
-        
+
         ArrayList<String> schedules_showtime_list = getListShowTime_Schedules();
 
         // bước tiếp theo : với mỗi handle_id sẽ kèm theo các khung giờ chiếu trong mỗi handle_id
@@ -303,7 +303,6 @@ public class AdminDAO extends DBContext {
             setUp_Schedules(thisDate, date_handle, schedules_show_time);
         }
     }
-
 
     /* sau khi đã có được id của bộ quản lý khung chiếu
     b1: tạo ra biến random : random xem có bao nhiêu phim được chiếu tại lúc này.
@@ -377,7 +376,7 @@ public class AdminDAO extends DBContext {
         // Nếu room đó không hợp lệ thì next để sang khung chiếu khác.
         coppy_List_room.remove(room);
     }
-    
+
     public void Save_Handle_Schedules(Date thisDate, String handle_id) {
         String sql = "INSERT INTO [dbo].[Handle_Schedules]\n"
                 + "           ([handle_schedules_id]\n"
@@ -393,11 +392,11 @@ public class AdminDAO extends DBContext {
             System.out.println("ERROR IN Save_Handle_Schedules : " + e);
         }
     }
-    
+
     public void Save_Data(String handle_id, String schedules_id, int random_movie, Room room, String schedules_show_time) {
-        Save_Schedules(handle_id, schedules_id, random_movie, room , schedules_show_time);
+        Save_Schedules(handle_id, schedules_id, random_movie, room, schedules_show_time);
     }
-    
+
     public void Save_Schedules(String handle_id, String schedules_id, int random_movie, Room room, String schedules_showtime) {
         System.out.println("Handle_Id: " + handle_id);
         String sql = "INSERT INTO [dbo].[Schedules]\n"
@@ -420,7 +419,7 @@ public class AdminDAO extends DBContext {
             System.out.println("ERROR IN Save_Schedules : " + e);
         }
     }
-    
+
     public boolean checkRoom_Available(Room room) {
         int timeSet = 0;
         if (room.getRemain_time() == 0) {
@@ -436,7 +435,7 @@ public class AdminDAO extends DBContext {
             return false;
         }
     }
-    
+
     public int get_IdDate_By_ShowDate(String showDate) {
         String sql = "select *from Release_date d where d.show_date = ?";
         int result;
@@ -453,10 +452,10 @@ public class AdminDAO extends DBContext {
         }
         return 0;
     }
-    
+
     public Movie getMovieById(int id) {
         Movie movie = null;
-        
+
         String sql = "SELECT * FROM [dbo].[Movie]"
                 + "Where [movie_id] = ?";
         try {
@@ -483,10 +482,10 @@ public class AdminDAO extends DBContext {
         } catch (SQLException e) {
             System.out.println(e);
         }
-        
+
         return movie;
     }
-    
+
     public void updateMovie(int id, Movie m) {
         String sql = "UPDATE [dbo].[Movie]\n"
                 + "   SET [movie_name] = ?\n"
@@ -536,7 +535,7 @@ public class AdminDAO extends DBContext {
             System.out.println(e);
         }
     }
-    
+
     public ArrayList<String> getListShowTime_Schedules() {
         ArrayList<String> schedules_Showtime = new ArrayList<>();
         // Thời gian bắt đầu và kết thúc
@@ -550,12 +549,54 @@ public class AdminDAO extends DBContext {
             schedules_Showtime.add(currentTime.toString());
             currentTime = currentTime.plusMinutes(30);
         }
-        
+
         return schedules_Showtime;
     }
-    
+
+    public List<ScheduleDetail> getScheduleById(String id) {
+        List<ScheduleDetail> listSchedules = new ArrayList<>();
+        String sql = "SELECT s.schedules_id, m.movie_name, r.room_name, s.schedules_showtime \n"
+                + "                        FROM Schedules s\n"
+                + "						INNER JOIN Handle_Schedules h ON h.handle_schedules_id = s.handle_schedules_id\n"
+                + "                        INNER JOIN Movie m ON s.movie_id = m.movie_id\n"
+                + "                        INNER JOIN Rooms r ON s.room_id = r.room_id\n"
+                + "						INNER JOIN Release_date d ON d.show_date = h.show_date\n"
+                + "                        WHERE d.show_date = ?\n"
+                + "						Order by s.schedules_showtime asc ";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, id);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                listSchedules.add(new ScheduleDetail(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+            }
+        } catch (Exception e) {
+        }
+        return listSchedules;
+    }
+    public List<String> get_All_Dates() {
+        List<String> dateList = new ArrayList<>();
+        String sql = "SELECT * FROM [dbo].[Release_date]";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                // Lấy giá trị từ cột 'show_date' và thêm vào danh sách
+                String dateString = rs.getString("show_date");
+//                Date date = new Date(dateString); // Tạo một đối tượng Date từ chuỗi ngày
+                dateList.add(dateString);
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR IN Get_All_Dates " + e);
+        }
+        return dateList;
+    }
+
     public static void main(String[] args) {
-        AdminDAO a = new AdminDAO();
-        
+        AdminDAO dao = new AdminDAO();
+        List<ScheduleDetail> list = dao.getScheduleById("2024-03-14");
+        for (ScheduleDetail scheduleDetail : list) {
+            System.out.println(scheduleDetail);
+        }
     }
 }
