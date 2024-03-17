@@ -1,0 +1,76 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Mar 16, 2024, 5:44:10 PM
+    Author     : GIA TIEN
+*/
+
+.tb_showdate {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+.tb_showdate .row_container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tb_showdate  {
+    flex: 1 0 20%;
+    padding: 5px;
+    text-align: center;
+}
+
+.tb_showdate button {
+    height: 43px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #dee2e6;
+}
+
+.tb_showdate button:hover {
+    color: blue;
+}
+
+
+.table_cell{
+    margin-left: 11px;
+    flex: 0 14%;
+    padding: 5px;
+
+    /*.tb_showdate .table_cell {
+        flex: 1 0 14.285%;  Chia cột thành 7 cột 
+        padding: 5px;
+        text-align: center;
+    }*/
+
+
+    .t_row{
+        padding-left: 130px;
+    }
+
+    .row_container{
+        margin-left: 90px;
+        
+    }
+}
+
+.table_row{
+    margin-bottom: 30px;
+    margin-left: 6rem;
+}
+
+.content_list_title{
+    margin-bottom: 1.5rem;
+}
+
+.selected {
+    background-color: blue !important;
+    color: #ffffff !important;
+}
