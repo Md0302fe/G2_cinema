@@ -55,7 +55,7 @@
                                                position: absolute;" class="fa-solid fa-circle-check showSuccess"></i>
                                             <h5 style="margin-top: 32px ; display :inline-block ;border-radius: 5px;padding: 4px;" class="prepareDoing">                                    
                                             </h5>                                                                                                                                                                                                      
-                                            <button type="submit" class="AddMovies-button" style="pointer-events:none;opacity: 0.5;color:black; background-color: #169b6b ; border: none;margin: 88px 0 0 222px ;width: 150px; height: 40px; margin: 0;left: 63%;top: 65%;position: absolute;">
+                                            <button onclick="handleSchedulesId()" type="submit" class="AddMovies-button" style="pointer-events:none;opacity: 0.5;color:black; background-color: #169b6b ; border: none;margin: 88px 0 0 222px ;width: 150px; height: 40px; margin: 0;left: 63%;top: 65%;position: absolute;">
                                                 Lên Lịch
                                             </button>
                                     </div>
@@ -116,6 +116,12 @@
                 return selectedDates.has(date.toDateString());
             }
 
+            function handleSchedulesId() {
+                var url = "/CINEMA/SchedulesManagement?id=" + dateInput;
+                // Chuyển hướng đến trang /seat với các thông tin đã chọn
+                window.location.href = url;
+            }
+
 //            buttonCheck.addEventListener("click", () => {
 //                var selectedDate = new Date(dateInput.value);
 //                selectedDates.clear();
@@ -135,7 +141,7 @@
 //                }
 //            });
 
-        // Lưu ngày vào cookie
+            // Lưu ngày vào cookie
             function setCookie(name, value, days) {
                 var expires = "";
                 if (days) {
@@ -146,7 +152,7 @@
                 document.cookie = name + "=" + value + expires + "; path=/";
             }
 
-        // Đọc giá trị cookie
+            // Đọc giá trị cookie
             function getCookie(name) {
                 var nameEQ = name + "=";
                 var cookies = document.cookie.split(';');
@@ -184,7 +190,7 @@
                     selectedDates.add(lastInput);
                 }
             }
-             // Sự kiện nhấn nút kiểm tra
+            // Sự kiện nhấn nút kiểm tra
             buttonCheck.addEventListener("click", checkAndShowWarning);
 
         </script>
