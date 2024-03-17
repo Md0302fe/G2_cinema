@@ -16,38 +16,41 @@
         <title>viewDetailTicket</title>
     </head>
     <body>
-       <a href="History?id=${sessionScope.account.id}" style="height: 30px; border: 2px solid whitesmoke;">Back</a>
 
         <c:forEach items="${ListC}" var="b">
             <div class="container">
-        <header class="mt-3 mb-5">
-            <h1 class="text-center">Transaction History</h1>
-        </header>
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <div class="card">
-                    <div class="card-header">
-                        Transaction Details
-                    </div>
-                    <div class="card-body">
-                        <!-- Chi tiết giao dịch sẽ được thêm vào đây -->
-                        <p><strong>Date: </strong>${b.getBooking_date()}</p>
-                        <p><strong>Seat: </strong>${b.getSeatList()}</p>
-                        <p><strong>Time: </strong>${b.getChoiceTime()}</p>
-                        <p><strong>Payment Info: </strong>${b.getPayment()}</p>
-                        <p><strong>Price: </strong>${b.getTotal_price()}</p>
+                <header class="mt-3 mb-5">
+                    <h1 class="text-center">Transaction History</h1>
+                </header>
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <div class="card">
+                            <div class="card-header">
+                                Transaction Details
+                            </div>
+                            <div class="card-body">
+                                <!-- Chi tiết giao dịch sẽ được thêm vào đây -->
+                                <p><strong>Date: </strong>${b.getBooking_date()}</p>
+                                <p><strong>Seat: </strong>${b.getSeatList()}</p>
+                                <p><strong>Time: </strong>${b.getChoiceTime()}</p>
+                                <p><strong>Payment Info: </strong>${b.getPayment()}</p>
+                                <p><strong>Price: </strong>${b.getTotal_price()}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                            <!--<a href="History?id=${sessionScope.account.id}" style="height: 30px; border: 2px solid whitesmoke;">Back</a>-->
+                <div class="text-md-center ml-4 return-history">
+                    <a class="return-history-btn mr-md-z return-btn" href="History?id=${sessionScope.account.id}"> <i class="fa-solid fa-angle-left"></i>Back</a>
+                </div>
             </div>
-        </div>
-    </div>
-    <!-- Bootstrap JS và các thư viện JavaScript cần thiết khác -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
-        </c:forEach>
+            <!-- Bootstrap JS và các thư viện JavaScript cần thiết khác -->
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        </body>
+    </html>
+</c:forEach>
 
-    </body>
+</body>
 </html>
