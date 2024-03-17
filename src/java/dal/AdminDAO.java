@@ -574,7 +574,6 @@ public class AdminDAO extends DBContext {
         }
         return listSchedules;
     }
-
     public List<String> get_All_Dates() {
         List<String> dateList = new ArrayList<>();
         String sql = "SELECT * FROM [dbo].[Release_date]";

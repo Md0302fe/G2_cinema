@@ -19,7 +19,7 @@
     </filter-mapping>
     <filter-mapping>
         <filter-name>LoginFilter</filter-name>
-        <url-pattern>/MovieDetailServlet</url-pattern>
+        <url-pattern>/seat</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>EditProfile</servlet-name>
@@ -69,6 +69,10 @@
         <servlet-name>Admin_ShowDate</servlet-name>
         <servlet-class>controller.Controller.Admin.Admin_ShowDate</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HistorySevelet</servlet-name>
+        <servlet-class>controller.ProfileController.HistorySevelet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>EditProfile</servlet-name>
         <url-pattern>/EditProfile</url-pattern>
@@ -108,6 +112,10 @@
     <servlet-mapping>
         <servlet-name>Admin_ShowDate</servlet-name>
         <url-pattern>/Admin_ShowDate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HistorySevelet</servlet-name>
+        <url-pattern>/HistorySevelet</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>home</welcome-file>
