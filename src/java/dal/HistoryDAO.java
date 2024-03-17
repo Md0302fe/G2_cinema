@@ -34,7 +34,7 @@ public class HistoryDAO extends DBContext{
     public ArrayList<Booking> getBookingModels(String userid, String booking) {
         ArrayList<Booking> account = new ArrayList<>();
         try{
-            String sqlQuery = "select [user_id],total_price,choice_date,choice_time,booking_date,seat_list,payment from Bookings where [user_id]=? and booking_id=?";
+            String sqlQuery = "select [user_id], total_price, booking_date, choice_date, choice_time, seat_list, payment from Bookings where [user_id]=? and booking_id=?";
             PreparedStatement stm = connection.prepareStatement(sqlQuery);
             stm.setString(1, userid);
             stm.setString(2, booking);

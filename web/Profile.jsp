@@ -53,19 +53,11 @@
             </div>
             <div class="prolife3">
                 <span class="header-profile">
-<<<<<<< HEAD
                     <input type="hidden" name="id" value="${sessionScope.account.id}">
                     
-                    <button type="submit" style="height: 30px; border: 2px solid whitesmoke;">Lịch sử Giao Dịch</button>
-                    <p>Thông Tin Cá Nhân</p>
-                    <p>Thông Báo</p>
-                    <p>Quà Tặng</p>
-                    <p>Chính Sách</p>
-
-=======
+                    
                     <a href="History?id=${sessionScope.account.id}" style="height: 30px; border: 2px solid whitesmoke;">Lịch sử Giao Dịch</a>
                     <a href="ProfileServlet" style="height: 30px; border: 2px solid whitesmoke;">Thông Tin Cá Nhân</a>
->>>>>>> ec7339d1d22e687254dc00f85d3d34e9bdd7c3c0
                 </span>
 
                 <div class="hozi">

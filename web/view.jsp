@@ -16,7 +16,8 @@
         <title>viewDetailTicket</title>
     </head>
     <body>
-        
+       <a href="History?id=${sessionScope.account.id}" style="height: 30px; border: 2px solid whitesmoke;">Back</a>
+
         <c:forEach items="${ListC}" var="b">
             <div class="container">
         <header class="mt-3 mb-5">
@@ -30,10 +31,11 @@
                     </div>
                     <div class="card-body">
                         <!-- Chi tiết giao dịch sẽ được thêm vào đây -->
-                        <p><strong>Date:</strong>${b.getBooking_date()}</p>
-                        <p><strong>Seat:</strong>${b.getSeatList()}</p>
-                        <p><strong>Time:</strong>${b.getChoiceTime()}</p>
-                        <p><strong>Payment Info:</strong>${b.getPayment()}</p>
+                        <p><strong>Date: </strong>${b.getBooking_date()}</p>
+                        <p><strong>Seat: </strong>${b.getSeatList()}</p>
+                        <p><strong>Time: </strong>${b.getChoiceTime()}</p>
+                        <p><strong>Payment Info: </strong>${b.getPayment()}</p>
+                        <p><strong>Price: </strong>${b.getTotal_price()}</p>
                     </div>
                 </div>
             </div>
