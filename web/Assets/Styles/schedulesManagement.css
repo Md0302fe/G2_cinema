@@ -1,0 +1,73 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Mar 14, 2024, 12:34:29 PM
+    Author     : GIA TIEN
+*/
+
+body{
+    font-family: Nunito Sans, sans-serif !important;
+    color: #4a4a4a;
+}
+
+.all-content{
+    padding: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart-header {
+    padding: 0px 3px 12px 3px;
+    margin: -0.5px;
+}
+
+.date_schedules{
+    padding: 10px;
+    margin: 10px 10px 10px 0;
+}
+
+.movie_detail{
+    margin-bottom: 16px
+}
+
+.th-no {
+    width: 5%;
+}
+
+.th-time,
+.th-room,
+.th-id{
+    width: 20%;
+}
+
+.th-name{
+    width: 40%
+}
+
+th {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.cart-table {
+    border-collapse: collapse;
+}
+
+.cart-table th,
+.cart-table td {
+    border: 1px solid black;
+}
+
+
+
+

@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <link rel="stylesheet" href="./Assets/Styles/Profile.css">
         <title>Profile</title>
-        
+
     </head>
 
     <body id="body">
@@ -27,17 +27,11 @@
             <div class="profile">
                 <div class="text-center">
                     <img src="./Assets/Image/User/default.jpg" alt="Customer Avatar"
-                         class="img-fluid rounded-circle mb-3"
-                         style="height: 100px; width: 100px; margin-left: 120px; margin-top: 20px;">
-                    <div class="in4">
-
-                        <h4>${sessionScope.account.fullName}</h4>
-                    </div>
+                         class="img-fluid rounded-circle mb-3" height="100px" width="100px">
                 </div>
-                <div id="content">
-                    <p>Tổng chi tiêu 2024 <strong id="money">0&#x111</strong> </p>
+                <div class="in4">
+                    <h4>${sessionScope.account.fullName}</h4>
                 </div>
-
 
                 <div class="information">
                     <div class="hotline">
@@ -50,8 +44,7 @@
 
 
                     </div>
-                    <form action="Logout" method="GET"><button id="logout" type="submit" style=" border-radius: 5px; background-color: red">Logout</button></form>
-
+                    <a href="Logout">Logout</a>
                 </div>
             </div>
 
@@ -59,17 +52,10 @@
 
             </div>
             <div class="prolife3">
-                <form action="History" method="GET">
                 <span class="header-profile">
-                    <input type="hidden" name="id" value="${sessionScope.account.id}">
-                    <button type="submit" style="height: 30px; border: 2px solid whitesmoke;">Lịch sử Giao Dịch</button>
-                    <p>Thông Tin Cá Nhân</p>
-                    <p>Thông Báo</p>
-                    <p>Quà Tặng</p>
-                    <p>Chính Sách</p>
-
+                    <a href="History?id=${sessionScope.account.id}" style="height: 30px; border: 2px solid whitesmoke;">Lịch sử Giao Dịch</a>
+                    <a href="ProfileServlet" style="height: 30px; border: 2px solid whitesmoke;">Thông Tin Cá Nhân</a>
                 </span>
-                    </form>
 
                 <div class="hozi">
                     <hr>
@@ -79,42 +65,31 @@
                         <div class="form1">
                             <input type="hidden" name="id" value="${sessionScope.account.id}">
                             <div class="input-with-icon">
-
                                 Họ và tên<br>
-
                                 <input style="border-radius: 5px;
                                        border-radius: 5px;
                                        width: 270px;
-                                       height: 30px;
-                                       background-color: whitesmoke;" type="text" name="name" placeholder="Họ và Tên"><br>
-
+                                       height: 40px;
+                                       background-color: whitesmoke;" value="${sessionScope.account.fullName}" type="text" name="name" placeholder="Họ và Tên"><br>
                             </div>
-                            <div class="input-with-icon">
-                                Email :<br>
-
+                            <div class="input-with-icon">Email :<br>
                                 <input style="border-radius: 5px;  width: 270px; height: 40px; background-color: whitesmoke;"
-                                       type="email" name="email" placeholder="Email"><br>
-
+                                       type="email" name="email" value="${sessionScope.account.email}"><br>
                             </div>
-
                         </div>
-
-
-
-
                         <div class="form2">
 
                             <div class="input-with-icon">
 
-                                Số Điện Thoại<br>
+                                Số điện thoại<br>
                                 <input style="border-radius: 5px;  width: 270px; height: 40px; background-color: whitesmoke; "
-                                       type="tel" name="phonenumber" placeholder="Số Điện Thoại"><br>
+                                       type="tel" name="phonenumber" value="${sessionScope.account.phone}"><br>
                             </div>
                             <div class="input-with-icon">
 
-                                Mật Khẩu<br>
+                                Mật khẩu<br>
                                 <input style="border-radius: 5px;  width: 270px; height: 40px; background-color: whitesmoke;"
-                                       type="password" name="password" placeholder="Mật Khẩu"><br>
+                                       type="password" name="password" placeholder="Mật khẩu"><br>
                             </div>
                             <button id="submit" type="submit"> Cập Nhật</button>
 

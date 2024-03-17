@@ -1,6 +1,6 @@
 package dal;
 
-import static java.lang.Class.forName;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -26,4 +26,3 @@ public class DBContext {
 //        System.out.println(db.connection);
 //    }
 }
-
