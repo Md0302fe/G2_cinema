@@ -10518,7 +10518,7 @@ a:focus {
 
 @media (min-width: 768px) {
   .sidebar {
-    width: 14rem !important;
+    width: 20rem !important;
   }
   .sidebar .nav-item .collapse {
     position: relative;
@@ -10700,6 +10700,7 @@ a:focus {
 
 .sidebar-dark .nav-item .nav-link {
   color: rgba(255, 255, 255, 0.8);
+  padding-left: 35px;
 }
 
 .sidebar-dark .nav-item .nav-link i {

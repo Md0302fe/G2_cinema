@@ -29,37 +29,37 @@
                 <div class="image-slider">
                     <div class="image-item">
                         <div class="image">
-                            <img src="./Assets/Image/Slick_Slider/slider_image12.webp" alt="">
+                            <img src="./Assets/Image/Slick_Slider/kungfu.jpg" onclick="slick('13')" alt="">
                         </div>
                     </div>
                     <div class="image-item">
                         <div class="image">
-                            <img src="./Assets/Image/Slick_Slider/slider_image13.webp" alt="">
+                            <img src="./Assets/Image/Slick_Slider/Quyco.jpg" onclick="slick('16') alt ="">
                         </div>
                     </div>
                     <div class="image-item">
                         <div class="image">
-                            <img src="./Assets/Image/Slick_Slider/slider_image10.webp" alt="">
+                            <img src="./Assets/Image/Slick_Slider/dune2_Slick.jpg" alt="">
                         </div>
                     </div>
                     <div class="image-item">
                         <div class="image">
-                            <img src="./Assets/Image/Slick_Slider/slider_image9.webp" alt="">
+                            <img src="./Assets/Image/Slick_Slider/Happy.jpg" alt="">
                         </div>
                     </div>
                     <div class="image-item">
                         <div class="image">
-                            <img src="./Assets/Image/Slick_Slider/slider_image11.webp" alt="">
-                        </div>
-                    </div>
-                    <div class="image-item">
-                        <div class="image">
-                            <img src="./Assets/Image/Slick_Slider/slider_image8.webp" alt="">
+                            <img src="./Assets/Image/Slick_Slider/slider_image5.webp" alt="">
                         </div>
                     </div>
                     <div class="image-item">
                         <div class="image">
                             <img src="./Assets/Image/Slick_Slider/slider_image6.webp" alt="">
+                        </div>
+                    </div>
+                    <div class="image-item">
+                        <div class="image">
+                            <img src="./Assets/Image/Slick_Slider/slider_image10.webp" alt="">
                         </div>
                     </div>
                 </div>
@@ -128,7 +128,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="QuickSearch-item" style="text-align: center;">
+                    <div id="button_quickser" class="QuickSearch-item" style="text-align: center; color : white ; cursor: pointer">
                         <span class="Qsearch-title" onclick="sendQuickBooking()">Mua Vé Nhanh</span>
                     </div>
                 </div>
@@ -161,7 +161,7 @@
                             <c:forEach items = "${requestScope.listMovie}" var="m" varStatus="loop">
                                 <c:if test="${loop.index < 8}">
                                     <div class="content-movie l-3 m-6">
-                                        <div class="overlayout">
+                                        <div class="overlayout" onclick="redirectMovie('${m.id}')">
                                             <img height="400px" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="ERROR">
                                             <div class="overlay">
                                                 <div class="ticket-ticket">                                       
@@ -177,19 +177,20 @@
                     </div>
                     <div class="main_content-movies-more hidden">
                         <div class="MOVIES row">                            
-                            <c:forEach items = "${requestScope.listMovie}" var="m">                           
-                                <div class="content-movie l-3 m-6">
-                                    <div class="overlayout">
-                                        <img height="400px" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="ERROR">
-                                        <div class="overlay">
-                                            <div class="ticket-ticket">
-                                                <i class="fa-solid fa-ticket fa-2xs"></i>
-                                                <a href="bookingsvl?id=${m.id}" class="button">Mua vé</a>
+                            <c:forEach items = "${requestScope.listMovie}" var="m" varStatus="loop">                           
+                                <c:if test="${loop.index > 8}">
+                                    <div class="content-movie l-3 m-6">
+                                        <div class="overlayout" onclick="redirectMovie('${m.id}')">
+                                            <img height="400px" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="ERROR">
+                                            <div class="overlay">
+                                                <div class="ticket-ticket">                                       
+                                                    <a href="MovieDetailServlet?id=${m.id}" class="button buy_tickets"><i class="fa-solid fa-ticket fa-2xs"></i>Mua vé</a>
+                                                </div>
                                             </div>
                                         </div>
+                                        <a href="MovieDetailServlet?id=${m.id}" id="movie_id">${m.name}</a>
                                     </div>
-                                    <a href="#" id="movie_id">${m.name}</a>
-                                </div>
+                                </c:if>
                             </c:forEach> 
                         </div>
                         <div class="info_movie">
@@ -230,7 +231,6 @@
                                 <div class="des-movie">
                                     <div class="title-des_movie">
                                         4. Godzilla x Kong: The New Empire / Godzilla x Kong: Đế Chế Mới – Hành động – 29.03.2024
-
                                     </div>
                                     <div class="des-movie-des">
                                         Godzilla x Kong: The New Empire là phần thứ năm trong loạt tác phẩm về các loài quái vật khổng lồ, sau Godzilla (2014), Kong: Skull Island (2017), Godzilla: King of the Monters (2019) và Godzillia vs. Kong (2021). Tác phẩm do Adam Wingard chỉ đạo, có sự tham gia của các diễn viên Rebecca Hall, Brian Tyree Henry và Kaylee Hottle. Được đánh giá có phần kĩ xảo vượt trội hơn qua từng phần, Godzilla x Kong: The New Empire sẽ là tác phẩm không thể bỏ lỡ khi thưởng thức với rạp chiếu phim IMAX. Godzilla x Kong: The New Empire sẽ tiếp nối sau những cuộc đối đầu bùng nổ của Godzillia vs. Kong (2021), một cuộc phiêu lưu hoàn toàn mới, đưa Kong và Godzilla cùng nhau chống lại một mối đe dọa khổng lồ chưa được khám phá, ẩn sâu trong Trái Đất. Bộ phim chiếu rạp sẽ đào sâu hơn vào phần lịch sử của những Titan, nguồn gốc cũng như những bí ẩn tại Đảo Đầu Lâu, đồng thời khám phá trận chiến thần thoại đã tạo nên những sinh vật phi thường và sự gắn kết của chúng với loài người.  
@@ -244,7 +244,7 @@
                             <i class="fa-solid fa-arrow-right"></i>
                         </span>
                     </div>
-                    <div class="Blog_content hiddent_blog" id="blog">
+                    <div class="Blog_content" id="blog">
                         <div class="handel_title">
                             <h1 class="navi-body_title-V">GÓC ĐIỆN ẢNH</h1>
                         </div>
@@ -364,11 +364,22 @@
                                 });
                             }
 
-                            function hidden_blog() {
-                                document.querySelector(".Blog_content").classList.toggle("hiddent_blog");
-                                
+                            function redirectMovie(movieId) {
+                                var url = "/CINEMA/MovieDetailServlet?id=" + movieId;
+                                // Chuyển hướng đến trang /seat với các thông tin đã chọn
+                                window.location.href = url;
                             }
-                            
+
+                            function slick(movieid) {
+                                var url = "/CINEMA/MovieDetailServlet?id=" + movieid;
+                                // Chuyển hướng đến trang /seat với các thông tin đã chọn
+                                window.location.href = url;
+                            }
+
+                            function hidden_blog() {
+                                document.querySelector(".Blog_content").classList.add("hiddent_blog");
+                            }
+
                             function sendSelectedTimeId(time) {
                                 selectedTimeS = time;
                                 console.log("selectedTimeS : " + selectedTimeS);
@@ -403,7 +414,7 @@
                                 centerMode: false,
                                 slidesToShow: 1,
                                 infinite: true,
-                                dots: true,
+                                dots: true
                             }
                         },
                         {
