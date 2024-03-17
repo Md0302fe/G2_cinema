@@ -21,14 +21,6 @@
                 <div class="sidebar-brand-text mx-3">Cinema - GG<sup>2</sup></div>
             </a>
             <!-- Divider -->
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <p class="nav-link" style="padding-left: 12px  ; margin: 0 ; font-weight: 800" >
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Movie Management</span></p>
-            </li>
-            <!-- Divider -->
             <hr class="sidebar-divider">
             <!-- Heading -->
             <div class="sidebar-heading">
@@ -44,13 +36,6 @@
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Management Movies</span></a>
             </li>        
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <p class="nav-link" style="padding-left: 12px  ; margin: 0 ; font-weight: 800">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Schedules Management</span></p>
-            </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -65,11 +50,6 @@
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Management Show Date</span></a>
             </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="SchedulesManagement">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Schedules Management</span></a>
-            </li> 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
             <!-- Sidebar Toggler (Sidebar) -->
