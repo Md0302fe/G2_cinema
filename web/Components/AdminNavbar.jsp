@@ -21,12 +21,12 @@
                 <div class="sidebar-brand-text mx-3">Cinema - GG<sup>2</sup></div>
             </a>
             <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <p class="nav-link" style="padding-left: 12px  ; margin: 0 ; font-weight: 800" >
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>Movie Management</span></p>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -43,12 +43,23 @@
                 <a class="nav-link" href="ListMovie">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Management Movies</span></a>
-            </li>            
+            </li>        
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <p class="nav-link" style="padding-left: 12px  ; margin: 0 ; font-weight: 800">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Schedules Management</span></p>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
             <li class="nav-item ">
                 <a class="nav-link" href="setupschedules">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Set Up Schedules</span></a>
-            </li>  
+            </li>
+
             <li class="nav-item ">
                 <a class="nav-link" href="Admin_ShowDate">
                     <i class="fas fa-fw fa-chart-area"></i>
