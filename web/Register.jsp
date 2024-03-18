@@ -32,13 +32,13 @@
                             <h3 class="mb-4 text-center">Create an account</h3>
                             <form action="register" method="post" class="signin-form">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="fullName" placeholder="Full name" required>
+                                    <input type="text" class="form-control" name="fullName" placeholder="Full name" value="${requestScope.fullName}" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" name="email" placeholder="Email" required>
+                                    <input type="email" class="form-control" name="email" placeholder="Email" value="${requestScope.email}" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="tel" class="form-control" name="phone" placeholder="Phone number" required>
+                                    <input type="tel" class="form-control" name="phone" placeholder="Phone number" value="${requestScope.phone}" required>
                                 </div>
                                 <div class="form-group">
                                     <input id="password" type="password" name="password" class="form-control" placeholder="Password" required>
