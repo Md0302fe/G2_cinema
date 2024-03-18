@@ -78,8 +78,6 @@ public class LoginServlet extends HttpServlet {
         String emailOrPhone = request.getParameter("emailOrPhone");
         String password = request.getParameter("password");
         String remember = request.getParameter("remember");
-        System.out.println("Email : " + emailOrPhone);
-        System.out.println("Pass : " + password);
 
         AccountDAO dao = new AccountDAO();
         String hashPass = dao.generateMD5Hash(password);

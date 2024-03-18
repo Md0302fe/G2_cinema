@@ -21,15 +21,8 @@
                 <div class="sidebar-brand-text mx-3">Cinema - GG<sup>2</sup></div>
             </a>
             <!-- Divider -->
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <p class="nav-link" style="padding-left: 12px  ; margin: 0 ; font-weight: 800" >
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Movie Management</span></p>
-            </li>
-            <!-- Divider -->
             <hr class="sidebar-divider">
+            <b style="color : #ffd4d4">Movie Management</b>
             <!-- Heading -->
             <div class="sidebar-heading">
             </div>
@@ -44,16 +37,9 @@
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Management Movies</span></a>
             </li>        
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <p class="nav-link" style="padding-left: 12px  ; margin: 0 ; font-weight: 800">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Schedules Management</span></p>
-            </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
-
+             <b style="color : #ffd4d4">Schedules Management</b>
             <li class="nav-item ">
                 <a class="nav-link" href="setupschedules">
                     <i class="fas fa-fw fa-chart-area"></i>
@@ -63,13 +49,15 @@
             <li class="nav-item ">
                 <a class="nav-link" href="Admin_ShowDate">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Management Show Date</span></a>
+                    <span>Show Schedules</span></a>
             </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="SchedulesManagement">
+            
+             <li class="nav-item ">
+                <a class="nav-link" href="detailschedules">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Schedules Management</span></a>
-            </li> 
+                    <span>Details Schedules</span></a>
+            </li>
+            
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
             <!-- Sidebar Toggler (Sidebar) -->

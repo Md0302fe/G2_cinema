@@ -53,6 +53,9 @@
             </div>
             <div class="prolife3">
                 <span class="header-profile">
+                    <input type="hidden" name="id" value="${sessionScope.account.id}">
+                    
+                    
                     <a href="History?id=${sessionScope.account.id}" style="height: 30px; border: 2px solid whitesmoke;">Lịch sử Giao Dịch</a>
                     <a href="ProfileServlet" style="height: 30px; border: 2px solid whitesmoke;">Thông Tin Cá Nhân</a>
                 </span>
