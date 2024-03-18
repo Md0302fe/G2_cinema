@@ -4,8 +4,6 @@
  */
 package controller.MovieDetailController;
 
-import com.google.gson.Gson;
-
 import dal.AdminDAO;
 import dal.BookingDAO;
 import java.io.IOException;

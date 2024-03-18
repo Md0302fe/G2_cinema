@@ -334,6 +334,11 @@
                 // Lặp qua từng ghế và thêm sự kiện click
                 seats.forEach(function (seat) {
                     seat.addEventListener('click', function () {
+                        // Kiểm tra nếu số ghế đã chọn vượt quá 8
+                        if (selectedSeats.length >= 8 && !this.classList.contains('active_seat')) {
+                            alert('Bạn chỉ được chọn tối đa 8 ghế.');
+                            return; // Không thêm ghế nữa nếu vượt quá 8 ghế
+                        }
                         // Toggle class active_seat
                         this.classList.toggle('active_seat');
                         // Lấy thông tin về vị trí ghế

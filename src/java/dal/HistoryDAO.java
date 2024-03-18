@@ -24,7 +24,23 @@ public class HistoryDAO extends DBContext{
             stm.setString(1, userid);
             ResultSet rs = stm.executeQuery();
             while(rs.next()){
-                account.add(new Booking(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+                account.add(new Booking(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+          return account;      
+    }
+    public ArrayList<Booking> getBookingModels(String userid, String booking) {
+        ArrayList<Booking> account = new ArrayList<>();
+        try{
+            String sqlQuery = "select [user_id], total_price, booking_date, choice_date, choice_time, seat_list, payment from Bookings where [user_id]=? and booking_id=?";
+            PreparedStatement stm = connection.prepareStatement(sqlQuery);
+            stm.setString(1, userid);
+            stm.setString(2, booking);
+            ResultSet rs = stm.executeQuery();
+            while(rs.next()){
+                account.add(new Booking(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getString(7)));
             }
         }catch(SQLException e){
             e.printStackTrace();

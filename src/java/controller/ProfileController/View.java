@@ -2,25 +2,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller.Controller.Admin;
+package controller.ProfileController;
 
-import dal.AdminDAO;
-import java.io.IOException;
-import java.io.PrintWriter;
+import dal.HistoryDAO;
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import java.util.List;
-
-import model.ScheduleDetail;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import model.Booking;
 
 /**
  *
- * @author GIA TIEN
+ * @author pts03
  */
-public class SchedulesManagement extends HttpServlet {
+@WebServlet(name = "View", urlPatterns = {"/View"})
+public class View extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +40,10 @@ public class SchedulesManagement extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SchedulesManagement</title>");
+            out.println("<title>Servlet View</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SchedulesManagement at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet View at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,11 +61,20 @@ public class SchedulesManagement extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        AdminDAO dao = new AdminDAO();
-        String SchedulesID = request.getParameter("id");
-        List<ScheduleDetail> schedulesList = dao.getScheduleById(SchedulesID);
-        request.setAttribute("schedulesList", schedulesList);
-        request.getRequestDispatcher("Admin_Schedules_Management.jsp").forward(request, response);
+       String user = request.getParameter("id");
+       String bookin = request.getParameter("booking");
+        
+        HistoryDAO history = new HistoryDAO();
+        ArrayList<Booking> ListC = history.getBookingModels(user, bookin);
+        for (Booking booking : ListC) {
+            
+           // System.out.println();
+        request.setAttribute("ListC", ListC);
+        
+        }
+        //System.out.println(ListB.size());
+        //System.out.println(boo.size());
+        request.getRequestDispatcher("view.jsp").forward(request, response);
     }
 
     /**
@@ -78,7 +88,18 @@ public class SchedulesManagement extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String user = request.getParameter("id");
+        HistoryDAO history = new HistoryDAO();
+        ArrayList<Booking> ListB = history.getAccountModels(user);
+        for (Booking booking : ListB) {
+            
+           // System.out.println();
+        request.setAttribute("ListB", ListB);
+        
+        }
+        //System.out.println(ListB.size());
+        //System.out.println(boo.size());
+        request.getRequestDispatcher("view.jsp").forward(request, response);
     }
 
     /**

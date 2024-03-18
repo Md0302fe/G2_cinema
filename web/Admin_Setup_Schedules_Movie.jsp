@@ -117,7 +117,7 @@
             }
 
             function handleSchedulesId() {
-                var url = "/CINEMA/SchedulesManagement?id=" + dateInput;
+                var url = "/CINEMA/detailschedules?id=" + dateInput;
                 // Chuyển hướng đến trang /seat với các thông tin đã chọn
                 window.location.href = url;
             }
