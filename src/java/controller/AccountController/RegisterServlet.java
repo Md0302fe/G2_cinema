@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import model.Account;
 
@@ -81,12 +82,23 @@ public class RegisterServlet extends HttpServlet {
         String pass = request.getParameter("password");
         String rePass = request.getParameter("rePassword");
 
+        //check password valid
         Pattern upperCasePattern = Pattern.compile("[A-Z]");
+
+        //check valid phone number
+        Pattern phonePattern = Pattern.compile("^\\d{10}$");
+        Matcher matcher = phonePattern.matcher(phone);
+
         if (pass.length() < 9 || !upperCasePattern.matcher(pass).find()) {
             request.setAttribute("error", "Password must have at least 9 characters and 1 uppercase character!");
             request.setAttribute("fullName", fullName);
             request.setAttribute("email", email);
             request.setAttribute("phone", phone);
+            request.getRequestDispatcher("Register.jsp").forward(request, response);
+        } else if (!matcher.matches()) {
+            request.setAttribute("error", "Phone number must have at least 10 character!");
+            request.setAttribute("fullName", fullName);
+            request.setAttribute("email", email);
             request.getRequestDispatcher("Register.jsp").forward(request, response);
         } else {
 
