@@ -13,13 +13,9 @@
         <title>Forgot password</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
         <link href="Assets/Styles/login.css" rel="stylesheet" type="text/css"/>
-
     </head>
     <body class="img js-fullheight" style="background-image: url(Assets/Image/Login/bg.jpg);">
         <section class="ftco-section">
@@ -49,7 +45,6 @@
                 </div>
             </div>
         </section>
-
         <script src="Assets/JS/LoginScript/bootstrap.min.js" type="text/javascript"></script>
         <script src="Assets/JS/LoginScript/jquery.min.js" type="text/javascript"></script>
         <script src="Assets/JS/LoginScript/login.js" type="text/javascript"></script>
