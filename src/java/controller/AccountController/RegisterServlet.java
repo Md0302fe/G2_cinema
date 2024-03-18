@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.regex.Pattern;
 import model.Account;
 
 /**
@@ -80,40 +81,47 @@ public class RegisterServlet extends HttpServlet {
         String pass = request.getParameter("password");
         String rePass = request.getParameter("rePassword");
 
-        AccountDAO ad = new AccountDAO();
-        boolean isUsedEmail = ad.checkEmail(email);
-        boolean isUsedPhone = ad.checkPhone(phone);
-
-        if (pass.equals(rePass)) {
-            String passMD5 = ad.generateMD5Hash(pass);
-            Account acc = new Account(fullName, email, phone, passMD5, "default.jpg", "user");
-
-            String verifyCode = ad.getRandom();
-
-            boolean test = ad.sendEmail(acc, verifyCode);
-            if (test) {
-                HttpSession session = request.getSession();
-                session.setAttribute("account", acc);
-                session.setAttribute("verifyCode", verifyCode);
-                
-                ad.register(acc);
-                
-                request.getRequestDispatcher("Verify.jsp").forward(request, response);
-            }
-        } else if (isUsedEmail) {
-            request.setAttribute("error", "Email is already exist!");
-            request.getRequestDispatcher("Register.jsp").forward(request, response);
-        } else if (isUsedPhone) {
-            request.setAttribute("error", "Phone is already exist!");
-            request.getRequestDispatcher("Register.jsp").forward(request, response);
-        } else if (isUsedPhone && isUsedEmail) {
-            request.setAttribute("error", "Email and phone is already exist!");
+        Pattern upperCasePattern = Pattern.compile("[A-Z]");
+        if (pass.length() < 9 || !upperCasePattern.matcher(pass).find()) {
+            request.setAttribute("error", "Password must have at least 9 characters and 1 uppercase character!");
+            request.setAttribute("fullName", fullName);
+            request.setAttribute("email", email);
+            request.setAttribute("phone", phone);
             request.getRequestDispatcher("Register.jsp").forward(request, response);
         } else {
-            request.setAttribute("error", "Password confirmation does not match!!!");
-            request.getRequestDispatcher("Register.jsp").forward(request, response);
-        }
 
+            AccountDAO ad = new AccountDAO();
+            boolean isUsedEmail = ad.checkEmail(email);
+            boolean isUsedPhone = ad.checkPhone(phone);
+
+            if (pass.equals(rePass)) {
+                String passMD5 = ad.generateMD5Hash(pass);
+                Account acc = new Account(fullName, email, phone, passMD5, "default.jpg", "user");
+
+                String verifyCode = ad.getRandom();
+
+                boolean test = ad.sendEmail(acc, verifyCode);
+                if (test) {
+                    HttpSession session = request.getSession();
+                    session.setAttribute("account", acc);
+                    session.setAttribute("verifyCode", verifyCode);
+                    ad.register(acc);
+                    request.getRequestDispatcher("Verify.jsp").forward(request, response);
+                }
+            } else if (isUsedEmail) {
+                request.setAttribute("error", "Email is already exist!");
+                request.getRequestDispatcher("Register.jsp").forward(request, response);
+            } else if (isUsedPhone) {
+                request.setAttribute("error", "Phone is already exist!");
+                request.getRequestDispatcher("Register.jsp").forward(request, response);
+            } else if (isUsedPhone && isUsedEmail) {
+                request.setAttribute("error", "Email and phone is already exist!");
+                request.getRequestDispatcher("Register.jsp").forward(request, response);
+            } else {
+                request.setAttribute("error", "Password confirmation does not match!!!");
+                request.getRequestDispatcher("Register.jsp").forward(request, response);
+            }
+        }
     }
 
     /**
