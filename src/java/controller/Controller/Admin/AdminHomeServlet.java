@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author ADMIN
  */
-@WebServlet(name="AdminHomeServlet", urlPatterns={"/AdminHomeServlet"})
+@WebServlet(name="AdminHomeServlet", urlPatterns={"/addMovie"})
 public class AdminHomeServlet extends HttpServlet {
    
     /** 

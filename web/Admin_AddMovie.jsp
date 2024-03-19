@@ -15,7 +15,7 @@
         <link href="Assets/Styles/sb-admin-2.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito Sans">
-        <title>JSP Page</title>
+        <title>Add movie</title>
     </head>
     <body>
         <div id="wrapper">
