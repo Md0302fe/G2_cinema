@@ -18,6 +18,7 @@ import model.Date;
 import model.Movie;
 import model.Room;
 import model.ScheduleDetail;
+import model.SchedulesDetail;
 
 /**
  * THIS FILE HELP CONNECTION AND REPAIRED SQL .
@@ -70,6 +71,50 @@ public class AdminDAO extends DBContext {
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println("ADD MOVIE ADMIN " + e);
+        }
+    }
+
+    public SchedulesDetail getSchedules_Byid(String id) {
+        String sql = "select *from Schedules where schedules_id = ? ";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, id);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                SchedulesDetail sche = new SchedulesDetail(
+                        rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5));
+                return sche;
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR IN GET SCHEDULES _ BY ID " + e);
+        }
+        return null;
+    }
+
+    public void Update_Schedules(SchedulesDetail ss) {
+        String sql = "UPDATE [dbo].[Schedules]\n"
+                + "   SET [schedules_id] = ?\n"
+                + "      ,[handle_schedules_id] = ?\n"
+                + "      ,[movie_id] = ?\n"
+                + "      ,[room_id] = ?\n"
+                + "      ,[schedules_showtime] = ?\n"
+                + " WHERE schedules_id = ? ";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, ss.getSchedules_id());
+            st.setString(2, ss.getHandle_Schedules_id());
+            st.setString(3, ss.getMovie_name());
+            st.setString(4, ss.getRoom_name());
+            st.setString(5, ss.getSchedules_showtime());
+            st.setString(6, ss.getSchedules_id());
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("ERROR IN Update Schedules " + e);
         }
     }
 
@@ -574,6 +619,7 @@ public class AdminDAO extends DBContext {
         }
         return listSchedules;
     }
+
     public List<String> get_All_Dates() {
         List<String> dateList = new ArrayList<>();
         String sql = "SELECT * FROM [dbo].[Release_date]";
@@ -594,9 +640,8 @@ public class AdminDAO extends DBContext {
 
     public static void main(String[] args) {
         AdminDAO dao = new AdminDAO();
-        List<ScheduleDetail> list = dao.getScheduleById("2024-03-14");
-        for (ScheduleDetail scheduleDetail : list) {
-            System.out.println(scheduleDetail);
-        }
+        String s = "T-9:2024-03-26@0";
+        SchedulesDetail sc = dao.getSchedules_Byid(s);
+        System.out.println("sc : " + sc);
     }
 }

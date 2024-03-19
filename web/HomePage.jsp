@@ -333,11 +333,12 @@
         <script>
                             var selectedMovieId;
                             var selectedTimeS;
+                            
                             function sendSelectedMovieId(movie_id) {
                                 selectedMovieId = movie_id; // Lưu giá trị của movie_id vào biến toàn cục
                                 $.ajax({
                                     type: "GET",
-                                    url: "/CINEMA/bookingsvl",
+                                    url: "/CINEMA/loaddate",
                                     data: {
                                         movieId: movie_id,
                                     },

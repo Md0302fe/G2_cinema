@@ -47,9 +47,13 @@
             </li>
 
             <li class="nav-item ">
-                <a class="nav-link" href="Admin_ShowDate">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Show Schedules</span></a>
+                <div class="dropdown">
+                    <button class="dropbtn">Show Schedules</button>
+                    <div class="dropdown-content">
+                        <a href="Admin_ShowDate">Show Schedules</a>
+                        <a href="Admin_ShowDate">Update Schedules</a>
+                    </div>
+                </div>
             </li>
 
             <li class="nav-item ">
