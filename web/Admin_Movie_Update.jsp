@@ -145,14 +145,12 @@
                                             <label style="margin-right: 1.7rem; ">Mô Tả Nội Dung</label>
                                             <textarea type="text" placeholder="" size="95" name="Describel" rows="4" cols="60" style="resize: none">${m.description}</textarea>
                                         </div>
+                                        <button type="submit" class="AddMovies-button">UPDATE</button>
                                     </div>
                                 </div>
                             </div>
                             <!-- Content Row -->
-                        </div>
-                        <div class="w-75 mx-auto d-flex justify-content-center">
-                            <button type="submit" class="btn btn-primary mt-3 py-3 px-4 submit-button">Update</button>
-                        </div>
+                        </div>                       
                     </form>
                     <!-- /.container-fluid -->
                 </div>

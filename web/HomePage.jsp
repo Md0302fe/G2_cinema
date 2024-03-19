@@ -337,7 +337,7 @@
                                 selectedMovieId = movie_id; // Lưu giá trị của movie_id vào biến toàn cục
                                 $.ajax({
                                     type: "GET",
-                                    url: "/CINEMA/loaddate",
+                                    url: "/CINEMA/bookingsvl",
                                     data: {
                                         movieId: movie_id,
                                     },

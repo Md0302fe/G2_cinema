@@ -99,7 +99,6 @@
                                     <p class="lc bold">Lịch Chiếu - CGV CẦN THƠ </p>
                                 </div>
                                 <p class="line"></p>
-
                                 <c:forEach items="${requestScope.StringDate}" var="d">
                                     <div class="showtime_list">
                                         <p class="list_day font-monospace bold ">                                            

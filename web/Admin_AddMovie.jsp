@@ -39,7 +39,7 @@
                                             <input id="imageInput" class="select-img" type="file" accept="image/*" name="movie_image" required>
                                             <!-- <i class="fa-solid fa-hand-pointer icon"></i> -->
                                         </div>
-                                        <img id="selected-image" src="./Assets/Image/Movies_Image/movie_015.jpg"
+                                        <img id="selected-image" src="./Assets/Image/Movies_Image/default.jpg"
                                              alt="CHUA CO HINH ANH">
                                         <hr>      
                                         <div class="select-Image">
@@ -55,7 +55,7 @@
                                                 selectedImage.src = URL.createObjectURL(event.target.files[0]);
                                             });
                                         </script>
-                                        <button type="submit" class="AddMovies-button">ADD</button>
+                                      
                                     </div>                          
                                     <div class="main-right">
                                         <div class="movie_name">    
@@ -138,7 +138,9 @@
                                         <div class="boxDerectors V2" style="display: flex; align-items: center;">
                                             <label style="margin-right: 1.7rem;"> Mô Tả Nội Dung</label>
                                             <textarea type="text" placeholder="" size="95" name="Describel" rows="4" cols="60" style="resize: none">${m.description}</textarea>
+                                          
                                         </div>
+                                             <button type="submit" class="AddMovies-button">ADD</button>
                                     </div>
                                 </div>
                             </div>
