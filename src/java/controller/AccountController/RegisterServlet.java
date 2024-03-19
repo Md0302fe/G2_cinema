@@ -96,7 +96,7 @@ public class RegisterServlet extends HttpServlet {
             request.setAttribute("phone", phone);
             request.getRequestDispatcher("Register.jsp").forward(request, response);
         } else if (!matcher.matches()) {
-            request.setAttribute("error", "Phone number must have at least 10 character!");
+            request.setAttribute("error", "Phone number must have 10 number!");
             request.setAttribute("fullName", fullName);
             request.setAttribute("email", email);
             request.getRequestDispatcher("Register.jsp").forward(request, response);
@@ -122,8 +122,12 @@ public class RegisterServlet extends HttpServlet {
                 }
             } else if (isUsedEmail) {
                 request.setAttribute("error", "Email is already exist!");
+                request.setAttribute("fullName", fullName);
+                request.setAttribute("phone", phone);
                 request.getRequestDispatcher("Register.jsp").forward(request, response);
             } else if (isUsedPhone) {
+                request.setAttribute("fullName", fullName);
+                request.setAttribute("email", email);
                 request.setAttribute("error", "Phone is already exist!");
                 request.getRequestDispatcher("Register.jsp").forward(request, response);
             } else if (isUsedPhone && isUsedEmail) {
@@ -131,6 +135,9 @@ public class RegisterServlet extends HttpServlet {
                 request.getRequestDispatcher("Register.jsp").forward(request, response);
             } else {
                 request.setAttribute("error", "Password confirmation does not match!!!");
+                request.setAttribute("fullName", fullName);       
+                request.setAttribute("phone", phone);
+                request.setAttribute("email", email);
                 request.getRequestDispatcher("Register.jsp").forward(request, response);
             }
         }
