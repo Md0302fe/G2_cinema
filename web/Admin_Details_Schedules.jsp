@@ -20,7 +20,7 @@
         <link rel="stylesheet" href="Assets/Styles/sb-admin-2.css"/>
         <link rel="stylesheet" href="Assets/Styles/schedulesManagement.css" />
         <link rel="stylesheet" href="Assets/Styles/Admin_showdate.css"/>
-        <title>Management Show Date</title>
+        <title>Schedule detail</title>
     </head>
     <body>  
         <div id="wrapper">

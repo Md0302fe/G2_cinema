@@ -20,6 +20,11 @@
                 </div>
                 <div class="sidebar-brand-text mx-3">Cinema - GG<sup>2</sup></div>
             </a>
+            <li class="nav-item">
+                <a class="nav-link" href="admin">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Dashboard</span></a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
             <b style="color : #ffd4d4">Movie Management</b>
@@ -28,7 +33,7 @@
             </div>
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="AdminHomeServlet">
+                <a class="nav-link" href="addMovie">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Add Movie</span></a>
             </li>

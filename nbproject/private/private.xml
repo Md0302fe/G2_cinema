@@ -4,22 +4,22 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/web/Admin_Update_Schedules.jsp</file>
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/web/Components/AdminNavbar.jsp</file>
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/src/java/controller/Controller/Admin/update_schedules.java</file>
+            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/src/java/controller/MovieDetailController/Details_Seat.java</file>
         </group>
         <group>
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/web/Admin_Update_Schedules.jsp</file>
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/web/Components/AdminNavbar.jsp</file>
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/web/Assets/Styles/Admin_showdate.css</file>
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/src/java/controller/Controller/Admin/update_schedules.java</file>
+            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/src/java/model/Room.java</file>
+            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/src/java/model/Booking.java</file>
+            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/web/Admin_Details_Schedules.jsp</file>
+            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/src/java/model/Date.java</file>
+            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/web/Admin_Dashboard.jsp</file>
+            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/src/java/model/Account.java</file>
+            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/web/Admin_AddMovie.jsp</file>
+            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/src/java/dal/AccountDAO.java</file>
+            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/web/SearchPage.jsp</file>
+            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/src/java/model/Movie.java</file>
+            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/src/java/model/MovieID.java</file>
+            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/src/java/model/Handle_Schedules.java</file>
         </group>
-        <group>
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/web/Assets/Styles/AddMovie.css</file>
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/src/java/controller/Controller/Admin/Admin_DeleteSchedules.java</file>
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/src/java/controller/Controller/Admin/Details_Schedules.java</file>
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/web/CreateSeatPage.jsp</file>
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/web/Admin_Show_Date.jsp</file>
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/src/java/controller/Controller/Admin/Admin_ShowDate.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

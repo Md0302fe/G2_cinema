@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import model.Account;
 
@@ -81,12 +82,23 @@ public class RegisterServlet extends HttpServlet {
         String pass = request.getParameter("password");
         String rePass = request.getParameter("rePassword");
 
+        //check password valid
         Pattern upperCasePattern = Pattern.compile("[A-Z]");
+
+        //check valid phone number
+        Pattern phonePattern = Pattern.compile("^\\d{10}$");
+        Matcher matcher = phonePattern.matcher(phone);
+
         if (pass.length() < 9 || !upperCasePattern.matcher(pass).find()) {
             request.setAttribute("error", "Password must have at least 9 characters and 1 uppercase character!");
             request.setAttribute("fullName", fullName);
             request.setAttribute("email", email);
             request.setAttribute("phone", phone);
+            request.getRequestDispatcher("Register.jsp").forward(request, response);
+        } else if (!matcher.matches()) {
+            request.setAttribute("error", "Phone number must have 10 number!");
+            request.setAttribute("fullName", fullName);
+            request.setAttribute("email", email);
             request.getRequestDispatcher("Register.jsp").forward(request, response);
         } else {
 
@@ -110,8 +122,12 @@ public class RegisterServlet extends HttpServlet {
                 }
             } else if (isUsedEmail) {
                 request.setAttribute("error", "Email is already exist!");
+                request.setAttribute("fullName", fullName);
+                request.setAttribute("phone", phone);
                 request.getRequestDispatcher("Register.jsp").forward(request, response);
             } else if (isUsedPhone) {
+                request.setAttribute("fullName", fullName);
+                request.setAttribute("email", email);
                 request.setAttribute("error", "Phone is already exist!");
                 request.getRequestDispatcher("Register.jsp").forward(request, response);
             } else if (isUsedPhone && isUsedEmail) {
@@ -119,6 +135,9 @@ public class RegisterServlet extends HttpServlet {
                 request.getRequestDispatcher("Register.jsp").forward(request, response);
             } else {
                 request.setAttribute("error", "Password confirmation does not match!!!");
+                request.setAttribute("fullName", fullName);       
+                request.setAttribute("phone", phone);
+                request.setAttribute("email", email);
                 request.getRequestDispatcher("Register.jsp").forward(request, response);
             }
         }
