@@ -12,11 +12,13 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import model.Booking;
+import model.Account;
+
 import model.Movie;
 
 /**
@@ -69,6 +71,17 @@ public class Booking_Servlet extends HttpServlet {
         // nhận id movie từ ajax
         String id_raw = request.getParameter("movie_id");
         // sau đó lấy danh sách các ngày mà phim đó được chiếu.Date
+
+        // Set account to session
+        HttpSession session = request.getSession();
+        Account acc = (Account) session.getAttribute("account");
+        request.setAttribute("account", acc);
+        // Get list of movies
+        List<Movie> m = dao.getListMovie();
+        List<Movie> movieIncoming = dao.getAllMovieIncoming();
+        request.setAttribute("listMovie", m);
+        request.setAttribute("movieIncoming", movieIncoming);
+
         // lay ra ngay hien tai
         LocalDate today = LocalDate.now();
         DateTimeFormatter data_format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -104,7 +117,7 @@ public class Booking_Servlet extends HttpServlet {
 
         for (String string : StringDate) {
             out.println("<div style=\"margin-bottom: 32px ; display: flex ; justify-content: left\" >\n"
-                    + "                                <button style=\"padding : 8px; cursor: pointer\" onclick=\"handleDate('"+string+"')\">" + string + "</button>                                 \n"
+                    + "                                <button style=\"padding : 8px; cursor: pointer\" onclick=\"handleDate('" + string + "')\">" + string + "</button>                                 \n"
                     + "                            </div>");
         }
         System.out.println("MovieId : " + movieId);

@@ -137,7 +137,7 @@ public class AdminDAO extends DBContext {
 
     public List<Movie> getListMovie() {
         List<Movie> listMovie = new ArrayList<>();
-       
+
         String sql = "SELECT * FROM [dbo].[Movie]"
                 + "WHERE movie_status = 1 AND release_date <= '2024-05-01' ";
         try {

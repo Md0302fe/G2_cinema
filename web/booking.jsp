@@ -40,7 +40,6 @@
                 </div>
                 <div class="movie-selection-container">
                     <div class="movie-selection">
-
                         <div class="flex-c">
                             <label for="movie">Chọn phim</label>
                             <i class="fa-solid fa-chevron-down" id="movieArrow"></i>
@@ -111,14 +110,7 @@
                         <!-- Thêm đường gạch đứt sau phần suất -->
                         <hr class="separator-line">
                     </div>
-                    <div class="total">
-                        <a class="movie-price">
-                            <p>Tổng cộng: </p>
-                        </a>
-                        <a class="movie-price">
-                            <p>0đ </p>
-                        </a>
-                    </div>
+
                 </div>
                 <div class="navigation-buttons">
                     <a href="home">

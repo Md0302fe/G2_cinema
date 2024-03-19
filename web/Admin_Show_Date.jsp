@@ -18,6 +18,7 @@
         <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Nunito Sans" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
         <link rel="stylesheet" href="Assets/Styles/sb-admin-2.css"/>
         <link rel="stylesheet" href="Assets/Styles/schedulesManagement.css" />
         <link rel="stylesheet" href="Assets/Styles/Admin_showdate.css"/>
@@ -99,8 +100,7 @@
                                                                      color: white;
                                                                      padding: 2px 15px;
                                                                      border-radius: 5px;
-                                                                     " class="adjustSchedules hoverDelete" onclick="deleteSchedules('${s.schedules_id}')">Delete</div>
-
+                                                                     " class="adjustSchedules hoverDelete" onclick="confirmDelete('${s.schedules_id}')">Delete</div>
                                                             </td>
                                                         </tr>
                                                     </c:forEach>
@@ -122,19 +122,23 @@
                 window.location.href = url;
             }
 
-            function deleteSchedules(schedules_id) {
-                // Hiển thị hộp thoại xác nhận
-                var result = confirm("Bạn có muốn xóa schedules " + schedules_id + " không?");
-
-                // Nếu người dùng đồng ý xóa
-                if (result) {
-                    // Gọi servlet để xóa
-                    window.location.href = "/CINEMA/deleteSchedules?id=" + schedules_id;
-                } else {
-                    // Người dùng không đồng ý xóa, không làm gì cả
-                }
+            function confirmDelete(id) {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'This action cannot be undone!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Nếu người dùng xác nhận muốn xóa, chuyển đến servlet
+                        window.location.href = "deleteSchedules?id=" + id;
+                    }
+                });
             }
         </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="Assets/JS/Admin_ShowDate.js"></script>
     </body>
 </html>
