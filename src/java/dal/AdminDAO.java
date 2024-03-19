@@ -489,6 +489,38 @@ public class AdminDAO extends DBContext {
         return movie;
     }
 
+    public List<Movie> getMovieByName(String txtSearch) {
+        List<Movie> list = new ArrayList<>();
+
+        String sql = "select * from Movie\n"
+                + "where [movie_name] like ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, "%" + txtSearch + "%");
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Movie m = new Movie(rs.getString(2),
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getFloat(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getString(11),
+                        rs.getString(12),
+                        rs.getString(13),
+                        rs.getString(14));
+                m.setId(rs.getInt(1));
+                list.add(m);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+
     public void updateMovie(int id, Movie m) {
         String sql = "UPDATE [dbo].[Movie]\n"
                 + "   SET [movie_name] = ?\n"
@@ -743,9 +775,11 @@ public class AdminDAO extends DBContext {
         return list;
     }
 
-    public static void main(String[] args) {
-        AdminDAO dao = new AdminDAO();
-       List<String> list = dao.getTop3TrailerImg();
-        System.out.println("img: "+ list);
-    }
+//    public static void main(String[] args) {
+//        AdminDAO dao = new AdminDAO();
+//        List<Movie> list = dao.getMovieByName("Những");
+//        for (Movie m : list) {
+//            System.out.println(m);
+//        }
+//    }
 }

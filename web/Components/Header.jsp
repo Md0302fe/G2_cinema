@@ -15,15 +15,15 @@
                     <img src="./Assets/Image/Header_Image/logo.png" alt="logo">
                 </a>
             </li>
-            
-              <li class="ticketbuy">
-                        <div class="rel" >
-                            <a href="bookingsvl">
-                            <img src="https://www.galaxycine.vn/_next/static/media/btn-ticket.42d72c96.webp" alt="alt"/>
-                            </a>
-                        </div>
-              </li>
-              
+
+            <li class="ticketbuy">
+                <div class="rel" >
+                    <a href="bookingsvl">
+                        <img src="https://www.galaxycine.vn/_next/static/media/btn-ticket.42d72c96.webp" alt="alt"/>
+                    </a>
+                </div>
+            </li>
+
             <li class="nav__navigation">
                 <ul class="flex">
                     <li class="nav__movie">
@@ -100,15 +100,20 @@
                 </ul>
             </li>
             <li class="nav__auth flex">
-                <div class="search-container">
-                    <div class="rel">
-                        <a id="searchIcon" class="search-icon">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </a>
+
+                <!--Search-->
+                <form action="search" method="get">
+                    <div class="search-container">
+                        <div class="rel">
+                            <a id="searchIcon" class="search-icon" type="text">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </a>
+                        </div>
+                        <input name="txt" id="searchInput" class="search-box abs b-shadow" type="text" placeholder="Search.."
+                               onfocus="expandInput()" onblur="shrinkInput()">
                     </div>
-                    <input id="searchInput" class="search-box abs b-shadow" type="text" placeholder="Search.."
-                           onfocus="expandInput()" onblur="shrinkInput()">
-                </div>
+                </form>
+
                 <c:if test="${sessionScope.account==null}">
                     <div class="nav__user">
                         <a class="nav__login--btn" href="login"> <i class="fa-regular fa-user"></i> Đăng nhập</a>
