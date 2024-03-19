@@ -32,12 +32,13 @@
                                 <input type="number" name="digit5" id="digit5" disabled />
                                 <input type="number" name="digit6" id="digit6" disabled />
                             </div>
-                            <p style="color: white">${requestScope.error}</p>
+                            <p style="color: red">${requestScope.error}</p>
                             <button type="button" class="btn btn-primary mb-3" onclick="submitForm()">
                                 Verify
                             </button>
-                        </form>
 
+                        </form>
+                        <p style="color: green">${requestScope.nof}</p>
                         <p class="resend text-muted mb-0">
                             Didn't receive code? <a href="reVerify">Request again</a>
                         </p>
