@@ -8,6 +8,7 @@ import dal.AdminDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -16,9 +17,10 @@ import model.ScheduleDetail;
 
 /**
  *
- * @author GIA TIEN
+ * @author MinhDuc
  */
-public class Admin_ShowDate extends HttpServlet {
+@WebServlet(name = "Admin_DeleteSchedules", urlPatterns = {"/deleteSchedules"})
+public class Admin_DeleteSchedules extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +39,10 @@ public class Admin_ShowDate extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Admin_ShowDate</title>");
+            out.println("<title>Servlet Admin_DeleteSchedules</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Admin_ShowDate at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Admin_DeleteSchedules at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,14 +61,18 @@ public class Admin_ShowDate extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         AdminDAO dao = new AdminDAO();
+        String id = request.getParameter("id");
+        String date = (String) request.getSession().getAttribute("showDate");
+
         List<String> list = dao.get_All_Dates();
-        request.setAttribute("list", list);
-        String date = request.getParameter("id");
-        request.getSession().setAttribute("showDate", date);
+
         request.setAttribute("datecheck", date);
+        
+        request.setAttribute("list", list);
         List<ScheduleDetail> schedulesList = dao.getScheduleById(date);
         request.setAttribute("schedulesList", schedulesList);
         request.getRequestDispatcher("Admin_Show_Date.jsp").forward(request, response);
+
     }
 
     /**

@@ -106,9 +106,11 @@ input {
 }
 
 .nav__navigation > ul li {
-    padding: 0.5rem 1rem;
+   
     margin: auto;
 }
+
+
 
 .nav__user,
 .rel {
@@ -118,7 +120,7 @@ input {
 
 .nav__movie:hover .nav__movie--bgc {
     display: block;
-    top: 120%;
+    top: 100%;
     left: -100%;
 }
 
@@ -190,11 +192,6 @@ input {
 .movie__type--menu a {
     padding: 2rem 0;
     font-size: 16px;
-}
-
-.cinema {
-    height: 320px;
-    overflow-y: auto;
 }
 
 /* chỉnh thanh cuộn */
@@ -601,4 +598,8 @@ form a {
     max-width: 100px;
     position: relative;
     left: 100%;
+}
+
+.mx-3 {
+    margin : 0 1.5rem !important;
 }

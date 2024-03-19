@@ -107,7 +107,7 @@
                                             <h4 class="ms-2 mt-4 mb-0 font-weight-bold text-center"> Infomation </h4>
                                             <div class="container border-radius-lg">
                                                 <div class="row justify-content-center">
-                                                    <div class="col-3 py-3 ps-0">
+                                                    <div class="col-5 py-3 ">
                                                         <div class="d-flex mb-2">
                                                             <div
                                                                 class="icon icon-shape icon-xxs shadow border-radius-sm bg-gradient-primary text-center me-2 d-flex align-items-center justify-content-center">
@@ -140,7 +140,7 @@
                                                                  aria-valuemin="0" aria-valuemax="100"></div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-3 py-3 ps-0">
+                                                    <div class="col-5 py-3">
                                                         <div class="d-flex mb-2">
                                                             <div
                                                                 class="icon icon-shape icon-xxs shadow border-radius-sm bg-gradient-info text-center me-2 d-flex align-items-center justify-content-center">

@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 import java.sql.SQLException;
-import java.text.DecimalFormat;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -21,6 +21,7 @@ import model.Date;
 import model.Movie;
 import model.Room;
 import model.ScheduleDetail;
+import model.SchedulesDetail;
 
 /**
  * THIS FILE HELP CONNECTION AND REPAIRED SQL .
@@ -76,6 +77,50 @@ public class AdminDAO extends DBContext {
         }
     }
 
+    public SchedulesDetail getSchedules_Byid(String id) {
+        String sql = "select *from Schedules where schedules_id = ? ";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, id);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                SchedulesDetail sche = new SchedulesDetail(
+                        rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5));
+                return sche;
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR IN GET SCHEDULES _ BY ID " + e);
+        }
+        return null;
+    }
+
+    public void Update_Schedules(SchedulesDetail ss) {
+        String sql = "UPDATE [dbo].[Schedules]\n"
+                + "   SET [schedules_id] = ?\n"
+                + "      ,[handle_schedules_id] = ?\n"
+                + "      ,[movie_id] = ?\n"
+                + "      ,[room_id] = ?\n"
+                + "      ,[schedules_showtime] = ?\n"
+                + " WHERE schedules_id = ? ";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, ss.getSchedules_id());
+            st.setString(2, ss.getHandle_Schedules_id());
+            st.setString(3, ss.getMovie_name());
+            st.setString(4, ss.getRoom_name());
+            st.setString(5, ss.getSchedules_showtime());
+            st.setString(6, ss.getSchedules_id());
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("ERROR IN Update Schedules " + e);
+        }
+    }
+
     public void add_Date_Admin(Date date) {
         String sql = "INSERT INTO [dbo].[Release_date]\n"
                 + "           ([show_date])\n"
@@ -92,6 +137,7 @@ public class AdminDAO extends DBContext {
 
     public List<Movie> getListMovie() {
         List<Movie> listMovie = new ArrayList<>();
+
         String sql = "SELECT * FROM [dbo].[Movie]"
                 + "WHERE movie_status = 1 AND release_date <= '2024-05-01' ";
         try {

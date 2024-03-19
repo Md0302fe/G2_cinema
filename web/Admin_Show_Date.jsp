@@ -14,9 +14,11 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="Assets/Styles/AddMovie.css" rel="stylesheet" type="text/css"/>
         <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Nunito Sans" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
         <link rel="stylesheet" href="Assets/Styles/sb-admin-2.css"/>
         <link rel="stylesheet" href="Assets/Styles/schedulesManagement.css" />
         <link rel="stylesheet" href="Assets/Styles/Admin_showdate.css"/>
@@ -43,7 +45,14 @@
                                                     <div class="row_container">
                                                     </c:if>
                                                     <div class="table_cell">
-                                                        <button class="date_schedules table-cell-button tb_showdate" type="button" onclick="handleDate('${date}')">${date}</button>
+                                                        <c:choose>
+                                                            <c:when test="${requestScope.datecheck eq date}">
+                                                                <button class="date_schedules table-cell-button tb_showdate}" id="active-Date" type="button" onclick="handleDate('${date}')">${date}</button>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <button class="date_schedules table-cell-button tb_showdate}" type="button" onclick="handleDate('${date}')">${date}</button>
+                                                            </c:otherwise>
+                                                        </c:choose>
                                                     </div>
                                                     <c:if test="${loop.index % 6 == 5 || loop.last}">
                                                     </div>
@@ -58,9 +67,9 @@
                                                         <th class="th-name" style="text-align: center;">Movie Name</th>
                                                         <th class="th-room" style="text-align: center;">Room</th>
                                                         <th class="th-time" style="text-align: center;">Show Time</th>
+                                                        <th class="th-time" style="text-align: center;">Action</th>
                                                     </tr>
                                                 </thead>
-
                                                 <tbody class="scheduleTableBody">
                                                     <c:set var="count" value="0"/>
                                                     <c:forEach  items="${requestScope.schedulesList}" var="s">
@@ -70,6 +79,29 @@
                                                             <td style="text-align: center;">${s.movie_name}</td>
                                                             <td style="text-align: center;">${s.room_name}</td>
                                                             <td style="text-align: center;">${s.schedules_showtime}</td>
+
+                                                            <td style="padding: 6px"> 
+                                                                <div style="
+                                                                     color: white;
+                                                                     padding: 2px 15px;
+                                                                     background-color: #109702;
+                                                                     display: inline-block;
+                                                                     border-radius: 3px;
+                                                                     text-align: left;
+                                                                     float: left;
+                                                                     cursor: pointer;
+                                                                     " class="adjustSchedules hoverEdit" onclick="handleEdit('${s.schedules_id}')">Edit</div>
+                                                                <div style="
+                                                                     cursor: pointer;
+                                                                     display: inline-block;
+                                                                     text-align: right;
+                                                                     float: right;
+                                                                     background-color: #851919;
+                                                                     color: white;
+                                                                     padding: 2px 15px;
+                                                                     border-radius: 5px;
+                                                                     " class="adjustSchedules hoverDelete" onclick="confirmDelete('${s.schedules_id}')">Delete</div>
+                                                            </td>
                                                         </tr>
                                                     </c:forEach>
                                                 </tbody>
@@ -83,7 +115,31 @@
                 </div>
             </div>
         </div>
-        <script src="Assets/JS/Admin_ShowDate.js"></script>                               
+        <script>
+            function handleEdit(id) {
+                console.log(id);
+                var url = "/CINEMA/updateschedules?id=" + id;
+                window.location.href = url;
+            }
+
+            function confirmDelete(id) {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'This action cannot be undone!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Nếu người dùng xác nhận muốn xóa, chuyển đến servlet
+                        window.location.href = "deleteSchedules?id=" + id;
+                    }
+                });
+            }
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="Assets/JS/Admin_ShowDate.js"></script>
     </body>
 </html>
 

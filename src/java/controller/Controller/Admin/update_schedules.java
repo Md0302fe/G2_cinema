@@ -8,17 +8,20 @@ import dal.AdminDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
-import model.ScheduleDetail;
+import model.Movie;
+import model.SchedulesDetail;
 
 /**
  *
- * @author GIA TIEN
+ * @author MinhDuc
  */
-public class Admin_ShowDate extends HttpServlet {
+@WebServlet(name = "update_schedules", urlPatterns = {"/updateschedules"})
+public class update_schedules extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +40,10 @@ public class Admin_ShowDate extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Admin_ShowDate</title>");
+            out.println("<title>Servlet update_schedules</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Admin_ShowDate at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet update_schedules at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -58,15 +61,25 @@ public class Admin_ShowDate extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        AdminDAO dao = new AdminDAO();
-        List<String> list = dao.get_All_Dates();
-        request.setAttribute("list", list);
-        String date = request.getParameter("id");
-        request.getSession().setAttribute("showDate", date);
-        request.setAttribute("datecheck", date);
-        List<ScheduleDetail> schedulesList = dao.getScheduleById(date);
-        request.setAttribute("schedulesList", schedulesList);
-        request.getRequestDispatcher("Admin_Show_Date.jsp").forward(request, response);
+        String schedules_id = request.getParameter("id");
+        AdminDAO a = new AdminDAO();
+
+        SchedulesDetail sc = a.getSchedules_Byid(schedules_id);
+        // Lưu trữ schedules_id trong session
+
+        List<Movie> listMovie = a.getListMovie();
+        int id = Integer.parseInt(sc.getMovie_name());
+        Movie movie = a.getMovieById(id);
+
+        request.setAttribute("movie", movie);
+        request.setAttribute("listMovie", listMovie);
+        request.setAttribute("schedules", sc);
+
+        request.getSession().setAttribute("schedules_id", schedules_id);
+        request.getSession().setAttribute("timeShow", sc.getSchedules_showtime());
+        request.getSession().setAttribute("Room", sc.getRoom_name());
+
+        request.getRequestDispatcher("Admin_Update_Schedules.jsp").forward(request, response);
     }
 
     /**
@@ -80,11 +93,31 @@ public class Admin_ShowDate extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        AdminDAO dao = new AdminDAO();
+        // Nhận schedules_id từ session
+        String schedules_id = (String) request.getSession().getAttribute("schedules_id");
+        int indexOf = schedules_id.indexOf("@");
+
+        String selected_movie = request.getParameter("selectedMovie");
+
+        String handle_schedules_id = schedules_id.substring(0, indexOf);
+        String room = (String) request.getSession().getAttribute("Room");
+        String time = (String) request.getSession().getAttribute("timeShow");
+
+        SchedulesDetail ss = new SchedulesDetail(
+                schedules_id,
+                handle_schedules_id,
+                selected_movie,
+                room,
+                time);
+
+        dao.Update_Schedules(ss);
+        request.setAttribute("mess", "update scheduless successfully");
+        request.getRequestDispatcher("Admin_Update_Schedules.jsp").forward(request, response);
     }
 
     /**
-     * Returns a short description of the servlet.
+     * Returns a short description of the servlet.s
      *
      * @return a String containing servlet description
      */

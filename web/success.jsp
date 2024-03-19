@@ -50,7 +50,7 @@
             <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
                 <i class="checkmark">✓</i>
             </div>
-            <h1>Payment success</h1> 
+            <h1>Success</h1> 
             <p>${requestScope.mess}<br/>returning to homepage in 5 second</p>
         </div>
 

@@ -8,22 +8,32 @@ package model;
  *
  * @author GIA TIEN
  */
-public class ScheduleDetail {
+public class SchedulesDetail {
 
     private String schedules_id;
+    private String handle_Schedules_id;
     private String movie_name;
     private String room_name;
     private String schedules_showtime;
 
-    public ScheduleDetail(String schedules_id, String movie_name, String room_name, String schedules_showtime) {
+    public SchedulesDetail(String schedules_id, String handle_Schedules_id, String movie_name, String room_name, String schedules_showtime) {
         this.schedules_id = schedules_id;
+        this.handle_Schedules_id = handle_Schedules_id;
         this.movie_name = movie_name;
         this.room_name = room_name;
         this.schedules_showtime = schedules_showtime;
     }
 
-    public ScheduleDetail() {
+    public SchedulesDetail() {
 
+    }
+
+    public String getHandle_Schedules_id() {
+        return handle_Schedules_id;
+    }
+
+    public void setHandle_Schedules_id(String handle_Schedules_id) {
+        this.handle_Schedules_id = handle_Schedules_id;
     }
 
     public String getSchedules_id() {
@@ -60,7 +70,14 @@ public class ScheduleDetail {
 
     @Override
     public String toString() {
-        return "ScheduleDetail{" + "schedules_id=" + schedules_id + ", movie_name=" + movie_name + ", room_name=" + room_name + ", schedules_showtime=" + schedules_showtime + '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("SchedulesDetail{");
+        sb.append("schedules_id=").append(schedules_id);
+        sb.append(", handle_Schedules_id=").append(handle_Schedules_id);
+        sb.append(", movie_name=").append(movie_name);
+        sb.append(", room_name=").append(room_name);
+        sb.append(", schedules_showtime=").append(schedules_showtime);
+        sb.append('}');
+        return sb.toString();
     }
-
 }

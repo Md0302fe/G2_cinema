@@ -17,6 +17,7 @@
         <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Nunito Sans" />
+        <link rel="stylesheet" href="Assets/Styles/Admin_showdate.css"/>
         <link rel="stylesheet" href="Assets/Styles/sb-admin-2.css"/>
     </head>
     <body>
