@@ -26,7 +26,7 @@
 
         <%@include file='./Components/Header.jsp' %>
 
-        <!--    <nav>
+        <!--  <nav>
                 <a href="#">Chọn phim / Rạp / Suất</a>
                 <a href="#">Chọn ghế</a>
                 <a href="#">Chọn thức ăn</a>

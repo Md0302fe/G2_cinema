@@ -10,7 +10,8 @@
         <title>Payment</title>
     </head>
     <body>
-        <div><div class="payment-header">
+        <div>
+            <div class="payment-header">
                 <nav class="payment-nav">
                     <a href="home">
                         <img src="./Assets/Image/Payment_icon/logo.png" alt="logo" />

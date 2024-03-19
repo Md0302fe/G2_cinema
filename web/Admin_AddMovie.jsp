@@ -72,8 +72,8 @@
                                                     <i class="fa-regular fa-clock">
                                                     </i>
                                                     <label for="">Thời lượng</label>
-                                                    <input type="text" size="1" placeholder="........"
-                                                           style="padding: 0 12px; margin-left: 4px;" required="" name="Duration">
+                                                    <input type="number" 
+                                                           style="padding: 0 12px; margin-left: 4px; width: 82px" required="" name="Duration">
                                                     <span style="margin-left: 4px;">Phút</span>
                                                 </p>
                                             </div>
