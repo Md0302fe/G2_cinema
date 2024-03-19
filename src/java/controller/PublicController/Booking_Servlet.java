@@ -16,6 +16,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import model.Booking;
 import model.Movie;
 
 /**
@@ -64,9 +65,7 @@ public class Booking_Servlet extends HttpServlet {
             throws ServletException, IOException {
         AdminDAO dao = new AdminDAO();
         BookingDAO book = new BookingDAO();
-
         List<Movie> list = dao.getListMovie();
-
         // nhận id movie từ ajax
         String id_raw = request.getParameter("movie_id");
         // sau đó lấy danh sách các ngày mà phim đó được chiếu.Date
@@ -75,7 +74,6 @@ public class Booking_Servlet extends HttpServlet {
         DateTimeFormatter data_format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String today_parse = data_format.format(today);
         ArrayList<String> listDate = book.getShowDateForBooking(id_raw, today_parse);
-
         request.setAttribute("listDate", listDate);
         request.setAttribute("list", list);
         // Chuyển hướng yêu cầu tới JSP 
@@ -93,7 +91,27 @@ public class Booking_Servlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String movieId = request.getParameter("movieId");
+        BookingDAO b = new BookingDAO();
+        // lay ra ngay hien tai            
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter data_format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        // lấy tất cả booking của id_này mà ngày > ngày hiện tại
+        String today_parse = data_format.format(today);
+        List< String> StringDate = b.getShowDateForBooking(movieId, today_parse);
+
+        PrintWriter out = response.getWriter();
+
+        for (String string : StringDate) {
+            out.println("<div style=\"margin-bottom: 32px ; display: flex ; justify-content: left\" >\n"
+                    + "                                <button style=\"padding : 8px; cursor: pointer\" onclick=\"handleDate('"+string+"')\">" + string + "</button>                                 \n"
+                    + "                            </div>");
+        }
+        System.out.println("MovieId : " + movieId);
+        for (String string : StringDate) {
+            System.out.println("date : " + string);
+        }
+
     }
 
     /**
