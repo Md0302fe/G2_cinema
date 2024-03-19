@@ -8,7 +8,16 @@
         </group>
         <group/>
         <group>
+<<<<<<< Updated upstream
             <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/web/HomePage.jsp</file>
+=======
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/web/Admin_Show_Date.jsp</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/src/java/dal/DBContext.java</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/src/java/controller/Controller/Admin/SchedulesManagement.java</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/src/java/dal/AdminDAO.java</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/src/java/controller/Controller/Admin/Admin_ShowDate.java</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/src/java/model/ScheduleDetail.java</file>
+>>>>>>> Stashed changes
         </group>
     </open-files>
 </project-private>
