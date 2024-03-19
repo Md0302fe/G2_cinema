@@ -72,8 +72,8 @@ public class ResendVerifyCodeServlet extends HttpServlet {
 
         if (test) {
             session.setAttribute("verifyCode", verifyCode);
-
-            response.sendRedirect("Verify.jsp");
+            request.setAttribute("nof", "New code was send to your email");
+            request.getRequestDispatcher("Verify.jsp").forward(request, response);
         }
     }
 
