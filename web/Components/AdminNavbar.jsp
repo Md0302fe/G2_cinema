@@ -39,7 +39,7 @@
             </li>        
             <!-- Divider -->
             <hr class="sidebar-divider">
-             <b style="color : #ffd4d4">Schedules Management</b>
+            <b style="color : #ffd4d4">Schedules Management</b>
             <li class="nav-item ">
                 <a class="nav-link" href="setupschedules">
                     <i class="fas fa-fw fa-chart-area"></i>
@@ -51,13 +51,13 @@
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Show Schedules</span></a>
             </li>
-            
-             <li class="nav-item ">
+
+            <li class="nav-item ">
                 <a class="nav-link" href="detailschedules">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Details Schedules</span></a>
             </li>
-            
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
             <!-- Sidebar Toggler (Sidebar) -->

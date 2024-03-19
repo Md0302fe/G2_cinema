@@ -11289,3 +11289,8 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
+
+
+.active_Nav-item {
+    color : white;
+}
