@@ -44,6 +44,7 @@
                                         <div class="select-Image">
                                             <label style="font-weight:800" >Chọn ảnh</label>
                                             <input id="imageInput" class="select-img" type="file" accept="image/*" name="movie_image" required>
+                                            <p class="text-danger">${requestScope.errorImg1}</p>
                                             <!-- <i class="fa-solid fa-hand-pointer icon"></i> -->
                                         </div>
                                         <img id="selected-image" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}"
@@ -51,9 +52,10 @@
                                         <hr>                           
                                         <div class="select-Image">
                                             <label style="font-weight: 800" >Chọn trailer</label>
-                                            <input id="imageInput" class="select-img" type="file" accept="image/*" name="movie_image" required>
+                                            <input id="imageInput" class="select-img" type="file" accept="image/*" name="movie_trailer" required>
+                                            <p class="text-danger">${requestScope.errorImg2}</p>
                                             <label style="font-weight: 800" >Thêm đường dẫn</label>
-                                            <input class="select-trailer" type="text" name="trailer_link" required>
+                                            <input class="select-trailer" type="text" name="trailer_link" required value="${m.trailer_link}">
                                             <!-- <i class="fa-solid fa-hand-pointer icon"></i> -->
                                         </div>
                                         <script>
@@ -79,7 +81,7 @@
                                                     <i class="fa-regular fa-clock">
                                                     </i>
                                                     <label for="">Thời lượng</label>
-                                                    <input value="${m.duration}" type="number" placeholder="........"
+                                                    <input value="${m.duration}" type="number" placeholder="........" min="60" max="300"
                                                            style="padding: 0 12px; margin-left: 4px; width: 82px" required="" name="Duration">
                                                     <span style="margin-left: 4px;">Phút</span>
                                                 </p>
@@ -88,6 +90,7 @@
                                                 <p class="movie_calendar">
                                                     <label for="release">Ngày khởi chiếu</label>
                                                     <input value="${m.release_date}" type="date" id="release" style="margin-left: 4px" required name="releaseDate">
+                                                    <p class="text-danger">${requestScope.errorDate}</p>
                                                 </p>
                                             </div>
                                             <div class="rate">
