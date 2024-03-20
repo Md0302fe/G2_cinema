@@ -25,14 +25,13 @@
     <body>
         <div id="wrapper">
             <!-- Sidebar -->
-             <%@include file="./Components/AdminNavbar.jsp" %> 
+            <%@include file="./Components/AdminNavbar.jsp" %> 
             <!-- Content Wrapper -->
             <div id="content-wrapper" class="d-flex flex-column">
                 <!-- Main Content --> 
                 <div id="content">
                     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg mt-2">
-                        <h1 class="text-center display-6 text-primary" style="font-family: 'Arial', sans-serif; color: #007bff; ">Admin dashboard</h1>
-
+                        <h1 class="text-center display-6 text-primary" style="font-family: 'Arial', sans-serif; color: #007bff; ">Tổng quan</h1>
                         <div class="container-fluid pt-4">
                             <div class="row">
                                 <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
@@ -41,7 +40,7 @@
                                             <div class="row">
                                                 <div class="col-8">
                                                     <div class="numbers">
-                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Money</p>
+                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold">Doanh thu trong ngày</p>
                                                         <h5 class="font-weight-bolder mb-0">
                                                             <p><fmt:formatNumber  value="${requestScope.todayMoney}"/><span> VNĐ</span></p>
                                                         </h5>
@@ -57,23 +56,7 @@
                                             <div class="row">
                                                 <div class="col-8">
                                                     <div class="numbers">
-                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold">All Users</p>
-                                                        <h5 class="font-weight-bolder mb-0">
-                                                            <p>${requestScope.totalUser}</p>
-                                                        </h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                                    <div class="card">
-                                        <div class="card-body p-3">
-                                            <div class="row">
-                                                <div class="col-8">
-                                                    <div class="numbers">
-                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold">Month's Money</p>
+                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold">Doanh thu trong tháng</p>
                                                         <h5 class="font-weight-bolder mb-0">
                                                             <p><fmt:formatNumber value="${requestScope.monthMoney}"/><span> VNĐ</span></p>
                                                         </h5>
@@ -89,9 +72,25 @@
                                             <div class="row">
                                                 <div class="col-8">
                                                     <div class="numbers">
-                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Booking</p>
+                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold">Tổng vé được đặt trong ngày</p>
                                                         <h5 class="font-weight-bolder mb-0">
                                                             <p>${requestScope.totalBooking}</p>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                                    <div class="card">
+                                        <div class="card-body p-3">
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <div class="numbers">
+                                                        <p class="text-sm mb-0 text-capitalize font-weight-bold">Tổng số người dùng</p>
+                                                        <h5 class="font-weight-bolder mb-0">
+                                                            <p>${requestScope.totalUser}</p>
                                                         </h5>
                                                     </div>
                                                 </div>
@@ -104,7 +103,7 @@
                                 <div class="col-lg-5 mb-lg-0 mb-4">
                                     <div class="card z-index-2">
                                         <div class="card-body p-3">
-                                            <h4 class="ms-2 mt-4 mb-0 font-weight-bold text-center"> Infomation </h4>
+                                            <h4 class="ms-2 mt-4 mb-0 font-weight-bold text-center"> Thông tin phụ </h4>
                                             <div class="container border-radius-lg">
                                                 <div class="row justify-content-center">
                                                     <div class="col-5 py-3 ">
@@ -132,13 +131,9 @@
                                                                 </g>
                                                                 </svg>
                                                             </div>
-                                                            <p class="text-xs mt-1 mb-0 font-weight-bold">Current Movie</p>
+                                                            <p class="text-xs mt-1 mb-0 font-weight-bold">Số lượng phim hiện tại</p>
                                                         </div>
                                                         <h4 class="font-weight-bolder">${requestScope.totalMovie}</h4>
-                                                        <div class="progress w-75">
-                                                            <div class="progress-bar bg-dark w-60" role="progressbar" aria-valuenow="60"
-                                                                 aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
                                                     </div>
                                                     <div class="col-5 py-3">
                                                         <div class="d-flex mb-2">
@@ -171,13 +166,9 @@
                                                                 </g>
                                                                 </svg>
                                                             </div>
-                                                            <p class="text-xs mt-1 mb-0 font-weight-bold">Today Schedules</p>
+                                                            <p class="text-xs mt-1 mb-0 font-weight-bold">Tổng số suất chiếu trong ngày</p>
                                                         </div>
                                                         <h4 class="font-weight-bolder">${requestScope.totalSchedule}</h4>
-                                                        <div class="progress w-75">
-                                                            <div class="progress-bar bg-dark w-30" role="progressbar" aria-valuenow="90"
-                                                                 aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -213,6 +204,12 @@
                         </div>
                     </main>
                 </div>
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">                           
+                        </div>
+                    </div>
+                </footer>
                 <!-- End of Main Content -->
             </div>
             <!-- End of Content Wrapper -->

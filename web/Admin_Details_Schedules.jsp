@@ -36,7 +36,9 @@
                             <div class="movie_detail">
                                 <div class="tb_showdate">
                                     <div class="content_list">
-                                        <h3 class="content_list_title bold">SCHEDULES DETAILS FOR ${date}</h3>
+                                        <h3 class="content_list_title bold">Lịch chiếu chi tiết ngày <span
+                                                style="color : green"
+                                                >-${requestScope.date}-</span></h3>
                                         <div class="table_row t_row" >                                          
                                         </div>
                                         <div class="main-content-table">
@@ -44,9 +46,9 @@
                                                 <thead class="scheduleTableHead">
                                                     <tr>
                                                         <th class="th-no" style="text-align: center;">No.</th>
-                                                        <th class="th-name" style="text-align: center;">Movie Name</th>
-                                                        <th class="th-room" style="text-align: center;">Room</th>
-                                                        <th class="th-time" style="text-align: center;">Show Time</th>
+                                                        <th class="th-name" style="text-align: center;">Tên phim</th>
+                                                        <th class="th-room" style="text-align: center;">Phòng</th>
+                                                        <th class="th-time" style="text-align: center;">Thời gian</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody class="scheduleTableBody">
@@ -69,6 +71,12 @@
                         </div>
                     </div>
                 </div>
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">                           
+                        </div>
+                    </div>
+                </footer>
             </div>
         </div>
         <script src="Assets/JS/Admin_ShowDate.js"></script>                               

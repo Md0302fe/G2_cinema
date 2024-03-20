@@ -38,31 +38,33 @@
                     <form action="AddMovie" method="post" enctype="multipart/form-data">
                         <div class="container-fluid">
                             <!-- Page Heading -->
-                            <h1 class="h3 mb-2 text-gray-800">Management Movie</h1>
+                            <h1 class="h3 mb-2 text-gray-800">Danh sách phim</h1>
                             <div class="main_content1 font-semibold">
                                 <div class="movie_detail">
                                     <table class="table table-bordered">
                                         <thead class="thead-dark">
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">Image</th>
-                                                <th scope="col">Release Date</th>
-                                                <th scope="col">Category</th>
-                                                <th scope="col">Duration</th>
-                                                <th scope="col">National</th>
-                                                <th scope="col">Language</th>
-                                                <th scope="col">Rate</th>
-                                                <th scope="col">Actor</th>
-                                                <th scope="col">Director</th>
-                                                <th scope="col">Description</th>
-                                                <th scope="col">Action</th>
+                                                <th scope="col">Tên</th>
+                                                <th scope="col">Ảnh bìa</th>
+                                                <th scope="col">Ngày phát hành</th>
+                                                <th scope="col">Thể loại</th>
+                                                <th scope="col">Thời lượng</th>
+                                                <th scope="col">Quốc gia</th>
+                                                <th scope="col">Ngôn ngữ</th>
+                                                <th scope="col">Đánh giá</th>
+                                                <th scope="col">Diễn viên</th>
+                                                <th scope="col">Đạo diễn</th>
+                                                <th scope="col">Mô tả</th>
+                                                <th scope="col"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <c:set var="count" value="0"/>
                                             <c:forEach items="${requestScope.list}" var="m">
+                                                <c:set var="count" value="${count+1}"/>
                                                 <tr>
-                                                    <th scope="row">${m.id}</th>
+                                                    <th scope="row">${count}</th>
                                                     <td>${m.name}</td>
                                                     <td><img src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" width="150px" alt="alt"/></td>
                                                     <td>${m.release_date}</td>
@@ -75,8 +77,8 @@
                                                     <td>${m.director}</td>
                                                     <td><p id="description_${m.id}" class="description">${m.description}</p></td>
                                                     <td>
-                                                        <button type="button" class="w-100 mb-3 btn btn-primary" onclick="editItem(${m.id})">Edit</button>
-                                                        <button type="button" class="w-100 btn btn-danger" onclick="confirmDelete(${m.id})">Delete</button>
+                                                        <button type="button" class="w-100 mb-3 btn btn-primary" onclick="editItem(${m.id})">Chỉnh sửa</button>
+                                                        <button type="button" class="w-100 btn btn-danger" onclick="confirmDelete(${m.id})">Xóa</button>
                                                     </td>
                                                 </tr>
                                             </c:forEach>
@@ -98,12 +100,12 @@
         <script>
             function confirmDelete(id) {
                 Swal.fire({
-                    title: 'Are you sure?',
-                    text: 'This action cannot be undone!',
+                    title: 'Xác nhận xóa?',
+                    text: 'Hành động này không thể hoàn tác!',
                     icon: 'warning',
                     showCancelButton: true,
-                    confirmButtonText: 'Yes, delete it!',
-                    cancelButtonText: 'Cancel'
+                    confirmButtonText: 'Xác nhận',
+                    cancelButtonText: 'Hủy'
                 }).then((result) => {
                     if (result.isConfirmed) {
                         // Nếu người dùng xác nhận muốn xóa, chuyển đến servlet

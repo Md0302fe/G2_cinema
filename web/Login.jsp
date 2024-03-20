@@ -21,24 +21,24 @@
     <body class="img js-fullheight" style="background-image: url(Assets/Image/Login/bg.jpg);">
         <section class="ftco-section">
             <div class="text-md-center ml-4">
-                <a class="mr-md-z return-btn" href="home"> <i class="fa-solid fa-angle-left"></i>Return home</a>
+                <a class="mr-md-z return-btn" href="home"> <i class="fa-solid fa-angle-left"></i>Trở về</a>
             </div>
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-6 col-lg-4">
                         <div class="login-wrap p-0">
-                            <h3 class="mb-4 text-center">Have an account?</h3>
+                            <h3 class="mb-4 text-center font-weight-bold">Đã có tài khoản?</h3>
                             <form action="login" method="post" class="signin-form">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="emailOrPhone" value="${cookie.cuser.value}" placeholder="Email or Phone number" required>
+                                    <input type="text" class="form-control" name="emailOrPhone" value="${cookie.cuser.value}" placeholder="Nhập email..." required>
                                 </div>
                                 <div class="form-group">
-                                    <input id="password-field" type="password" class="form-control" value="${cookie.cpass.value}" name="password" placeholder="Password" required>
+                                    <input id="password-field" type="password" class="form-control" value="${cookie.cpass.value}" name="password" placeholder="Nhập mật khẩu..." required>
                                     <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                 </div>
                                 <p style="color: red">${requestScope.error}</p>
                                 <div class="form-group">
-                                    <button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
+                                    <button type="submit" class="form-control btn btn-primary submit px-3">Đăng nhập</button>
                                 </div>
                                 <div class="form-group d-md-flex">
                                     <div class="w-50">
@@ -48,13 +48,13 @@
                                         </label>
                                     </div>
                                     <div class="w-50 text-md-right">
-                                        <a href="forgotPassword" style="color: #fff">Forgot Password</a>
+                                        <a href="forgotPassword" style="color: #fff">Quên mật khẩu?</a>
                                     </div>
                                 </div>
                             </form>
-                            <p class="w-100 text-center">&mdash; Don't have an account? &mdash;</p>
+                            <p class="w-100 text-center">&mdash; Chưa có tài khoản? &mdash;</p>
                             <div class="social d-flex text-center">
-                                <a href="register" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Sign up</a>
+                                <a href="register" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span>Đăng ký</a>
                             </div>
                         </div>
                     </div>

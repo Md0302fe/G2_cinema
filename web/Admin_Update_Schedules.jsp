@@ -36,17 +36,17 @@
                             <div class="movie_detail">
                                 <div class="tb_showdate">
                                     <div class="content_list">
-                                        <h3 class="content_list_title bold">Edit Schedules</h3>
+                                        <h3 class="content_list_title bold">Chỉnh Sửa Lịch Chiếu</h3>
                                         <div class="main-content-table" style="margin-bottom: 32px">
                                             <table class="cart-table">
-                                                <u style="padding : 32px" ><h4 style="text-align: left">Please select a new movie</h4></u>
+                                                <u style="padding : 32px" ><h4 style="text-align: left">Hãy chọn phim mới</h4></u>
                                                 <thead class="scheduleTableHead">
                                                     <tr>
                                                         <th class="th-no" style="text-align: center;">No.</th>
-                                                        <th class="th-name" style="text-align: center;">Movie Name</th>
-                                                        <th class="th-room" style="text-align: center;">Room</th>
-                                                        <th class="th-time" style="text-align: center;">Show Time</th>
-                                                        <th class="th-time" style="text-align: center;">Action</th>
+                                                        <th class="th-name" style="text-align: center;">Tên Phim</th>
+                                                        <th class="th-room" style="text-align: center;">Phòng</th>
+                                                        <th class="th-time" style="text-align: center;">Giờ Chiếu</th>
+                                                        <th class="th-time" style="text-align: center;"></th>
                                                     </tr>
                                                 </thead>
                                                 <form action="updateschedules" method="POST">
@@ -64,7 +64,7 @@
                                                             <td class="th-room" style="text-align: center;">${schedules.room_name}</td>
                                                             <td class="th-time" style="text-align: center;">${schedules.schedules_showtime}</td>
                                                             <td class="th-time" style="text-align: center;">
-                                                                <button type="submit">Update</button>
+                                                                <button type="submit">Xác nhận</button>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -78,7 +78,7 @@
                                                            border-radius: 5px;
                                                            margin-bottom: 12px;
                                                            padding: 4px;
-                                                           "> View Adjust</a></h5>
+                                                           "> Xem Thay Đổi</a></h5>
                                                 </div>
                                             </table>
                                         </div>
@@ -88,6 +88,12 @@
                         </div>
                     </div>
                 </div>
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">                           
+                        </div>
+                    </div>
+                </footer>
             </div>
         </div>
         <script src="Assets/JS/Admin_ShowDate.js"></script>                               

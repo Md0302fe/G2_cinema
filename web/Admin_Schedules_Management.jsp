@@ -28,15 +28,15 @@
                 <div class="main-content">
                     <%@include file="./Components/AdminHeader.jsp" %>
                     <div class="all-content">
-                        <h2 class="cart-header bold">Schedules Management</h2>
+                        <h2 class="cart-header bold">Quản lý lịch chiếu</h2>
                         <div class="main-content-table">
                             <table class="cart-table">
                                 <thead class="scheduleTableHead">
                                     <tr>
                                         <th class="th-no">No.</th>
-                                        <th class="th-name">Movie Name</th>
-                                        <th class="th-room">Room</th>
-                                        <th class="th-time">Show Time</th>
+                                        <th class="th-name">Tên phim</th>
+                                        <th class="th-room">Phòng</th>
+                                        <th class="th-time">Thời gian</th>
                                     </tr>
                                 </thead>
 

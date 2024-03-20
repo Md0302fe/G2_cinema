@@ -137,7 +137,7 @@ public class Payment extends HttpServlet {
         }
         
         request.setAttribute("redirectDelay", 5000);
-        request.setAttribute("mess", "We received your purchase request, we'll be in touch shortly!");
+        request.setAttribute("mess", "Chúng tôi đã nhận được yêu cầu đặt vé của bạn!");
         request.getRequestDispatcher("success.jsp").forward(request, response);
     }
 
