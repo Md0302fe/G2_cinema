@@ -14,7 +14,7 @@
     <body>
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="home">              
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="home" style=" margin: 26px 0px 10px 0;">              
                 <img style="width: 120px" src="./Assets/Image/Header_Image/logo.png" alt="logo">
             </a>
             <li class="nav-item">
@@ -23,8 +23,9 @@
                     <span>Tổng quan</span></a>
             </li>
             <!-- Divider -->
-            <hr class="sidebar-divider">
-            <b style="color : #ffd4d4">Quản lý phim</b>
+
+            <hr class="sidebar-divider" style="margin: 16px 0px">
+            <b style="color : #ffd4d4; margin-left: 28px; margin-bottom: 10px">Quản lý phim</b>
             <!-- Heading -->
             <div class="sidebar-heading">
             </div>
@@ -40,8 +41,9 @@
                     <span>Danh sách phim</span></a>
             </li>        
             <!-- Divider -->
-            <hr class="sidebar-divider">
-            <b style="color : #ffd4d4">Quản lý lịch chiếu</b>
+
+            <hr class="sidebar-divider" style="margin: 16px 0px;">
+            <b style="color : #ffd4d4; margin-left: 28px; margin-bottom: 20px;">Quản lý lịch chiếu</b>
             <li class="nav-item ">
                 <a class="nav-link" href="setupschedules">
                     <i class="fas fa-fw fa-chart-area"></i>

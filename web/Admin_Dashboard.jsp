@@ -187,7 +187,7 @@
                                     <div class="carousel-inner">
                                         <c:forEach var="i" items="${requestScope.list}" varStatus="loop">
                                             <div class="carousel-item ${loop.first ? 'active' : ''}">
-                                                <img src="./Assets/Image/Movie_Trailer_Image/${i}" class="d-block w-100" alt="...">
+                                                <img src="./Assets/Image/Movie_Trailer_Image/${i}" class="d-block w-100" alt="..." style="border-radius: 10px">
                                             </div>
                                         </c:forEach>
                                     </div>
