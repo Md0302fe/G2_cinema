@@ -396,12 +396,12 @@ body {
     position: relative;
     left: 13%;
     top: 15%;
-    
+
 }
 
 .fa-solid.fa-ticket.fa-2xs {
     font-size: 3rem;
-     margin-right: 6px;
+    margin-right: 6px;
     color: var(--netFlix-color);
 }
 
@@ -575,6 +575,11 @@ body {
     background-color: #e50914c2;
 }
 
+.add_blog {
+    display: block ;
+}
+
+
 @media only screen and (max-width: 720px) {
 
     .Blog_left{
@@ -602,10 +607,19 @@ body {
     }
 
     .container_blog-other img{
-        width: 100%;
+        width: 100% !important;
     }
 
     .blog_item div{
         margin-left: 0;
     }
+
+    .desKimetMobile {
+        padding-left: 0 !important;
+    }
+
+    .kimetMobile {
+        width: 85% !important ;
+    }
+
 }

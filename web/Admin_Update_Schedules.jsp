@@ -54,7 +54,7 @@
                                                         <tr>
                                                             <td class="th-no" style="text-align: center;">1</td>
                                                             <td class="th-name" style="text-align: center;">
-                                                                <p>Trước edit : ${movie.id}</p>
+                                                                <p>Trước edit : ${movie.name}</p>
                                                                 <select name="selectedMovie" id="" class="form-control" onfocus='this.size = 5;' onblur='this.size = 1;' onchange='this.size = 1; this.blur();'>
                                                                     <c:forEach var="m" items="${listMovie}">                                                           
                                                                         <option style="padding: 12px; cursor: pointer;" value="${m.id}">${m.name}</option>                                                               

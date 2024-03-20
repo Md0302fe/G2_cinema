@@ -21,6 +21,9 @@
             rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
         <title>Moive Management</title>
+        <style>
+
+        </style>
     </head>
     <body>  
         <div id="wrapper">
@@ -70,7 +73,7 @@
                                                     <td>${m.rate}</td>
                                                     <td>${m.actors}</td>
                                                     <td>${m.director}</td>
-                                                    <td><p>${m.description}</p></td>
+                                                    <td><p id="description_${m.id}" class="description">${m.description}</p></td>
                                                     <td>
                                                         <button type="button" class="w-100 mb-3 btn btn-primary" onclick="editItem(${m.id})">Edit</button>
                                                         <button type="button" class="w-100 btn btn-danger" onclick="confirmDelete(${m.id})">Delete</button>
@@ -100,7 +103,7 @@
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonText: 'Yes, delete it!',
-                    cancelButtonText: 'Cancel',
+                    cancelButtonText: 'Cancel'
                 }).then((result) => {
                     if (result.isConfirmed) {
                         // Nếu người dùng xác nhận muốn xóa, chuyển đến servlet
@@ -111,6 +114,19 @@
             function editItem(id) {
                 window.location.href = "UpdateMovie?editItem=" + id;
             }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                var descriptions = document.querySelectorAll('.description');
+
+                descriptions.forEach(function (description) {
+                    var text = description.textContent;
+                    if (text.length > 20) {
+                        description.textContent = text.slice(0, 100) + '...';
+                    }
+                });
+            });
+
+
         </script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </body>

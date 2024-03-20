@@ -142,7 +142,7 @@
                             </div>
 
                             <div class="see_more_button">
-                                <a href="" class="see_more border border-2 rounded" style="border: solid 1px rgb(242, 107, 56)!important;">
+                                <a href="/CINEMA/home" class="see_more border border-2 rounded" style="border: solid 1px rgb(242, 107, 56)!important;">
                                     Xem Thêm 
                                     <i class="ti-angle-right"></i>
                                 </a>

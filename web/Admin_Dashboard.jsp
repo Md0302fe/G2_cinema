@@ -25,7 +25,7 @@
     <body>
         <div id="wrapper">
             <!-- Sidebar -->
-            <%@include file="./Components/AdminNavbar.jsp" %> 
+             <%@include file="./Components/AdminNavbar.jsp" %> 
             <!-- Content Wrapper -->
             <div id="content-wrapper" class="d-flex flex-column">
                 <!-- Main Content --> 
