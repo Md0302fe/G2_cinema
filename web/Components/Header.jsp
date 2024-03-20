@@ -109,7 +109,7 @@
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </a>
                         </div>
-                        <input name="txt" id="searchInput" class="search-box abs b-shadow" type="text" placeholder="Search.."
+                        <input name="txt" id="searchInput" class="search-box abs b-shadow" type="text" placeholder="Nhập tên phim.."
                                onfocus="expandInput()" onblur="shrinkInput()">
                     </div>
                 </form>

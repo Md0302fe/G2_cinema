@@ -33,9 +33,9 @@
                     <form action="setupschedules" method="post">
                         <div class="container-fluid" style="padding-top: 32px ; min-height: 600px;">
                             <!-- Page Heading -->
-                            <h1 style="margin-left:100px">SET UP SCHEDULES</h1>
+                            <h1 style="margin-left:100px">Lên lịch chiếu</h1>
                             <div class="main_content1 font-semibold">
-                                <h1 style="margin-left:240px ; margin-bottom: 24px" >FOR CINEMA GG</h1>
+                                <h1 style="margin-left:240px ; margin-bottom: 24px" >Cho CINEMA GG</h1>
                                 <div class="movie_detail">
                                     <div class="main-left" style="text-align: center ">                                       
                                         <img id="selected-image" src="./Assets/Image/Movies_Image/og-image.jpg"
