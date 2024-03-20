@@ -15,6 +15,7 @@
         <link href="Assets/Styles/footer.css" rel="stylesheet" type="text/css"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link rel="stylesheet" href="./Assets/Styles/Profile.css">
         <title>Profile</title>
 
@@ -27,24 +28,41 @@
             <div class="profile">
                 <div class="text-center">
                     <img src="./Assets/Image/User/default.jpg" alt="Customer Avatar"
-                         class="img-fluid rounded-circle mb-3" height="100px" width="100px">
+                         class="img-fluid rounded-circle mb-3" height="100px" width="100px" " >
+
                 </div>
                 <div class="in4">
+                    <img src="https://cdn.galaxycine.vn/media/2020/5/15/s_1589511977688.png" alt="Avatar" style="margin-bottom: -35px;
+                         display: flex;
+                         width: 32px;
+                         margin-left: 77px; ">
                     <h4>${sessionScope.account.fullName}</h4>
+                    <div class="gift-container">
+                        <img src="https://www.galaxycine.vn/_next/static/media/icon-gift.190935e4.png" alt="Gift">
+                        <span>0 Stars  </span>
+                    </div>
                 </div>
+
+
 
                 <div class="information">
                     <div class="hotline">
                         <strong>HOTLINE hỗ trợ:</strong>
                         <strong id="info">23456789 </strong>
-
+                        <div class="fa-solid fa-chevron-right" style=" padding-left: 138px; cursor: pointer"></div> 
                     </div>
                     <div class="email">
                         <strong>Email :</strong><strong id="info">galaxy@.com</strong>
-
-
+                        <div class="fa-solid fa-chevron-right" style=" padding-left: 195px; cursor: pointer"></div> 
                     </div>
-                    <a href="Logout">Logout</a>
+                    <div class="Question">
+                        <strong>Câu hỏi thường gặp </strong>
+                        <div class="fa-solid fa-chevron-right" style=" padding-left: 195px; cursor: pointer" ></div> 
+                    </div>
+
+
+
+                    <a href="Logout">Đăng Xuất</a>
                 </div>
             </div>
 
@@ -54,8 +72,8 @@
             <div class="prolife3">
                 <span class="header-profile">
                     <input type="hidden" name="id" value="${sessionScope.account.id}">
-                    
-                    
+
+
                     <a href="History?id=${sessionScope.account.id}" style="height: 30px; border: 2px solid whitesmoke;">Lịch sử Giao Dịch</a>
                     <a href="ProfileServlet" style="height: 30px; border: 2px solid whitesmoke;">Thông Tin Cá Nhân</a>
                 </span>
@@ -75,7 +93,7 @@
                                        height: 40px;
                                        background-color: whitesmoke;" value="${sessionScope.account.fullName}" type="text" name="name" placeholder="Họ và Tên"><br>
                             </div>
-                            <div class="input-with-icon">Email :<br>
+                            <div class="input-with-icon">Email <br>
                                 <input style="border-radius: 5px;  width: 270px; height: 40px; background-color: whitesmoke;"
                                        type="email" name="email" value="${sessionScope.account.email}"><br>
                             </div>
