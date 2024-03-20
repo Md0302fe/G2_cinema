@@ -55,7 +55,7 @@
                                                 selectedImage.src = URL.createObjectURL(event.target.files[0]);
                                             });
                                         </script>
-                                      
+
                                     </div>                          
                                     <div class="main-right">
                                         <div class="movie_name">    
@@ -138,9 +138,9 @@
                                         <div class="boxDerectors V2" style="display: flex; align-items: center;">
                                             <label style="margin-right: 1.7rem;"> Mô Tả Nội Dung</label>
                                             <textarea type="text" placeholder="" size="95" name="Describel" rows="4" cols="60" style="resize: none">${m.description}</textarea>
-                                          
+
                                         </div>
-                                             <button type="submit" class="AddMovies-button">ADD</button>
+                                        <button type="submit" class="AddMovies-button">ADD</button>
                                     </div>
                                 </div>
                             </div>
@@ -153,8 +153,7 @@
                 <!-- Footer -->
                 <footer class="sticky-footer bg-white">
                     <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2020</span>
+                        <div class="copyright text-center my-auto">                           
                         </div>
                     </div>
                 </footer>

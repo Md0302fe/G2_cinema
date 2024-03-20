@@ -61,14 +61,20 @@ public class Admin_DeleteSchedules extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         AdminDAO dao = new AdminDAO();
-        String id = request.getParameter("id");
-        String date = (String) request.getSession().getAttribute("showDate");
-
         List<String> list = dao.get_All_Dates();
+        String currentDate = list.get(0);
 
-        request.setAttribute("datecheck", date);
-        
+        String scheId = request.getParameter("scheid");
+        dao.deleteSchedules(scheId);
+
+        String date = request.getParameter("id");
+        if (date == null) {
+            date = currentDate;
+        }
+        request.getSession().setAttribute("showDate", date);
+
         request.setAttribute("list", list);
+        request.setAttribute("datecheck", date);
         List<ScheduleDetail> schedulesList = dao.getScheduleById(date);
         request.setAttribute("schedulesList", schedulesList);
         request.getRequestDispatcher("Admin_Show_Date.jsp").forward(request, response);

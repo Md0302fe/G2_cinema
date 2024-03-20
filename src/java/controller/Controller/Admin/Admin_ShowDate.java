@@ -60,9 +60,16 @@ public class Admin_ShowDate extends HttpServlet {
             throws ServletException, IOException {
         AdminDAO dao = new AdminDAO();
         List<String> list = dao.get_All_Dates();
-        request.setAttribute("list", list);
+        String currentDate = list.get(0);
+
         String date = request.getParameter("id");
+        if (date == null){
+            date = currentDate;
+        }
+
         request.getSession().setAttribute("showDate", date);
+        
+        request.setAttribute("list", list);
         request.setAttribute("datecheck", date);
         List<ScheduleDetail> schedulesList = dao.getScheduleById(date);
         request.setAttribute("schedulesList", schedulesList);
