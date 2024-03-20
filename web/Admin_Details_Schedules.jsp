@@ -36,7 +36,7 @@
                             <div class="movie_detail">
                                 <div class="tb_showdate">
                                     <div class="content_list">
-                                        <h3 class="content_list_title bold">Details Schedules For <span
+                                        <h3 class="content_list_title bold">Lịch chiếu chi tiết ngày <span
                                                 style="color : green"
                                                 >-${requestScope.date}-</span></h3>
                                         <div class="table_row t_row" >                                          
@@ -46,9 +46,9 @@
                                                 <thead class="scheduleTableHead">
                                                     <tr>
                                                         <th class="th-no" style="text-align: center;">No.</th>
-                                                        <th class="th-name" style="text-align: center;">Movie Name</th>
-                                                        <th class="th-room" style="text-align: center;">Room</th>
-                                                        <th class="th-time" style="text-align: center;">Show Time</th>
+                                                        <th class="th-name" style="text-align: center;">Tên phim</th>
+                                                        <th class="th-room" style="text-align: center;">Phòng</th>
+                                                        <th class="th-time" style="text-align: center;">Thời gian</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody class="scheduleTableBody">

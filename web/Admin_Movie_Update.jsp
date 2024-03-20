@@ -37,7 +37,7 @@
                     <form action="UpdateMovie" method="post" enctype="multipart/form-data">
                         <div class="container-fluid">
                             <!-- Page Heading -->
-                            <h1 class="h3 mb-2 text-gray-800">UPDATE MOVIE</h1>
+                            <h1 class="h3 mb-2 text-gray-800">Chỉnh sửa phim</h1>
                             <div class="main_content1 font-semibold">
                                 <div class="movie_detail">
                                     <div class="main-left">
@@ -145,7 +145,7 @@
                                             <label style="margin-right: 1.7rem; ">Mô Tả Nội Dung</label>
                                             <textarea type="text" placeholder="" size="95" name="Describel" rows="4" cols="60" style="resize: none">${m.description}</textarea>
                                         </div>
-                                        <button type="submit" class="AddMovies-button">UPDATE</button>
+                                        <button type="submit" class="btn btn-success AddMovies-button px-5">Sửa</button>
                                     </div>
                                 </div>
                             </div>
@@ -177,8 +177,8 @@
                         // If files are not selected, prevent form submission and show an error
                         event.preventDefault();
                         Swal.fire({
-                            title: 'Error',
-                            text: 'Please select both an image and a trailer',
+                            title: 'Lỗi',
+                            text: 'Xin hãy chọn ảnh bìa và ảnh cho trailer của phim',
                             icon: 'error'
                         });
                     } else {

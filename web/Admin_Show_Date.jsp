@@ -38,7 +38,7 @@
                             <div class="movie_detail">
                                 <div class="tb_showdate">
                                     <div class="content_list">
-                                        <h3 class="content_list_title bold">LIST SCHEDULES</h3>
+                                        <h3 class="content_list_title bold">Danh Sách Lịch Chiếu</h3>
                                         <div class="table_row t_row" >
                                             <c:forEach items="${list}" var="date" varStatus="loop">
                                                 <c:if test="${loop.index % 6 == 0}">
@@ -64,10 +64,10 @@
                                                 <thead class="scheduleTableHead">
                                                     <tr>
                                                         <th class="th-no" style="text-align: center;">No.</th>
-                                                        <th class="th-name" style="text-align: center;">Movie Name</th>
-                                                        <th class="th-room" style="text-align: center;">Room</th>
-                                                        <th class="th-time" style="text-align: center;">Show Time</th>
-                                                        <th class="th-time" style="text-align: center;">Action</th>
+                                                        <th class="th-name" style="text-align: center;">Tên Phim</th>
+                                                        <th class="th-room" style="text-align: center;">Phòng</th>
+                                                        <th class="th-time" style="text-align: center;">Giờ Chiếu</th>
+                                                        <th class="th-time" style="text-align: center;"></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody class="scheduleTableBody">
@@ -80,8 +80,10 @@
                                                             <td style="text-align: center;">${s.room_name}</td>
                                                             <td style="text-align: center;">${s.schedules_showtime}</td>
 
-                                                            <td style="padding: 6px"> 
-                                                                <div style="
+                                                            <td style="padding: 6px; display: flex"> 
+                                                                <button type="button" class="w-100 mb-3 btn btn-primary" onclick="handleEdit('${s.schedules_id}')">Chỉnh sửa</button>
+                                                                <button type="button" class="w-100 btn btn-danger" onclick="confirmDelete('${s.schedules_id}')">Xóa</button>
+<!--                                                                <div style="
                                                                      color: white;
                                                                      padding: 2px 15px;
                                                                      background-color: #109702;
@@ -100,7 +102,7 @@
                                                                      color: white;
                                                                      padding: 2px 15px;
                                                                      border-radius: 5px;
-                                                                     " class="adjustSchedules hoverDelete" onclick="confirmDelete('${s.schedules_id}')">Delete</div>
+                                                                     " class="adjustSchedules hoverDelete" onclick="confirmDelete('${s.schedules_id}')">Delete</div>-->
                                                             </td>
                                                         </tr>
                                                     </c:forEach>
@@ -124,12 +126,12 @@
 
             function confirmDelete(id) {
                 Swal.fire({
-                    title: 'Are you sure?',
-                    text: 'This action cannot be undone!',
+                    title: 'Xác Nhận Xóa?',
+                    text: 'Hành động này không thể hoàn tác!',
                     icon: 'warning',
                     showCancelButton: true,
-                    confirmButtonText: 'Yes, delete it!',
-                    cancelButtonText: 'Cancel'
+                    confirmButtonText: 'Xác Nhận',
+                    cancelButtonText: 'Hủy'
                 }).then((result) => {
                     if (result.isConfirmed) {
                         // Nếu người dùng xác nhận muốn xóa, chuyển đến servlet

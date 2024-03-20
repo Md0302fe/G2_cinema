@@ -38,7 +38,7 @@
                         <div class="method">
                             <h2>Chọn phương thức thanh toán</h2>
                             <div class="payoo-payment">
-                                <input type="radio" name="payment" value="P ayoo" id="payoo" checked=""/>
+                                <input type="radio" name="payment" value="Payoo" id="payoo" checked=""/>
                                 <label for="payoo">
                                     <img src="./Assets/Image/Payment_icon/payoo.jpg" alt="payoo" />
                                 </label>

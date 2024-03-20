@@ -20,8 +20,8 @@
             <div class="col-12 col-md-6 col-lg-4" style="min-width: 500px;">
                 <div class="card bg-white mb-5 mt-5 border-0" style="box-shadow: 0 12px 15px rgba(0, 0, 0, 0.02);">
                     <div class="card-body p-5 text-center">
-                        <h4>Verify</h4>
-                        <p>Your code was sent to you via email</p>
+                        <h4>Xác minh Email</h4>
+                        <p>Mã xác minh đã được gửi đến email của bạn</p>
 
                         <form id="verificationForm" action="userverify" method="post">
                             <div class="otp-field mb-4">
@@ -34,13 +34,13 @@
                             </div>
                             <p style="color: red">${requestScope.error}</p>
                             <button type="button" class="btn btn-primary mb-3" onclick="submitForm()">
-                                Verify
+                                Xác minh
                             </button>
 
                         </form>
                         <p style="color: green">${requestScope.nof}</p>
                         <p class="resend text-muted mb-0">
-                            Didn't receive code? <a href="reVerify">Request again</a>
+                            Không nhận được mã? <a href="reVerify">Gửi lại</a>
                         </p>
                     </div>
                 </div>

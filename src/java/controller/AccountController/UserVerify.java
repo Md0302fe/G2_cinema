@@ -74,6 +74,7 @@ public class UserVerify extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         String digit1 = request.getParameter("digit1");
         String digit2 = request.getParameter("digit2");
         String digit3 = request.getParameter("digit3");
@@ -95,10 +96,10 @@ public class UserVerify extends HttpServlet {
             sesson.removeAttribute("verifyCode");
 
             request.setAttribute("redirectDelay", 5000);
-            request.setAttribute("mess", "Verify successfuly!");
+            request.setAttribute("mess", "Xác minh thành công!");
             request.getRequestDispatcher("success.jsp").forward(request, response);
         } else {
-            request.setAttribute("error", "Verify code is incorrect!");
+            request.setAttribute("error", "Mã xác minh không chính xác!");
             request.getRequestDispatcher("Verify.jsp").forward(request, response);
         }
 

@@ -30,7 +30,7 @@
                     <form action="AddMovie" method="post" enctype="multipart/form-data">
                         <div class="container-fluid">
                             <!-- Page Heading -->
-                            <h1 class="h3 mb-2 text-gray-800">ADD MOVIE</h1>
+                            <h1 class="h3 mb-2 text-gray-800">Thêm Phim</h1>
                             <div class="main_content1 font-semibold">
                                 <div class="movie_detail">
                                     <div class="main-left">
@@ -140,7 +140,7 @@
                                             <textarea type="text" placeholder="" size="95" name="Describel" rows="4" cols="60" style="resize: none">${m.description}</textarea>
 
                                         </div>
-                                        <button type="submit" class="AddMovies-button">ADD</button>
+                                            <button type="submit" class="btn btn-success AddMovies-button px-5">Thêm</button>
                                     </div>
                                 </div>
                             </div>

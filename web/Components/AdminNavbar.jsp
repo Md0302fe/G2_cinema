@@ -20,11 +20,11 @@
             <li class="nav-item">
                 <a style="margin-top: 16px" class="nav-link" href="admin">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Dashboard</span></a>
+                    <span>Tổng quan</span></a>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
-            <b style="color : #ffd4d4">Movie Management</b>
+            <b style="color : #ffd4d4">Quản lý phim</b>
             <!-- Heading -->
             <div class="sidebar-heading">
             </div>
@@ -32,37 +32,27 @@
             <li class="nav-item">
                 <a class="nav-link" href="addMovie">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Add Movie</span></a>
+                    <span>Thêm phim</span></a>
             </li>
             <li class="nav-item ">
                 <a class="nav-link" href="ListMovie">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Management Movies</span></a>
+                    <span>Danh sách phim</span></a>
             </li>        
             <!-- Divider -->
             <hr class="sidebar-divider">
-            <b style="color : #ffd4d4">Schedules Management</b>
+            <b style="color : #ffd4d4">Quản lý lịch chiếu</b>
             <li class="nav-item ">
                 <a class="nav-link" href="setupschedules">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Set Up Schedules</span></a>
+                    <span>Lên lịch chiếu</span></a>
             </li>
-
+            
             <li class="nav-item ">
-                <div class="dropdown">
-                    <button class="dropbtn">Show Schedules</button>
-                    <div class="dropdown-content">
-                        <a href="Admin_ShowDate">Show Schedules</a>
-                        <a href="Admin_ShowDate">Update Schedules</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item ">
-                <a class="nav-link" href="detailschedules">
+                <a class="nav-link" href="Admin_ShowDate">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Details Schedules</span></a>
-            </li>
+                    <span>Danh sách lịch chiếu</span></a>
+            </li>   
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -71,5 +61,34 @@
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
         </ul>
+
+        <script>
+            function toggleDropdown(category) {
+                var dropdown = document.getElementById(category + 'Dropdown');
+                var parentLi = dropdown.parentNode;
+
+                // Kiểm tra trạng thái hiển thị của dropdown
+                var isDropdownVisible = dropdown.style.display === 'block';
+
+                // Đóng tất cả các dropdown
+                closeAllDropdowns();
+
+                // Mở hoặc đóng dropdown tùy thuộc vào trạng thái trước đó
+                dropdown.style.display = isDropdownVisible ? 'none' : 'block';
+
+                // Thêm hoặc xóa lớp 'highlight' tùy thuộc vào trạng thái hiển thị của dropdown
+                parentLi.classList.toggle('highlight', dropdown.style.display === 'block');
+
+                // Chọn thẻ <a> con đầu tiên của thẻ <li>
+                var firstAnchor = parentLi.querySelector('a');
+
+                // Đặt màu của thẻ đóng lại thành màu mặc định
+                if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+                    firstAnchor.style.color = '#000';
+                } else {
+                    firstAnchor.style.color = '#fd841f';
+                }
+            }
+        </script>
     </body>
 </html>
