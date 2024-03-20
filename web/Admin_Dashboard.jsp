@@ -38,7 +38,7 @@
                                     <div class="card">
                                         <div class="card-body p-3">
                                             <div class="row">
-                                                <div class="col-8">
+                                                <div class="col-8" style="padding-bottom: 24px;">
                                                     <div class="numbers">
                                                         <p class="text-sm mb-0 text-capitalize font-weight-bold">Doanh thu trong ngày</p>
                                                         <h5 class="font-weight-bolder mb-0">
@@ -86,7 +86,7 @@
                                     <div class="card">
                                         <div class="card-body p-3">
                                             <div class="row">
-                                                <div class="col-8">
+                                                <div class="col-8" style="padding-bottom: 24px;">
                                                     <div class="numbers">
                                                         <p class="text-sm mb-0 text-capitalize font-weight-bold">Tổng số người dùng</p>
                                                         <h5 class="font-weight-bolder mb-0">
