@@ -581,7 +581,9 @@ public class AdminDAO extends DBContext {
                 + "      ,[language] = ?\n"
                 + "      ,[movie_description] = ?\n"
                 + "      ,[image] = ?\n"
-                + "      ,[trailer] = ?\n"
+                + "      ,[trailer_img] = ?\n"
+                + "      ,[trailer_link] = ?\n"
+                + "      ,[movie_status] = ?\n"
                 + " WHERE [movie_id] = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -597,7 +599,9 @@ public class AdminDAO extends DBContext {
             st.setString(10, m.getDescription());
             st.setString(11, m.getMovie_img());
             st.setString(12, m.getMovie_trailer());
-            st.setInt(13, id);
+            st.setString(13, m.getTrailer_link());
+            st.setString(14, "1");
+            st.setInt(15, id);
             st.executeQuery();
         } catch (SQLException e) {
             System.out.println(e);
