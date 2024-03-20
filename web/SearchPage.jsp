@@ -137,7 +137,7 @@
             <div class="Main_Body grid">
                 <div class="Main_Content grid wide">
                     <div class="navigation-body">
-                        <h1 class="navi-body_title">Found ${requestScope.resultNumber} results</h1>
+                        <h1 class="navi-body_title">${requestScope.resultNumber} Kết Quả</h1>
                     </div>
 
                     <div class="main_content-movies">
@@ -321,7 +321,7 @@
                                 selectedMovieId = movie_id; // Lưu giá trị của movie_id vào biến toàn cục
                                 $.ajax({
                                     type: "GET",
-                                    url: "/CINEMA/bookingsvl",
+                                    url: "/CINEMA/loaddate",
                                     data: {
                                         movieId: movie_id,
                                     },

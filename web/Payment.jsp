@@ -7,6 +7,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link href="Assets/Styles/payment.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito Sans">
         <title>Payment</title>
     </head>
     <body>
@@ -80,7 +81,7 @@
                         <div class="payment-info">
                             <div class="movie-info">
                                 <!--Chứa ảnh của phim đang mua-->
-                                <img src="./Assets/Image/Payment_icon/movie-1.jpg" alt="movie" />
+                                <img src="./Assets/Image/Movie_Image_Vip/${movie.movie_img}" alt="movie" />
                                 <div class="info">
                                     <h3>${movie.name}</h3>
                                     <p>${list_category}</p>

@@ -21,7 +21,7 @@
 
     </head>
     <body class="img js-fullheight" style="background-image: url(Assets/Image/Login/bg.jpg);">
-        <section class="ftco-section">
+        <section class="ftco-section-reg">
             <div class="text-md-center ml-4">
                 <a class="mr-md-z return-btn" href="HomePage.jsp"> <i class="fa-solid fa-angle-left"></i>  Trở về</a>
             </div>

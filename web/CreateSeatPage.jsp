@@ -224,7 +224,7 @@
                                         <div>Ghế đang chọn</div>
                                     </div>
                                 </div>
-                                <div class="status_right">
+<!--                                <div class="status_right">
                                     <div class="VIP_seat">
                                         <div class="VIP border border border-warning border-1 rounded-3">
                                         </div>
@@ -234,7 +234,7 @@
                                         <div class="single border border-1 rounded-3"></div>
                                         <div>Ghế đơn</div>
                                     </div>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                     </div>

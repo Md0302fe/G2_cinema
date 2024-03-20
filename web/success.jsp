@@ -51,7 +51,7 @@
                 <i class="checkmark">✓</i>
             </div>
             <h1>Thành công</h1> 
-            <p>${requestScope.mess}<br/>Trở về trang chủ sau 5 giâyy</p>
+            <p>${requestScope.mess}<br/>Trở về trang chủ sau 5 giây</p>
         </div>
 
         <script type="text/javascript">

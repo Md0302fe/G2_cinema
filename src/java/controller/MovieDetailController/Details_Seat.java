@@ -106,6 +106,10 @@ public class Details_Seat extends HttpServlet {
             ArrayList<String> listSeats = b.isValist_Seats(date, choiceTime, id_raw);
             request.setAttribute("listSeats", listSeats);
 
+            List<Movie> m = dao.getListMovie();
+            List<Movie> movieIncoming = dao.getAllMovieIncoming();
+            request.setAttribute("listMovie", m);
+            request.setAttribute("movieIncoming", movieIncoming);
             request.setAttribute("id_raw", id_raw);
             request.setAttribute("roomName", roomName);
             request.setAttribute("dayOfWeek", dayOfWeek);
@@ -133,7 +137,6 @@ public class Details_Seat extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-       
     }
 
     /**

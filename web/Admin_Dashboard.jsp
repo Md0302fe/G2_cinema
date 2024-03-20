@@ -166,7 +166,7 @@
                                                                 </g>
                                                                 </svg>
                                                             </div>
-                                                            <p class="text-xs mt-1 mb-0 font-weight-bold">Tổng số suất chiếu trong ngày</p>
+                                                            <p class="text-xs mt-1 mb-0 font-weight-bold" style="text-wrap: nowrap;">Tổng số suất chiếu trong ngày</p>
                                                         </div>
                                                         <h4 class="font-weight-bolder">${requestScope.totalSchedule}</h4>
                                                     </div>
