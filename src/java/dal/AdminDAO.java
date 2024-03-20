@@ -659,7 +659,9 @@ public class AdminDAO extends DBContext {
 
     public List<String> get_All_Dates() {
         List<String> dateList = new ArrayList<>();
-        String sql = "SELECT * FROM [dbo].[Release_date]";
+        String sql = "SELECT *\n"
+                + "FROM [dbo].[Release_date]\n"
+                + "WHERE CAST(show_date AS date) >= CAST(GETDATE() AS date);";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
@@ -767,6 +769,17 @@ public class AdminDAO extends DBContext {
             System.out.println("ERROR IN getTotalMoney " + e);
         }
         return total;
+    }
+
+    public void deleteSchedules(String id) {
+        String sql = "delete Schedules where schedules_id = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, id);
+            st.executeQuery();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 
     public String getTotalMovie() {

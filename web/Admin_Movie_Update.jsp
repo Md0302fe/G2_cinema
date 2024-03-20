@@ -79,8 +79,8 @@
                                                     <i class="fa-regular fa-clock">
                                                     </i>
                                                     <label for="">Thời lượng</label>
-                                                    <input value="${m.duration}" type="text" size="3" placeholder="........"
-                                                           style="padding-left: 20px; margin-left: 4px;" required="" name="Duration">
+                                                    <input value="${m.duration}" type="number" placeholder="........"
+                                                           style="padding: 0 12px; margin-left: 4px; width: 82px" required="" name="Duration">
                                                     <span style="margin-left: 4px;">Phút</span>
                                                 </p>
                                             </div>
@@ -154,6 +154,12 @@
                     </form>
                     <!-- /.container-fluid -->
                 </div>
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">                           
+                        </div>
+                    </div>
+                </footer>
                 <!-- End of Main Content -->
             </div>
             <!-- End of Content Wrapper -->

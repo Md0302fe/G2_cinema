@@ -133,7 +133,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         // Nếu người dùng xác nhận muốn xóa, chuyển đến servlet
-                        window.location.href = "deleteSchedules?id=" + id;
+                        window.location.href = "deleteSchedules?scheid=" + id;
                     }
                 });
             }

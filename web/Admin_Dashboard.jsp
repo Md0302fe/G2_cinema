@@ -25,7 +25,7 @@
     <body>
         <div id="wrapper">
             <!-- Sidebar -->
-             <%@include file="./Components/AdminNavbar.jsp" %> 
+            <%@include file="./Components/AdminNavbar.jsp" %> 
             <!-- Content Wrapper -->
             <div id="content-wrapper" class="d-flex flex-column">
                 <!-- Main Content --> 
@@ -213,6 +213,12 @@
                         </div>
                     </main>
                 </div>
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">                           
+                        </div>
+                    </div>
+                </footer>
                 <!-- End of Main Content -->
             </div>
             <!-- End of Content Wrapper -->

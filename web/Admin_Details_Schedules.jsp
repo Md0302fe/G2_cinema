@@ -36,7 +36,9 @@
                             <div class="movie_detail">
                                 <div class="tb_showdate">
                                     <div class="content_list">
-                                        <h3 class="content_list_title bold">SCHEDULES DETAILS FOR ${date}</h3>
+                                        <h3 class="content_list_title bold">Details Schedules For <span
+                                                style="color : green"
+                                                >-${requestScope.date}-</span></h3>
                                         <div class="table_row t_row" >                                          
                                         </div>
                                         <div class="main-content-table">
@@ -69,6 +71,12 @@
                         </div>
                     </div>
                 </div>
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">                           
+                        </div>
+                    </div>
+                </footer>
             </div>
         </div>
         <script src="Assets/JS/Admin_ShowDate.js"></script>                               
