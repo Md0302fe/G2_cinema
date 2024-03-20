@@ -95,17 +95,13 @@ public class home extends HttpServlet {
         // Get movieId from request parameter
         String movieId = request.getParameter("movieId");
         System.out.println("ID = " + movieId);
-
         // lay ra ngay hien tai
         LocalDate today = LocalDate.now();
         DateTimeFormatter data_format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String today_parse = data_format.format(today);
-
         // Get list of dates for booking based on movieId 
         ArrayList<String> Dates = book.getShowDateForBooking(movieId, today_parse);
-
         request.setAttribute("Dates", Dates);
-
         // Forward hoặc redirect đến JSP
         request.getRequestDispatcher("HomePage.jsp").forward(request, response);
     }

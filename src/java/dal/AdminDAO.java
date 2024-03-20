@@ -137,9 +137,9 @@ public class AdminDAO extends DBContext {
 
     public List<Movie> getListMovie() {
         List<Movie> listMovie = new ArrayList<>();
-
-        String sql = "SELECT * FROM [dbo].[Movie]"
-                + "WHERE movie_status = 1 AND release_date <= '2024-05-01' ";
+        String sql = "SELECT * FROM [dbo].[Movie]\n"
+                + "WHERE movie_status = 1 AND release_date <= DATEADD(month, 2, DATEADD(day, 1 - DAY(GETDATE()), CAST(GETDATE() AS DATE)))\n"
+                + "ORDER BY movie_id DESC";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
@@ -228,11 +228,12 @@ public class AdminDAO extends DBContext {
     }
 
     public ArrayList<Movie> getAllMovieIncoming() {
-        String sql = "select *from movie WHERE [movie_status] = ? AND [release_date] >= '2024-05-01'";
+        String sql = "SELECT * FROM [dbo].[Movie]\n"
+                + "WHERE movie_status = 1 AND release_date >= DATEADD(month, 2, DATEADD(day, 1 - DAY(GETDATE()), CAST(GETDATE() AS DATE)))\n"
+                + "ORDER BY movie_id DESC";
         ArrayList<Movie> listMovie = new ArrayList<>();
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setString(1, "1");
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Movie movie = new Movie(
