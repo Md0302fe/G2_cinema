@@ -48,7 +48,7 @@
                                             <input id="imageInput" class="select-img" type="file" accept="image/*" name="movie_trailer" required>
                                              <p class="text-danger">${requestScope.errorImg2}</p>
                                             <label style="font-weight: 800" >Thêm đường dẫn</label>
-                                            <input class="select-trailer" type="text" name="trailer_link" required size="35" value="${requestScope.trailer_link}">
+                                            <input class="select-trailer" type="text" name="trailer_link" required size="35" value="${requestScope.trailer_link}" style="max-width: 300px;">
                                             <!-- <i class="fa-solid fa-hand-pointer icon"></i> -->
                                         </div>
                                         <script>
@@ -143,7 +143,8 @@
                                             <textarea type="text" placeholder="" size="95" name="Describel" rows="4" cols="60" style="resize: none">${requestScope.describel}</textarea>
 
                                         </div>
-                                            <button type="submit" class="btn btn-success AddMovies-button px-5">Thêm</button>
+                                            <p class="text-success" style="margin-left: 21rem; margin-top: 20px">${requestScope.success}</p>
+                                            <button type="submit" class="btn btn-success AddMovies-button px-5" style="margin-top: 0; margin-left: 44%;">Thêm</button>
                                     </div>
                                 </div>
                             </div>
