@@ -102,12 +102,12 @@
                         <h2 id="galaxyMovieTitle">Movie Title</h2>
                     </div>
                     <div>
-                        <p>Galaxy: <span id="galaxyLocation"></span></p>
+                        <p style="font-weight: bold;">Galaxy: <span id="galaxyLocation"></span></p>
                     </div>
                     <div>
-                        <p>Suất: <span id="galaxyShowtime"> </span> </p>
-                        <!-- Thêm đường gạch đứt sau phần suất -->
-                        <hr class="separator-line">
+                        <p style="font-weight: bold;">Ngày: <span id="galaxyShowtime"> </span> </p>
+<!--                         Thêm đường gạch đứt sau phần suất 
+                        <hr class="separator-line">-->
                     </div>
 
                 </div>

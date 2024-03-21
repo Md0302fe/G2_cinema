@@ -359,6 +359,7 @@
                     }
                 });
             }
+            
             function sendSelectedDateId(date_id) {
                 selectedDates = date_id;
                 // Sử dụng giá trị của biến toàn cục selectedMovieId
