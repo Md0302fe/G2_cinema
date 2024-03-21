@@ -223,11 +223,11 @@
                             </div>
                         </div>
                     </div>
-<!--                    <div class="more_movies">
-                        <span class="more_movies_span" onclick="hidden_blog()">Xem Thêm
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </span>
-                    </div>-->
+                    <!--                    <div class="more_movies">
+                                            <span class="more_movies_span" onclick="hidden_blog()">Xem Thêm
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                            </span>
+                                        </div>-->
                     <div class="Blog_content" id="blog">
                         <div class="handel_title">
                             <h1 class="navi-body_title-V">GÓC ĐIỆN ẢNH</h1>
@@ -315,70 +315,74 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script>
-                            var selectedMovieId;
-                            var selectedTimeS;
-                            function sendSelectedMovieId(movie_id) {
-                                selectedMovieId = movie_id; // Lưu giá trị của movie_id vào biến toàn cục
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/CINEMA/loaddate",
-                                    data: {
-                                        movieId: movie_id,
-                                    },
-                                    success: function (data) {
-                                        var row = document.getElementById("date_option");
-                                        row.innerHTML = data;
-                                    }
-                                });
-                            }
+                                            var selectedMovieId;
+                                            var selectedTimeS;
+                                            var selectedDates;
+                                            function sendSelectedMovieId(movie_id) {
+                                                selectedMovieId = movie_id; // Lưu giá trị của movie_id vào biến toàn cục
+                                                $.ajax({
+                                                    type: "GET",
+                                                    url: "/CINEMA/loaddate",
+                                                    data: {
+                                                        movieId: movie_id,
+                                                    },
+                                                    success: function (data) {
+                                                        var row = document.getElementById("date_option");
+                                                        row.innerHTML = data;
+                                                    }
+                                                });
+                                            }
 
-                            function sendSelectedDateId(date_id) {
-                                // Sử dụng giá trị của biến toàn cục selectedMovieId                                       
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/CINEMA/loadtime",
-                                    data: {
-                                        dateId: date_id,
-                                        movieId: selectedMovieId
-                                    },
-                                    success: function (data) {
-                                        var row = document.getElementById("option_time");
-                                        row.innerHTML = data;
-                                    }
-                                });
-                            }
+                                            function sendSelectedDateId(date_id) {
+                                                selectedDates = date_id;
+                                                // Sử dụng giá trị của biến toàn cục selectedMovieId
+                                                console.log(date_id);
+                                                $.ajax({
+                                                    type: "GET",
+                                                    url: "/CINEMA/loadtime",
+                                                    data: {
+                                                        dateId: date_id,
+                                                        movieId: selectedMovieId
+                                                    },
+                                                    success: function (data) {
+                                                        var row = document.getElementById("option_time");
+                                                        row.innerHTML = data;
+                                                    }
+                                                });
+                                            }
 
-                            function redirectMovie(movieId) {
-                                var url = "/CINEMA/MovieDetailServlet?id=" + movieId;
-                                // Chuyển hướng đến trang /seat với các thông tin đã chọn
-                                window.location.href = url;
-                            }
+                                            function redirectMovie(movieId) {
+                                                var url = "/CINEMA/MovieDetailServlet?id=" + movieId;
+                                                // Chuyển hướng đến trang /seat với các thông tin đã chọn
+                                                window.location.href = url;
+                                            }
 
-                            function slick(movieid) {
-                                var url = "/CINEMA/MovieDetailServlet?id=" + movieid;
-                                // Chuyển hướng đến trang /seat với các thông tin đã chọn
-                                window.location.href = url;
-                            }
+                                            function slick(movieid) {
+                                                var url = "/CINEMA/MovieDetailServlet?id=" + movieid;
+                                                // Chuyển hướng đến trang /seat với các thông tin đã chọn
+                                                window.location.href = url;
+                                            }
 
-                            function hidden_blog() {
-                                document.querySelector(".Blog_content").classList.add("hiddent_blog");
-                            }
+                                            function hidden_blog() {
+                                                document.querySelector(".Blog_content").classList.add("hiddent_blog");
+                                            }
 
-                            function sendSelectedTimeId(time) {
-                                selectedTimeS = time;
-                                console.log("selectedTimeS : " + selectedTimeS);
-                            }
+                                            function sendSelectedTimeId(time) {
+                                                selectedTimeS = time;
+                                                console.log("selectedTimeS : " + selectedTimeS);
+                                            }
 
-                            function sendQuickBooking() {
-                                // Lấy thông tin từ các thẻ HTML
-                                var selectedDate = document.querySelector('.option_date').innerText;
-                                // Xây dựng URL với thông tin đã lấy được
-                                var url = "/CINEMA/seat?id=" + encodeURIComponent(selectedMovieId) +
-                                        "&date=" + encodeURIComponent(selectedDate) +
-                                        "&time=" + selectedTimeS;
-                                // Chuyển hướng đến trang /seat với các thông tin đã chọn
-                                window.location.href = url;
-                            }
+                                            function sendQuickBooking() {
+                                                // Lấy thông tin từ các thẻ HTML
+                                                var selectedDate = document.querySelector('.option_date').innerText;
+                                                console.log(selectedDate);
+                                                // Xây dựng URL với thông tin đã lấy được
+                                                var url = "/CINEMA/seat?id=" + encodeURIComponent(selectedMovieId) +
+                                                        "&date=" + selectedDates +
+                                                        "&time=" + selectedTimeS;
+                                                // Chuyển hướng đến trang /seat với các thông tin đã chọn
+                                                window.location.href = url;
+                                            }
 
         </script>
         <script type="text/javascript">

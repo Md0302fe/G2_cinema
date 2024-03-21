@@ -89,9 +89,9 @@
                                             <div class="rate">
                                                 <p class="movie_point" style="margin-left: 5px">
                                                     <i class="fa-solid fa-star"></i>
-                                                    <label for="birthday">Rate</label>
-                                                    <input type="text" id="birthday" style="margin-left: 4px; padding-left: 19px; padding-right: 6px" size="3"
-                                                           placeholder="vote" name="Rate" required="" value="${requestScope.rate_str}">
+                                                    <label for="birthday">Đánh Giá</label>
+                                                    <input min="0" max="10" type="number" id="birthday" style="margin-left: 4px; padding-left: 19px; padding-right: 6px" size="3"
+                                                            name="Rate" required="" value="${requestScope.rate_str}">
                                                 </p>
                                             </div>
                                         </div>

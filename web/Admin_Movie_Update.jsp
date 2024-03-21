@@ -96,9 +96,9 @@
                                             <div class="rate">
                                                 <p class="movie_point">
                                                     <i class="fa-solid fa-star"></i>
-                                                    <label for="birthday">Rate</label>
-                                                    <input value="${m.rate}" type="text" id="birthday" style="margin-left: 4px; padding-left: 16px;" size="3"
-                                                           placeholder="vote" name="Rate" required="">
+                                                    <label for="birthday">Đánh Giá</label>
+                                                    <input value="${m.rate}" min="0" max="10" type="number" id="birthday" style="margin-left: 4px; padding-left: 16px;" size="3"
+                                                         name="Rate" required="">
                                                 </p>
                                             </div>
                                         </div>
@@ -148,7 +148,7 @@
                                             <label style="margin-right: 1.7rem; ">Mô Tả Nội Dung</label>
                                             <textarea type="text" placeholder="" size="95" name="Describel" rows="4" cols="60" style="resize: none">${m.description}</textarea>
                                         </div>
-                                        <button type="submit" class="btn btn-success AddMovies-button px-5">Sửa</button>
+                                        <button type="submit" class="btn btn-success AddMovies-button px-5" style="margin-left: 36%;">Sửa</button>
                                     </div>
                                 </div>
                             </div>
