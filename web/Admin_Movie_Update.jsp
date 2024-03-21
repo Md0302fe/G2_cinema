@@ -37,13 +37,14 @@
                     <form action="UpdateMovie" method="post" enctype="multipart/form-data">
                         <div class="container-fluid">
                             <!-- Page Heading -->
-                            <h1 class="h3 mb-2 text-gray-800">UPDATE MOVIE</h1>
+                            <h1 class="h3 mb-2 text-gray-800">Chỉnh sửa phim</h1>
                             <div class="main_content1 font-semibold">
                                 <div class="movie_detail">
                                     <div class="main-left">
                                         <div class="select-Image">
                                             <label style="font-weight:800" >Chọn ảnh</label>
                                             <input id="imageInput" class="select-img" type="file" accept="image/*" name="movie_image" required>
+                                            <p class="text-danger">${requestScope.errorImg1}</p>
                                             <!-- <i class="fa-solid fa-hand-pointer icon"></i> -->
                                         </div>
                                         <img id="selected-image" src="./Assets/Image/Movie_Image_Vip/${m.movie_img}"
@@ -51,9 +52,10 @@
                                         <hr>                           
                                         <div class="select-Image">
                                             <label style="font-weight: 800" >Chọn trailer</label>
-                                            <input id="imageInput" class="select-img" type="file" accept="image/*" name="movie_image" required>
+                                            <input id="imageInput" class="select-img" type="file" accept="image/*" name="movie_trailer" required>
+                                            <p class="text-danger">${requestScope.errorImg2}</p>
                                             <label style="font-weight: 800" >Thêm đường dẫn</label>
-                                            <input class="select-trailer" type="text" name="trailer_link" required>
+                                            <input class="select-trailer" type="text" name="trailer_link" required value="${m.trailer_link}">
                                             <!-- <i class="fa-solid fa-hand-pointer icon"></i> -->
                                         </div>
                                         <script>
@@ -79,8 +81,8 @@
                                                     <i class="fa-regular fa-clock">
                                                     </i>
                                                     <label for="">Thời lượng</label>
-                                                    <input value="${m.duration}" type="text" size="3" placeholder="........"
-                                                           style="padding-left: 20px; margin-left: 4px;" required="" name="Duration">
+                                                    <input value="${m.duration}" type="number" placeholder="........" min="60" max="300"
+                                                           style="padding: 0 12px; margin-left: 4px; width: 82px" required="" name="Duration">
                                                     <span style="margin-left: 4px;">Phút</span>
                                                 </p>
                                             </div>
@@ -88,14 +90,15 @@
                                                 <p class="movie_calendar">
                                                     <label for="release">Ngày khởi chiếu</label>
                                                     <input value="${m.release_date}" type="date" id="release" style="margin-left: 4px" required name="releaseDate">
+                                                    <p class="text-danger">${requestScope.errorDate}</p>
                                                 </p>
                                             </div>
                                             <div class="rate">
                                                 <p class="movie_point">
                                                     <i class="fa-solid fa-star"></i>
-                                                    <label for="birthday">Rate</label>
-                                                    <input value="${m.rate}" type="text" id="birthday" style="margin-left: 4px; padding-left: 16px;" size="3"
-                                                           placeholder="vote" name="Rate" required="">
+                                                    <label for="birthday">Đánh Giá</label>
+                                                    <input value="${m.rate}" min="0" max="10" type="number" id="birthday" style="margin-left: 4px; padding-left: 16px;" size="3"
+                                                         name="Rate" required="">
                                                 </p>
                                             </div>
                                         </div>
@@ -145,7 +148,7 @@
                                             <label style="margin-right: 1.7rem; ">Mô Tả Nội Dung</label>
                                             <textarea type="text" placeholder="" size="95" name="Describel" rows="4" cols="60" style="resize: none">${m.description}</textarea>
                                         </div>
-                                        <button type="submit" class="AddMovies-button">UPDATE</button>
+                                        <button type="submit" class="btn btn-success AddMovies-button px-5" style="margin-left: 36%;">Sửa</button>
                                     </div>
                                 </div>
                             </div>
@@ -154,6 +157,12 @@
                     </form>
                     <!-- /.container-fluid -->
                 </div>
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">                           
+                        </div>
+                    </div>
+                </footer>
                 <!-- End of Main Content -->
             </div>
             <!-- End of Content Wrapper -->
@@ -171,8 +180,8 @@
                         // If files are not selected, prevent form submission and show an error
                         event.preventDefault();
                         Swal.fire({
-                            title: 'Error',
-                            text: 'Please select both an image and a trailer',
+                            title: 'Lỗi',
+                            text: 'Xin hãy chọn ảnh bìa và ảnh cho trailer của phim',
                             icon: 'error'
                         });
                     } else {

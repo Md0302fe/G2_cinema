@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="modal" id="videoModal" onclick="closeModal()">
-                <iframe class="rounded-3" width="560" height="315" src="${movie.trailer_link}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <iframe class="rounded-3" width="560" height="315" src="${movie.trailer_link}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
                 <div class="all_content grid wide">
                     <div class="movie_info">
@@ -142,7 +142,7 @@
                             </div>
 
                             <div class="see_more_button">
-                                <a href="" class="see_more border border-2 rounded" style="border: solid 1px rgb(242, 107, 56)!important;">
+                                <a href="/CINEMA/home" class="see_more border border-2 rounded" style="border: solid 1px rgb(242, 107, 56)!important;">
                                     Xem Thêm 
                                     <i class="ti-angle-right"></i>
                                 </a>
@@ -193,8 +193,8 @@
                         // có class là showtime_list -> tìm thẻ có tên date_span và lấy giá trị ra .
                         // var date = $(this).closest('.showtime_list').find('.date_span').text();    
                     });
-                    
-                   
+
+
         </script>
         <%@include file='./Components/Footer.jsp' %>
     </body>

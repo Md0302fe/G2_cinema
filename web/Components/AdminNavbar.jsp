@@ -14,56 +14,83 @@
     <body>
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="home">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">Cinema - GG<sup>2</sup></div>
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="home" style=" margin: 26px 0px 10px 0;">              
+                <img style="width: 120px" src="./Assets/Image/Header_Image/logo.png" alt="logo">
             </a>
+            <li class="nav-item">
+                <a style="margin-top: 16px" class="nav-link" href="admin">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Tổng quan</span></a>
+            </li>
             <!-- Divider -->
-            <hr class="sidebar-divider">
-            <b style="color : #ffd4d4">Movie Management</b>
+
+            <hr class="sidebar-divider" style="margin: 16px 0px">
+            <b style="color : #ffd4d4; margin-left: 28px; margin-bottom: 10px">Quản lý phim</b>
             <!-- Heading -->
             <div class="sidebar-heading">
             </div>
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="AdminHomeServlet">
+                <a class="nav-link" href="addMovie">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Add Movie</span></a>
+                    <span>Thêm phim</span></a>
             </li>
             <li class="nav-item ">
                 <a class="nav-link" href="ListMovie">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Management Movies</span></a>
+                    <span>Danh sách phim</span></a>
             </li>        
             <!-- Divider -->
-            <hr class="sidebar-divider">
-            <b style="color : #ffd4d4">Schedules Management</b>
+
+            <hr class="sidebar-divider" style="margin: 16px 0px;">
+            <b style="color : #ffd4d4; margin-left: 28px; margin-bottom: 20px;">Quản lý lịch chiếu</b>
             <li class="nav-item ">
                 <a class="nav-link" href="setupschedules">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Set Up Schedules</span></a>
+                    <span>Lên lịch chiếu</span></a>
             </li>
-
+            
             <li class="nav-item ">
                 <a class="nav-link" href="Admin_ShowDate">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Show Schedules</span></a>
-            </li>
-
-            <li class="nav-item ">
-                <a class="nav-link" href="detailschedules">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Details Schedules</span></a>
-            </li>
+                    <span>Danh sách lịch chiếu</span></a>
+            </li>   
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
             <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
+<!--            <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
+            </div>-->
         </ul>
+
+        <script>
+            function toggleDropdown(category) {
+                var dropdown = document.getElementById(category + 'Dropdown');
+                var parentLi = dropdown.parentNode;
+
+                // Kiểm tra trạng thái hiển thị của dropdown
+                var isDropdownVisible = dropdown.style.display === 'block';
+
+                // Đóng tất cả các dropdown
+                closeAllDropdowns();
+
+                // Mở hoặc đóng dropdown tùy thuộc vào trạng thái trước đó
+                dropdown.style.display = isDropdownVisible ? 'none' : 'block';
+
+                // Thêm hoặc xóa lớp 'highlight' tùy thuộc vào trạng thái hiển thị của dropdown
+                parentLi.classList.toggle('highlight', dropdown.style.display === 'block');
+
+                // Chọn thẻ <a> con đầu tiên của thẻ <li>
+                var firstAnchor = parentLi.querySelector('a');
+
+                // Đặt màu của thẻ đóng lại thành màu mặc định
+                if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+                    firstAnchor.style.color = '#000';
+                } else {
+                    firstAnchor.style.color = '#fd841f';
+                }
+            }
+        </script>
     </body>
 </html>

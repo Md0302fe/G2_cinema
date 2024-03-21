@@ -7,6 +7,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link href="Assets/Styles/payment.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito Sans">
         <title>Payment</title>
     </head>
     <body>
@@ -17,7 +18,7 @@
                         <img src="./Assets/Image/Payment_icon/logo.png" alt="logo" />
                     </a>
                     <a href="home">
-                        <p>Hủy giao dịch <i class="fa-solid fa-xmark"></i></p>
+                        <p> Hủy giao dịch <i class="fa-solid fa-xmark"></i></p>
                     </a>
                 </nav>
             </div>
@@ -38,7 +39,7 @@
                         <div class="method">
                             <h2>Chọn phương thức thanh toán</h2>
                             <div class="payoo-payment">
-                                <input type="radio" name="payment" value="P ayoo" id="payoo" checked=""/>
+                                <input type="radio" name="payment" value="Payoo" id="payoo" checked=""/>
                                 <label for="payoo">
                                     <img src="./Assets/Image/Payment_icon/payoo.jpg" alt="payoo" />
                                 </label>
@@ -80,7 +81,7 @@
                         <div class="payment-info">
                             <div class="movie-info">
                                 <!--Chứa ảnh của phim đang mua-->
-                                <img src="./Assets/Image/Payment_icon/movie-1.jpg" alt="movie" />
+                                <img src="./Assets/Image/Movie_Image_Vip/${movie.movie_img}" alt="movie" />
                                 <div class="info">
                                     <h3>${movie.name}</h3>
                                     <p>${list_category}</p>

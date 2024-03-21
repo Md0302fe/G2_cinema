@@ -60,6 +60,7 @@ public class ResendVerifyCodeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         session.removeAttribute("verifyCode");
 
@@ -72,8 +73,8 @@ public class ResendVerifyCodeServlet extends HttpServlet {
 
         if (test) {
             session.setAttribute("verifyCode", verifyCode);
-
-            response.sendRedirect("Verify.jsp");
+            request.setAttribute("nof", "Mã xác minh mới đã được gửi đến email của bạn");
+            request.getRequestDispatcher("Verify.jsp").forward(request, response);
         }
     }
 

@@ -10,7 +10,10 @@ import java.util.Arrays;
 import java.util.Random;
 
 import java.sql.SQLException;
+
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +21,7 @@ import model.Date;
 import model.Movie;
 import model.Room;
 import model.ScheduleDetail;
+import model.SchedulesDetail;
 
 /**
  * THIS FILE HELP CONNECTION AND REPAIRED SQL .
@@ -73,6 +77,50 @@ public class AdminDAO extends DBContext {
         }
     }
 
+    public SchedulesDetail getSchedules_Byid(String id) {
+        String sql = "select *from Schedules where schedules_id = ? ";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, id);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                SchedulesDetail sche = new SchedulesDetail(
+                        rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5));
+                return sche;
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR IN GET SCHEDULES _ BY ID " + e);
+        }
+        return null;
+    }
+
+    public void Update_Schedules(SchedulesDetail ss) {
+        String sql = "UPDATE [dbo].[Schedules]\n"
+                + "   SET [schedules_id] = ?\n"
+                + "      ,[handle_schedules_id] = ?\n"
+                + "      ,[movie_id] = ?\n"
+                + "      ,[room_id] = ?\n"
+                + "      ,[schedules_showtime] = ?\n"
+                + " WHERE schedules_id = ? ";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, ss.getSchedules_id());
+            st.setString(2, ss.getHandle_Schedules_id());
+            st.setString(3, ss.getMovie_name());
+            st.setString(4, ss.getRoom_name());
+            st.setString(5, ss.getSchedules_showtime());
+            st.setString(6, ss.getSchedules_id());
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("ERROR IN Update Schedules " + e);
+        }
+    }
+
     public void add_Date_Admin(Date date) {
         String sql = "INSERT INTO [dbo].[Release_date]\n"
                 + "           ([show_date])\n"
@@ -89,8 +137,9 @@ public class AdminDAO extends DBContext {
 
     public List<Movie> getListMovie() {
         List<Movie> listMovie = new ArrayList<>();
-        String sql = "SELECT * FROM [dbo].[Movie]"
-                + "WHERE movie_status = 1 AND release_date <= '2024-05-01' ";
+        String sql = "SELECT * FROM [dbo].[Movie]\n"
+                + "WHERE movie_status = 1 AND release_date <= DATEADD(month, 2, DATEADD(day, 1 - DAY(GETDATE()), CAST(GETDATE() AS DATE)))\n"
+                + "ORDER BY movie_id DESC";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
@@ -179,11 +228,12 @@ public class AdminDAO extends DBContext {
     }
 
     public ArrayList<Movie> getAllMovieIncoming() {
-        String sql = "select *from movie WHERE [movie_status] = ? AND [release_date] >= '2024-05-01'";
+        String sql = "SELECT * FROM [dbo].[Movie]\n"
+                + "WHERE movie_status = 1 AND release_date >= DATEADD(month, 2, DATEADD(day, 1 - DAY(GETDATE()), CAST(GETDATE() AS DATE)))\n"
+                + "ORDER BY movie_id DESC";
         ArrayList<Movie> listMovie = new ArrayList<>();
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setString(1, "1");
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Movie movie = new Movie(
@@ -486,6 +536,38 @@ public class AdminDAO extends DBContext {
         return movie;
     }
 
+    public List<Movie> getMovieByName(String txtSearch) {
+        List<Movie> list = new ArrayList<>();
+
+        String sql = "select * from Movie\n"
+                + "where [movie_name] like ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, "%" + txtSearch + "%");
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Movie m = new Movie(rs.getString(2),
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getFloat(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getString(11),
+                        rs.getString(12),
+                        rs.getString(13),
+                        rs.getString(14));
+                m.setId(rs.getInt(1));
+                list.add(m);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+
     public void updateMovie(int id, Movie m) {
         String sql = "UPDATE [dbo].[Movie]\n"
                 + "   SET [movie_name] = ?\n"
@@ -499,7 +581,9 @@ public class AdminDAO extends DBContext {
                 + "      ,[language] = ?\n"
                 + "      ,[movie_description] = ?\n"
                 + "      ,[image] = ?\n"
-                + "      ,[trailer] = ?\n"
+                + "      ,[trailer_img] = ?\n"
+                + "      ,[trailer_link] = ?\n"
+                + "      ,[movie_status] = ?\n"
                 + " WHERE [movie_id] = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -515,7 +599,9 @@ public class AdminDAO extends DBContext {
             st.setString(10, m.getDescription());
             st.setString(11, m.getMovie_img());
             st.setString(12, m.getMovie_trailer());
-            st.setInt(13, id);
+            st.setString(13, m.getTrailer_link());
+            st.setString(14, "1");
+            st.setInt(15, id);
             st.executeQuery();
         } catch (SQLException e) {
             System.out.println(e);
@@ -574,9 +660,12 @@ public class AdminDAO extends DBContext {
         }
         return listSchedules;
     }
+
     public List<String> get_All_Dates() {
         List<String> dateList = new ArrayList<>();
-        String sql = "SELECT * FROM [dbo].[Release_date]";
+        String sql = "SELECT *\n"
+                + "FROM [dbo].[Release_date]\n"
+                + "WHERE CAST(show_date AS date) >= CAST(GETDATE() AS date);";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
@@ -592,11 +681,169 @@ public class AdminDAO extends DBContext {
         return dateList;
     }
 
-    public static void main(String[] args) {
-        AdminDAO dao = new AdminDAO();
-        List<ScheduleDetail> list = dao.getScheduleById("2024-03-14");
-        for (ScheduleDetail scheduleDetail : list) {
-            System.out.println(scheduleDetail);
+    public String getTotalMoney() {
+        String total = null;
+        LocalDate today = LocalDate.now();
+
+        // Định dạng ngày theo yêu cầu (YYYY-MM-DD)
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedDate = today.format(formatter);
+
+        String sql = "SELECT SUM(total_price) AS total_price_sum\n"
+                + "FROM [Cinema].[dbo].[Bookings]\n"
+                + "WHERE CAST(booking_date AS DATE) = ?;";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, formattedDate);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                double totalPrice = rs.getDouble("total_price_sum");
+
+                // Làm tròn số thập phân và chuyển đổi thành chuỗi
+                long roundedTotalPrice = Math.round(totalPrice);
+                total = String.valueOf(roundedTotalPrice);
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR IN getTotalMoney " + e);
+        }
+        return total;
+    }
+
+    public String getTotalMoneyOfMonth() {
+        String total = null;
+        LocalDate today = LocalDate.now();
+        int currentMonth = today.getMonthValue();
+        int currentYear = today.getYear();
+
+        String sql = "SELECT SUM(total_price) AS total_price_monthly\n"
+                + "FROM [Cinema].[dbo].[Bookings]\n"
+                + "WHERE MONTH(booking_date) = ? AND YEAR(booking_date) = ?;";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, currentMonth);
+            st.setInt(2, currentYear);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                double totalPrice = rs.getDouble("total_price_monthly");
+
+                // Làm tròn số thập phân và chuyển đổi thành chuỗi
+                long roundedTotalPrice = Math.round(totalPrice);
+                total = String.valueOf(roundedTotalPrice);
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR IN getTotalMoneyOfMonth " + e);
+        }
+        return total;
+    }
+
+    public String getTotalUser() {
+        String total = null;
+        String sql = "SELECT COUNT(*) AS total_users\n"
+                + "FROM [Cinema].[dbo].[Users];";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                total = rs.getString("total_users");
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR IN getTotalMoney " + e);
+        }
+        return total;
+    }
+
+    public String getTotalBooking() {
+        String total = null;
+        LocalDate today = LocalDate.now();
+
+        // Định dạng ngày theo yêu cầu (YYYY-MM-DD)
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedDate = today.format(formatter);
+        String sql = "SELECT COUNT(*) AS total_bookings\n"
+                + "FROM [Cinema].[dbo].[Bookings]\n"
+                + "WHERE CAST(booking_date AS DATE) = ?;";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, formattedDate);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                total = rs.getString("total_bookings");
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR IN getTotalMoney " + e);
+        }
+        return total;
+    }
+
+    public void deleteSchedules(String id) {
+        String sql = "delete Schedules where schedules_id = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, id);
+            st.executeQuery();
+        } catch (SQLException e) {
+            System.out.println(e);
         }
     }
+
+    public String getTotalMovie() {
+        String total = null;
+        String sql = "SELECT COUNT(*) AS total_movies\n"
+                + "FROM [Cinema].[dbo].[Movie]\n"
+                + "WHERE movie_status = 1;";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                total = rs.getString("total_movies");
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR IN getTotalMovie " + e);
+        }
+        return total;
+    }
+
+    public String getTotalSchedule() {
+        String total = null;
+        String sql = "SELECT COUNT(*) AS total_schedules\n"
+                + "FROM [Cinema].[dbo].[Handle_Schedules]\n"
+                + "WHERE CAST(show_date AS DATE) = CAST(GETDATE() AS DATE);";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                total = rs.getString("total_schedules");
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR IN getTotalMovie " + e);
+        }
+        return total;
+    }
+
+    public List<String> getTop3TrailerImg() {
+        List<String> list = new ArrayList<>();
+        String sql = "SELECT TOP 3 [trailer_img]\n"
+                + "FROM [Cinema].[dbo].[Movie]\n"
+                + "WHERE movie_status = 1\n"
+                + "ORDER BY movie_id DESC;";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                String trailerImg = rs.getString("trailer_img");
+                list.add(trailerImg);
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR IN getTop3TrailerImg " + e);
+        }
+        return list;
+    }
+
+//    public static void main(String[] args) {
+//        AdminDAO dao = new AdminDAO();
+//        List<Movie> list = dao.getMovieByName("Những");
+//        for (Movie m : list) {
+//            System.out.println(m);
+//        }
+//    }
 }

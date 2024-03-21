@@ -15,23 +15,23 @@
                     <img src="./Assets/Image/Header_Image/logo.png" alt="logo">
                 </a>
             </li>
-            
-              <li class="ticketbuy">
-                        <div class="rel" >
-                            <a href="bookingsvl">
-                            <img src="https://www.galaxycine.vn/_next/static/media/btn-ticket.42d72c96.webp" alt="alt"/>
-                            </a>
-                        </div>
-              </li>
-              
+
+            <li class="ticketbuy">
+                <div class="rel" >
+                    <a href="bookingsvl">
+                        <img src="https://www.galaxycine.vn/_next/static/media/btn-ticket.42d72c96.webp" alt="alt"/>
+                    </a>
+                </div>
+            </li>
+
             <li class="nav__navigation">
-                <ul class="flex">
-                    <li class="nav__movie">
+                <ul style="align-items: center" class="flex">
+                    <li class="nav__movie mx-3">
                         <div class="rel">
                             <a href="#">Phim <i class="fa-solid fa-angle-down"></i></a>
                             <ul class="abs b-shadow nav__movie--bgc">
                                 <li>
-                                    <div><a href="#">PHIM ĐANG CHIẾU</a></div>
+                                    <div style="padding-left: 16px"><a href="#">PHIM ĐANG CHIẾU</a></div>
                                     <ul class="flex movie-demo jca">
                                         <c:forEach items="${listMovie}" var="m" begin="0" end="3">
                                             <li class="tc">
@@ -44,7 +44,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <div><a href="#">PHIM SẮP CHIẾU</a></div>
+                                    <div style="padding-left: 16px"><a href="#">PHIM SẮP CHIẾU</a></div>
                                     <ul class="flex movie-demo jca">
                                         <c:forEach items="${movieIncoming}" var="m" begin="0" end="3">
                                             <li class="tc">
@@ -59,7 +59,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="movie__type">
+                    <li class="movie__type mx-3">
                         <div class="rel">
                             <a href="#">Góc điện ảnh <i class="fa-solid fa-angle-down"></i></a>
                             <ul class="movie__type--menu b-shadow tc abs">
@@ -71,7 +71,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="movie__event">
+                    <li class="movie__event mx-3">
                         <div class="rel">
                             <a href="#">Sự kiện <i class="fa-solid fa-angle-down"></i></a>
                             <ul class="movie__event--menu b-shadow tc abs">
@@ -80,15 +80,15 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="movie__cinema">
+                    <li class="movie__cinema mx-3">
                         <div class="rel">
                             <a href="#">Rạp <i class="fa-solid fa-angle-down"></i></a>
                             <ul class="movie__cinema--menu cinema b-shadow tc abs">
-                                <li><a href="#">Tên rạp</a></li>                              
+                                <li><a href="#">Cần Thơ</a></li>                              
                             </ul>
                         </div>
                     </li>
-                    <li class="admin_header">
+                    <li class="admin_header mx-3">
                         <div class="rel">
                             <c:if test="${sessionScope.account.role == 'Admin'}">
                                 <div class="nav__user">
@@ -100,15 +100,20 @@
                 </ul>
             </li>
             <li class="nav__auth flex">
-                <div class="search-container">
-                    <div class="rel">
-                        <a id="searchIcon" class="search-icon">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </a>
+
+                <!--Search-->
+                <form action="search" method="get">
+                    <div class="search-container">
+                        <div class="rel">
+                            <a id="searchIcon" class="search-icon" type="text">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </a>
+                        </div>
+                        <input name="txt" id="searchInput" class="search-box abs b-shadow" type="text" placeholder="Nhập tên phim.."
+                               onfocus="expandInput()" onblur="shrinkInput()">
                     </div>
-                    <input id="searchInput" class="search-box abs b-shadow" type="text" placeholder="Search.."
-                           onfocus="expandInput()" onblur="shrinkInput()">
-                </div>
+                </form>
+
                 <c:if test="${sessionScope.account==null}">
                     <div class="nav__user">
                         <a class="nav__login--btn" href="login"> <i class="fa-regular fa-user"></i> Đăng nhập</a>
@@ -142,7 +147,7 @@
                     <a class="pointer">Phim</a>
                     <i class="fa-solid fa-angle-down"></i>
                     <ul class="mobile__movie--container" id="movieDropdown">
-                        <li><a href="#">Phim đang chiếu</a></li>
+                        <li><a  href="#">Phim đang chiếu</a></li>
                         <li><a href="#">Phim sắp chiếu</a></li>
                     </ul>
                 </li>

@@ -5,6 +5,7 @@
 package controller.ProfileController;
 
 import dal.AccountDAO;
+import dal.AdminDAO;
 import dal.EditProfileDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -12,8 +13,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.List;
+import java.util.regex.Pattern;
 
 import model.Account;
+import model.Movie;
 
 /**
  *
@@ -64,7 +68,9 @@ public class EditProfile extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        AdminDAO d = new AdminDAO();
         AccountDAO dao = new AccountDAO();
+        Pattern upperCasePattern = Pattern.compile("[A-Z]");
         //Account acc = dao.login(LEGACY_DO_HEAD, LEGACY_DO_HEAD)
         String id = request.getParameter("id");
         String name = request.getParameter("name");
@@ -74,9 +80,13 @@ public class EditProfile extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        if (password == null){
+        if (password == null) {
             Account account = (Account) session.getAttribute("account");
             password = account.getPassword();
+        }
+        if (password.length() < 9 || !upperCasePattern.matcher(password).find()) {
+            request.setAttribute("error", "Mật khẩu phải có ít nhât 9 ký tự và 1 ký tự in hoa!");
+            request.getRequestDispatcher("ProfileServlet").forward(request, response);
         }
         String hashPass = dao.generateMD5Hash(password);
         //String hashPass = dao.generateMD5Hash(password);
@@ -95,6 +105,10 @@ public class EditProfile extends HttpServlet {
 
             session.setAttribute("account", acc);
 
+            List<Movie> m = d.getListMovie();
+            List<Movie> movieIncoming = d.getAllMovieIncoming();
+            request.setAttribute("listMovie", m);
+            request.setAttribute("movieIncoming", movieIncoming);
             request.setAttribute("success", "EditProfile is succesfully");
             response.sendRedirect("ProfileServlet");
         } else {

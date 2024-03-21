@@ -15,7 +15,7 @@
         <link href="Assets/Styles/sb-admin-2.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito Sans">
-        <title>JSP Page</title>
+        <title>Add movie</title>
     </head>
     <body>
         <div id="wrapper">
@@ -30,13 +30,14 @@
                     <form action="AddMovie" method="post" enctype="multipart/form-data">
                         <div class="container-fluid">
                             <!-- Page Heading -->
-                            <h1 class="h3 mb-2 text-gray-800">ADD MOVIE</h1>
+                            <h1 class="h3 mb-2 text-gray-800">Thêm Phim</h1>
                             <div class="main_content1 font-semibold">
                                 <div class="movie_detail">
                                     <div class="main-left">
                                         <div class="select-Image">
                                             <label style="font-weight:800" >Chọn ảnh</label>
                                             <input id="imageInput" class="select-img" type="file" accept="image/*" name="movie_image" required>
+                                            <p class="text-danger">${requestScope.errorImg1}</p>
                                             <!-- <i class="fa-solid fa-hand-pointer icon"></i> -->
                                         </div>
                                         <img id="selected-image" src="./Assets/Image/Movies_Image/default.jpg"
@@ -45,8 +46,9 @@
                                         <div class="select-Image">
                                             <label style="font-weight: 800" >Chọn trailer</label>
                                             <input id="imageInput" class="select-img" type="file" accept="image/*" name="movie_trailer" required>
+                                             <p class="text-danger">${requestScope.errorImg2}</p>
                                             <label style="font-weight: 800" >Thêm đường dẫn</label>
-                                            <input class="select-trailer" type="text" name="trailer_link" required size="35">
+                                            <input class="select-trailer" type="text" name="trailer_link" required size="35" value="${requestScope.trailer_link}" style="max-width: 300px;">
                                             <!-- <i class="fa-solid fa-hand-pointer icon"></i> -->
                                         </div>
                                         <script>
@@ -55,7 +57,7 @@
                                                 selectedImage.src = URL.createObjectURL(event.target.files[0]);
                                             });
                                         </script>
-                                      
+
                                     </div>                          
                                     <div class="main-right">
                                         <div class="movie_name">    
@@ -63,7 +65,7 @@
                                                 <label for="Movie_Name" style="padding-top: 2px "><span>Nhập tên
                                                         phim</span></label>
                                                 <input class="NameOfMovie" type="text" id="Movie_Name" name="Movie_Name"
-                                                       placeholder="Nhập Tên Phim ..." required>
+                                                       placeholder="Nhập Tên Phim ..." value="${requestScope.nameOfMovie}" required>
                                             </div>
                                         </div>
                                         <div class="movie_time">
@@ -73,22 +75,23 @@
                                                     </i>
                                                     <label for="">Thời lượng</label>
                                                     <input type="number" 
-                                                           style="padding: 0 12px; margin-left: 4px; width: 82px" required="" name="Duration">
+                                                           style="padding: 0 12px; margin-left: 4px; width: 82px" required="" name="Duration" min="60" max="300" value="${requestScope.duration_str}">
                                                     <span style="margin-left: 4px;">Phút</span>
                                                 </p>
                                             </div>
                                             <div class="releaseDate">
                                                 <p class="movie_calendar">
                                                     <label for="release">Ngày khởi chiếu</label>
-                                                    <input type="date" id="release" style="margin-left: 4px" required name="releaseDate">
+                                                    <input type="date" id="release" style="margin-left: 4px" value="${requestScope.dateRelease}" required name="releaseDate">
+                                                     <p class="text-danger">${requestScope.errorDate}</p>
                                                 </p>
                                             </div>
                                             <div class="rate">
                                                 <p class="movie_point" style="margin-left: 5px">
                                                     <i class="fa-solid fa-star"></i>
-                                                    <label for="birthday">Rate</label>
-                                                    <input type="text" id="birthday" style="margin-left: 4px; padding-left: 19px; padding-right: 6px" size="3"
-                                                           placeholder="vote" name="Rate" required="">
+                                                    <label for="birthday">Đánh Giá</label>
+                                                    <input min="0" max="10" type="number" id="birthday" style="margin-left: 4px; padding-left: 19px; padding-right: 6px" size="3"
+                                                            name="Rate" required="" value="${requestScope.rate_str}">
                                                 </p>
                                             </div>
                                         </div>
@@ -113,34 +116,35 @@
                                             <div class="releaseDates ">
                                                 <div class="duration ">
                                                     <p class="movie_minute v2">
-                                                        <label for="generalSelected" style="margin-right: 32px">Thể Loại</label>
+                                                        <label for="generalSelected" style="margin-right: 32px" >Thể Loại</label>
                                                         <input type="text" id="generalSelected" size="64.5"
                                                                placeholder=" hành động , kinh dị , giật gân , tình cảm , hài hước ..."
-                                                               style="padding : 2px 0 0 12px;" required="" name="Categorys">
+                                                               style="padding : 2px 0 0 12px;" required="" name="Categorys" value="${requestScope.categorys}">
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="boxDerector">
                                             <label for="" style="margin-right: 32px;">Đạo Diễn</label>
-                                            <input type="text" placeholder="Tên đạo diễn ... " required="" name="Director" style="padding : 2px 12px">
+                                            <input type="text" placeholder="Tên đạo diễn ... " required="" name="Director" style="padding : 2px 12px" value="${requestScope.director}">
                                         </div>
                                         <div class="boxDerector">
                                             <label style="margin-right: 16px" >Diễn Viên</label>
                                             <input type="text" placeholder="Tên Các diễn viên ... " size="65"
-                                                   style="margin-left: 12px;padding:2px 12px;" required="" name="Stars">
+                                                   style="margin-left: 12px;padding:2px 12px;" required="" name="Stars" value="${requestScope.stars}">
                                         </div>
                                         <div class="boxDerector">
                                             <label>Ngôn Ngữ</label>
                                             <input type="text" placeholder="Ngôn ngữ : Tiếng anh - Phụ đề Tiếng việt ... "
-                                                   size="65" style="margin-left: 12px;padding:2px 12px;" required="" name="Language">
+                                                   size="65" style="margin-left: 12px;padding:2px 12px;" required="" name="Language" value="${requestScope.language}">
                                         </div>
                                         <div class="boxDerectors V2" style="display: flex; align-items: center;">
                                             <label style="margin-right: 1.7rem;"> Mô Tả Nội Dung</label>
-                                            <textarea type="text" placeholder="" size="95" name="Describel" rows="4" cols="60" style="resize: none">${m.description}</textarea>
-                                          
+                                            <textarea type="text" placeholder="" size="95" name="Describel" rows="4" cols="60" style="resize: none">${requestScope.describel}</textarea>
+
                                         </div>
-                                             <button type="submit" class="AddMovies-button">ADD</button>
+                                            <p class="text-success" style="margin-left: 21rem; margin-top: 20px">${requestScope.success}</p>
+                                            <button type="submit" class="btn btn-success AddMovies-button px-5" style="margin-top: 0; margin-left: 44%;">Thêm</button>
                                     </div>
                                 </div>
                             </div>
@@ -153,8 +157,7 @@
                 <!-- Footer -->
                 <footer class="sticky-footer bg-white">
                     <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2020</span>
+                        <div class="copyright text-center my-auto">                           
                         </div>
                     </div>
                 </footer>
@@ -162,5 +165,6 @@
             </div>
             <!-- End of Content Wrapper -->
         </div>    
+                                            
     </body>
 </html>

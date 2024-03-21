@@ -9,7 +9,31 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>GG cinema admin</title>
+
+        <style>
+            .kinetic-typography {
+                font-size: 32px;
+                font-weight: bold;
+                position: relative;
+                animation: move-text 5s linear infinite alternate; /* Thêm alternate để đảo ngược hướng sau khi đạt tới 100% */
+                background: linear-gradient(to right, #4caf50, #ffeb3b, #f44336); /* Gradient color */
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            @keyframes move-text {
+                0% {
+                    left: 0;
+                }
+                50% {
+                    left: 50%;
+                }
+                100% {
+                    left: 100%;
+                }
+            }
+        </style>
     </head>
     <body>
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -20,25 +44,17 @@
             <!-- Topbar Search -->
             <form
                 class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                           aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="button">
-                            <i class="fas fa-search fa-sm"></i>
-                        </button>
-                    </div>
-                </div>
+                <h3 class="kinetic-typography" >Welcome To GG Cinema</h3>
             </form>
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
                 <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                <li class="nav-item dropdown no-arrow d-sm-none">
+<!--                <li class="nav-item dropdown no-arrow d-sm-none">
                     <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-search fa-fw"></i>
                     </a>
-                    <!-- Dropdown - Messages -->
+                     Dropdown - Messages 
                     <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                          aria-labelledby="searchDropdown">
                         <form class="form-inline mr-auto w-100 navbar-search">
@@ -54,16 +70,16 @@
                             </div>
                         </form>
                     </div>
-                </li>
+                </li>-->
                 <!-- Nav Item - Alerts -->
-                <li class="nav-item dropdown no-arrow mx-1">
+<!--                <li class="nav-item dropdown no-arrow mx-1">
                     <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-bell fa-fw"></i>
-                        <!-- Counter - Alerts -->
+                         Counter - Alerts 
                         <span class="badge badge-danger badge-counter">3+</span>
                     </a>
-                    <!-- Dropdown - Alerts -->
+                     Dropdown - Alerts 
                     <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                          aria-labelledby="alertsDropdown">
                         <h6 class="dropdown-header">
@@ -104,16 +120,16 @@
                         </a>
                         <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
                     </div>
-                </li>
+                </li>-->
                 <!-- Nav Item - Messages -->
-                <li class="nav-item dropdown no-arrow mx-1">
+<!--                <li class="nav-item dropdown no-arrow mx-1">
                     <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-envelope fa-fw"></i>
-                        <!-- Counter - Messages -->
+                         Counter - Messages 
                         <span class="badge badge-danger badge-counter">7</span>
                     </a>
-                    <!-- Dropdown - Messages -->
+                     Dropdown - Messages 
                     <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                          aria-labelledby="messagesDropdown">
                         <h6 class="dropdown-header">
@@ -166,13 +182,13 @@
                         </a>
                         <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                     </div>
-                </li>
+                </li>-->
                 <div class="topbar-divider d-none d-sm-block"></div>
                 <li class="nav-item dropdown no-arrow">
-                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                    <a class="nav-link dropdown-toggle" href="Logout" id="userDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-                        <img class="img-profile rounded-circle" src="../Assets/Image/User/admin_avt.jpg">
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Đăng Xuất</span>
+                        <img class="img-profile rounded-circle" src="./Assets/Image/User/admin_avt.jpg"/>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

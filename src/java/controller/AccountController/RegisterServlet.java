@@ -86,17 +86,17 @@ public class RegisterServlet extends HttpServlet {
         Pattern upperCasePattern = Pattern.compile("[A-Z]");
 
         //check valid phone number
-        Pattern phonePattern = Pattern.compile("^\\d{10}$");
+        Pattern phonePattern = Pattern.compile("^0\\d{9}$");
         Matcher matcher = phonePattern.matcher(phone);
 
         if (pass.length() < 9 || !upperCasePattern.matcher(pass).find()) {
-            request.setAttribute("error", "Password must have at least 9 characters and 1 uppercase character!");
+            request.setAttribute("error", "Mật khẩu phải có ít nhât 9 ký tự và 1 ký tự in hoa!");
             request.setAttribute("fullName", fullName);
             request.setAttribute("email", email);
             request.setAttribute("phone", phone);
             request.getRequestDispatcher("Register.jsp").forward(request, response);
         } else if (!matcher.matches()) {
-            request.setAttribute("error", "Phone number must have at least 10 character!");
+            request.setAttribute("error", "Số điện thoại phải có 10 ký tự và bắt đầu bằng số 0!");
             request.setAttribute("fullName", fullName);
             request.setAttribute("email", email);
             request.getRequestDispatcher("Register.jsp").forward(request, response);
@@ -121,16 +121,23 @@ public class RegisterServlet extends HttpServlet {
                     request.getRequestDispatcher("Verify.jsp").forward(request, response);
                 }
             } else if (isUsedEmail) {
-                request.setAttribute("error", "Email is already exist!");
+                request.setAttribute("error", "Email đã tồn tại!");
+                request.setAttribute("fullName", fullName);
+                request.setAttribute("phone", phone);
                 request.getRequestDispatcher("Register.jsp").forward(request, response);
             } else if (isUsedPhone) {
-                request.setAttribute("error", "Phone is already exist!");
+                request.setAttribute("fullName", fullName);
+                request.setAttribute("email", email);
+                request.setAttribute("error", "Số điện thoại đã tồn tại!");
                 request.getRequestDispatcher("Register.jsp").forward(request, response);
             } else if (isUsedPhone && isUsedEmail) {
-                request.setAttribute("error", "Email and phone is already exist!");
+                request.setAttribute("error", "Email và số điện thoại đã tồn tại!");
                 request.getRequestDispatcher("Register.jsp").forward(request, response);
             } else {
-                request.setAttribute("error", "Password confirmation does not match!!!");
+                request.setAttribute("error", "Mật khẩu không khớp!!!");
+                request.setAttribute("fullName", fullName);
+                request.setAttribute("phone", phone);
+                request.setAttribute("email", email);
                 request.getRequestDispatcher("Register.jsp").forward(request, response);
             }
         }

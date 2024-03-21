@@ -9,6 +9,7 @@ package model;
  * @author GIA TIEN
  */
 public class ScheduleDetail {
+
     private String schedules_id;
     private String movie_name;
     private String room_name;
@@ -19,6 +20,10 @@ public class ScheduleDetail {
         this.movie_name = movie_name;
         this.room_name = room_name;
         this.schedules_showtime = schedules_showtime;
+    }
+
+    public ScheduleDetail() {
+
     }
 
     public String getSchedules_id() {
@@ -57,5 +62,5 @@ public class ScheduleDetail {
     public String toString() {
         return "ScheduleDetail{" + "schedules_id=" + schedules_id + ", movie_name=" + movie_name + ", room_name=" + room_name + ", schedules_showtime=" + schedules_showtime + '}';
     }
- 
+
 }

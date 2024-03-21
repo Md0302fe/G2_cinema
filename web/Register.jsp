@@ -21,40 +21,40 @@
 
     </head>
     <body class="img js-fullheight" style="background-image: url(Assets/Image/Login/bg.jpg);">
-        <section class="ftco-section">
+        <section class="ftco-section-reg">
             <div class="text-md-center ml-4">
-                <a class="mr-md-z return-btn" href="HomePage.jsp"> <i class="fa-solid fa-angle-left"></i>   Return home</a>
+                <a class="mr-md-z return-btn" href="HomePage.jsp"> <i class="fa-solid fa-angle-left"></i>  Trở về</a>
             </div>
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-6 col-lg-4">
                         <div class="login-wrap p-0">
-                            <h3 class="mb-4 text-center">Create an account</h3>
+                            <h3 class="mb-4 text-center font-weight-bold">Tạo tài khoản</h3>
                             <form action="register" method="post" class="signin-form">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="fullName" placeholder="Full name" value="${requestScope.fullName}" required>
+                                    <input type="text" class="form-control" name="fullName" placeholder="Họ và tên" value="${requestScope.fullName}" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control" name="email" placeholder="Email" value="${requestScope.email}" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="tel" class="form-control" name="phone" placeholder="Phone number" value="${requestScope.phone}" required>
+                                    <input type="tel" class="form-control" name="phone" placeholder="Số điện thoại" value="${requestScope.phone}" required>
                                 </div>
                                 <div class="form-group">
-                                    <input id="password" type="password" name="password" class="form-control" placeholder="Password" required>
+                                    <input id="password" type="password" name="password" class="form-control" placeholder="Mật khẩu" required>
                                 </div>
                                 <div class="form-group">
-                                    <input id="confirm-password" name="rePassword" type="password" class="form-control" placeholder="Confirm password" required>
+                                    <input id="confirm-password" name="rePassword" type="password" class="form-control" placeholder="Xác nhận mật khẩu" required>
                                     <span toggle="#confirm-password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                 </div>
                                 <p style="color: white">${requestScope.error}</p>
                                 <div class="form-group">
-                                    <button type="submit" class="form-control btn btn-primary submit px-3">Sign up</button>
+                                    <button type="submit" class="form-control btn btn-primary submit px-3">Đăng ký</button>
                                 </div>
                             </form>
-                            <p class="w-100 text-center">&mdash; Already have an account? &mdash;</p>
+                            <p class="w-100 text-center">&mdash; Đã có tài khoản? &mdash;</p>
                             <div class="social d-flex text-center">
-                                <a href="login" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Sign in</a>
+                                <a href="login" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span>Đăng nhập</a>
                             </div>
                         </div>
                     </div>

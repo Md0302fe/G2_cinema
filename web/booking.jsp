@@ -32,7 +32,7 @@
                         <div class="location-item">
                             <p>
                             <div class="location-info" id="locationInfo">
-                                <span id="locationText">Cần Thơ</span> <!-- Thêm id="locationText" vào đây -->
+                                <span id="locationText" style="border-radius: 5px; border-width: ">Cần Thơ</span> <!-- Thêm id="locationText" vào đây -->
                             </div>
                             </p>
                         </div>
@@ -40,7 +40,6 @@
                 </div>
                 <div class="movie-selection-container">
                     <div class="movie-selection">
-
                         <div class="flex-c">
                             <label for="movie">Chọn phim</label>
                             <i class="fa-solid fa-chevron-down" id="movieArrow"></i>
@@ -53,8 +52,7 @@
                                     <div class="movie-item">
                                         <a   data-movie-id="${m.id}">
                                             <img src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="Error Img"
-                                                 onClick="sendSelectedMovieId('${m.id}')"
-                                                 >
+                                                 onClick="sendSelectedMovieId('${m.id}')" style="border-radius: 8px">
                                         </a>
                                         <span>${m.name}</span>
                                     </div>
@@ -104,21 +102,14 @@
                         <h2 id="galaxyMovieTitle">Movie Title</h2>
                     </div>
                     <div>
-                        <p>Galaxy: <span id="galaxyLocation"></span></p>
+                        <p style="font-weight: bold;">Galaxy: <span id="galaxyLocation"></span></p>
                     </div>
                     <div>
-                        <p>Suất: <span id="galaxyShowtime"> </span> </p>
-                        <!-- Thêm đường gạch đứt sau phần suất -->
-                        <hr class="separator-line">
+                        <p style="font-weight: bold;">Ngày: <span id="galaxyShowtime"> </span> </p>
+<!--                         Thêm đường gạch đứt sau phần suất 
+                        <hr class="separator-line">-->
                     </div>
-                    <div class="total">
-                        <a class="movie-price">
-                            <p>Tổng cộng: </p>
-                        </a>
-                        <a class="movie-price">
-                            <p>0đ </p>
-                        </a>
-                    </div>
+
                 </div>
                 <div class="navigation-buttons">
                     <a href="home">

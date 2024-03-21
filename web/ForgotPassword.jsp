@@ -20,25 +20,25 @@
     <body class="img js-fullheight" style="background-image: url(Assets/Image/Login/bg.jpg);">
         <section class="ftco-section">
             <div class="text-md-center ml-4">
-                <a class="mr-md-z return-btn" href="HomePage.jsp"> <i class="fa-solid fa-angle-left"></i>   Return home</a>
+                <a class="mr-md-z return-btn" href="HomePage.jsp"> <i class="fa-solid fa-angle-left"></i>Trang Chủ</a>
             </div>
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-6 col-lg-4">
                         <div class="login-wrap p-0">
-                            <h3 class="mb-4 text-center">Forgot your account?</h3>
+                            <h3 class="mb-4 text-center">Quên Mật Khẩu</h3>
                             <form action="forgotPassword" method="post" class="signin-form">
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="email" placeholder="Enter your email" required>
                                 </div>
                                 <p style="color: red">${requestScope.error}</p>
                                 <div class="form-group">
-                                    <button type="submit" class="form-control btn btn-primary submit px-3">Reset password</button>
+                                    <button type="submit" class="form-control btn btn-primary submit px-3">Đặt Lại Mật Khẩu</button>
                                 </div>
                             </form>
-                            <p class="w-100 text-center">&mdash; Don't have an account? &mdash;</p>
+                            <p class="w-100 text-center">&mdash; Chưa Có Tài Khoản? &mdash;</p>
                             <div class="social d-flex text-center">
-                                <a href="register" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Sign up</a>
+                                <a href="register" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span>Đăng Ký</a>
                             </div>
                         </div>
                     </div>

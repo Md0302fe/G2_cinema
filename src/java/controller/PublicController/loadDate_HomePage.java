@@ -53,7 +53,8 @@ public class loadDate_HomePage extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         for (String Date : Dates) {
-            out.println("<div class=\"option option_date\" onClick=\"sendSelectedDateId('"+Date+"')\">"+Date+"</div> ");
+            out.println("                                <div id=\"selectedDate\" class=\"option option_date\" onClick=\"sendSelectedDateId('"+ Date +"')\">"+ Date +"</div> \n" +
+"");
         }
 
     }
