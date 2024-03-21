@@ -4,6 +4,7 @@
  */
 package controller.ProfileController;
 
+import dal.AdminDAO;
 import dal.HistoryDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -13,7 +14,9 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import model.Booking;
+import model.Movie;
 
 /**
  *
@@ -61,6 +64,7 @@ public class History extends HttpServlet {
             throws ServletException, IOException {
         String user = request.getParameter("id");
         HistoryDAO history = new HistoryDAO();
+        AdminDAO dao = new AdminDAO();
         ArrayList<Booking> ListB = history.getAccountModels(user);
         for (Booking booking : ListB) {
 
@@ -72,6 +76,11 @@ public class History extends HttpServlet {
             //request.setAttribute("ListB", ListB);
 
         }
+        List<Movie> m = dao.getListMovie();
+        List<Movie> movieIncoming = dao.getAllMovieIncoming();
+        request.setAttribute("listMovie", m);
+        request.setAttribute("movieIncoming", movieIncoming);
+        
         request.setAttribute("ListB", ListB);
 
         System.out.println(ListB.size());

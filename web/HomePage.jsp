@@ -344,6 +344,7 @@
         <script>
             var selectedMovieId;
             var selectedTimeS;
+            var selectedDates;
             function sendSelectedMovieId(movie_id) {
                 selectedMovieId = movie_id; // Lưu giá trị của movie_id vào biến toàn cục
                 $.ajax({
@@ -359,7 +360,9 @@
                 });
             }
             function sendSelectedDateId(date_id) {
-                // Sử dụng giá trị của biến toàn cục selectedMovieId                                       
+                selectedDates = date_id;
+                // Sử dụng giá trị của biến toàn cục selectedMovieId
+                console.log(date_id);
                 $.ajax({
                     type: "GET",
                     url: "/CINEMA/loadtime",
@@ -410,9 +413,10 @@
             function sendQuickBooking() {
                 // Lấy thông tin từ các thẻ HTML
                 var selectedDate = document.querySelector('.option_date').innerText;
+                console.log(selectedDate);
                 // Xây dựng URL với thông tin đã lấy được
                 var url = "/CINEMA/seat?id=" + encodeURIComponent(selectedMovieId) +
-                        "&date=" + encodeURIComponent(selectedDate) +
+                        "&date=" + selectedDates +
                         "&time=" + selectedTimeS;
                 // Chuyển hướng đến trang /seat với các thông tin đã chọn
                 window.location.href = url;

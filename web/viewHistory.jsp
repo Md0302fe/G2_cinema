@@ -8,6 +8,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link href="Assets/Styles/header.css" rel="stylesheet" type="text/css"/>
 <link href="Assets/Styles/footer.css" rel="stylesheet" type="text/css"/>
+<<link rel="stylesheet" href="./Assets/Styles/viewHistory.css"/>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous" />
@@ -24,11 +25,10 @@
             <input type="hidden" name="id" value="${sessionScope.account.id}">
 
             <input type="hidden" name="booking" value="${sessionScope.booking}">
-            <table class="table table-dark">
+            <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        
                         <th scope="col">Total</th>
                         <th scope="col">Date</th>
                         <th scope="col"></th>
@@ -36,15 +36,13 @@
                 </thead>
                 <tbody>
                     <c:forEach items="${ListB}" var="b">
-
-                        <tr>
-                            <th scope="row">${b.getBooking_id()}</th>
-                            
+                        <tr class="main-contain">
+                            <th scope="row" class="p-21" style="padding: 20px">${b.getBooking_id()}</th>
                             <td>
-                                <p><fmt:formatNumber pattern="#,###" value="${b.getTotal_price()}"/><span> VNĐ</span></p>
+                                <p class="m-10"><fmt:formatNumber pattern="#,###" value="${b.getTotal_price()}"/><span> VNĐ</span></p>
                             </td>
-                            <td>${b.getBooking_date()}</td>
-                            <td><a href="View?id=${sessionScope.account.id}&booking=${b.getBooking_id()}" style="background-color: black;color: white">View</a></td>
+                            <td class="m-10"style="padding: 21px">${b.getBooking_date()}</td>
+                            <td><a href="View?id=${sessionScope.account.id}&booking=${b.getBooking_id()}" class="view-button bold border border-light">View</a></td>
                         </tr>
                     </c:forEach>
 

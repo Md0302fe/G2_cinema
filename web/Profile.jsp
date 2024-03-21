@@ -22,12 +22,11 @@
     </head>
 
     <body id="body">
-
         <%@include file='./Components/Header.jsp' %>
         <div class="container">          
             <div class="profile">
                 <div class="text-center">
-                    <img src="./Assets/Image/User/default.jpg" alt="Customer Avatar"
+                    <img src="./Assets/Image/Payment_icon/logo.png" alt="Customer Avatar"
                          class="img-fluid rounded-circle mb-3" height="100px" width="100px" " >
 
                 </div>
@@ -52,12 +51,12 @@
                         <div class="fa-solid fa-chevron-right" style=" padding-left: 138px; cursor: pointer"></div> 
                     </div>
                     <div class="email">
-                        <strong>Email :</strong><strong id="info">galaxy@.com</strong>
-                        <div class="fa-solid fa-chevron-right" style=" padding-left: 195px; cursor: pointer"></div> 
+                        <strong>Email:</strong><strong id="info">galaxy@.com</strong>
+                        <div class="fa-solid fa-chevron-right" style=" padding-left: 202px; cursor: pointer"></div> 
                     </div>
                     <div class="Question">
                         <strong>Câu hỏi thường gặp </strong>
-                        <div class="fa-solid fa-chevron-right" style=" padding-left: 195px; cursor: pointer" ></div> 
+                        <div class="fa-solid fa-chevron-right" style=" padding-left: 200px; cursor: pointer" ></div> 
                     </div>
 
 
@@ -94,7 +93,7 @@
                                        background-color: whitesmoke;" value="${sessionScope.account.fullName}" type="text" name="name" placeholder="Họ và Tên"><br>
                             </div>
                             <div class="input-with-icon">Email <br>
-                                <input style="border-radius: 5px;  width: 270px; height: 40px; background-color: whitesmoke;"
+                                <input readonly="" style="border-radius: 5px;  width: 270px; height: 40px; background-color: whitesmoke;"
                                        type="email" name="email" value="${sessionScope.account.email}"><br>
                             </div>
                         </div>
@@ -111,6 +110,7 @@
                                 Mật khẩu<br>
                                 <input style="border-radius: 5px;  width: 270px; height: 40px; background-color: whitesmoke;"
                                        type="password" name="password" placeholder="Mật khẩu"><br>
+                                <p style="color: red;">${error}</p>
                             </div>
                             <button id="submit" type="submit"> Cập Nhật</button>
 

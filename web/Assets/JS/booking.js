@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     locationText.addEventListener('click', function (event) {
         if (locationSelected) {
             locationList.style.display = 'block';
-            locationText.style.border = '1px solid ';
+            locationText.style.border = '1px solid';
             locationText.style.backgroundColor = '#003077';
             locationText.style.color = '#ffffff';
             locationText.style.padding = '10px';

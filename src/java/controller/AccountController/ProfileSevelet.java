@@ -4,6 +4,7 @@
  */
 package controller.AccountController;
 
+import dal.AdminDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,7 +13,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import model.Account;
+import model.Movie;
 
 /**
  *
@@ -59,11 +62,15 @@ public class ProfileSevelet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        AdminDAO dao = new AdminDAO();
         try {
            HttpSession session = request.getSession();
         Account acc = (Account) session.getAttribute("account");
         
+        List<Movie> m = dao.getListMovie();
+        List<Movie> movieIncoming = dao.getAllMovieIncoming();
+        request.setAttribute("listMovie", m);
+        request.setAttribute("movieIncoming", movieIncoming);
         request.setAttribute("account", acc);
         request.getRequestDispatcher("Profile.jsp").forward(request, response);
 

@@ -4,6 +4,7 @@
  */
 package controller.ProfileController;
 
+import dal.AdminDAO;
 import dal.HistoryDAO;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -14,7 +15,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import model.Booking;
+import model.Movie;
 
 /**
  *
@@ -40,7 +43,7 @@ public class View extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet View</title>");            
+            out.println("<title>Servlet View</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet View at " + request.getContextPath() + "</h1>");
@@ -61,19 +64,23 @@ public class View extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       String user = request.getParameter("id");
-       String bookin = request.getParameter("booking");
-        
+        String user = request.getParameter("id");
+        String bookin = request.getParameter("booking");
+        AdminDAO dao = new AdminDAO();
         HistoryDAO history = new HistoryDAO();
-        ArrayList<Booking> ListC = history.getBookingModels(user, bookin);
-        for (Booking booking : ListC) {
-            
-           // System.out.println();
-        request.setAttribute("ListC", ListC);
-        
-        }
+        Booking ListC = history.getBookingDetails(user, bookin);
+        String[] numberSeats = ListC.getSeatList().split(",");
+        int n = numberSeats.length;
         //System.out.println(ListB.size());
         //System.out.println(boo.size());
+        
+        List<Movie> m = dao.getListMovie();
+        List<Movie> movieIncoming = dao.getAllMovieIncoming();
+        request.setAttribute("listMovie", m);
+        request.setAttribute("movieIncoming", movieIncoming);
+        
+        request.setAttribute("n", n);
+        request.setAttribute("ListC", ListC);
         request.getRequestDispatcher("view.jsp").forward(request, response);
     }
 
@@ -92,10 +99,10 @@ public class View extends HttpServlet {
         HistoryDAO history = new HistoryDAO();
         ArrayList<Booking> ListB = history.getAccountModels(user);
         for (Booking booking : ListB) {
-            
-           // System.out.println();
-        request.setAttribute("ListB", ListB);
-        
+
+            // System.out.println();
+            request.setAttribute("ListB", ListB);
+
         }
         //System.out.println(ListB.size());
         //System.out.println(boo.size());

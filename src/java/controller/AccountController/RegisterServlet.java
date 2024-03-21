@@ -90,7 +90,7 @@ public class RegisterServlet extends HttpServlet {
         Matcher matcher = phonePattern.matcher(phone);
 
         if (pass.length() < 9 || !upperCasePattern.matcher(pass).find()) {
-            request.setAttribute("error", "Mật khẩu phải có ít nhât 8 ký tự và 1 ký tự in hoa!");
+            request.setAttribute("error", "Mật khẩu phải có ít nhât 9 ký tự và 1 ký tự in hoa!");
             request.setAttribute("fullName", fullName);
             request.setAttribute("email", email);
             request.setAttribute("phone", phone);

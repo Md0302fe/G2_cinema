@@ -7,14 +7,15 @@
 }
 
 body {
-  color: #000;
+  color: #4a4a4a;
   font-size: 16px;
   line-height: 32px;
-  font-family: "neue-haas-unica", "kozuka-gothic-pro", sans-serif;
+  font-family: Nunito Sans, sans-serif !important;
   font-style: normal;
   font-weight: 500;
   letter-spacing: 0.04em;
 }
+
 a {
   color: #000;
   transition: color 0.5s ease;
@@ -119,15 +120,21 @@ a {
   margin-right: 16px;
 }
 
+.info{
+    font-size: 22px;
+    margin-top: 10px
+}
+
 .movie-info {
   display: flex;
   font-size: 14px;
 }
 
 .movie-info img {
-  width: 112px;
-  height: 168px;
+  width: 200px;
+/*  height: 168px;*/
   margin: 8px;
+  border-radius: 5px;
 }
 
 .address {

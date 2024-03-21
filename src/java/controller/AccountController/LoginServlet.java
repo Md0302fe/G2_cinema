@@ -86,7 +86,7 @@ public class LoginServlet extends HttpServlet {
         System.out.println("Accunt " + account);
 
         if (account == null) {
-            request.setAttribute("error", "Password or uswername is error!");
+            request.setAttribute("error", "Tài khoản hoặc mật khẩu không chính xác!");
             request.getRequestDispatcher("Login.jsp").forward(request, response);
         } else {
 

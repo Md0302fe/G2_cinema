@@ -35,6 +35,7 @@ public class loadTime_HomePage extends HttpServlet {
         BookingDAO book = new BookingDAO();
         // Get DateId from request parameter
         String dateId = request.getParameter("dateId");
+//        System.out.println("date: " + dateId);
         String movie_id = request.getParameter("movieId");
         System.out.println("Date Id = " + dateId);
         System.out.println("Movie_id = " + movie_id);

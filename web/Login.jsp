@@ -36,13 +36,13 @@
                                     <input id="password-field" type="password" class="form-control" value="${cookie.cpass.value}" name="password" placeholder="Nhập mật khẩu..." required>
                                     <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                 </div>
-                                <p style="color: red">${requestScope.error}</p>
+                                <p style="color: white">${requestScope.error}</p>
                                 <div class="form-group">
                                     <button type="submit" class="form-control btn btn-primary submit px-3">Đăng nhập</button>
                                 </div>
                                 <div class="form-group d-md-flex">
                                     <div class="w-50">
-                                        <label class="checkbox-wrap checkbox-primary">Remember Me
+                                        <label class="checkbox-wrap checkbox-primary">Ghi nhớ mật khẩu
                                             <input type="checkbox" name="remember" ${cookie.crem!=null?'checked':''}>
                                             <span class="checkmark"></span>
                                         </label>

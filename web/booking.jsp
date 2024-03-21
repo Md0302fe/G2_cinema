@@ -32,7 +32,7 @@
                         <div class="location-item">
                             <p>
                             <div class="location-info" id="locationInfo">
-                                <span id="locationText">Cần Thơ</span> <!-- Thêm id="locationText" vào đây -->
+                                <span id="locationText" style="border-radius: 5px; border-width: ">Cần Thơ</span> <!-- Thêm id="locationText" vào đây -->
                             </div>
                             </p>
                         </div>
@@ -52,8 +52,7 @@
                                     <div class="movie-item">
                                         <a   data-movie-id="${m.id}">
                                             <img src="./Assets/Image/Movie_Image_Vip/${m.movie_img}" alt="Error Img"
-                                                 onClick="sendSelectedMovieId('${m.id}')"
-                                                 >
+                                                 onClick="sendSelectedMovieId('${m.id}')" style="border-radius: 8px">
                                         </a>
                                         <span>${m.name}</span>
                                     </div>

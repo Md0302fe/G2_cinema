@@ -1,0 +1,59 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Mar 20, 2024, 2:53:54 PM
+    Author     : GIA TIEN
+*/
+
+.table{
+    background-color: #406489;
+}
+
+thead,tbody{
+    color: #fff;
+}
+
+tr{
+    text-align: center;
+}
+
+.m-10{
+    margin: 0;
+    margin-top: 12px;
+}
+
+.p-21{
+    padding: 20px
+}
+
+.bold{
+    font-weight: bold;
+}
+
+
+.main-contain{
+    margin-top: 10px; /* Điều chỉnh khoảng cách từ phía trên */
+    margin-bottom: 10px; /* Điều chỉnh khoảng cách từ phía dưới */
+}
+
+
+.view-button{
+    display: inline-block;
+    margin-top: 8px;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid #406489; /* Màu viền của nút */
+    border-radius: 5px; /* Bo tròn các góc */
+    background-color: #406489; /* Màu nền của nút */
+    color: white; /* Màu chữ */
+    transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển đổi màu */
+}
+
+.view-button:hover {
+    background-color: #304365; /* Màu nền khi di chuột qua */
+    color: #ffffff; /* Màu chữ khi di chuột qua */
+}
+

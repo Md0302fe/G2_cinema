@@ -2,16 +2,20 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/src/java/dal/HistoryDAO.java</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/web/Admin_Dashboard.jsp</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/src/java/model/Booking.java</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/src/java/dal/DBContext.java</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/web/Assets/Styles/viewTicket.css</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/web/viewHistory.jsp</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/web/Components/AdminNavbar.jsp</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/web/view.jsp</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/src/java/controller/ProfileController/View.java</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/src/java/controller/MovieDetailController/Details_Seat.java</file>
+            <file>file:/D:/Spring2024_5/Cinema/G2_cinema/web/Payment.jsp</file>
+        </group>
         <group/>
-        <group>
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/web/Admin_Update_Schedules.jsp</file>
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/web/Admin_Movie_Update.jsp</file>
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/web/HomePage.jsp</file>
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/src/java/model/Movie.java</file>
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/web/Admin_Show_Date.jsp</file>
-        </group>
-        <group>
-            <file>file:/F:/FPT_SCHOOL/FPT_COURSE/HocKy5/SWP391/CINEMA/G2_cinema/web/Components/AdminHeader.jsp</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
